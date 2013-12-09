@@ -32,8 +32,8 @@ namespace SurfacePoker
         public static readonly RoutedCommand MenuItemCommand = new RoutedCommand();
 
         //Eventuelle für spätere Erweiterungen
-        private readonly Windows7.Multitouch.GestureHandler _gestureHandler;
-
+        //private readonly Windows7.Multitouch.GestureHandler _gestureHandler;
+        
         //Spielemodus anzahl spieler die eingestellt wurden
         private int gamemode;
 

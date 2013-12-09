@@ -47,6 +47,16 @@ namespace SurfacePoker
         public bool savePlayer(String spielername, int id, String password)
         {
 
+            //Spielerdaten.xml anlegen
+            if (!File.Exists(applicationPath + "\\Spielerdaten.xml"))
+            {
+                File.Create(applicationPath + "\\Spielerdaten.xml");
+                XmlDocument doc = new XmlDocument();
+                XmlElement element1 = doc.CreateElement("", "verzeichnis", "");
+                doc.AppendChild(element1);
+                doc.Save(applicationPath + "\\Spielerdaten.xml");
+            }
+
             //vorhandene xml-Datei laden
             xmlDoc.Load(applicationPath + "\\Spielerdaten.xml");
 
