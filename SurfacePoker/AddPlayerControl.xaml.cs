@@ -30,10 +30,11 @@ namespace SurfacePoker
             xmlHandler = new XmlHandler();
 
             String spielern = spielername.Text;
-            String pw = netzwerkpasswort.Text;
-            int tag =Convert.ToInt32(tagid.Text);
+            
+            int tag1 =Convert.ToInt32(tagid1.Text);
+            int tag2 =Convert.ToInt32(tagid2.Text);
 
-            xmlHandler.savePlayer(spielern, tag, pw);
+            xmlHandler.savePlayer(spielern, tag1, tag2);
 
 		}
 	}

@@ -121,10 +121,10 @@
 			<Rectangle Fill="#FFC60F6C" Height="4.792" Margin="-7.957,0,-7.973,0"/>
 			<TextBlock TextWrapping="Wrap" Text="Spielername:" Height="20" FontSize="13.333" FontFamily="Simplified Arabic" Foreground="White"/>
 			<Custom:SurfaceTextBox x:Name="spielername" Margin="0" TextWrapping="Wrap" Height="17.481"/>
-			<TextBlock TextWrapping="Wrap" Text="Netzwerkpasswort:" Height="20" FontSize="13.333" FontFamily="Simplified Arabic" Foreground="White"/>
-			<Custom:SurfaceTextBox x:Name="netzwerkpasswort" Height="23" Margin="0"/>
-			<TextBlock TextWrapping="Wrap" Text="TagID:" Height="20" FontSize="13.333" FontFamily="Simplified Arabic" Foreground="White"/>
-			<Custom:SurfaceTextBox x:Name="tagid" Margin="0" TextWrapping="Wrap" Height="17.481"/>
+			<TextBlock TextWrapping="Wrap" Text="TagID 1:" Height="20" FontSize="13.333" FontFamily="Simplified Arabic" Foreground="White"/>
+			<Custom:SurfaceTextBox x:Name="tagid1" Height="23" Margin="0"/>
+			<TextBlock TextWrapping="Wrap" Text="TagID 2:" Height="20" FontSize="13.333" FontFamily="Simplified Arabic" Foreground="White"/>
+			<Custom:SurfaceTextBox x:Name="tagid2" Margin="0" TextWrapping="Wrap" Height="17.481"/>
 			<Custom:SurfaceButton x:Name="speichern" Content="Spieler speichern" Margin="0,10,73.138,0" Background="#FFC60F6C" Height="25.596" TouchEnter="savePlayer"/>
 		</StackPanel>
 	</Grid>

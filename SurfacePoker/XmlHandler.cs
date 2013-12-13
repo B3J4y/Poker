@@ -44,21 +44,44 @@ namespace SurfacePoker
             return "";
         }
 
-        public bool savePlayer(String spielername, int id, String password)
+        public bool savePlayer(String spielername, int id1, int id2)
         {
+            string URIpath = applicationPath + "\\Spielerdaten.xml";
+            string path = new Uri(URIpath).LocalPath;
+            Console.Out.WriteLine(path);
+            
+            
+            //Spielerdaten.xml anlegen öffnen
+            if (!(File.Exists(path)))
+            {
+                var myFile = File.Create(path); //Datei anlegen
+                myFile.Close();                 // Ressource freigeben
+                
+                XmlNode element1 = xmlDoc.CreateElement( "verzeichnis");    //Root erzeugen
+                xmlDoc.AppendChild(element1);        
 
-            //vorhandene xml-Datei laden
-            xmlDoc.Load(applicationPath + "\\Spielerdaten.xml");
+            } else{            
+                //vorhandene xml-Datei laden
+                xmlDoc.Load(path);
+            }
 
             //Eintrag erzeugen
             XmlElement subRoot = xmlDoc.CreateElement("eintrag");
 
             //id einfügen
-            XmlElement appendedElementID = xmlDoc.CreateElement("id");
-            XmlText xmlTextID = xmlDoc.CreateTextNode(id.ToString());
-            appendedElementID.AppendChild(xmlTextID);
-            subRoot.AppendChild(appendedElementID);
+            XmlElement appendedElementID1 = xmlDoc.CreateElement("id1");
+            XmlText xmlTextID1 = xmlDoc.CreateTextNode(id1.ToString());
+            appendedElementID1.AppendChild(xmlTextID1);
+            subRoot.AppendChild(appendedElementID1);
             xmlDoc.DocumentElement.AppendChild(subRoot);
+
+            //id2 einfügen
+            XmlElement appendedElementID2 = xmlDoc.CreateElement("id2");
+            XmlText xmlTextID2 = xmlDoc.CreateTextNode(id2.ToString());
+            appendedElementID2.AppendChild(xmlTextID2);
+            subRoot.AppendChild(appendedElementID2);
+            xmlDoc.DocumentElement.AppendChild(subRoot);
+
 
             //spielername einfügen
             XmlElement appendedElementUsername = xmlDoc.CreateElement("spielername");
@@ -67,15 +90,10 @@ namespace SurfacePoker
             subRoot.AppendChild(appendedElementUsername);
             xmlDoc.DocumentElement.AppendChild(subRoot);
 
-            //password einfügen
-            XmlElement appendedElementPassword = xmlDoc.CreateElement("password");
-            XmlText xmlTextPassword = xmlDoc.CreateTextNode(id.ToString());
-            appendedElementPassword.AppendChild(xmlTextPassword);
-            subRoot.AppendChild(appendedElementPassword);
-            xmlDoc.DocumentElement.AppendChild(subRoot);
+           
 
             // xml datei speichern
-            xmlDoc.Save(applicationPath + "\\Spielerdaten.xml");
+            xmlDoc.Save(path);
 
             return true;
         }
