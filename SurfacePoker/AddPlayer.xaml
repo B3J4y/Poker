@@ -24,9 +24,9 @@
 				<Label Content="Neuen Spieler anlegen" Foreground="White"/>
 				<Label Content="Spielername:" Foreground="White"/>
 				<Custom:SurfaceTextBox Margin="0" TextWrapping="Wrap" Height="17.481"/>
-				<Label Content="Netzwerkpasswort:" Foreground="White"/>
+				<Label Content="TagID 1:" Foreground="White"/>
 				<Custom:SurfacePasswordBox Height="23" Margin="0"/>
-				<Label Content="TagID:" Foreground="White"/>
+				<Label Content="TagID 2:" Foreground="White"/>
 				<Custom:SurfaceTextBox Margin="0" TextWrapping="Wrap" Height="17.481"/>
 				<Custom:SurfaceButton Content="Spieler speichern" Margin="0"/>
 			</StackPanel>

@@ -1613,7 +1613,7 @@ namespace SurfacePoker
                                 playRoundPlayerCounter = 0;
 
                             }
-
+                            
                             p2c1.showCard();
 
 
