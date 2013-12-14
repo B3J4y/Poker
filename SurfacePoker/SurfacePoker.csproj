@@ -70,6 +70,7 @@
     <Compile Include="Blind.cs" />
     <Compile Include="Chip.cs" />
     <Compile Include="HandRecognition.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="NetworkServer.cs" />
     <Compile Include="PlayerCard.xaml.cs">
       <DependentUpon>PlayerCard.xaml</DependentUpon>

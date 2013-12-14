@@ -89,3 +89,5 @@ C:\Users\user\Documents\GitHub\Poker-PixelSense--Surface-2-\SurfacePoker\obj\Rel
 C:\Users\user\Documents\GitHub\Poker-PixelSense--Surface-2-\SurfacePoker\obj\Release\SurfacePoker.exe
 C:\Users\user\Documents\GitHub\Poker-PixelSense--Surface-2-\SurfacePoker\obj\Release\SurfacePoker.pdb
 C:\Users\user\Documents\GitHub\Poker-PixelSense--Surface-2-\SurfacePoker\obj\Release\SurfacePoker.csprojResolveAssemblyReference.cache
+C:\Users\Carl\Documents\GitHub\Poker\SurfacePoker\obj\Release\SurfacePoker.exe
+C:\Users\Carl\Documents\GitHub\Poker\SurfacePoker\obj\Release\SurfacePoker.pdb
