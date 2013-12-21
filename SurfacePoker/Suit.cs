@@ -8,7 +8,7 @@ namespace SurfacePoker
     /// <summary>
     /// Farbe des Karte Herz, Kreuz, Pik, Karo
     /// </summary>
-    class Suit
+    public class Suit
     {
         const int CLUBS = 1;
         const int DIAMONDS = 2;

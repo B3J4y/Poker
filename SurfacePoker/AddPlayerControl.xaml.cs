@@ -30,7 +30,7 @@ namespace SurfacePoker
             xmlHandler = new XmlHandler();
 
             String spielern = spielername.Text;
-            
+            //TODO: Handle "System.FormatException"
             int tag1 =Convert.ToInt32(tagid1.Text);
             int tag2 =Convert.ToInt32(tagid2.Text);
 

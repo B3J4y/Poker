@@ -79,7 +79,7 @@ namespace SurfacePoker
         private Boolean alternativeDeck = false;
 
         //Wettrunden
-        bool preFlop = false;   //Erste Wettrunde noch keine Karten auf dem Table
+        //bool preFlop = false;   //Erste Wettrunde noch keine Karten auf dem Table
         bool flop = false;        //Erste drei Karten
         bool turnCard = false;       //Vierte Karte
         bool riverCard = false;        //Fünfte Karte
@@ -94,7 +94,7 @@ namespace SurfacePoker
         List<Player> activeRoundPlayers;
         List<Canvas> chipsOnTable;
 
-        LinkedList<Player> sentence;
+        //LinkedList<Player> sentence;
 
         //Network Connection für mobile Endgeräte
         NetworkServer nws;

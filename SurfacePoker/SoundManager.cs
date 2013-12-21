@@ -6,7 +6,7 @@ using System.Media;
 
 namespace SurfacePoker
 {
-    class SoundManager
+    public class SoundManager
     {
         private String pfad;
 

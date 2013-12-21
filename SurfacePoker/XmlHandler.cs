@@ -11,7 +11,7 @@ namespace SurfacePoker
     /// <summary>
     /// Auslesen/Schreiben der Spieler aus der Spieler XML mit Hilfe der ByteTags 
     /// </summary>
-    class XmlHandler
+    public class XmlHandler
     {
         XmlDocument xmlDoc;
         String applicationPath;

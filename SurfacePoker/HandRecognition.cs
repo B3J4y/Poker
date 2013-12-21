@@ -12,7 +12,7 @@ namespace SurfacePoker
     /// Hand + Table erkennen (potentielle Gewinner bestimmen)
     /// Hand + Table berechnen (exakten Gewinner bestimmen)
     /// </summary>
-    class HandRecognition
+    public class HandRecognition
     {
         Card[] cards;
 

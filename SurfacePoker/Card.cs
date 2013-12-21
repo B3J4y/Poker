@@ -8,7 +8,7 @@ namespace SurfacePoker
     /// <summary>
     /// Card Objekt mit Pip und Suit der Karte
     /// </summary>
-    class Card
+    public class Card
     {
         Suit suit;
         Pips pip;

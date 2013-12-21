@@ -46,11 +46,6 @@ namespace Log
                 Console.WriteLine(kvp.Key.ToString() + " : " + kvp.Value);
             }
         }
-        public static void Main()
-        {
-            
-            Console.WriteLine("Hallo");
-        }
     }
 
     public class LogPlayer

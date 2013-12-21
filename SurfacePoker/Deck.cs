@@ -10,7 +10,7 @@ namespace SurfacePoker
     /// Karten werden dynamisch erzeugt siehe Konstruktor
     /// dannach gemischt
     /// </summary>
-    class Deck
+    public class Deck
     {
         Card[] deck;
         private int cardsUsed;

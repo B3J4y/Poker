@@ -1,7 +1,6 @@
 ﻿using System.Net.Sockets;
 using System.Threading;
 using System.Net;
-using System.Net.Sockets;
 using System.Text;
 using System;
 
@@ -16,7 +15,7 @@ namespace SurfacePoker
     /// Karten an Handy übertragen
     /// Spieler verifikation
     /// </summary>
-    class NetworkServer
+    public class NetworkServer
     {
 
         String username;

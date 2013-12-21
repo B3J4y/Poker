@@ -8,7 +8,7 @@ namespace SurfacePoker
     /// <summary>
     /// Kartenwert
     /// </summary>
-    class Pips
+    public class Pips
     {
         private int p;
 

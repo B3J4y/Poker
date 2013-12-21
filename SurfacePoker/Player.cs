@@ -8,7 +8,7 @@ namespace SurfacePoker
     /// <summary>
     /// Spieler und dessen Attribute sowie States für das Handling mit dem UI
     /// </summary>
-    class Player
+    public class Player
     {
         private String playername = "";
         private double budget = 0;

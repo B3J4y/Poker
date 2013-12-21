@@ -12,7 +12,7 @@ namespace SurfacePoker
     /// dealer
     /// setzten der Blinds, switchen der blinds, raiser der blinds
     /// </summary>
-    class Blind
+    public class Blind
     {
         private int smallBlind = 10;
         private int bigBlind = 20;
@@ -52,7 +52,7 @@ namespace SurfacePoker
         //Aus den aktiven Spieler bei Spielstart einen Zufälligen Dealer ermitteln
         public void randomDealer()
         {
-            int min = 0;
+            //int min = 0;
             int max = player.Count - 1;
             Random random = new Random();
 

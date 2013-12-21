@@ -6,7 +6,7 @@ using Microsoft.Surface.Presentation.Controls;
 
 namespace SurfacePoker
 {
-    class Chip
+    public class Chip
     {
         private ScatterViewItem chip;
         private double betControlLine;

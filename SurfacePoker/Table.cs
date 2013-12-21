@@ -8,7 +8,7 @@ namespace SurfacePoker
     /// <summary>
     /// Tisch un dessen Karten
     /// </summary>
-    class Table
+    public class Table
     {
         Card[] cards;
 

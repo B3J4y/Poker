@@ -9,7 +9,7 @@ namespace SurfacePoker
     /// Jeder Spieler besitzt eine Hand
     /// diese beeinhaltet ein Card Array das aus zwei Karten besteht
     /// </summary>
-    class Hand
+    public class Hand
     {
         private Card[] cards;
 
