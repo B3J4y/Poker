@@ -23,7 +23,7 @@ namespace SurfacePoker
         }
 
         public String readPlayer(int tagID) {
-
+            //TODO: FileNotFoundException
             bool isPlayer=false;
             XmlTextReader reader = new XmlTextReader(applicationPath+"\\Spielerdaten.xml");
             while (reader.Read())
@@ -39,7 +39,7 @@ namespace SurfacePoker
                         isPlayer = true;
                 }
             }
-            Console.ReadLine();
+            //Console.ReadLine();
 
             return "";
         }

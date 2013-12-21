@@ -37,6 +37,7 @@ namespace SurfacePoker
 
         public void listenUDP()
         {
+            //TODO: UDP Handler?
             while (true)
             {
                 byte[] data = new byte[1024];

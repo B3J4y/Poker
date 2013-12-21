@@ -1,12 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <verzeichnis>
   <eintrag>
-    <id1>1</id1>
-    <id2>2</id2>
-    <spielername>Max</spielername>
+    <spielername>Sascha Heyer</spielername>
+    <id>1</id>
   </eintrag>
   <eintrag>
-    <id1>3</id1>
-    <id2>4</id2>
-    <spielername>Faxe</spielername>
+    <spielername>Katharina Pokid</spielername>
+    <id>2</id>
+  </eintrag>
+  <eintrag>
+    <spielername>Marc Hauenstein</spielername>
+    <id>3</id>
+  </eintrag>
+  <eintrag>
+    <spielername>Julia Vogelgesang</spielername>
+    <id>4</id>
+  </eintrag>
+  <eintrag>
+    <spielername>Daniel Reischmann</spielername>
+    <id>5</id>
+  </eintrag>
+  <eintrag>
+    <spielername>Markus Tretter</spielername>
+    <id>6</id>
   </eintrag>
 </verzeichnis>

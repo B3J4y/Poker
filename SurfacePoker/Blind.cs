@@ -52,6 +52,7 @@ namespace SurfacePoker
         //Aus den aktiven Spieler bei Spielstart einen Zufälligen Dealer ermitteln
         public void randomDealer()
         {
+            //TODO: Argument out of Range, wenn ein Tag gesetzt wird, aber noch kein Spiel losgegangen ist
             //int min = 0;
             int max = player.Count - 1;
             Random random = new Random();

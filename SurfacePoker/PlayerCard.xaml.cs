@@ -39,6 +39,7 @@ namespace SurfacePoker
         }
 
         public void showCard() {
+            //TODO: Image not found
             PlayerCard image = (PlayerCard)FindResource("image");
             image.Visibility = Visibility.Hidden;
         }

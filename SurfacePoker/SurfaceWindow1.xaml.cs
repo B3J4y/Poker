@@ -1011,6 +1011,7 @@ namespace SurfacePoker
 
                     //Network Server Thread zum lauschen ob sich ein Spieler mit
                     //seinem Handy mit dem Surface verbindet
+                    /**
                     nws = new NetworkServer();
                     Thread listener = new Thread(() =>
                     {
@@ -1030,7 +1031,7 @@ namespace SurfacePoker
 
                     //User Interface updaten
                     updateUI();
-
+                    */
                     if (gamemode > 1)
                     {
                         Player1Grid.Visibility = Visibility.Visible;
@@ -1343,43 +1344,6 @@ namespace SurfacePoker
                 checkHands();
                 checkWinner();
                 // gameLoop.Stop();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             }
 
 
@@ -1547,7 +1511,7 @@ namespace SurfacePoker
 
                     //Console.WriteLine("Current Player Index:    " + currentPlayerCounter);
 
-                    Console.WriteLine(player.PlayerID + "  " + player.PlayerBlindDealState);
+                    //Console.WriteLine(player.PlayerID + "  " + player.PlayerBlindDealState);
 
                     if (player.getIsCurrentPlayer() == true)            //Wenn Spieler aktueller Spieler prüf ob sich sein State verändert hat
                     {
@@ -1685,24 +1649,7 @@ namespace SurfacePoker
                                 playRoundPlayerCounter = 0;
 
                             }
-
-
-
-
-
-
-
-
-
-
-
                             break;
-
-
-
-
-
-
 
                         }
 
