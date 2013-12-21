@@ -417,7 +417,11 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.0\Microsoft.Expression.Blend.WPF.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /Y "$(ProjectDir)Spielerdaten.xml" "$(TargetDir)Spielerdaten.xml"
-copy /Y "$(ProjectDir)Cards" "$(TargetDir)Cards"</PostBuildEvent>
+copy /Y "$(ProjectDir)Cards\" "$(TargetDir)Cards\"
+cmd /x /c mkdir "$(TargetDir)Sounds\"
+copy /Y "$(ProjectDir)Sounds\" "$(TargetDir)Sounds\"
+cmd /x /c mkdir "$(TargetDir)Chips\"
+copy /Y "$(ProjectDir)Chips\" "$(TargetDir)Chips\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
