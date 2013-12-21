@@ -361,7 +361,9 @@
     <Content Include="Sounds\karten_schnorren.wav" />
     <Content Include="Sounds\karte_aufdecken.wav" />
     <Content Include="Sounds\zweichips.wav" />
-    <Resource Include="Spielerdaten.xml" />
+    <Resource Include="Spielerdaten.xml">
+      <SubType>Designer</SubType>
+    </Resource>
     <Content Include="SurfacePoker.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
