@@ -2092,6 +2092,12 @@ namespace SurfacePoker
                 alternativeDeck = false;
             }
 
+            //Spiel Beenden
+            if ((e.OriginalSource as ElementMenuItem).Header.ToString().Equals("Beenden"))
+            {
+                Application.Current.Shutdown(0);
+            }
+
         }
 
 

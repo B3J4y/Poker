@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Carl\Documents\GitHub\Poker\SurfacePoker\obj\Release\
+C:\Users\user\Documents\GitHub\Poker\SurfacePoker\obj\Release\
 SurfacePoker
 none
 false
 TRACE
-C:\Users\Carl\Documents\GitHub\Poker\SurfacePoker\App.xaml
+C:\Users\user\Documents\GitHub\Poker\SurfacePoker\App.xaml
 7-131950325
 31-834973271
-33645685618
+331859740346
 18781865202
 AddPlayer.xaml;AddPlayerControl.xaml;GlowVisualization.xaml;PinkCircle.xaml;PlayerCard.xaml;StyleDictionary.xaml;SurfaceWindow1.xaml;
 
-False
+True
 
