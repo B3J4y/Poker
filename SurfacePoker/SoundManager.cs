@@ -16,7 +16,7 @@ namespace SurfacePoker
         public void playSoundFallen6() {
             if (sound)
             {
-                SoundPlayer sp = new SoundPlayer("Sounds/chips_fallen6.wav");
+                SoundPlayer sp = new SoundPlayer("Res/Sounds/chips_fallen6.wav");
                 sp.Load();
                 sp.Play();
             }
@@ -27,7 +27,7 @@ namespace SurfacePoker
         {
             if (sound)
             {
-                SoundPlayer sp = new SoundPlayer("Sounds/chips_viele1.wav");
+                SoundPlayer sp = new SoundPlayer("Res/Sounds/chips_viele1.wav");
                 sp.Load();
                 sp.Play();
             }
@@ -38,7 +38,7 @@ namespace SurfacePoker
         {
             if (sound)
             {
-                SoundPlayer sp = new SoundPlayer("Sounds/einsatz2.wav");
+                SoundPlayer sp = new SoundPlayer("Res/Sounds/einsatz2.wav");
                 sp.Load();
                 sp.Play();
             }
@@ -49,7 +49,7 @@ namespace SurfacePoker
         {
             if (sound)
             {
-                SoundPlayer sp = new SoundPlayer("Sounds/einchip2.wav");
+                SoundPlayer sp = new SoundPlayer("Res/Sounds/einchip2.wav");
                 sp.Load();
                 sp.Play();
             }

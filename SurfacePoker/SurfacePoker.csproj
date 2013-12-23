@@ -156,118 +156,118 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Backgrounds\pokertesttextur12.jpg">
+    <None Include="Res\Backgrounds\pokertesttextur12.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Backgrounds\pokertesttextur2.jpg">
+    <None Include="Res\Backgrounds\pokertesttextur2.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Backgrounds\pokertesttextur3.jpg">
+    <None Include="Res\Backgrounds\pokertesttextur3.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Backgrounds\pokertesttextur5.jpg">
+    <None Include="Res\Backgrounds\pokertesttextur5.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Backgrounds\pokertesttextur8.jpg">
+    <None Include="Res\Backgrounds\pokertesttextur8.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\herzbube.png">
+    <None Include="Res\Cards\herzbube.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\herzdame.png">
+    <None Include="Res\Cards\herzdame.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\herzkoenig.png">
+    <None Include="Res\Cards\herzkoenig.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\karobube.png">
+    <None Include="Res\Cards\karobube.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\karodame.png">
+    <None Include="Res\Cards\karodame.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\karokoenig.png">
+    <None Include="Res\Cards\karokoenig.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\kreuz10.png">
+    <None Include="Res\Cards\kreuz10.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\kreuz2.png">
+    <None Include="Res\Cards\kreuz2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\kreuz3.png">
+    <None Include="Res\Cards\kreuz3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\kreuz4.png">
+    <None Include="Res\Cards\kreuz4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\kreuz5.png">
+    <None Include="Res\Cards\kreuz5.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\kreuz6.png">
+    <None Include="Res\Cards\kreuz6.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\kreuz7.png">
+    <None Include="Res\Cards\kreuz7.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\kreuz8.png">
+    <None Include="Res\Cards\kreuz8.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\kreuz9.png">
+    <None Include="Res\Cards\kreuz9.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\kreuzas.png">
+    <None Include="Res\Cards\kreuzas.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\kreuzbube.png">
+    <None Include="Res\Cards\kreuzbube.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\kreuzdame.png">
+    <None Include="Res\Cards\kreuzdame.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\kreuzkoenig.png">
+    <None Include="Res\Cards\kreuzkoenig.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\pik10.png">
+    <None Include="Res\Cards\pik10.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\pik2.png">
+    <None Include="Res\Cards\pik2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\pik3.png">
+    <None Include="Res\Cards\pik3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\pik4.png">
+    <None Include="Res\Cards\pik4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\pik5.png">
+    <None Include="Res\Cards\pik5.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\pik6.png">
+    <None Include="Res\Cards\pik6.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\pik7.png">
+    <None Include="Res\Cards\pik7.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\pik8.png">
+    <None Include="Res\Cards\pik8.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\pik9.png">
+    <None Include="Res\Cards\pik9.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\pikas.png">
+    <None Include="Res\Cards\pikas.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\pikbube.png">
+    <None Include="Res\Cards\pikbube.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\pikdame.png">
+    <None Include="Res\Cards\pikdame.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Cards\pikkoenig.png">
+    <None Include="Res\Cards\pikkoenig.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Logo\Logo.png">
+    <None Include="Res\Logo\Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Properties\Settings.settings">
@@ -277,91 +277,91 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Cards\kherz10.png" />
-    <Resource Include="Cards\kherz2.png" />
-    <Resource Include="Cards\kherz3.png" />
-    <Resource Include="Cards\kherz4.png" />
-    <Resource Include="Cards\kherz5.png" />
-    <Resource Include="Cards\kherz6.png" />
-    <Resource Include="Cards\kherz7.png" />
-    <Resource Include="Cards\kherz8.png" />
-    <Resource Include="Cards\kherz9.png" />
-    <Resource Include="Cards\kherzas.png" />
-    <Resource Include="Cards\kherzbube.png" />
-    <Resource Include="Cards\kherzdame.png" />
-    <Resource Include="Cards\kherzkoenig.png" />
-    <Resource Include="Cards\kkaro10.png" />
-    <Resource Include="Cards\kkaro2.png" />
-    <Resource Include="Cards\kkaro3.png" />
-    <Resource Include="Cards\kkaro4.png" />
-    <Resource Include="Cards\kkaro5.png" />
-    <Resource Include="Cards\kkaro6.png" />
-    <Resource Include="Cards\kkaro7.png" />
-    <Resource Include="Cards\kkaro8.png" />
-    <Resource Include="Cards\kkaro9.png" />
-    <Resource Include="Cards\kkaroas.png" />
-    <Resource Include="Cards\kkarobube.png" />
-    <Resource Include="Cards\kkarodame.png" />
-    <Resource Include="Cards\kkarokoenig.png" />
-    <Resource Include="Cards\kkreuz10.png" />
-    <Resource Include="Cards\kkreuz2.png" />
-    <Resource Include="Cards\kkreuz3.png" />
-    <Resource Include="Cards\kkreuz4.png" />
-    <Resource Include="Cards\kkreuz5.png" />
-    <Resource Include="Cards\kkreuz6.png" />
-    <Resource Include="Cards\kkreuz7.png" />
-    <Resource Include="Cards\kkreuz8.png" />
-    <Resource Include="Cards\kkreuz9.png" />
-    <Resource Include="Cards\kkreuzas.png" />
-    <Resource Include="Cards\kkreuzbube.png" />
-    <Resource Include="Cards\kkreuzdame.png" />
-    <Resource Include="Cards\kkreuzkoenig.png" />
-    <Resource Include="Cards\kpik10.png" />
-    <Resource Include="Cards\kpik2.png" />
-    <Resource Include="Cards\kpik3.png" />
-    <Resource Include="Cards\kpik4.png" />
-    <Resource Include="Cards\kpik5.png" />
-    <Resource Include="Cards\kpik6.png" />
-    <Resource Include="Cards\kpik7.png" />
-    <Resource Include="Cards\kpik8.png" />
-    <Resource Include="Cards\kpik9.png" />
-    <Resource Include="Cards\kpikas.png" />
-    <Resource Include="Cards\kpikbube.png" />
-    <Resource Include="Cards\kpikdame.png" />
-    <Resource Include="Cards\kpikkoenig.png" />
-    <Content Include="Resources\icon.png">
+    <Resource Include="Res\Cards\kherz10.png" />
+    <Resource Include="Res\Cards\kherz2.png" />
+    <Resource Include="Res\Cards\kherz3.png" />
+    <Resource Include="Res\Cards\kherz4.png" />
+    <Resource Include="Res\Cards\kherz5.png" />
+    <Resource Include="Res\Cards\kherz6.png" />
+    <Resource Include="Res\Cards\kherz7.png" />
+    <Resource Include="Res\Cards\kherz8.png" />
+    <Resource Include="Res\Cards\kherz9.png" />
+    <Resource Include="Res\Cards\kherzas.png" />
+    <Resource Include="Res\Cards\kherzbube.png" />
+    <Resource Include="Res\Cards\kherzdame.png" />
+    <Resource Include="Res\Cards\kherzkoenig.png" />
+    <Resource Include="Res\Cards\kkaro10.png" />
+    <Resource Include="Res\Cards\kkaro2.png" />
+    <Resource Include="Res\Cards\kkaro3.png" />
+    <Resource Include="Res\Cards\kkaro4.png" />
+    <Resource Include="Res\Cards\kkaro5.png" />
+    <Resource Include="Res\Cards\kkaro6.png" />
+    <Resource Include="Res\Cards\kkaro7.png" />
+    <Resource Include="Res\Cards\kkaro8.png" />
+    <Resource Include="Res\Cards\kkaro9.png" />
+    <Resource Include="Res\Cards\kkaroas.png" />
+    <Resource Include="Res\Cards\kkarobube.png" />
+    <Resource Include="Res\Cards\kkarodame.png" />
+    <Resource Include="Res\Cards\kkarokoenig.png" />
+    <Resource Include="Res\Cards\kkreuz10.png" />
+    <Resource Include="Res\Cards\kkreuz2.png" />
+    <Resource Include="Res\Cards\kkreuz3.png" />
+    <Resource Include="Res\Cards\kkreuz4.png" />
+    <Resource Include="Res\Cards\kkreuz5.png" />
+    <Resource Include="Res\Cards\kkreuz6.png" />
+    <Resource Include="Res\Cards\kkreuz7.png" />
+    <Resource Include="Res\Cards\kkreuz8.png" />
+    <Resource Include="Res\Cards\kkreuz9.png" />
+    <Resource Include="Res\Cards\kkreuzas.png" />
+    <Resource Include="Res\Cards\kkreuzbube.png" />
+    <Resource Include="Res\Cards\kkreuzdame.png" />
+    <Resource Include="Res\Cards\kkreuzkoenig.png" />
+    <Resource Include="Res\Cards\kpik10.png" />
+    <Resource Include="Res\Cards\kpik2.png" />
+    <Resource Include="Res\Cards\kpik3.png" />
+    <Resource Include="Res\Cards\kpik4.png" />
+    <Resource Include="Res\Cards\kpik5.png" />
+    <Resource Include="Res\Cards\kpik6.png" />
+    <Resource Include="Res\Cards\kpik7.png" />
+    <Resource Include="Res\Cards\kpik8.png" />
+    <Resource Include="Res\Cards\kpik9.png" />
+    <Resource Include="Res\Cards\kpikas.png" />
+    <Resource Include="Res\Cards\kpikbube.png" />
+    <Resource Include="Res\Cards\kpikdame.png" />
+    <Resource Include="Res\Cards\kpikkoenig.png" />
+    <Content Include="Res\Icon\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Sounds\chipsinderhand.wav" />
-    <Content Include="Sounds\chipsinderhand2.wav" />
-    <Content Include="Sounds\chips_fallen.wav" />
-    <Content Include="Sounds\chips_fallen2.wav" />
-    <Content Include="Sounds\chips_fallen3.wav" />
-    <Content Include="Sounds\chips_fallen4.wav" />
-    <Content Include="Sounds\chips_fallen5.wav" />
-    <Content Include="Sounds\chips_fallen6.wav" />
-    <Content Include="Sounds\chips_schieben.wav" />
-    <Content Include="Sounds\chips_schieben2.wav" />
-    <Content Include="Sounds\chips_viele.wav" />
-    <Content Include="Sounds\chips_viele1.wav" />
-    <Content Include="Sounds\chips_viele2.wav" />
-    <Content Include="Sounds\chips_werfen.wav" />
-    <Content Include="Sounds\chips_werfen1.wav" />
-    <Content Include="Sounds\chips_werfen2.wav" />
-    <Content Include="Sounds\einchip.wav" />
-    <Content Include="Sounds\einchip2.wav" />
-    <Content Include="Sounds\einsatz.wav" />
-    <Content Include="Sounds\einsatz2.wav" />
-    <Content Include="Sounds\einsatz3.wav" />
-    <Content Include="Sounds\karten_ausgeben.wav" />
-    <Content Include="Sounds\karten_ausgeben2.wav" />
-    <Content Include="Sounds\karten_mischen.wav" />
-    <Content Include="Sounds\karten_mischen2.wav" />
-    <Content Include="Sounds\karten_mischen3.wav" />
-    <Content Include="Sounds\karten_schnorren.wav" />
-    <Content Include="Sounds\karte_aufdecken.wav" />
-    <Content Include="Sounds\zweichips.wav" />
-    <Resource Include="Spielerdaten.xml">
+    <Content Include="Res\Sounds\chipsinderhand.wav" />
+    <Content Include="Res\Sounds\chipsinderhand2.wav" />
+    <Content Include="Res\Sounds\chips_fallen.wav" />
+    <Content Include="Res\Sounds\chips_fallen2.wav" />
+    <Content Include="Res\Sounds\chips_fallen3.wav" />
+    <Content Include="Res\Sounds\chips_fallen4.wav" />
+    <Content Include="Res\Sounds\chips_fallen5.wav" />
+    <Content Include="Res\Sounds\chips_fallen6.wav" />
+    <Content Include="Res\Sounds\chips_schieben.wav" />
+    <Content Include="Res\Sounds\chips_schieben2.wav" />
+    <Content Include="Res\Sounds\chips_viele.wav" />
+    <Content Include="Res\Sounds\chips_viele1.wav" />
+    <Content Include="Res\Sounds\chips_viele2.wav" />
+    <Content Include="Res\Sounds\chips_werfen.wav" />
+    <Content Include="Res\Sounds\chips_werfen1.wav" />
+    <Content Include="Res\Sounds\chips_werfen2.wav" />
+    <Content Include="Res\Sounds\einchip.wav" />
+    <Content Include="Res\Sounds\einchip2.wav" />
+    <Content Include="Res\Sounds\einsatz.wav" />
+    <Content Include="Res\Sounds\einsatz2.wav" />
+    <Content Include="Res\Sounds\einsatz3.wav" />
+    <Content Include="Res\Sounds\karten_ausgeben.wav" />
+    <Content Include="Res\Sounds\karten_ausgeben2.wav" />
+    <Content Include="Res\Sounds\karten_mischen.wav" />
+    <Content Include="Res\Sounds\karten_mischen2.wav" />
+    <Content Include="Res\Sounds\karten_mischen3.wav" />
+    <Content Include="Res\Sounds\karten_schnorren.wav" />
+    <Content Include="Res\Sounds\karte_aufdecken.wav" />
+    <Content Include="Res\Sounds\zweichips.wav" />
+    <Resource Include="Res\Spielerdaten.xml">
       <SubType>Designer</SubType>
     </Resource>
     <Content Include="SurfacePoker.xml">
@@ -369,59 +369,46 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Anleitung\AnleitungAndroid1.png" />
-    <Resource Include="Anleitung\AnleitungAndroid2.png" />
-    <Resource Include="Anleitung\AnleitungAndroid3.png" />
-    <Resource Include="Cards\herz10.png" />
-    <Resource Include="Cards\herz2.png" />
-    <Resource Include="Cards\herz3.png" />
-    <Resource Include="Cards\herz4.png" />
-    <Resource Include="Cards\herz5.png" />
-    <Resource Include="Cards\herz6.png" />
-    <Resource Include="Cards\herz7.png" />
-    <Resource Include="Cards\herz8.png" />
-    <Resource Include="Cards\herz9.png" />
-    <Resource Include="Cards\herzas.png" />
-    <Resource Include="Cards\karo10.png" />
-    <Resource Include="Cards\karo2.png" />
-    <Resource Include="Cards\karo3.png" />
-    <Resource Include="Cards\karo4.png" />
-    <Resource Include="Cards\karo5.png" />
-    <Resource Include="Cards\karo6.png" />
-    <Resource Include="Cards\karo7.png" />
-    <Resource Include="Cards\karo8.png" />
-    <Resource Include="Cards\karo9.png" />
-    <Resource Include="Cards\karoas.png" />
-    <Resource Include="Chips\Pokerchip_final_10.png" />
-    <Resource Include="Chips\Pokerchip_final_100.png" />
-    <Resource Include="Chips\Pokerchip_final_20.png" />
-    <Resource Include="Chips\Pokerchip_final_200.png" />
-    <Resource Include="Chips\Pokerchip_final_50.png" />
-    <Resource Include="Chips\Pokerchip_final_500.png" />
-    <Resource Include="Kartenrueckseite\kartenruecken_3.jpg" />
-    <Resource Include="Logo\Logowhite.png" />
-    <Resource Include="Pokerchip_final_10.png" />
-    <Resource Include="Pokerchip_final_100.png" />
-    <Resource Include="Pokerchip_final_20.png" />
-    <Resource Include="Pokerchip_final_200.png" />
-    <Resource Include="Pokerchip_final_50.png" />
-    <Resource Include="Pokerchip_final_500.png" />
-    <Resource Include="QR\qrandroid.png" />
-    <Resource Include="Sonstige Images\pokal_poker.png" />
+    <Resource Include="Res\Cards\herz10.png" />
+    <Resource Include="Res\Cards\herz2.png" />
+    <Resource Include="Res\Cards\herz3.png" />
+    <Resource Include="Res\Cards\herz4.png" />
+    <Resource Include="Res\Cards\herz5.png" />
+    <Resource Include="Res\Cards\herz6.png" />
+    <Resource Include="Res\Cards\herz7.png" />
+    <Resource Include="Res\Cards\herz8.png" />
+    <Resource Include="Res\Cards\herz9.png" />
+    <Resource Include="Res\Cards\herzas.png" />
+    <Resource Include="Res\Cards\karo10.png" />
+    <Resource Include="Res\Cards\karo2.png" />
+    <Resource Include="Res\Cards\karo3.png" />
+    <Resource Include="Res\Cards\karo4.png" />
+    <Resource Include="Res\Cards\karo5.png" />
+    <Resource Include="Res\Cards\karo6.png" />
+    <Resource Include="Res\Cards\karo7.png" />
+    <Resource Include="Res\Cards\karo8.png" />
+    <Resource Include="Res\Cards\karo9.png" />
+    <Resource Include="Res\Cards\karoas.png" />
+    <Resource Include="Res\Chips\Pokerchip_final_10.png" />
+    <Resource Include="Res\Chips\Pokerchip_final_100.png" />
+    <Resource Include="Res\Chips\Pokerchip_final_20.png" />
+    <Resource Include="Res\Chips\Pokerchip_final_200.png" />
+    <Resource Include="Res\Chips\Pokerchip_final_50.png" />
+    <Resource Include="Res\Chips\Pokerchip_final_500.png" />
+    <Resource Include="Res\Kartenrueckseite\kartenruecken_3.jpg" />
+    <Resource Include="Res\Logo\Logowhite.png" />
+    <Resource Include="Res\Sonstige Images\pokal_poker.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Fonts\" />
-    <Folder Include="Neuer Ordner1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.0\Microsoft.Expression.Blend.WPF.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(ProjectDir)Spielerdaten.xml" "$(TargetDir)Spielerdaten.xml"
-copy /Y "$(ProjectDir)Cards\" "$(TargetDir)Cards\"
-cmd /x /c mkdir "$(TargetDir)Sounds\"
-copy /Y "$(ProjectDir)Sounds\" "$(TargetDir)Sounds\"
-cmd /x /c mkdir "$(TargetDir)Chips\"
-copy /Y "$(ProjectDir)Chips\" "$(TargetDir)Chips\"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>cmd /x /c mkdir "$(TargetDir)Res\"
+xcopy "$(ProjectDir)Res\*.*" "$(TargetDir)Res\" /S /Y</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

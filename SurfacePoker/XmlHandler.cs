@@ -25,7 +25,7 @@ namespace SurfacePoker
         public String readPlayer(int tagID) {
             //TODO: FileNotFoundException
             bool isPlayer=false;
-            XmlTextReader reader = new XmlTextReader(applicationPath+"\\Spielerdaten.xml");
+            XmlTextReader reader = new XmlTextReader(applicationPath+"\\Res\\Spielerdaten.xml");
             while (reader.Read())
             {
                 if (isPlayer && reader.NodeType == XmlNodeType.Text)
@@ -46,7 +46,7 @@ namespace SurfacePoker
 
         public bool savePlayer(String spielername, int id1, int id2)
         {
-            string URIpath = applicationPath + "\\Spielerdaten.xml";
+            string URIpath = applicationPath + "\\Res\\Spielerdaten.xml";
             string path = new Uri(URIpath).LocalPath;
             Console.Out.WriteLine(path);
             

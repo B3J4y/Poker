@@ -19,8 +19,8 @@
 
 	<Grid x:Name="LayoutRoot" TouchDown="Canvas_TouchDown" Margin="0,0,4,0">
 		<Canvas>
-			<Image x:Name="CardDeck" Source="Cards/herz5.png" Width="112.333" Height="157.04" Canvas.Left="-4"/>
-			<Image x:Name="image" Source="Kartenrueckseite/kartenruecken_3.jpg" Height="157.04" Width="103.334"/>
+            <Image x:Name="CardDeck" Source="/Res/Cards/herz5.png" Width="112.333" Height="157.04" Canvas.Left="-4"/>
+            <Image x:Name="image" Source="Res/Kartenrueckseite/kartenruecken_3.jpg" Height="157.04" Width="103.334"/>
 		</Canvas>
 	</Grid>
 </UserControl>

@@ -567,8 +567,8 @@ x:Class="SurfacePoker.SurfaceWindow1"
 	 <CommandBinding Command="local:SurfaceWindow1.MenuItemCommand"
                       Executed="CommandBinding_Executed" />
   </s:SurfaceWindow.CommandBindings>
-	
-  <Grid x:Name="RootGrid" Background="Black" tve:TagVisualizerEvents.VisualizationEnter="OnVisualizationEnter">
+
+    <Grid x:Name="RootGrid" Background="Black" tve:TagVisualizerEvents.VisualizationEnter="OnVisualizationEnter">
           <Grid.RowDefinitions>
           	<RowDefinition />
           </Grid.RowDefinitions>
@@ -576,7 +576,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		
 
 
-          <Image x:Name="backgroundImg" Margin="0,-11.437,-24.667,-31.438" Source="pack://siteoforigin:,,,/Backgrounds/pokertesttextur3.jpg"/>
+          <Image x:Name="backgroundImg" Margin="0,-11.437,-24.667,-31.438" Source="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur3.jpg"/>
           <Rectangle>
           	<Rectangle.Fill>
           		<RadialGradientBrush RadiusY="0.719" RadiusX="0.719">
@@ -668,7 +668,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Label.RenderTransform>
 		 	</Label>
-		 	<Image Height="85" Source="Chips/Pokerchip_final_10.png" VerticalAlignment="Bottom" Margin="-1,0,0,6" HorizontalAlignment="Left" Width="85" RenderTransformOrigin="0.5,0.5">
+            <Image Height="85" Source="Res/Chips/Pokerchip_final_10.png" VerticalAlignment="Bottom" Margin="-1,0,0,6" HorizontalAlignment="Left" Width="85" RenderTransformOrigin="0.5,0.5">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -678,7 +678,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Height="85" Width="85" Source="Pokerchip_final_500.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,84,6" RenderTransformOrigin="0.5,0.5">
+            <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,84,6" RenderTransformOrigin="0.5,0.5">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -688,7 +688,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Height="85" Width="85" Source="Pokerchip_final_20.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="79.493,0,0,6" RenderTransformOrigin="0.5,0.5">
+            <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_20.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="79.493,0,0,6" RenderTransformOrigin="0.5,0.5">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -698,7 +698,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Height="85" Width="85" Source="Pokerchip_final_50.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="164.493,0,0,6" RenderTransformOrigin="0.5,0.5">
+            <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_50.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="164.493,0,0,6" RenderTransformOrigin="0.5,0.5">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -708,7 +708,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Height="85" Source="Pokerchip_final_100.png" VerticalAlignment="Bottom" Margin="249.493,0,265.507,6" RenderTransformOrigin="0.5,0.5">
+            <Image Height="85" Source="Res/Chips/Pokerchip_final_100.png" VerticalAlignment="Bottom" Margin="249.493,0,265.507,6" RenderTransformOrigin="0.5,0.5">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -718,7 +718,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Height="85" Width="85" Source="Pokerchip_final_200.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,173,6" RenderTransformOrigin="0.5,0.5">
+		 	<Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_200.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,173,6" RenderTransformOrigin="0.5,0.5">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -730,12 +730,12 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 	</Image>
 		 </Grid>
 		 <Grid x:Name="Player2Grid" HorizontalAlignment="Left" Height="250" VerticalAlignment="Bottom" Width="600" Margin="279.493,0,0,-2.438" Background="#003F3F3F" Visibility="Hidden">
-		 	<Image Height="85" Source="Chips/Pokerchip_final_10.png" VerticalAlignment="Top" Margin="0,-12,0,0" HorizontalAlignment="Left" Width="85"/>
-		 	<Image Height="85" Width="85" Source="Pokerchip_final_500.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-12,83,0"/>
-		 	<Image Height="85" Width="85" Source="Pokerchip_final_20.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80.493,-12,0,0"/>
-		 	<Image Height="85" Width="85" Source="Pokerchip_final_50.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="165.493,-12,0,0"/>
-		 	<Image Height="85" Source="Pokerchip_final_100.png" VerticalAlignment="Top" Margin="250.493,-12,264.507,0"/>
-		 	<Image Height="85" Width="85" Source="Pokerchip_final_200.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-12,172,0"/>
+            <Image Height="85" Source="Res/Chips/Pokerchip_final_10.png" VerticalAlignment="Top" Margin="0,-12,0,0" HorizontalAlignment="Left" Width="85"/>
+            <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-12,83,0"/>
+            <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_20.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80.493,-12,0,0"/>
+            <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_50.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="165.493,-12,0,0"/>
+            <Image Height="85" Source="Res/Chips/Pokerchip_final_100.png" VerticalAlignment="Top" Margin="250.493,-12,264.507,0"/>
+            <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_200.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-12,172,0"/>
 		 	<TextBlock x:Name="player2Name" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Margin="144.74,0,142.948,8" Background="#19FFFFFF" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="210.313" Visibility="Hidden">
 		 		<TextBlock.RenderTransform>
 		 			<TransformGroup>
@@ -838,7 +838,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Label.RenderTransform>
 		 	</Label>
-		 	<Image Source="Chips/Pokerchip_final_10.png" Margin="-52,256,0,259" HorizontalAlignment="Left" Width="85" RenderTransformOrigin="0.5,0.5">
+            <Image Source="Res/Chips/Pokerchip_final_10.png" Margin="-52,256,0,259" HorizontalAlignment="Left" Width="85" RenderTransformOrigin="0.5,0.5">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -848,7 +848,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Width="85" Source="Pokerchip_final_500.png" HorizontalAlignment="Right" Margin="0,256,-215,259" RenderTransformOrigin="0.5,0.5">
+            <Image Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" Margin="0,256,-215,259" RenderTransformOrigin="0.5,0.5">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -858,7 +858,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Source="Pokerchip_final_20.png" Margin="28.493,256,0,259" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
+            <Image Source="Res/Chips/Pokerchip_final_20.png" Margin="28.493,256,0,259" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -868,7 +868,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Source="Pokerchip_final_50.png" Margin="113.493,256,51.507,259" RenderTransformOrigin="0.5,0.5">
+            <Image Source="Res/Chips/Pokerchip_final_50.png" Margin="113.493,256,51.507,259" RenderTransformOrigin="0.5,0.5">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -878,7 +878,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Source="Pokerchip_final_100.png" Margin="0,256,-33.493,259" HorizontalAlignment="Right" Width="85" RenderTransformOrigin="0.5,0.5">
+            <Image Source="Res/Chips/Pokerchip_final_100.png" Margin="0,256,-33.493,259" HorizontalAlignment="Right" Width="85" RenderTransformOrigin="0.5,0.5">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -888,7 +888,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Width="85" Source="Pokerchip_final_200.png" HorizontalAlignment="Right" Margin="0,256,-126,259" RenderTransformOrigin="0.5,0.5">
+            <Image Width="85" Source="Res/Chips/Pokerchip_final_200.png" HorizontalAlignment="Right" Margin="0,256,-126,259" RenderTransformOrigin="0.5,0.5">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -950,7 +950,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Label.RenderTransform>
 		 	</Label>
-		 	<Image Source="Chips/Pokerchip_final_10.png" Margin="42.666,0,0,7" HorizontalAlignment="Left" Width="85" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Bottom">
+            <Image Source="Res/Chips/Pokerchip_final_10.png" Margin="42.666,0,0,7" HorizontalAlignment="Left" Width="85" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Bottom">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -960,7 +960,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Width="85" Source="Pokerchip_final_500.png" HorizontalAlignment="Right" Margin="0,0,40.334,7" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Bottom">
+            <Image Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" Margin="0,0,40.334,7" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Bottom">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -970,7 +970,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Source="Pokerchip_final_20.png" Margin="123.159,0,0,7" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85" Height="85" VerticalAlignment="Bottom">
+            <Image Source="Res/Chips/Pokerchip_final_20.png" Margin="123.159,0,0,7" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85" Height="85" VerticalAlignment="Bottom">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -980,7 +980,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Source="Pokerchip_final_50.png" Margin="208.159,0,0,7" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Height="85" VerticalAlignment="Bottom" Width="85">
+            <Image Source="Res/Chips/Pokerchip_final_50.png" Margin="208.159,0,0,7" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Height="85" VerticalAlignment="Bottom" Width="85">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -990,7 +990,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Source="Pokerchip_final_100.png" Margin="293.159,0,221.841,7" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Bottom">
+            <Image Source="Res/Chips/Pokerchip_final_100.png" Margin="293.159,0,221.841,7" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Bottom">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -1000,7 +1000,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Source="Pokerchip_final_200.png" Margin="0,0,129.334,7" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="85">
+            <Image Source="Res/Chips/Pokerchip_final_200.png" Margin="0,0,129.334,7" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="85">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -1062,7 +1062,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Label.RenderTransform>
 		 	</Label>
-		 	<Image Source="Chips/Pokerchip_final_10.png" Margin="44.333,-18,0,0" HorizontalAlignment="Left" Width="85" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Top">
+            <Image Source="Res/Chips/Pokerchip_final_10.png" Margin="44.333,-18,0,0" HorizontalAlignment="Left" Width="85" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Top">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -1072,7 +1072,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Width="85" Source="Pokerchip_final_500.png" HorizontalAlignment="Right" Margin="0,-18,38.667,0" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Top">
+            <Image Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" Margin="0,-18,38.667,0" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Top">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -1082,7 +1082,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Source="Pokerchip_final_20.png" Margin="124.826,-18,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85" Height="85" VerticalAlignment="Top">
+            <Image Source="Res/Chips/Pokerchip_final_20.png" Margin="124.826,-18,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85" Height="85" VerticalAlignment="Top">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -1092,7 +1092,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Source="Pokerchip_final_50.png" Margin="209.826,-18,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Height="85" VerticalAlignment="Top" Width="85">
+            <Image Source="Res/Chips/Pokerchip_final_50.png" Margin="209.826,-18,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Height="85" VerticalAlignment="Top" Width="85">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -1102,7 +1102,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Source="Pokerchip_final_100.png" Margin="294.826,-18,220.174,0" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Top">
+            <Image Source="Res/Chips/Pokerchip_final_100.png" Margin="294.826,-18,220.174,0" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Top">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -1112,7 +1112,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Source="Pokerchip_final_200.png" Margin="0,-18,127.667,0" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Top" HorizontalAlignment="Right" Width="85">
+            <Image Source="Res/Chips/Pokerchip_final_200.png" Margin="0,-18,127.667,0" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Top" HorizontalAlignment="Right" Width="85">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -1174,7 +1174,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Label.RenderTransform>
 		 	</Label>
-		 	<Image Source="Chips/Pokerchip_final_10.png" Margin="-214.167,249,0,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
+            <Image Source="Res/Chips/Pokerchip_final_10.png" Margin="-214.167,249,0,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -1184,7 +1184,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Width="85" Source="Pokerchip_final_500.png" HorizontalAlignment="Right" Margin="0,249,-52.833,266" RenderTransformOrigin="0.5,0.5">
+            <Image Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" Margin="0,249,-52.833,266" RenderTransformOrigin="0.5,0.5">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -1194,7 +1194,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Source="Pokerchip_final_20.png" Margin="-133.674,249,0,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
+		 	<Image Source="Res/Chips/Pokerchip_final_20.png" Margin="-133.674,249,0,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -1204,7 +1204,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Source="Pokerchip_final_50.png" Margin="-48.674,249,0,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
+            <Image Source="Res/Chips/Pokerchip_final_50.png" Margin="-48.674,249,0,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -1214,7 +1214,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Source="Pokerchip_final_100.png" Margin="36.326,249,0,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
+            <Image Source="Res/Chips/Pokerchip_final_100.png" Margin="36.326,249,0,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -1224,7 +1224,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 			</TransformGroup>
 		 		</Image.RenderTransform>
 		 	</Image>
-		 	<Image Source="Pokerchip_final_200.png" Margin="0,249,36.167,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="85">
+            <Image Source="Res/Chips/Pokerchip_final_200.png" Margin="0,249,36.167,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="85">
 		 		<Image.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
@@ -1284,43 +1284,6 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 							<TranslateTransform Y="-0.44"/>
 		 						</TransformGroup>
 		 					</TextBlock.RenderTransform><Run FontSize="29.333" Language="de-de" Text="D"/><Run FontSize="16" Language="de-de" Text="ie"/><Run Language="de-de" Text=" "/><Run FontSize="16" Language="de-de" Text="Regeln"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Die nachstehende Beschreibung folgt dem Reglement der  Casinos "/><Run FontSize="13.333" Language="de-de" Text="Austria."/><LineBreak/><Run Language="de-de"/><LineBreak/><Run FontSize="29.333" Language="de-de" Text="H"/><Run FontSize="16" Language="de-de" Text="old’em"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Hold’em bezeichnet allgemein all jene Poker-Varianten, bei denen fünf"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="offene Karten (Board cards, auch Community cards) in die Mitte des"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Tisches gelegt werden, die von jedem Spieler zur Bildung seiner"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Pokerhand  verwendet werden können, während jeder Spieler jedoch"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="nicht mehr als zwei seiner Hand-Karten (Hole cards) verwenden darf."/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Neben  Texas Hold’em  wird in den Spielbanken auch  Omaha  als"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="weitere  Hold’em-Variation angeboten.  Texas Hold’em  wird häufig kurz  Hold’em  genannt, doch sollte man diese"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Abkürzung eher meiden, um Verwechslungen mit Omaha auszuschließen."/><LineBreak/><Run FontSize="13.333" Language="de-de"/><LineBreak/><Run FontSize="29.333" Language="de-de" Text="K"/><Run FontSize="16" Language="de-de" Text="arten"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Texas Hold’em wird mit einem Paket  französischer  bzw.  anglo-amerikanischer Karten  zu 52 Blatt von zwei bis"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="maximal zehn Personen gespielt."/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Spielkarten im Poker-Format (Poker size) sind meistens etwas breiter als Karten im Standard-Format (sogenannte"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Bridge size). Außerdem sollten Karten verwendet werden, die zu 100 % aus Kunststoff bestehen, da diese auch nach"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="langem Spielen noch ihre ursprüngliche Form aufweisen und so nicht als gezinkt gelten."/><LineBreak/><Run FontSize="13.333" Language="de-de"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Anmerkung: Da mit 52 Blatt gespielt wird, könnten theoretisch 22 oder, falls keine Burn Cards  zur Seite gelegt"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="werden, sogar 23 Spieler teilnehmen. Texas Hold’em wird aber meist in kleineren Runden gespielt: häufig nur zu"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="zehnt, in amerikanischen Casinos aber auch an Tischen mit vierzehn Plätzen."/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Ziel ist es, die höchste Poker-Kombination  zu erhalten bzw. durch geschickte Spielweise die anderen Spieler zur"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Aufgabe zu bewegen."/><LineBreak/><Run FontSize="13.333" Language="de-de"/><LineBreak/><Run FontSize="29.333" Language="de-de" Text="D"/><Run FontSize="16" Language="de-de" Text="ealer"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Vor dem allerersten Spiel mischt der Croupier die Karten, lässt abheben und gibt (teilt) zunächst jedem Spieler eine"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="offene Karte. Der Spieler mit der höchsten Karte ist erster Geber (Dealer) und erhält den Dealer('s) button. Haben"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="zwei Spieler im Rang die gleiche höchste Karte, so entscheidet die vom Bridge her bekannte Ordnung der Farben:"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Pik (♠) gilt als die höchste Farbe, gefolgt von Herz (♥), Karo (♦) und Kreuz bzw. Treff (♣)."/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Anmerkung:  In Bezug auf die Gewinnentscheidung haben die Farben bei  Texas Hold’em  –  so wie bei allen"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Poker-Varianten – jedoch keine Bedeutung."/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Die Rolle des Kartengebers wechselt immer nach jedem einzelnen Spiel im Uhrzeigersinn  –  tatsächlich gibt die"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Karten im Casino  jedoch stets der Croupier, der Spieler mit dem Dealer button nimmt nur nominell die Rolle des"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Gebers ein."/><LineBreak/><Run FontSize="13.333" Language="de-de"/><LineBreak/><Run FontSize="29.333" Language="de-de" Text="B"/><Run FontSize="16" Language="de-de" Text="linds"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Standard Hold’em-Pokertisch mit Dealer, small-"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="und big blind"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Der Spieler zur Linken des nominellen Gebers (Dealer) muss einen"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="vorgeschriebenen Einsatz (small blind), zum Beispiel 5 €, setzen, sein linker Nachbar das  big blind, gewöhnlich den doppelten Wert des small blinds, also 10  €. Die übrigen Spieler müssen  vor  Erhalt der ersten Karten keinen Grundeinsatz  (Ante)  leisten, bei den"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Hold’em-Varianten wird gewöhnlich nicht mit ante, sondern mit blind gespielt."/><LineBreak/><Run FontSize="13.333" Language="de-de"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Der Spieler, der das  small blind zu setzen hat, erhält beim Geben die erste Karte."/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Sonderregeln für das Heads-up Befinden sich nur noch zwei Spieler am Tisch (Heads-up), so sehen die Regeln der World Series of Poker vor, dass der small blind von dem Spieler mit dem dealer button gesetzt wird, während der andere Spieler den big blind setzen"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="muss."/><LineBreak/><Run FontSize="13.333" Language="de-de"/><LineBreak/><Run FontSize="29.333" Language="de-de" Text="D"/><Run FontSize="16" Language="de-de" Text="ie vier Wettrunden"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Vollständiger Pokertisch mit acht Spielern"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Das Spiel verläuft in maximal vier Wettrunden. Falls alle Spieler – bis auf einen – aussteigen, endet die Spielrunde und der letzte verbliebene Spieler erhält den Pot."/><LineBreak/><Run FontSize="13.333" Language="de-de"/><LineBreak/><Run FontSize="14.667" Language="de-de" Text="Erste Wettrunde (Preflop) "/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Jeder Teilnehmer erhält eine Starthand bestehend aus zwei verdeckten"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Karten (hole cards auch pocket cards oder pockets). Der Spieler links vom big blind muss als erster seine Spielentscheidung bekanntgeben, mit Fachausdruck heißt das, er spricht als erster und eröffnet die erste Wettrunde (betting interval). Er kann nun entweder"/><LineBreak/><Run FontSize="13.333" Language="de-de"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="• halten, auch mitgehen (call), also einen Betrag in Höhe des vorangegangenen Einsatzes (in der ersten Wettrunde"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="der big blind) setzen,"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="• erhöhen (raise) oder"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="• aussteigen (fold)."/><LineBreak/><Run FontSize="13.333" Language="de-de"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="In der gleichen Weise setzen die übrigen Spieler im Uhrzeigersinn die Wettrunde fort."/><LineBreak/><Run FontSize="13.333" Language="de-de"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Ein Spieler darf in ein und derselben Wettrunde den Einsatz nicht zweimal in Folge steigern, es sei denn, ein anderer"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Spieler hätte zwischen den beiden Geboten erhöht. Wenn also ein Spieler die Runde mit einem bet eröffnet oder ein"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="raise  setzt und alle folgenden Spieler entweder halten oder aussteigen, so ist diese Wettrunde beendet, und der"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Spieler, der den Einsatz zuletzt gesteigert hat, darf nun in dieser Wettrunde nicht nochmals erhöhen."/></TextBlock>
-		 			</s:SurfaceListBox>
-		 		</StackPanel>
-		 	</s:ScatterViewItem>
-		 	<s:ScatterViewItem x:Name="DownloadApp" Width="399.562" Height="552.11" Background="#002D2D2D" Style="{DynamicResource AddPlayerScatterViewItemStyle}" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
-		 		<s:ScatterViewItem.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="0.104"/>
-		 				<TranslateTransform X="832.93840361025536" Y="188.90079431157059"/>
-		 			</TransformGroup>
-		 		</s:ScatterViewItem.RenderTransform>
-		 		<StackPanel Margin="8">
-		 			<TextBlock TextWrapping="Wrap" Text="Surface Poker" Height="15.464" FontSize="13.333" FontFamily="Simplified Arabic" Foreground="White"/>
-		 			<TextBlock TextWrapping="Wrap" Height="22.784" FontSize="14.667" FontFamily="Simplified Arabic" Foreground="White"><Run Language="de-de" Text="App herunterladen"/></TextBlock>
-		 			<Rectangle Fill="#FFC60F6C" Height="4.792" Margin="-7.957,0,-7.973,0"/>
-		 			<s:SurfaceListBox Height="491.708">
-		 				<TextBlock TextWrapping="Wrap" Height="353.794" Width="323.228" RenderTransformOrigin="0.5,0.5"><TextBlock.RenderTransform>
-		 						<TransformGroup>
-		 							<ScaleTransform/>
-		 							<SkewTransform AngleY="-0.106"/>
-		 							<RotateTransform/>
-		 							<TranslateTransform Y="-0.44"/>
-		 						</TransformGroup>
-		 					</TextBlock.RenderTransform><Run FontSize="29.333" Language="de-de" Text="A"/><Run FontSize="16" Language="de-de" Text="pp"/><Run Language="de-de" Text=" "/><Run FontSize="16" Language="de-de" Text="herunterladen"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Die App ist für Android und Windows 7 Phone verfügbar."/><LineBreak/><Run FontSize="29.333" Language="de-de" Text="A"/><Run FontSize="16" Language="de-de" Text="ndroid"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="um die App zu installieren müssen Sie die Intallation von Nicht-Market Anwendungen zulassen."/><LineBreak/><Run FontSize="13.333" Language="de-de"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="Anleitung"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="- Einstellungen öffnen"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="- Anwendungen"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="- Haken bei Unbekannte Herkunft setzen- Einstellungen öffnen"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="- Anwendungen"/><LineBreak/><Run FontSize="13.333" Language="de-de" Text="- Haken bei Unbekannte Herkunft setzen"/><LineBreak/><Run FontSize="13.333" Language="de-de"/><LineBreak/><LineBreak/><LineBreak/></TextBlock>
-		 				<Image Height="244.456" Width="143.95" Source="Anleitung/AnleitungAndroid1.png"/>
-		 				<Image Height="244.456" Width="143.95" Source="Anleitung/AnleitungAndroid2.png"/>
-		 				<Image Height="244.456" Width="143.95" Source="Anleitung/AnleitungAndroid3.png"/>
-		 				<TextBlock TextWrapping="Wrap" Height="38.814" Width="323.228" RenderTransformOrigin="0.5,0.5"><TextBlock.RenderTransform>
-		 						<TransformGroup>
-		 							<ScaleTransform/>
-		 							<SkewTransform AngleY="-0.106"/>
-		 							<RotateTransform/>
-		 							<TranslateTransform Y="-0.44"/>
-		 						</TransformGroup>
-		 					</TextBlock.RenderTransform><LineBreak/><Run FontSize="13.333" Language="de-de" Text="QR-Code zum downloaden direkt auf Ihr Handy"/></TextBlock>
-		 				<Image Height="150.621" Width="143.95" Source="QR/qrandroid.png"/>
 		 			</s:SurfaceListBox>
 		 		</StackPanel>
 		 	</s:ScatterViewItem>
@@ -1420,7 +1383,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_10.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_10.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p2c20" Background="#00808080" Center="410,839" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1431,7 +1394,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_20.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_20.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p2c50" Background="#00808080" Center="490,839" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1442,7 +1405,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_50.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_50.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem Content="ScatterViewItem" Center="1590,305" Visibility="Hidden"/>
 		 	<s:ScatterViewItem x:Name="p2c100" Background="#00808080" Center="570,838" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
@@ -1454,7 +1417,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Pokerchip_final_100.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_100.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p2c200" Background="#00808080" Center="667,838" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1465,7 +1428,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Pokerchip_final_200.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_200.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p2c500" Background="#00808080" Center="750,839" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1476,7 +1439,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_500.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_500.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p1c10" Background="#00808080" Center="750,208" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1487,7 +1450,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Pokerchip_final_10.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_10.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p1c20" Background="#00808080" Center="665,208" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1498,7 +1461,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_20.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_20.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p1c50" Background="#00808080" Center="584,212" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1509,7 +1472,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_50.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_50.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p1c100" Background="#00808080" Center="498,212" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1520,7 +1483,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Pokerchip_final_100.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_100.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p1c200" Background="#00808080" Center="409,212" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1531,7 +1494,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_200.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_200.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p1c500" Background="#00808080" Center="318,212" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1542,7 +1505,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_500.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_500.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p3c10" Background="#00808080" Center="218,319" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1553,7 +1516,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_10.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_10.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p3c20" Background="#00808080" Center="219,403" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1564,7 +1527,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Pokerchip_final_20.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_20.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p3c50" Background="#00808080" Center="219,489" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1575,7 +1538,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Pokerchip_final_50.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_50.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p3c100" Background="#00808080" Center="219,573" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1586,7 +1549,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_100.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_100.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p3c200" Background="#00808080" Center="219,664" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1597,7 +1560,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Pokerchip_final_200.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_200.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p3c500" Background="#00808080" Center="219,752" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1608,7 +1571,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_500.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_500.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p4c10" Background="#00808080" Center="1560,209" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1619,7 +1582,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_10.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_10.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p4c20" Background="#00808080" Center="1485,209" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1630,7 +1593,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Pokerchip_final_20.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_20.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p4c50" Background="#00808080" Center="1402,208" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanRotate="False" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1641,7 +1604,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Pokerchip_final_50.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_50.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p4c100" Background="#00808080" Center="1309,210" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1652,7 +1615,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_100.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_100.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p4c200" Background="#00808080" Center="1215,209" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1663,7 +1626,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Pokerchip_final_200.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_200.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p4c500" Background="#00808080" Center="1130,210" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1674,7 +1637,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_500.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_500.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p5c10" Background="#00808080" Center="1131,831" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1685,7 +1648,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_10.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_10.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p5c20" Background="#00808080" Center="1210,831" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1696,7 +1659,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Pokerchip_final_20.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_20.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p5c50" Background="#00808080" Center="1300,829" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1707,7 +1670,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Pokerchip_final_50.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_50.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p5c100" Background="#00808080" Center="1383,832" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1718,7 +1681,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_100.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_100.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p5c200" Background="#00808080" Center="1475,832" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1729,7 +1692,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Pokerchip_final_200.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_200.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p5c500" Background="#00808080" Center="1567,832" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1740,7 +1703,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_500.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_500.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p6c10" Background="#00808080" Center="1707,748" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1751,7 +1714,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_10.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_10.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p6c20" Background="#00808080" Center="1704,666" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1762,7 +1725,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Pokerchip_final_20.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_20.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p6c50" Background="#00808080" Center="1706,581" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1773,7 +1736,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Pokerchip_final_50.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_50.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p6c100" Background="#00808080" Center="1707,498" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1784,7 +1747,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_100.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_100.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p6c200" Background="#00808080" Center="1707,404" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1795,7 +1758,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Pokerchip_final_200.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_200.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 	<s:ScatterViewItem x:Name="p6c500" Background="#00808080" Center="1706,317" RenderTransformOrigin="0.5,0.5" CanScale="False" ShowsActivationEffects="False" Style="{DynamicResource ChipStyle}" CanMove="False" Visibility="Hidden">
 		 		<s:ScatterViewItem.RenderTransform>
@@ -1806,7 +1769,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 				<TranslateTransform X="270" Y="800"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
-		 		<Image Height="85" Width="85" Source="Chips/Pokerchip_final_500.png" TouchLeave="moveChip"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_500.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 </s:ScatterView>
 		 <Label x:Name="potLeft" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="553.5,402.04,0,0" RenderTransformOrigin="0.505,0.847" Foreground="White" FontSize="24">
@@ -1835,7 +1798,7 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 </Canvas>
 		 <Canvas x:Name="GewinnerOverlay" Margin="0" Opacity="0" Visibility="Hidden">
 		 	<Rectangle Fill="#C3000000" Height="1084.875" Width="1928.667"/>
-		 	<Image Width="770" Source="Sonstige Images/pokal_poker.png" Height="770" Canvas.Left="574" Canvas.Top="180"/>
+            <Image Width="770" Source="Res/Sonstige Images/pokal_poker.png" Height="770" Canvas.Left="574" Canvas.Top="180"/>
 		 	<TextBlock TextWrapping="Wrap" FontSize="96" Foreground="White" Width="439" Canvas.Left="761" Canvas.Top="132" Text="Gewinner"/>
 		 	<TextBlock x:Name="gewinnerTxt" TextWrapping="Wrap" Text="Katharina" FontSize="29.333" FontWeight="Bold" Canvas.Left="903.5" Canvas.Top="717.166" Foreground="Black"/>
 		 </Canvas>

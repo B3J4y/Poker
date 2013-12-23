@@ -332,13 +332,13 @@ namespace SurfacePoker
 
                 if (alternativeDeck)
                 {
-                    p1c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + player1.getHand().getCard(0) + ".png")));
-                    p1c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + player1.getHand().getCard(1) + ".png")));
+                    p1c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + player1.getHand().getCard(0) + ".png")));
+                    p1c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + player1.getHand().getCard(1) + ".png")));
                 }
                 else
                 {
-                    p1c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + player1.getHand().getCard(0) + ".png")));
-                    p1c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + player1.getHand().getCard(1) + ".png")));
+                    p1c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + player1.getHand().getCard(0) + ".png")));
+                    p1c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + player1.getHand().getCard(1) + ".png")));
                 }
 
                 player1Cash.Content = "" + player1.getBudget();
@@ -425,13 +425,13 @@ namespace SurfacePoker
 
                 if (alternativeDeck)
                 {
-                    p2c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + player2.getHand().getCard(0) + ".png")));
-                    p2c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + player2.getHand().getCard(1) + ".png")));
+                    p2c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + player2.getHand().getCard(0) + ".png")));
+                    p2c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + player2.getHand().getCard(1) + ".png")));
                 }
                 else
                 {
-                    p2c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + player2.getHand().getCard(0) + ".png")));
-                    p2c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + player2.getHand().getCard(1) + ".png")));
+                    p2c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + player2.getHand().getCard(0) + ".png")));
+                    p2c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + player2.getHand().getCard(1) + ".png")));
                 }
 
 
@@ -518,13 +518,13 @@ namespace SurfacePoker
 
                 if (alternativeDeck)
                 {
-                    p3c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + player3.getHand().getCard(0) + ".png")));
-                    p3c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + player3.getHand().getCard(1) + ".png")));
+                    p3c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + player3.getHand().getCard(0) + ".png")));
+                    p3c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + player3.getHand().getCard(1) + ".png")));
                 }
                 else
                 {
-                    p3c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + player3.getHand().getCard(0) + ".png")));
-                    p3c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + player3.getHand().getCard(1) + ".png")));
+                    p3c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + player3.getHand().getCard(0) + ".png")));
+                    p3c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + player3.getHand().getCard(1) + ".png")));
                 }
 
                 if (player3.getIsCurrentPlayer())
@@ -606,13 +606,13 @@ namespace SurfacePoker
 
                 if (alternativeDeck)
                 {
-                    p4c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + player4.getHand().getCard(0) + ".png")));
-                    p4c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + player4.getHand().getCard(1) + ".png")));
+                    p4c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + player4.getHand().getCard(0) + ".png")));
+                    p4c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + player4.getHand().getCard(1) + ".png")));
                 }
                 else
                 {
-                    p4c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + player4.getHand().getCard(0) + ".png")));
-                    p4c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + player4.getHand().getCard(1) + ".png")));
+                    p4c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + player4.getHand().getCard(0) + ".png")));
+                    p4c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + player4.getHand().getCard(1) + ".png")));
                 }
 
                 if (player4.getIsCurrentPlayer())
@@ -695,13 +695,13 @@ namespace SurfacePoker
 
                 if (alternativeDeck)
                 {
-                    p5c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + player5.getHand().getCard(0) + ".png")));
-                    p5c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + player5.getHand().getCard(1) + ".png")));
+                    p5c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + player5.getHand().getCard(0) + ".png")));
+                    p5c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + player5.getHand().getCard(1) + ".png")));
                 }
                 else
                 {
-                    p5c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + player5.getHand().getCard(0) + ".png")));
-                    p5c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + player5.getHand().getCard(1) + ".png")));
+                    p5c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + player5.getHand().getCard(0) + ".png")));
+                    p5c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + player5.getHand().getCard(1) + ".png")));
                 }
 
                 if (player5.getIsCurrentPlayer())
@@ -785,13 +785,13 @@ namespace SurfacePoker
 
                 if (alternativeDeck)
                 {
-                    p6c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + player6.getHand().getCard(0) + ".png")));
-                    p6c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + player6.getHand().getCard(1) + ".png")));
+                    p6c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + player6.getHand().getCard(0) + ".png")));
+                    p6c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + player6.getHand().getCard(1) + ".png")));
                 }
                 else
                 {
-                    p6c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + player6.getHand().getCard(0) + ".png")));
-                    p6c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + player6.getHand().getCard(1) + ".png")));
+                    p6c1.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + player6.getHand().getCard(0) + ".png")));
+                    p6c2.setImage(new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + player6.getHand().getCard(1) + ".png")));
                 }
 
                 if (player6.getIsCurrentPlayer())
@@ -851,18 +851,18 @@ namespace SurfacePoker
 
             if (alternativeDeck)
             {
-                t1.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + table.getCard(0) + ".png"));
-                t2.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + table.getCard(1) + ".png"));
-                t3.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + table.getCard(2) + ".png"));
-                t4.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + table.getCard(3) + ".png"));
-                t5.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + table.getCard(4) + ".png"));
+                t1.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + table.getCard(0) + ".png"));
+                t2.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + table.getCard(1) + ".png"));
+                t3.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + table.getCard(2) + ".png"));
+                t4.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + table.getCard(3) + ".png"));
+                t5.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + table.getCard(4) + ".png"));
             }
             else {
-                t1.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + table.getCard(0) + ".png"));
-                t2.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + table.getCard(1) + ".png"));
-                t3.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + table.getCard(2) + ".png"));
-                t4.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + table.getCard(3) + ".png"));
-                t5.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + table.getCard(4) + ".png"));
+                t1.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + table.getCard(0) + ".png"));
+                t2.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + table.getCard(1) + ".png"));
+                t3.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + table.getCard(2) + ".png"));
+                t4.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + table.getCard(3) + ".png"));
+                t5.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + table.getCard(4) + ".png"));
             }
 
 
@@ -1275,15 +1275,15 @@ namespace SurfacePoker
 
                 if (alternativeDeck)
                 {
-                    t1.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + table.getCard(0) + ".png"));
-                    t2.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + table.getCard(1) + ".png"));
-                    t3.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + table.getCard(2) + ".png"));
+                    t1.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + table.getCard(0) + ".png"));
+                    t2.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + table.getCard(1) + ".png"));
+                    t3.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + table.getCard(2) + ".png"));
                 }
                 else
                 {
-                    t1.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + table.getCard(0) + ".png"));
-                    t2.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + table.getCard(1) + ".png"));
-                    t3.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + table.getCard(2) + ".png"));
+                    t1.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + table.getCard(0) + ".png"));
+                    t2.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + table.getCard(1) + ".png"));
+                    t3.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + table.getCard(2) + ".png"));
                 }
 
 
@@ -1301,10 +1301,10 @@ namespace SurfacePoker
 
                 if (alternativeDeck)
                 {
-                    t4.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + table.getCard(3) + ".png"));
+                    t4.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + table.getCard(3) + ".png"));
                 }
                 else {
-                    t4.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + table.getCard(3) + ".png"));
+                    t4.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + table.getCard(3) + ".png"));
                 }
 
                 //turnCard = false;
@@ -1319,10 +1319,10 @@ namespace SurfacePoker
 
                 if (alternativeDeck)
                 {
-                    t5.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/k" + table.getCard(4) + ".png"));
+                    t5.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/k" + table.getCard(4) + ".png"));
                 }
                 else {
-                    t5.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Cards/" + table.getCard(4) + ".png"));
+                    t5.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + table.getCard(4) + ".png"));
                 }
 
                 rivering = true;
@@ -1979,15 +1979,15 @@ namespace SurfacePoker
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             if ((e.OriginalSource as ElementMenuItem).Header.ToString().Equals("Green"))
-                backgroundImg.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Backgrounds/pokertesttextur3.jpg"));
+                backgroundImg.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur3.jpg"));
             if ((e.OriginalSource as ElementMenuItem).Header.ToString().Equals("Black"))
-                backgroundImg.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Backgrounds/pokertesttextur2.jpg"));
+                backgroundImg.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"));
             if ((e.OriginalSource as ElementMenuItem).Header.ToString().Equals("Red"))
-                backgroundImg.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Backgrounds/pokertesttextur5.jpg"));
+                backgroundImg.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur5.jpg"));
             if ((e.OriginalSource as ElementMenuItem).Header.ToString().Equals("Blue"))
-                backgroundImg.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Backgrounds/pokertesttextur8.jpg"));
+                backgroundImg.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur8.jpg"));
             if ((e.OriginalSource as ElementMenuItem).Header.ToString().Equals("Grey"))
-                backgroundImg.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Backgrounds/pokertesttextur12.jpg"));
+                backgroundImg.Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur12.jpg"));
 
             if ((e.OriginalSource as ElementMenuItem).Header.ToString().Equals("Anleitung"))
             {
@@ -2109,47 +2109,47 @@ namespace SurfacePoker
         public void initChips()
         {
 
-            player1.setChip(new Chip(p1c10, 300, 750, 208, 10, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_10.png")));
-            player1.setChip(new Chip(p1c20, 300, 665, 208, 20, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_20.png")));
-            player1.setChip(new Chip(p1c50, 300, 584, 208, 50, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_50.png")));
-            player1.setChip(new Chip(p1c100, 300, 498, 208, 100, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_100.png")));
-            player1.setChip(new Chip(p1c200, 300, 409, 208, 200, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_200.png")));
-            player1.setChip(new Chip(p1c500, 300, 318, 208, 500, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_500.png")));
+            player1.setChip(new Chip(p1c10, 300, 750, 208, 10, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_10.png")));
+            player1.setChip(new Chip(p1c20, 300, 665, 208, 20, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_20.png")));
+            player1.setChip(new Chip(p1c50, 300, 584, 208, 50, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_50.png")));
+            player1.setChip(new Chip(p1c100, 300, 498, 208, 100, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_100.png")));
+            player1.setChip(new Chip(p1c200, 300, 409, 208, 200, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_200.png")));
+            player1.setChip(new Chip(p1c500, 300, 318, 208, 500, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_500.png")));
 
-            player2.setChip(new Chip(p2c10, 780, 320, 836, 10, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_10.png")));
-            player2.setChip(new Chip(p2c20, 780, 410, 839, 20, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_20.png")));
-            player2.setChip(new Chip(p2c50, 780, 490, 839, 50, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_50.png")));
-            player2.setChip(new Chip(p2c100, 780, 570, 838, 100, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_100.png")));
-            player2.setChip(new Chip(p2c200, 780, 665, 838, 200, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_200.png")));
-            player2.setChip(new Chip(p2c500, 780, 750, 839, 500, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_500.png")));
+            player2.setChip(new Chip(p2c10, 780, 320, 836, 10, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_10.png")));
+            player2.setChip(new Chip(p2c20, 780, 410, 839, 20, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_20.png")));
+            player2.setChip(new Chip(p2c50, 780, 490, 839, 50, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_50.png")));
+            player2.setChip(new Chip(p2c100, 780, 570, 838, 100, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_100.png")));
+            player2.setChip(new Chip(p2c200, 780, 665, 838, 200, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_200.png")));
+            player2.setChip(new Chip(p2c500, 780, 750, 839, 500, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_500.png")));
 
-            player3.setChip(new Chip(p3c10, 300, 218, 320, 10, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_10.png")));
-            player3.setChip(new Chip(p3c20, 300, 218, 403, 20, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_20.png")));
-            player3.setChip(new Chip(p3c50, 300, 218, 489, 50, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_50.png")));
-            player3.setChip(new Chip(p3c100, 300, 218, 573, 100, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_100.png")));
-            player3.setChip(new Chip(p3c200, 300, 218, 664, 200, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_200.png")));
-            player3.setChip(new Chip(p3c500, 300, 218, 752, 500, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_500.png")));
+            player3.setChip(new Chip(p3c10, 300, 218, 320, 10, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_10.png")));
+            player3.setChip(new Chip(p3c20, 300, 218, 403, 20, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_20.png")));
+            player3.setChip(new Chip(p3c50, 300, 218, 489, 50, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_50.png")));
+            player3.setChip(new Chip(p3c100, 300, 218, 573, 100, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_100.png")));
+            player3.setChip(new Chip(p3c200, 300, 218, 664, 200, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_200.png")));
+            player3.setChip(new Chip(p3c500, 300, 218, 752, 500, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_500.png")));
 
-            player4.setChip(new Chip(p4c10, 300, 1560, 209, 10, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_10.png")));
-            player4.setChip(new Chip(p4c20, 300, 1485, 209, 20, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_20.png")));
-            player4.setChip(new Chip(p4c50, 300, 1402, 208, 50, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_50.png")));
-            player4.setChip(new Chip(p4c100, 300, 1309, 210, 100, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_100.png")));
-            player4.setChip(new Chip(p4c200, 300, 1215, 209, 200, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_200.png")));
-            player4.setChip(new Chip(p4c500, 300, 1130, 210, 500, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_500.png")));
+            player4.setChip(new Chip(p4c10, 300, 1560, 209, 10, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_10.png")));
+            player4.setChip(new Chip(p4c20, 300, 1485, 209, 20, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_20.png")));
+            player4.setChip(new Chip(p4c50, 300, 1402, 208, 50, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_50.png")));
+            player4.setChip(new Chip(p4c100, 300, 1309, 210, 100, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_100.png")));
+            player4.setChip(new Chip(p4c200, 300, 1215, 209, 200, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_200.png")));
+            player4.setChip(new Chip(p4c500, 300, 1130, 210, 500, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_500.png")));
 
-            player5.setChip(new Chip(p5c10, 780, 1131, 831, 10, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_10.png")));
-            player5.setChip(new Chip(p5c20, 780, 1210, 831, 20, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_20.png")));
-            player5.setChip(new Chip(p5c50, 780, 1300, 829, 50, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_50.png")));
-            player5.setChip(new Chip(p5c100, 780, 1383, 832, 100, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_100.png")));
-            player5.setChip(new Chip(p5c200, 780, 1475, 832, 200, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_200.png")));
-            player5.setChip(new Chip(p5c500, 780, 1574, 832, 500, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_500.png")));
+            player5.setChip(new Chip(p5c10, 780, 1131, 831, 10, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_10.png")));
+            player5.setChip(new Chip(p5c20, 780, 1210, 831, 20, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_20.png")));
+            player5.setChip(new Chip(p5c50, 780, 1300, 829, 50, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_50.png")));
+            player5.setChip(new Chip(p5c100, 780, 1383, 832, 100, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_100.png")));
+            player5.setChip(new Chip(p5c200, 780, 1475, 832, 200, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_200.png")));
+            player5.setChip(new Chip(p5c500, 780, 1574, 832, 500, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_500.png")));
 
-            player6.setChip(new Chip(p6c10, 1590, 1707, 748, 10, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_10.png")));
-            player6.setChip(new Chip(p6c20, 1590, 1704, 666, 20, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_20.png")));
-            player6.setChip(new Chip(p6c50, 1590, 1706, 581, 50, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_50.png")));
-            player6.setChip(new Chip(p6c100, 1590, 1707, 498, 100, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_100.png")));
-            player6.setChip(new Chip(p6c200, 1590, 1707, 404, 200, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_200.png")));
-            player6.setChip(new Chip(p6c500, 1590, 1706, 317, 500, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_500.png")));
+            player6.setChip(new Chip(p6c10, 1590, 1707, 748, 10, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_10.png")));
+            player6.setChip(new Chip(p6c20, 1590, 1704, 666, 20, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_20.png")));
+            player6.setChip(new Chip(p6c50, 1590, 1706, 581, 50, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_50.png")));
+            player6.setChip(new Chip(p6c100, 1590, 1707, 498, 100, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_100.png")));
+            player6.setChip(new Chip(p6c200, 1590, 1707, 404, 200, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_200.png")));
+            player6.setChip(new Chip(p6c500, 1590, 1706, 317, 500, new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_500.png")));
         }
 
 
