@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurfacePoker", "SurfacePoke
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayingCardLibrary", "..\PlayingCardLibrary\PlayingCardLibrary.csproj", "{3307DD85-8BCA-4EB8-8F34-5B272C909D48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurfacePokerUnitTest", "SurfacePokerUnitTest\SurfacePokerUnitTest.csproj", "{A38F8350-8EAE-4FE2-8D79-65E7BE167A2A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,10 +20,6 @@ Global
 		{3307DD85-8BCA-4EB8-8F34-5B272C909D48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3307DD85-8BCA-4EB8-8F34-5B272C909D48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3307DD85-8BCA-4EB8-8F34-5B272C909D48}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A38F8350-8EAE-4FE2-8D79-65E7BE167A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A38F8350-8EAE-4FE2-8D79-65E7BE167A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A38F8350-8EAE-4FE2-8D79-65E7BE167A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A38F8350-8EAE-4FE2-8D79-65E7BE167A2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

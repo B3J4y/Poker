@@ -29,18 +29,6 @@ namespace SurfacePoker
 
             foreach (Player player in players)
             {
-                if (player.position == players.Count - 1)
-                {
-                    pot.raisePot(player.action(bigBlind));
-                    pot.amountPerPlayer = bigBlind;
-                    pot.raiseSize = bigBlind;
-                }
-                if (player.position == players.Count - 2)
-                {
-                    pot.raisePot(player.action(smallBlind));
-                }
-                player.setOneCard(deck.DealNext());
-                player.setOneCard(deck.DealNext());
                 if (player.ingamePosition < players.Count)
                 {
                     player.ingamePosition++;
@@ -48,10 +36,22 @@ namespace SurfacePoker
                 else
                 {
                     player.ingamePosition = 1;
-                    activePlayer = player;
                 }
+                if (player.position == players.Count)
+                {
+                    pot.raisePot(player.action(bigBlind));
+                    pot.amountPerPlayer = bigBlind;
+                    pot.raiseSize = bigBlind;
+                }
+                if (player.position == players.Count - 1)
+                {
+                    pot.raisePot(player.action(smallBlind));
+                }
+                player.setOneCard(deck.DealNext());
+                player.setOneCard(deck.DealNext());
+                
             }
-           
+            activePlayer = players.Find(x => x.ingamePosition == 1);
 
         }
 
@@ -90,15 +90,16 @@ namespace SurfacePoker
 
         private Player whoIsNext()
         {
-            if (players.Exists(x => (x.isActive) && (x.ingamePosition != activePlayer.ingamePosition)))
+            if (players.FindAll(x => (x.ingamePosition > activePlayer.ingamePosition)).Exists(x => x.isActive))
             {
-                return players.Find(x => (x.isActive) && (x.ingamePosition != activePlayer.ingamePosition));
+                
+                return players.FindAll(x => (x.ingamePosition > activePlayer.ingamePosition)).Find(x => x.isActive);
             }
             else
             {
-                if (players.Exists(x => (x.isActive) && (x.ingamePosition >= 1)))
+                if (players.FindAll(x => (x.ingamePosition >= 1)).Exists(x => x.isActive))
                 {
-                    return players.Find(x => (x.isActive) && (x.ingamePosition >= 1));
+                    return players.FindAll(x => (x.ingamePosition >= 1)).Find(x => x.isActive);
                 }
                 else
                 {
@@ -107,8 +108,13 @@ namespace SurfacePoker
             }
 
         }
+        
+    }
+    [TestClass]
+    public class TestGame
+    {
         [TestMethod]
-        private void TestGameLoop()
+        public void TestNextPlayer()
         {
             int bb = 10;
             int sb = 5;
@@ -126,8 +132,27 @@ namespace SurfacePoker
             }
             Game gl = new Game(players, bb, sb);
             gl.newGame();
-            gl.nextPlayer();
-
+            
+            for(int j = 0; j < PLAYERCOUNT; j++){
+                players[j].isActive = false;
+                for (int i = j; i < PLAYERCOUNT; i++)
+                {
+                    KeyValuePair<Player, List<Action>> actPlayer = new KeyValuePair<Player,List<Action>>(new Player("Fail", 0), new List<Action>());
+                    try
+                    {
+                        actPlayer = gl.nextPlayer();
+                        Assert.AreEqual(players[i].name, actPlayer.Key.name);
+                    }
+                    catch (AssertFailedException e)
+                    {
+                        Console.WriteLine("Failed: " + players[i].name + " " + actPlayer.Key.name);
+                    }
+                    catch (NoPlayerInGameException e)
+                    {
+                        Console.WriteLine("Last Player " + players[i].name);
+                    }
+                }
+            }
         }
     }
 }
