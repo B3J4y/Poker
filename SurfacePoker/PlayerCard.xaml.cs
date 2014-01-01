@@ -40,6 +40,7 @@ namespace SurfacePoker
 
         public void showCard() {
             //TODO: Image not found
+            //Image ist die Kartenrückseite - das Logo
             PlayerCard image = (PlayerCard)FindResource("image");
             image.Visibility = Visibility.Hidden;
         }

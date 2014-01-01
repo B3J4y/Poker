@@ -2,6 +2,8 @@
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
 xmlns:s="http://schemas.microsoft.com/surface/2008" 
 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+xmlns:c="comment" 
+mc:Ignorable="d c"  
 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 xmlns:local="clr-namespace:SurfacePoker" 
 xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" 
@@ -10,11 +12,13 @@ xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
 xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
 xmlns:tve="clr-namespace:SurfacePoker"
 x:Class="SurfacePoker.SurfaceWindow1"
-    mc:Ignorable="d"
+    
 	Title="SurfacePoker" Width="1920" Height="1080" WindowStyle="None" WindowState="Maximized"
     >
-	
-	<s:SurfaceWindow.Resources>
+
+  
+        <s:SurfaceWindow.Resources>
+       
 <!-- ScatterViewItem - This template defines the visual tree for a ScatterViewItem -->
 		<Style x:Key="AddPlayerScatterViewItemStyle" TargetType="{x:Type s:ScatterViewItem}">
 			<Setter Property="Background"
@@ -569,22 +573,9 @@ x:Class="SurfacePoker.SurfaceWindow1"
   </s:SurfaceWindow.CommandBindings>
 
     <Grid x:Name="RootGrid" Background="Black" tve:TagVisualizerEvents.VisualizationEnter="OnVisualizationEnter">
-          <Grid.RowDefinitions>
-          	<RowDefinition />
-          </Grid.RowDefinitions>
-
-		
-
-
+          
           <Image x:Name="backgroundImg" Margin="0,-11.437,-24.667,-31.438" Source="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur3.jpg"/>
-          <Rectangle>
-          	<Rectangle.Fill>
-          		<RadialGradientBrush RadiusY="0.719" RadiusX="0.719">
-          			<GradientStop Color="#00000000" Offset="0.678"/>
-          			<GradientStop Color="#33000000" Offset="1"/>
-          		</RadialGradientBrush>
-          	</Rectangle.Fill>
-          </Rectangle>
+          
   	<Canvas x:Name="startAnimation">
   		<tve:PinkCircle Height="36" Width="31.5" Canvas.Left="728.5" Canvas.Top="403"/>
   		<tve:PinkCircle Height="49" Width="49" Canvas.Left="711" Canvas.Top="174"/>
@@ -617,652 +608,658 @@ x:Class="SurfacePoker.SurfaceWindow1"
   	</Canvas>
 		 
 		 <s:TagVisualizer x:Name="Visualizer1" tve:TagVisualizerEvents.Mode="Auto" tve:TagVisualizerEvents.VisualizationEnter="OnVisualizationEnter" Margin="8,0,8,-2.438"/>
-		 <Grid x:Name="Player1Grid" HorizontalAlignment="Left" Height="250" VerticalAlignment="Top" Width="600" Margin="279.493,0,0,0" Background="#003F3F3F" Visibility="Hidden">
-		 	<s:SurfaceButton x:Name="player1Check" Content="Check" Margin="0,49.499,40.167,0" FontFamily="Segoe UI" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="33" Style="{DynamicResource UserButtons}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" TouchEnter="Check">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="144"/>
-		 				<TranslateTransform X="4.632" Y="-29.075"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<s:SurfaceButton x:Name="player1Fold" Content="Fold" Margin="35.667,50.438,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="75" Visibility="Hidden" TouchEnter="Fold">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="-150.356"/>
-		 				<TranslateTransform X="-4.819" Y="-33.832"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<s:SurfaceButton x:Name="player1Bet" Content="Bet / Raise" Margin="1.702,25.702,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="101.388" TouchEnter="Bet" Visibility="Hidden">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="-150.356"/>
-		 				<TranslateTransform X="4.566" Y="33.867"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<TextBlock x:Name="player1Name" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Margin="190.666,-0.084,160.874,0" Background="#19FFFFFF" VerticalAlignment="Top" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="312.313" TouchEnter="Fold" Visibility="Hidden">
-		 		<TextBlock.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="180"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</TextBlock.RenderTransform>
-		 	</TextBlock>
-		 	<Label x:Name="player1Cash" Content="10000" HorizontalAlignment="Left" Margin="9.062,90.085,0,0" RenderTransformOrigin="0.5,0.5" Foreground="White" VerticalAlignment="Top" Visibility="Hidden">
-		 		<Label.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="210"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</Label.RenderTransform>
-		 	</Label>
-            <Image Height="85" Source="Res/Chips/Pokerchip_final_10.png" VerticalAlignment="Bottom" Margin="-1,0,0,6" HorizontalAlignment="Left" Width="85" RenderTransformOrigin="0.5,0.5">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="180"/>
-		 				<TranslateTransform X="432"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,84,6" RenderTransformOrigin="0.5,0.5">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="180"/>
-		 				<TranslateTransform X="-432"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_20.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="79.493,0,0,6" RenderTransformOrigin="0.5,0.5">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="180"/>
-		 				<TranslateTransform X="271.014"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_50.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="164.493,0,0,6" RenderTransformOrigin="0.5,0.5">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="180"/>
-		 				<TranslateTransform X="101.014"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Height="85" Source="Res/Chips/Pokerchip_final_100.png" VerticalAlignment="Bottom" Margin="249.493,0,265.507,6" RenderTransformOrigin="0.5,0.5">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="180"/>
-		 				<TranslateTransform X="-68.986"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-		 	<Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_200.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,173,6" RenderTransformOrigin="0.5,0.5">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="180"/>
-		 				<TranslateTransform X="-254"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-		 </Grid>
-		 <Grid x:Name="Player2Grid" HorizontalAlignment="Left" Height="250" VerticalAlignment="Bottom" Width="600" Margin="279.493,0,0,-2.438" Background="#003F3F3F" Visibility="Hidden">
-            <Image Height="85" Source="Res/Chips/Pokerchip_final_10.png" VerticalAlignment="Top" Margin="0,-12,0,0" HorizontalAlignment="Left" Width="85"/>
-            <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-12,83,0"/>
-            <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_20.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80.493,-12,0,0"/>
-            <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_50.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="165.493,-12,0,0"/>
-            <Image Height="85" Source="Res/Chips/Pokerchip_final_100.png" VerticalAlignment="Top" Margin="250.493,-12,264.507,0"/>
-            <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_200.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-12,172,0"/>
-		 	<TextBlock x:Name="player2Name" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Margin="144.74,0,142.948,8" Background="#19FFFFFF" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="210.313" Visibility="Hidden">
-		 		<TextBlock.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="360"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</TextBlock.RenderTransform>
-		 	</TextBlock>
-		 	<s:SurfaceButton x:Name="player2Check" Content="Check" Margin="0,0,43.167,30.501" FontFamily="Segoe UI" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="33" Style="{DynamicResource UserButtons}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" TouchEnter="Check">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="-36"/>
-		 				<TranslateTransform X="-454.646" Y="2.802"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<s:SurfaceButton x:Name="player2Fold" Content="Fold" Margin="32.667,0,0,29.562" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="75" Visibility="Hidden" TouchEnter="Fold">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="-330.356"/>
-		 				<TranslateTransform X="453.138" Y="5.679"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<s:SurfaceButton x:Name="player2Bet" Content="Bet / Raise" Margin="-1.091,0,0,55.079" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="98.226" TouchEnter="Bet" Visibility="Hidden">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="-330.356"/>
-		 				<TranslateTransform X="504.754" Y="-1.475"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<Label x:Name="player2Cash" Content="10000" HorizontalAlignment="Right" Margin="0,0,11.254,92.621" RenderTransformOrigin="0.5,0.5" Foreground="White" VerticalAlignment="Bottom" Visibility="Hidden">
-		 		<Label.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="30.269"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</Label.RenderTransform>
-		 	</Label>
-		 </Grid>
-		 <Grid x:Name="Player3Grid" HorizontalAlignment="Left" Width="250" Margin="8,231,0,211" Height="600" Background="#003F3F3F" Visibility="Hidden">
-		 	<TextBlock x:Name="player3Name" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Margin="-147.76,288.916,85.448,295.124" Background="#19FFFFFF" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="178.98" d:LayoutOverrides="Height" Visibility="Hidden">
-		 		<TextBlock.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="450"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</TextBlock.RenderTransform>
-		 	</TextBlock>
-		 	<s:SurfaceButton x:Name="player3Check" Content="Check" Margin="0,287.499,-69.833,274.501" FontFamily="Segoe UI" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="33" Style="{DynamicResource UserButtons}" Foreground="White" HorizontalAlignment="Right" Width="75" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" TouchEnter="Check">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="54"/>
-		 				<TranslateTransform X="-240.945" Y="-242.776"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<s:SurfaceButton x:Name="player3Fold" Content="Fold" Margin="-183.667,248.437,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="75" TouchEnter="Fold" VerticalAlignment="Top" Visibility="Hidden">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="-240.356"/>
-		 				<TranslateTransform X="204.404" Y="214.902"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<s:SurfaceButton x:Name="player3Bet" Content="Bet / Raise" Margin="-230.375,226.426,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="98.012" TouchEnter="Bet" VerticalAlignment="Top" Visibility="Hidden">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="-240.356"/>
-		 				<TranslateTransform X="272.331" Y="266.29"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<Label x:Name="player3Cash" Content="10000" Margin="92.854,0,92.296,58.21" RenderTransformOrigin="0.5,0.5" Foreground="White" VerticalAlignment="Bottom" Visibility="Hidden">
-		 		<Label.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="120"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</Label.RenderTransform>
-		 	</Label>
-            <Image Source="Res/Chips/Pokerchip_final_10.png" Margin="-52,256,0,259" HorizontalAlignment="Left" Width="85" RenderTransformOrigin="0.5,0.5">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="90"/>
-		 				<TranslateTransform X="216" Y="-216"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" Margin="0,256,-215,259" RenderTransformOrigin="0.5,0.5">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="90"/>
-		 				<TranslateTransform X="-216" Y="216"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Source="Res/Chips/Pokerchip_final_20.png" Margin="28.493,256,0,259" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="90"/>
-		 				<TranslateTransform X="135.507" Y="-135.507"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Source="Res/Chips/Pokerchip_final_50.png" Margin="113.493,256,51.507,259" RenderTransformOrigin="0.5,0.5">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="90"/>
-		 				<TranslateTransform X="50.507" Y="-50.507"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Source="Res/Chips/Pokerchip_final_100.png" Margin="0,256,-33.493,259" HorizontalAlignment="Right" Width="85" RenderTransformOrigin="0.5,0.5">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="90"/>
-		 				<TranslateTransform X="-34.493" Y="34.493"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Width="85" Source="Res/Chips/Pokerchip_final_200.png" HorizontalAlignment="Right" Margin="0,256,-126,259" RenderTransformOrigin="0.5,0.5">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="90"/>
-		 				<TranslateTransform X="-127" Y="127"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-		 </Grid>
-		 <Grid x:Name="Player4Grid" HorizontalAlignment="Right" Height="250" VerticalAlignment="Top" Width="600" Margin="0,0,258.666,0" d:LayoutOverrides="HorizontalAlignment" Background="#003F3F3F" Visibility="Hidden">
-		 	<TextBlock x:Name="player4Name" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Margin="190.666,-0.084,160.874,0" Background="#19FFFFFF" VerticalAlignment="Top" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="312.312" Visibility="Hidden">
-		 		<TextBlock.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="180"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</TextBlock.RenderTransform>
-		 	</TextBlock>
-		 	<s:SurfaceButton x:Name="player4Check" Content="Check" Margin="0,49.499,40.167,0" FontFamily="Segoe UI" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="33" Style="{DynamicResource UserButtons}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" TouchEnter="Check">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="144"/>
-		 				<TranslateTransform X="4.632" Y="-29.075"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<s:SurfaceButton x:Name="player4Fold" Content="Fold" Margin="62.667,66.438,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="75" TouchEnter="Fold" Visibility="Hidden">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="-150.356"/>
-		 				<TranslateTransform X="-4.819" Y="-33.832"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<s:SurfaceButton x:Name="player4Bet" Content="Bet / Raise" Margin="12.486,31.487,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="97.919" Visibility="Hidden" TouchEnter="Bet">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="-150.356"/>
-		 				<TranslateTransform X="4.566" Y="33.867"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<Label x:Name="player4Cash" Content="10000" Margin="19.354,105.83,0,118.21" RenderTransformOrigin="0.5,0.5" Foreground="White" HorizontalAlignment="Left" Width="64.85" d:LayoutOverrides="Height" Visibility="Hidden">
-		 		<Label.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="210.733"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</Label.RenderTransform>
-		 	</Label>
-            <Image Source="Res/Chips/Pokerchip_final_10.png" Margin="42.666,0,0,7" HorizontalAlignment="Left" Width="85" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Bottom">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="180"/>
-		 				<TranslateTransform X="432"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" Margin="0,0,40.334,7" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Bottom">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="180"/>
-		 				<TranslateTransform X="-432"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Source="Res/Chips/Pokerchip_final_20.png" Margin="123.159,0,0,7" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85" Height="85" VerticalAlignment="Bottom">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="180"/>
-		 				<TranslateTransform X="271.014"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Source="Res/Chips/Pokerchip_final_50.png" Margin="208.159,0,0,7" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Height="85" VerticalAlignment="Bottom" Width="85">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="180"/>
-		 				<TranslateTransform X="101.014"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Source="Res/Chips/Pokerchip_final_100.png" Margin="293.159,0,221.841,7" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Bottom">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="180"/>
-		 				<TranslateTransform X="-68.986"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Source="Res/Chips/Pokerchip_final_200.png" Margin="0,0,129.334,7" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="85">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="180"/>
-		 				<TranslateTransform X="-254"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-		 </Grid>
-		 <Grid x:Name="Player5Grid" HorizontalAlignment="Right" Height="250" VerticalAlignment="Bottom" Width="600" Margin="0,0,258.666,-2.438" d:LayoutOverrides="HorizontalAlignment" Background="#003F3F3F" Visibility="Hidden">
-		 	<TextBlock x:Name="player5Name" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Margin="146.74,0,140.948,8" Background="#19FFFFFF" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="206.98" Visibility="Hidden">
-		 		<TextBlock.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="360"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</TextBlock.RenderTransform>
-		 	</TextBlock>
-		 	<s:SurfaceButton x:Name="player5Check" Content="Check" Margin="0,0,43.167,30.501" FontFamily="Segoe UI" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="33" Style="{DynamicResource UserButtons}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" TouchEnter="Check">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="324"/>
-		 				<TranslateTransform X="-454.646" Y="2.802"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<s:SurfaceButton x:Name="player5Fold" Content="Fold" Margin="5.667,0,0,54.562" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="75" TouchEnter="Fold" Visibility="Hidden">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="29.644"/>
-		 				<TranslateTransform X="453.138" Y="5.679"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<s:SurfaceButton x:Name="player5Bet" Content="Bet / Raise" Margin="-28.332,0,0,79.168" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="101.908" Visibility="Hidden" TouchEnter="Bet">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="29.644"/>
-		 				<TranslateTransform X="504.754" Y="-1.475"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<Label x:Name="player5Cash" Content="10000" Margin="0,110.83,14.962,113.21" RenderTransformOrigin="0.5,0.5" Foreground="White" HorizontalAlignment="Right" Width="64.85" d:LayoutOverrides="Height" Visibility="Hidden">
-		 		<Label.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="28.32"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</Label.RenderTransform>
-		 	</Label>
-            <Image Source="Res/Chips/Pokerchip_final_10.png" Margin="44.333,-18,0,0" HorizontalAlignment="Left" Width="85" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Top">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="360"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" Margin="0,-18,38.667,0" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Top">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="360"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Source="Res/Chips/Pokerchip_final_20.png" Margin="124.826,-18,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85" Height="85" VerticalAlignment="Top">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="360"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Source="Res/Chips/Pokerchip_final_50.png" Margin="209.826,-18,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Height="85" VerticalAlignment="Top" Width="85">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="360"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Source="Res/Chips/Pokerchip_final_100.png" Margin="294.826,-18,220.174,0" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Top">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="360"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Source="Res/Chips/Pokerchip_final_200.png" Margin="0,-18,127.667,0" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Top" HorizontalAlignment="Right" Width="85">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="360"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-		 </Grid>
-		 <Grid x:Name="Player6Grid" HorizontalAlignment="Right" Width="250" Margin="0,231,-12.667,211" Height="600" Background="#003F3F3F" Visibility="Hidden">
-		 	<TextBlock x:Name="player6Name" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Margin="0,271.54,-61,0" Background="#19FFFFFF" TextAlignment="Center" Foreground="White" HorizontalAlignment="Right" Width="175.26" VerticalAlignment="Top" Visibility="Hidden">
-		 		<TextBlock.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="270"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</TextBlock.RenderTransform>
-		 	</TextBlock>
-		 	<s:SurfaceButton x:Name="player6Check" Content="Check" Margin="0,293.499,-188.333,268.501" FontFamily="Segoe UI" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="33" Style="{DynamicResource UserButtons}" Foreground="White" HorizontalAlignment="Right" Width="75" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" TouchEnter="Check">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="234"/>
-		 				<TranslateTransform X="-209.067" Y="216.503"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<s:SurfaceButton x:Name="player6Fold" Content="Fold" Margin="-84.833,0,0,248.562" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="75" TouchEnter="Fold" VerticalAlignment="Bottom" Visibility="Hidden">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="-60.356"/>
-		 				<TranslateTransform X="243.917" Y="-243.054"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<s:SurfaceButton x:Name="player6Bet" Content="Bet / Raise" Margin="-132.34,291.892,0,270.107" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="99.081" d:LayoutOverrides="Height" Visibility="Hidden" TouchEnter="Bet">
-		 		<s:SurfaceButton.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="-60.356"/>
-		 				<TranslateTransform X="236.989" Y="-233.898"/>
-		 			</TransformGroup>
-		 		</s:SurfaceButton.RenderTransform>
-		 	</s:SurfaceButton>
-		 	<Label x:Name="player6Cash" Content="10000" Margin="90.854,37.33,94.296,0" RenderTransformOrigin="0.5,0.5" Foreground="White" VerticalAlignment="Top" Visibility="Hidden">
-		 		<Label.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="-60.508"/>
-		 				<TranslateTransform/>
-		 			</TransformGroup>
-		 		</Label.RenderTransform>
-		 	</Label>
-            <Image Source="Res/Chips/Pokerchip_final_10.png" Margin="-214.167,249,0,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="270"/>
-		 				<TranslateTransform X="216" Y="216"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" Margin="0,249,-52.833,266" RenderTransformOrigin="0.5,0.5">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="270"/>
-		 				<TranslateTransform X="-216" Y="-216"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-		 	<Image Source="Res/Chips/Pokerchip_final_20.png" Margin="-133.674,249,0,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="270"/>
-		 				<TranslateTransform X="135.507" Y="135.507"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Source="Res/Chips/Pokerchip_final_50.png" Margin="-48.674,249,0,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="270"/>
-		 				<TranslateTransform X="50.507" Y="50.507"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Source="Res/Chips/Pokerchip_final_100.png" Margin="36.326,249,0,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="270"/>
-		 				<TranslateTransform X="-34.493" Y="-34.493"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-            <Image Source="Res/Chips/Pokerchip_final_200.png" Margin="0,249,36.167,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="85">
-		 		<Image.RenderTransform>
-		 			<TransformGroup>
-		 				<ScaleTransform/>
-		 				<SkewTransform/>
-		 				<RotateTransform Angle="270"/>
-		 				<TranslateTransform X="-127" Y="-127"/>
-		 			</TransformGroup>
-		 		</Image.RenderTransform>
-		 	</Image>
-		 </Grid>
-		 <Grid x:Name="grid" Margin="0,1.17,-8.667,0" Background="#00454545" Height="40.663" VerticalAlignment="Top" IsHitTestVisible="False">
-		 	<TextBlock x:Name="helpText" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Das Spiel startet sobald alle Spieler Ihre Tags auf den Tisch gelegt haben" FontSize="21.333" Margin="0,3,0,0" Foreground="White" Height="27.207" VerticalAlignment="Top" FontFamily="Segoe UI Light" TextAlignment="Center" Opacity="0">
-		 		<TextBlock.Effect>
-		 			<DropShadowEffect BlurRadius="14"/>
-		 		</TextBlock.Effect>
-		 	</TextBlock>
-		 </Grid>
-		 <StackPanel x:Name="TableCards" Orientation="Horizontal" Margin="650,346,595,0" Height="156" VerticalAlignment="Top">
+        <c:comment>
+            <Grid x:Name="Player1Grid" HorizontalAlignment="Left" Height="250" VerticalAlignment="Top" Width="600" Margin="279.493,0,0,0" Background="#003F3F3F" Visibility="Hidden">
+                <s:SurfaceButton x:Name="player1Check" Content="Check" Margin="0,49.499,40.167,0" FontFamily="Segoe UI" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="33" Style="{DynamicResource UserButtons}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" TouchEnter="Check">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="144"/>
+                            <TranslateTransform X="4.632" Y="-29.075"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <s:SurfaceButton x:Name="player1Fold" Content="Fold" Margin="35.667,50.438,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="75" Visibility="Hidden" TouchEnter="Fold">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-150.356"/>
+                            <TranslateTransform X="-4.819" Y="-33.832"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <s:SurfaceButton x:Name="player1Bet" Content="Bet / Raise" Margin="1.702,25.702,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="101.388" TouchEnter="Bet" Visibility="Hidden">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-150.356"/>
+                            <TranslateTransform X="4.566" Y="33.867"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <TextBlock x:Name="player1Name" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Margin="190.666,-0.084,160.874,0" Background="#19FFFFFF" VerticalAlignment="Top" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="312.313" TouchEnter="Fold" Visibility="Hidden">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <Label x:Name="player1Cash" Content="10000" HorizontalAlignment="Left" Margin="9.062,90.085,0,0" RenderTransformOrigin="0.5,0.5" Foreground="White" VerticalAlignment="Top" Visibility="Hidden">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="210"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Image Height="85" Source="Res/Chips/Pokerchip_final_10.png" VerticalAlignment="Bottom" Margin="-1,0,0,6" HorizontalAlignment="Left" Width="85" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="432"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,84,6" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="-432"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_20.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="79.493,0,0,6" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="271.014"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_50.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="164.493,0,0,6" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="101.014"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Height="85" Source="Res/Chips/Pokerchip_final_100.png" VerticalAlignment="Bottom" Margin="249.493,0,265.507,6" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="-68.986"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_200.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,173,6" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="-254"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+            <Grid x:Name="Player2Grid" HorizontalAlignment="Left" Height="250" VerticalAlignment="Bottom" Width="600" Margin="279.493,0,0,-2.438" Background="#003F3F3F" Visibility="Hidden">
+                <Image Height="85" Source="Res/Chips/Pokerchip_final_10.png" VerticalAlignment="Top" Margin="0,-12,0,0" HorizontalAlignment="Left" Width="85"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-12,83,0"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_20.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80.493,-12,0,0"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_50.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="165.493,-12,0,0"/>
+                <Image Height="85" Source="Res/Chips/Pokerchip_final_100.png" VerticalAlignment="Top" Margin="250.493,-12,264.507,0"/>
+                <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_200.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-12,172,0"/>
+                <TextBlock x:Name="player2Name" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Margin="144.74,0,142.948,8" Background="#19FFFFFF" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="210.313" Visibility="Hidden">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="360"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <s:SurfaceButton x:Name="player2Check" Content="Check" Margin="0,0,43.167,30.501" FontFamily="Segoe UI" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="33" Style="{DynamicResource UserButtons}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" TouchEnter="Check">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-36"/>
+                            <TranslateTransform X="-454.646" Y="2.802"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <s:SurfaceButton x:Name="player2Fold" Content="Fold" Margin="32.667,0,0,29.562" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="75" Visibility="Hidden" TouchEnter="Fold">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-330.356"/>
+                            <TranslateTransform X="453.138" Y="5.679"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <s:SurfaceButton x:Name="player2Bet" Content="Bet / Raise" Margin="-1.091,0,0,55.079" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="98.226" TouchEnter="Bet" Visibility="Hidden">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-330.356"/>
+                            <TranslateTransform X="504.754" Y="-1.475"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <Label x:Name="player2Cash" Content="10000" HorizontalAlignment="Right" Margin="0,0,11.254,92.621" RenderTransformOrigin="0.5,0.5" Foreground="White" VerticalAlignment="Bottom" Visibility="Hidden">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="30.269"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+            </Grid>
+            <Grid x:Name="Player3Grid" HorizontalAlignment="Left" Width="250" Margin="8,231,0,211" Height="600" Background="#003F3F3F" Visibility="Hidden">
+                <TextBlock x:Name="player3Name" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Margin="-147.76,288.916,85.448,295.124" Background="#19FFFFFF" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="178.98" d:LayoutOverrides="Height" Visibility="Hidden">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="450"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <s:SurfaceButton x:Name="player3Check" Content="Check" Margin="0,287.499,-69.833,274.501" FontFamily="Segoe UI" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="33" Style="{DynamicResource UserButtons}" Foreground="White" HorizontalAlignment="Right" Width="75" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" TouchEnter="Check">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="54"/>
+                            <TranslateTransform X="-240.945" Y="-242.776"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <s:SurfaceButton x:Name="player3Fold" Content="Fold" Margin="-183.667,248.437,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="75" TouchEnter="Fold" VerticalAlignment="Top" Visibility="Hidden">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-240.356"/>
+                            <TranslateTransform X="204.404" Y="214.902"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <s:SurfaceButton x:Name="player3Bet" Content="Bet / Raise" Margin="-230.375,226.426,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="98.012" TouchEnter="Bet" VerticalAlignment="Top" Visibility="Hidden">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-240.356"/>
+                            <TranslateTransform X="272.331" Y="266.29"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <Label x:Name="player3Cash" Content="10000" Margin="92.854,0,92.296,58.21" RenderTransformOrigin="0.5,0.5" Foreground="White" VerticalAlignment="Bottom" Visibility="Hidden">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="120"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Image Source="Res/Chips/Pokerchip_final_10.png" Margin="-52,256,0,259" HorizontalAlignment="Left" Width="85" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform X="216" Y="-216"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" Margin="0,256,-215,259" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform X="-216" Y="216"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="Res/Chips/Pokerchip_final_20.png" Margin="28.493,256,0,259" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform X="135.507" Y="-135.507"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="Res/Chips/Pokerchip_final_50.png" Margin="113.493,256,51.507,259" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform X="50.507" Y="-50.507"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="Res/Chips/Pokerchip_final_100.png" Margin="0,256,-33.493,259" HorizontalAlignment="Right" Width="85" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform X="-34.493" Y="34.493"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Width="85" Source="Res/Chips/Pokerchip_final_200.png" HorizontalAlignment="Right" Margin="0,256,-126,259" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform X="-127" Y="127"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+            <Grid x:Name="Player4Grid" HorizontalAlignment="Right" Height="250" VerticalAlignment="Top" Width="600" Margin="0,0,258.666,0" d:LayoutOverrides="HorizontalAlignment" Background="#003F3F3F" Visibility="Hidden">
+                <TextBlock x:Name="player4Name" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Margin="190.666,-0.084,160.874,0" Background="#19FFFFFF" VerticalAlignment="Top" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="312.312" Visibility="Hidden">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <s:SurfaceButton x:Name="player4Check" Content="Check" Margin="0,49.499,40.167,0" FontFamily="Segoe UI" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="33" Style="{DynamicResource UserButtons}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" TouchEnter="Check">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="144"/>
+                            <TranslateTransform X="4.632" Y="-29.075"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <s:SurfaceButton x:Name="player4Fold" Content="Fold" Margin="62.667,66.438,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="75" TouchEnter="Fold" Visibility="Hidden">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-150.356"/>
+                            <TranslateTransform X="-4.819" Y="-33.832"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <s:SurfaceButton x:Name="player4Bet" Content="Bet / Raise" Margin="12.486,31.487,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="97.919" Visibility="Hidden" TouchEnter="Bet">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-150.356"/>
+                            <TranslateTransform X="4.566" Y="33.867"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <Label x:Name="player4Cash" Content="10000" Margin="19.354,105.83,0,118.21" RenderTransformOrigin="0.5,0.5" Foreground="White" HorizontalAlignment="Left" Width="64.85" d:LayoutOverrides="Height" Visibility="Hidden">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="210.733"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Image Source="Res/Chips/Pokerchip_final_10.png" Margin="42.666,0,0,7" HorizontalAlignment="Left" Width="85" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Bottom">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="432"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" Margin="0,0,40.334,7" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Bottom">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="-432"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="Res/Chips/Pokerchip_final_20.png" Margin="123.159,0,0,7" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85" Height="85" VerticalAlignment="Bottom">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="271.014"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="Res/Chips/Pokerchip_final_50.png" Margin="208.159,0,0,7" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Height="85" VerticalAlignment="Bottom" Width="85">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="101.014"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="Res/Chips/Pokerchip_final_100.png" Margin="293.159,0,221.841,7" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Bottom">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="-68.986"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="Res/Chips/Pokerchip_final_200.png" Margin="0,0,129.334,7" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="85">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform X="-254"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+            <Grid x:Name="Player5Grid" HorizontalAlignment="Right" Height="250" VerticalAlignment="Bottom" Width="600" Margin="0,0,258.666,-2.438" d:LayoutOverrides="HorizontalAlignment" Background="#003F3F3F" Visibility="Hidden">
+                <TextBlock x:Name="player5Name" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Margin="146.74,0,140.948,8" Background="#19FFFFFF" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center" Width="206.98" Visibility="Hidden">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="360"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <s:SurfaceButton x:Name="player5Check" Content="Check" Margin="0,0,43.167,30.501" FontFamily="Segoe UI" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="33" Style="{DynamicResource UserButtons}" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" TouchEnter="Check">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="324"/>
+                            <TranslateTransform X="-454.646" Y="2.802"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <s:SurfaceButton x:Name="player5Fold" Content="Fold" Margin="5.667,0,0,54.562" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="75" TouchEnter="Fold" Visibility="Hidden">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="29.644"/>
+                            <TranslateTransform X="453.138" Y="5.679"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <s:SurfaceButton x:Name="player5Bet" Content="Bet / Raise" Margin="-28.332,0,0,79.168" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="101.908" Visibility="Hidden" TouchEnter="Bet">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="29.644"/>
+                            <TranslateTransform X="504.754" Y="-1.475"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <Label x:Name="player5Cash" Content="10000" Margin="0,110.83,14.962,113.21" RenderTransformOrigin="0.5,0.5" Foreground="White" HorizontalAlignment="Right" Width="64.85" d:LayoutOverrides="Height" Visibility="Hidden">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="28.32"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Image Source="Res/Chips/Pokerchip_final_10.png" Margin="44.333,-18,0,0" HorizontalAlignment="Left" Width="85" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Top">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="360"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" Margin="0,-18,38.667,0" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Top">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="360"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="Res/Chips/Pokerchip_final_20.png" Margin="124.826,-18,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85" Height="85" VerticalAlignment="Top">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="360"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="Res/Chips/Pokerchip_final_50.png" Margin="209.826,-18,0,0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Height="85" VerticalAlignment="Top" Width="85">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="360"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="Res/Chips/Pokerchip_final_100.png" Margin="294.826,-18,220.174,0" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Top">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="360"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="Res/Chips/Pokerchip_final_200.png" Margin="0,-18,127.667,0" RenderTransformOrigin="0.5,0.5" Height="85" VerticalAlignment="Top" HorizontalAlignment="Right" Width="85">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="360"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+            <Grid x:Name="Player6Grid" HorizontalAlignment="Right" Width="250" Margin="0,231,-12.667,211" Height="600" Background="#003F3F3F" Visibility="Hidden">
+                <TextBlock x:Name="player6Name" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" Margin="0,271.54,-61,0" Background="#19FFFFFF" TextAlignment="Center" Foreground="White" HorizontalAlignment="Right" Width="175.26" VerticalAlignment="Top" Visibility="Hidden">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="270"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <s:SurfaceButton x:Name="player6Check" Content="Check" Margin="0,293.499,-188.333,268.501" FontFamily="Segoe UI" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="33" Style="{DynamicResource UserButtons}" Foreground="White" HorizontalAlignment="Right" Width="75" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" TouchEnter="Check">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="234"/>
+                            <TranslateTransform X="-209.067" Y="216.503"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <s:SurfaceButton x:Name="player6Fold" Content="Fold" Margin="-84.833,0,0,248.562" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="75" TouchEnter="Fold" VerticalAlignment="Bottom" Visibility="Hidden">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-60.356"/>
+                            <TranslateTransform X="243.917" Y="-243.054"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <s:SurfaceButton x:Name="player6Bet" Content="Bet / Raise" Margin="-132.34,291.892,0,270.107" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource UserButtons}" Foreground="White" FontFamily="Segoe UI" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="99.081" d:LayoutOverrides="Height" Visibility="Hidden" TouchEnter="Bet">
+                    <s:SurfaceButton.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-60.356"/>
+                            <TranslateTransform X="236.989" Y="-233.898"/>
+                        </TransformGroup>
+                    </s:SurfaceButton.RenderTransform>
+                </s:SurfaceButton>
+                <Label x:Name="player6Cash" Content="10000" Margin="90.854,37.33,94.296,0" RenderTransformOrigin="0.5,0.5" Foreground="White" VerticalAlignment="Top" Visibility="Hidden">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-60.508"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Image Source="Res/Chips/Pokerchip_final_10.png" Margin="-214.167,249,0,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="270"/>
+                            <TranslateTransform X="216" Y="216"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Width="85" Source="Res/Chips/Pokerchip_final_500.png" HorizontalAlignment="Right" Margin="0,249,-52.833,266" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="270"/>
+                            <TranslateTransform X="-216" Y="-216"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="Res/Chips/Pokerchip_final_20.png" Margin="-133.674,249,0,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="270"/>
+                            <TranslateTransform X="135.507" Y="135.507"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="Res/Chips/Pokerchip_final_50.png" Margin="-48.674,249,0,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="270"/>
+                            <TranslateTransform X="50.507" Y="50.507"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="Res/Chips/Pokerchip_final_100.png" Margin="36.326,249,0,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="85">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="270"/>
+                            <TranslateTransform X="-34.493" Y="-34.493"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image Source="Res/Chips/Pokerchip_final_200.png" Margin="0,249,36.167,266" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="85">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="270"/>
+                            <TranslateTransform X="-127" Y="-127"/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+            <Grid x:Name="grid" Margin="0,1.17,-8.667,0" Background="#00454545" Height="40.663" VerticalAlignment="Top" IsHitTestVisible="False">
+                <TextBlock x:Name="helpText" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Das Spiel startet sobald alle Spieler Ihre Tags auf den Tisch gelegt haben" FontSize="21.333" Margin="0,3,0,0" Foreground="White" Height="27.207" VerticalAlignment="Top" FontFamily="Segoe UI Light" TextAlignment="Center" Opacity="0">
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="14"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </Grid>
+        </c:comment>
+        <StackPanel x:Name="TableCards" Orientation="Horizontal" Margin="650,346,595,0" Height="156" VerticalAlignment="Top">
 		 	<Image x:Name="t1" Width="120" Visibility="Hidden"/>
 		 	<Image x:Name="t2" Width="120" Visibility="Hidden"/>
 		 	<Image x:Name="t3" Width="120" Visibility="Hidden"/>
 		 	<Image x:Name="t4" Width="120" Visibility="Hidden"/>
 		 	<Image x:Name="t5" Width="120" Visibility="Hidden"/>
 		 </StackPanel>
-		 <s:ScatterView x:Name="Scatter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1904" Height="1064">
-		 	<s:ScatterViewItem x:Name="SpielerhinzuScatter" Height="294.675" Background="#00808080">
+        <c:comment> 
+        <s:ScatterView x:Name="Scatter" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1904" Height="1064">
+            
+                <s:ScatterViewItem x:Name="SpielerhinzuScatter" Height="294.675" Background="#00808080">
 		 		<tve:AddPlayerControl x:Name="AddPlayer" Height="296.6" Width="244.506"/>
 		 	</s:ScatterViewItem>
-		 	<s:ScatterViewItem x:Name="Anleitung" Width="497.374" Height="552.11" Background="#002D2D2D" Style="{DynamicResource AddPlayerScatterViewItemStyle}" RenderTransformOrigin="0.5,0.5">
+            <!--Anleitung-->
+                    <s:ScatterViewItem x:Name="Anleitung" Width="497.374" Height="552.11" Background="#002D2D2D" Style="{DynamicResource AddPlayerScatterViewItemStyle}" RenderTransformOrigin="0.5,0.5">
 		 		<s:ScatterViewItem.RenderTransform>
 		 			<TransformGroup>
 		 				<ScaleTransform/>
 		 				<SkewTransform/>
 		 				<RotateTransform Angle="0.448"/>
-		 				<TranslateTransform X="832.93840361025536" Y="188.90079431157059"/>
+		 				<TranslateTransform X="832.93840361025536" Y="9.90079431157059"/>
 		 			</TransformGroup>
 		 		</s:ScatterViewItem.RenderTransform>
 		 		<StackPanel Margin="8">
+                    <!-- Close Button -->
 		 			<Button Content="X" HorizontalAlignment="Right" Width="23.328" Foreground="White" TouchDown="closeHelp">
 		 				<Button.Background>
 		 					<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
@@ -1772,7 +1769,8 @@ x:Class="SurfacePoker.SurfaceWindow1"
                 <Image Height="85" Width="85" Source="Res/Chips/Pokerchip_final_500.png" TouchLeave="moveChip"/>
 		 	</s:ScatterViewItem>
 		 </s:ScatterView>
-		 <Label x:Name="potLeft" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="553.5,402.04,0,0" RenderTransformOrigin="0.505,0.847" Foreground="White" FontSize="24">
+        
+        <Label x:Name="potLeft" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="553.5,402.04,0,0" RenderTransformOrigin="0.505,0.847" Foreground="White" FontSize="24">
 		 	<Label.RenderTransform>
 		 		<TransformGroup>
 		 			<ScaleTransform/>
@@ -1802,7 +1800,8 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 	<TextBlock TextWrapping="Wrap" FontSize="96" Foreground="White" Width="439" Canvas.Left="761" Canvas.Top="132" Text="Gewinner"/>
 		 	<TextBlock x:Name="gewinnerTxt" TextWrapping="Wrap" Text="Katharina" FontSize="29.333" FontWeight="Bold" Canvas.Left="903.5" Canvas.Top="717.166" Foreground="Black"/>
 		 </Canvas>
-		 <s:ElementMenu
+        </c:comment>
+        <s:ElementMenu
 		 	x:Name="MainMenu" VerticalAlignment="Bottom" ActivationMode="AlwaysActive" ActivationHost="{Binding ElementName=MainMenuController}" HorizontalAlignment="Right" Margin="0,0,191.5,107" Height="95" Width="81" d:LayoutOverrides="VerticalAlignment">
 		 	<s:ElementMenuItem Header="Spiel" d:LayoutOverrides="Width, Height" >
 		 		<s:ElementMenuItem x:Name="ElementMenuItemSpielStarten" Header="Starten" d:LayoutOverrides="Width, Height" Command="tve:SurfaceWindow1.MenuItemCommand">
@@ -1842,10 +1841,10 @@ x:Class="SurfacePoker.SurfaceWindow1"
 		 		<s:ElementMenuItem d:LayoutOverrides="Width, Height" Header="FAQ" Command="tve:SurfaceWindow1.MenuItemCommand" />
 		 	</s:ElementMenuItem>
 		 </s:ElementMenu>
-
+        
 		
 
 
 		</Grid>
-  
+   
 </s:SurfaceWindow>

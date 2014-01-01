@@ -126,30 +126,53 @@ namespace SurfacePoker
         /// </summary>
         public SurfaceWindow1()
         {
-            /*
+            
             InitializeComponent();
-
-
-            // Add handlers for window availability events
-            AddWindowAvailabilityHandlers();
 
             TagVisualizationDefinition definition = new MatchEverythingDefinition();
             definition.Source = new Uri("GlowVisualization.xaml", UriKind.Relative);
             definition.LostTagTimeout = 500;
             Visualizer1.Definitions.Add(definition);
-
+            
             //Soundmanager
             soundmanager = new SoundManager();
 
         }
 
+        /// <summary>
+        /// A TagVisualizationDefinition that matches all tags.
+        /// </summary>
+        private class MatchEverythingDefinition : TagVisualizationDefinition
+        {
+            protected override bool Matches(TagData tag)
+            {
+                return true;
+            }
+
+            protected override Freezable CreateInstanceCore()
+            {
+                return new MatchEverythingDefinition();
+            }
+        }
+
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            ///TODO
+            ///ALLE Befehle hier rein
+        }
+
+        private void OnVisualizationEnter(object sender, TagVisualizationEnterLeaveEventArgs e)
+        {
+            ///KA WAS HIER PASSIEREN WIRD
+        }
 
         /// <summary>
         /// Initalisierung der Variablen
         /// </summary>
         public void init()
         {
-
+            /*
             //Deck initalisieren
             deck = new Deck();
 
