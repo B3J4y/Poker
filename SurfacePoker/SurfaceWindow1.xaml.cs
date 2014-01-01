@@ -33,7 +33,7 @@ namespace SurfacePoker
 
         //Eventuelle für spätere Erweiterungen
         //private readonly Windows7.Multitouch.GestureHandler _gestureHandler;
-        
+
         //Spielemodus anzahl spieler die eingestellt wurden
         private int gamemode;
 
@@ -97,10 +97,10 @@ namespace SurfacePoker
         //LinkedList<Player> sentence;
 
         //Network Connection für mobile Endgeräte
-        NetworkServer nws;
+        //NetworkServer nws;
 
         //Blind handling
-        Blind blind;
+        //Blind blind;
 
         //Pot und dessen Wert
         private int pot = 0;
@@ -126,6 +126,7 @@ namespace SurfacePoker
         /// </summary>
         public SurfaceWindow1()
         {
+            /*
             InitializeComponent();
 
 
@@ -1011,7 +1012,7 @@ namespace SurfacePoker
 
                     //Network Server Thread zum lauschen ob sich ein Spieler mit
                     //seinem Handy mit dem Surface verbindet
-                    /**
+                    
                     nws = new NetworkServer();
                     Thread listener = new Thread(() =>
                     {
@@ -1031,7 +1032,7 @@ namespace SurfacePoker
 
                     //User Interface updaten
                     updateUI();
-                    */
+                   
                     if (gamemode > 1)
                     {
                         Player1Grid.Visibility = Visibility.Visible;
@@ -2511,7 +2512,8 @@ namespace SurfacePoker
 
 
 
-
-
+*/
+        }
     }
+    
 }

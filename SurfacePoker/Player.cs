@@ -10,207 +10,75 @@ namespace SurfacePoker
     /// </summary>
     public class Player
     {
-        private String playername = "";
-        private double budget = 0;
-        private bool isCurrentPlayer;
-        private Hand hand = null;
-        private float tagID;
-        private int recoHandValue = 0;
-        private bool ismconn = false;
-        private List<Chip> chips = new List<Chip>();
-        private int orientation;
-        private bool fold = false;
+        public bool isActive { get; set; }
+        public int stack { get; set; }
+        public List<Card> cards { get; set; }
+        public int position { get; set; }
+        public int ingamePosition { get; set; }
+        public bool inGame { get; set; }
+        public int inPot { get; set; }
+        public String name { get; set; }
 
-        private int gesetztInRunde = 0; // mitzählen was spieler gesetzt hat ingesammt um zu erkennen ob die nächste runde beginnt abgleich mit anderen aktiven spielern
-
-        private int gesetzt = 0;
-
-        private int playerid = 0;
-
-        public Player(String playername, double budget, Boolean isCurrentPlayer, int orientation) { this.playername = playername; this.budget = budget; this.orientation = orientation; }
-        public Player(String playername, double budget) { this.playername = playername; this.budget = budget; }
-        public Player(String playername) { this.playername = playername; }
-        public Player() { }
-
-        public int PlayerID
+        public Player(String name, int stack)
         {
-            get { return playerid; }
-            set { playerid = value; }
+            this.name = name;
+            this.stack = stack;
+            isActive = true;
+            inGame = true;
+            inPot = 0;
+            this.cards = new List<Card>();
         }
 
-        public int Gesetzt
+        public Player(Player player)
         {
-            get { return gesetzt; }
-            set { gesetzt = value; }
+            this.isActive = player.isActive;
+            this.stack = player.stack;
+            this.cards = player.cards;
+            this.position = player.position;
+            this.ingamePosition = player.ingamePosition;
+            this.inGame = player.inGame;
+            this.inPot = player.inPot;
+            this.name = player.name;
         }
 
-        public int GesetztRunde {
-            get { return gesetztInRunde; }
-            set { gesetztInRunde = value; }
-        }
-
-
-        public bool Fold
+        public int toCall(List<Player> players)
         {
-            get { return fold; }
-            set { fold = value; }
+            int highest = inPot;
+            foreach (Player player in players)
+            {
+                if (player.inGame)
+                {
+                    if (highest < player.inPot)
+                    {
+                        highest = player.inPot;
+                    }
+                }
+            }
+            return (highest - inPot);
         }
 
-        public int Orientation
+        //auf wie viel erhöht der Player
+        public int action(int move)
         {
-            get { return orientation; }
-            set { orientation = value; }
+            if (move < this.stack)
+            {
+                int diff = (move - this.inPot); 
+                this.stack -= diff;
+                inPot = (move);
+                return diff;
+            }
+            else
+            {
+                int diff = this.stack -this.inPot;
+                inPot = this.stack;
+                return diff;
+            }
         }
 
-        /*
-         * 1 - highCard
-         * 11 - royalFlush
-         * 10 - straightFlush
-         * */
-        private int highestCardValueHelper = 0;
-
-        public void setChip(Chip chip)
+        public void setOneCard(Card card)
         {
-            chips.Add(chip);
+            cards.Add(card);
         }
-
-        public List<Chip> getChips()
-        {
-            return this.chips;
-        }
-
-        public bool PlayerConnection
-        {
-            get { return ismconn; }
-            set { ismconn = value; }
-        }
-
-        public enum HighestHand
-        {
-            highCard,
-            royalFlush,
-            straightFlush,
-            fourOfAKind,
-            fullHouse,
-            flush,
-            straight,
-            threeOfAKind,
-            twoPair,
-            onePair,
-
-        }
-
-        public enum State
-        {
-            unknow,
-            fold,
-            bet,
-            raise,
-            check
-        }
-
-        public enum BlindDealState
-        { 
-            unknow,
-            small,
-            big,
-            dealer
-        }
-
-        private State state;
-        private HighestHand winnerHand;
-        private BlindDealState blindDealState;
-
-        public int CompareTo(Object o)
-        {
-            if (o is Player)
-                return this.highestCardValueHelper - ((Player)o).highestCardValueHelper;
-            return 0;
-        }
-
-        public BlindDealState PlayerBlindDealState
-        {
-            get { return blindDealState; }
-            set { blindDealState = value; }
-        }
-
-        public State PlayerState
-        {
-            get { return state; }
-            set { state = value; }
-        }
-
-        public HighestHand hightH
-        {
-            get { return winnerHand; }
-            set { winnerHand = value; }
-        }
-
-        public int RecoHand
-        {
-            get { return recoHandValue; }
-            set { recoHandValue = value; }
-        }
-
-        public int CardValueHelper
-        {
-            get { return highestCardValueHelper; }
-            set { highestCardValueHelper = value; }
-        }
-
-        public override string ToString()
-        {
-            return playername;
-        }
-
-        public double getBudget()
-        {
-            return budget;
-        }
-
-        public void setBudget(double budget)
-        {
-            this.budget = budget;
-        }
-
-        public bool getIsCurrentPlayer()
-        {
-            return isCurrentPlayer;
-        }
-
-        public void setCurrentPlayer(bool current)
-        {
-            this.isCurrentPlayer = current;
-        }
-
-        public String getPlayername()
-        {
-            return playername;
-        }
-
-        public void setPlayername(String playername)
-        {
-            this.playername = playername;
-        }
-        public void setHand(Hand hand)
-        {
-            this.hand = hand;
-        }
-
-        public Hand getHand()
-        {
-            return hand;
-        }
-
-        public float getTagID()
-        {
-            return this.tagID;
-        }
-
-        public void setTagID(int tagID)
-        {
-            this.tagID = tagID;
-        }
-
     }
+
 }

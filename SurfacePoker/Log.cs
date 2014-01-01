@@ -19,14 +19,14 @@ namespace Log
             
             foreach (Player player in players)
             {
-                this.players.Add(new KeyValuePair<string, LogPlayer>(player.getPlayername(), new LogPlayer(player.getBudget(), player.getHand())));
+                this.players.Add(new KeyValuePair<string, LogPlayer>(player.name, new LogPlayer((double)player.stack, player.cards)));
                 
             }
         }
 
         public void action(Player player, string action, double amount)
         {
-            KeyValuePair<string, LogPlayer> current = this.players.Find(x => x.Key.Equals(player.getPlayername()));
+            KeyValuePair<string, LogPlayer> current = this.players.Find(x => x.Key.Equals(player.name));
             current.Value.addAction(action, amount);
         }
 
@@ -35,7 +35,7 @@ namespace Log
             List<KeyValuePair<DateTime, string>> allActions = new List<KeyValuePair<DateTime, string>>();
             foreach (KeyValuePair<string, LogPlayer> player in players)
             {
-                allActions.Add(new KeyValuePair<DateTime, string>(player.Value.initTime, player.Key + "," + player.Value.hand.ToString() + ",0," + player.Value.initStack.ToString()));
+                //allActions.Add(new KeyValuePair<DateTime, string>(player.Value.initTime, player.Key + "," + player.Value.hand.ToString() + ",0," + player.Value.initStack.ToString()));
                 foreach(KeyValuePair<DateTime, string> kvp in player.Value.actionList){
                     allActions.Add(new KeyValuePair<DateTime, string>(kvp.Key, player.Key + "," + kvp.Value));
                 }
@@ -50,11 +50,11 @@ namespace Log
 
     public class LogPlayer
     {
-        public LogPlayer(double init, Hand hand)
+        public LogPlayer(double init, List<Card> cards)
         {
             initStack = init;
             stack = init;
-            this.hand = hand;
+            this.cards = cards;
             initTime = new DateTime();
             actionList = new List<KeyValuePair<DateTime, string>>();
             actionList.Add(new KeyValuePair<DateTime, string>(new DateTime(), "cards dealt"));
@@ -68,7 +68,7 @@ namespace Log
 
         public double initStack { get; set; }
         public DateTime initTime { get; set; }
-        public Hand hand { get; set; }
+        public List<Card> cards { get; set; }
         public List<KeyValuePair<DateTime, string>> actionList { get; set; }
         public double stack { get; set; }
     }
