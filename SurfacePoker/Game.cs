@@ -57,25 +57,16 @@ namespace SurfacePoker
 
         public KeyValuePair<Player, List<Action>> nextPlayer()
         {
-            Player nextPlayer = new Player(activePlayer);
-            try
-            {
-                activePlayer = whoIsNext();
-
-            }
-            catch (NoPlayerInGameException exp)
-            {
-                throw exp;
-            }
+            
             List<Action> actions = new List<Action>();
             actions.Add(new Action(Action.playerAction.fold, 0));
-            if (nextPlayer.inPot == pot.amountPerPlayer)
+            if (activePlayer.inPot == pot.amountPerPlayer)
             {
                 actions.Add(new Action(Action.playerAction.check, 0));
             }
             else
             {
-                actions.Add(new Action(Action.playerAction.call, (pot.amountPerPlayer - nextPlayer.inPot)));
+                actions.Add(new Action(Action.playerAction.call, (pot.amountPerPlayer - activePlayer.inPot)));
             }
             if (pot.amountPerPlayer == 0)
             {
@@ -85,7 +76,7 @@ namespace SurfacePoker
             {
                 actions.Add(new Action(Action.playerAction.raise, (pot.raiseSize)));
             }
-            return new KeyValuePair<Player, List<Action>>(nextPlayer, actions);
+            return new KeyValuePair<Player, List<Action>>(activePlayer, actions);
         }
 
         private Player whoIsNext()
@@ -108,20 +99,69 @@ namespace SurfacePoker
             }
 
         }
+
+        public void activeAction(Action.playerAction pa, int amount)
+        {
+            switch (pa)
+            {
+                case Action.playerAction.fold:
+                    activePlayer.isActive = false;
+                    activePlayer.inPot = 0;
+                    activePlayer.cards = new List<Card>();
+                    break;
+                
+                case Action.playerAction.check:
+
+                    break;
+                case Action.playerAction.call:
+                    pot.raisePot(activePlayer.action(amount));
+                    break;
+                case Action.playerAction.bet:
+                    pot.raisePot(activePlayer.action(amount));
+                    pot.amountPerPlayer = amount;
+                    pot.raiseSize = amount;
+                    break;
+                case Action.playerAction.raise:
+                    pot.raisePot(activePlayer.action(amount));
+                    pot.raiseSize = amount - pot.raiseSize;
+                    pot.amountPerPlayer = amount;
+                    break;
+            }
+            try
+            {
+                activePlayer = whoIsNext();
+
+            }
+            catch (NoPlayerInGameException exp)
+            {
+                throw exp;
+            }
+        }
         
     }
     [TestClass]
     public class TestGame
     {
-        [TestMethod]
-        public void TestNextPlayer()
+        public int bb { get; set; }
+        public int sb { get; set; }
+        public int PLAYERCOUNT { get; set; }
+        public List<Player> players { get; set; }
+        public Game gl { get; set; }
+
+        public TestGame()
         {
-            int bb = 10;
-            int sb = 5;
-            int PLAYERCOUNT = 6;
+            bb = 10;
+            sb = 5;
+            PLAYERCOUNT = 6;
 
+            
+            NewPlayRound();
+            
+        }
 
-            List<Player> players = new List<Player>();
+        private void NewPlayRound()
+        {
+            players = new List<Player>();
             for (int i = 0; i < PLAYERCOUNT; i++)
             {
                 Player player = new Player("Player" + i, 1000);
@@ -130,29 +170,57 @@ namespace SurfacePoker
 
                 players.Add(player);
             }
-            Game gl = new Game(players, bb, sb);
+            gl = new Game(players, bb, sb);
+        }
+
+        [TestMethod]
+        public void TestPlayRound()
+        {
+            NewPlayRound();
             gl.newGame();
-            
-            for(int j = 0; j < PLAYERCOUNT; j++){
-                players[j].isActive = false;
-                for (int i = j; i < PLAYERCOUNT; i++)
-                {
-                    KeyValuePair<Player, List<Action>> actPlayer = new KeyValuePair<Player,List<Action>>(new Player("Fail", 0), new List<Action>());
-                    try
-                    {
-                        actPlayer = gl.nextPlayer();
-                        Assert.AreEqual(players[i].name, actPlayer.Key.name);
-                    }
-                    catch (AssertFailedException e)
-                    {
-                        Console.WriteLine("Failed: " + players[i].name + " " + actPlayer.Key.name);
-                    }
-                    catch (NoPlayerInGameException e)
-                    {
-                        Console.WriteLine("Last Player " + players[i].name);
-                    }
-                }
+            int test = bb + sb;
+            KeyValuePair<Player, List<Action>> actPlayer = gl.nextPlayer();
+            gl.activeAction(Action.playerAction.fold, 0);
+            try
+            {
+                Assert.IsFalse(actPlayer.Key.isActive);
             }
+            catch (AssertFailedException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            actPlayer = gl.nextPlayer();
+            if (actPlayer.Value.Exists(x => x.action == Action.playerAction.call))
+            {
+                gl.activeAction(Action.playerAction.call, actPlayer.Value.Find(x => x.action == Action.playerAction.call).amount);
+                test += bb;
+            }
+            else
+            {
+                Console.WriteLine("Failed: Kein Call vorhanden");
+            }
+            actPlayer = gl.nextPlayer();
+            if (actPlayer.Value.Exists(x => x.action == Action.playerAction.raise))
+            {
+                gl.activeAction(Action.playerAction.raise, actPlayer.Value.Find(x => x.action == Action.playerAction.raise).amount * 3);
+                test += 3 * bb;
+                
+            }
+            else
+            {
+                Console.WriteLine("Failed: Kein Raise vorhanden!");
+            }
+            try
+            {
+                Assert.AreEqual((bb + sb + bb + bb * 3), gl.pot.value);
+
+
+            }
+            catch (AssertFailedException e)
+            {
+                Console.WriteLine("Failed: Potsize exp " + test + " real " + gl.pot.value);
+            }
+            
         }
     }
 }
