@@ -94,7 +94,9 @@
       <DependentUpon>AddPlayerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Chip.cs" />
+    <Compile Include="EndRoundException.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="HandEvaluator.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="NoPlayerInGameException.cs" />
     <Compile Include="PlayerCard.xaml.cs">
@@ -147,7 +149,6 @@
     <Compile Include="GlowVisualization.xaml.cs">
       <DependentUpon>GlowVisualization.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Hand.cs" />
     <Compile Include="PinkCircle.xaml.cs">
       <DependentUpon>PinkCircle.xaml</DependentUpon>
     </Compile>

@@ -18,6 +18,7 @@ namespace SurfacePoker
         public bool inGame { get; set; }
         public int inPot { get; set; }
         public String name { get; set; }
+        public bool hasChecked { get; set; }
 
         public Player(String name, int stack)
         {
@@ -27,6 +28,7 @@ namespace SurfacePoker
             inGame = true;
             inPot = 0;
             this.cards = new List<Card>();
+            hasChecked = false;
         }
 
         public Player(Player player)
@@ -39,6 +41,7 @@ namespace SurfacePoker
             this.inGame = player.inGame;
             this.inPot = player.inPot;
             this.name = player.name;
+            this.hasChecked = player.hasChecked;
         }
 
         public int toCall(List<Player> players)
