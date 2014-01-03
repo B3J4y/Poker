@@ -53,10 +53,10 @@ namespace SurfacePoker
     /// </summary>
     public enum Suit
     {
-        Clubs = 0,
-        Diamonds,
-        Hearts,
-        Spades
+        c = 0,
+        d,
+        h,
+        s
     }
 
     /// <summary>
@@ -74,11 +74,11 @@ namespace SurfacePoker
         Seven,
         Eight,
         Nine,
-        Ten,
-        Jack,
-        Queen,
-        King,
-        Ace
+        t,
+        j,
+        q,
+        k,
+        a
     }
 
 
@@ -126,7 +126,15 @@ namespace SurfacePoker
         /// <returns>string</returns>
         public override string ToString()
         {
-            return member + " of " + suit;
+            if ((int)member <= 9)
+            {
+                return ((int)member).ToString() + suit.ToString();
+            }
+            else
+            {
+
+                return member.ToString() + suit.ToString();
+            }
         }
 
         /// <summary>

@@ -82,6 +82,15 @@ namespace SurfacePoker
         {
             cards.Add(card);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Handrepresentation like 2d tc or as</returns>
+        public String getCardsToString()
+        {
+            return cards[0].ToString() + cards[1].ToString();
+        }
     }
 
 }
