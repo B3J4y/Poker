@@ -90,9 +90,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Action.cs" />
-    <Compile Include="AddPlayerControl.xaml.cs">
-      <DependentUpon>AddPlayerControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Chip.cs" />
     <Compile Include="EndRoundException.cs" />
     <Compile Include="Game.cs" />
@@ -108,27 +105,7 @@
     <Compile Include="Pot.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="SidePot.cs" />
-    <Compile Include="Timers\CompositionTargetGameLoop.cs" />
-    <Compile Include="Timers\DispatcherTimerGameLoop.cs" />
-    <Compile Include="Timers\GameLoop.cs" />
-    <Compile Include="XmlHandler.cs" />
-    <Page Include="AddPlayer.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="AddPlayerControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="GlowVisualization.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="PinkCircle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -136,39 +113,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="StyleDictionary.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="SurfaceWindow1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="AddPlayer.xaml.cs">
-      <DependentUpon>AddPlayer.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Card.cs" />
     <Compile Include="Deck.cs" />
-    <Compile Include="GlowVisualization.xaml.cs">
-      <DependentUpon>GlowVisualization.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PinkCircle.xaml.cs">
-      <DependentUpon>PinkCircle.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pips.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="Reusable Classes\AncestryChain.cs" />
-    <Compile Include="Reusable Classes\TagVisualizationEnterLeaveEventArgs.cs" />
-    <Compile Include="Reusable Classes\TagVisualizerEvents.cs" />
-    <Compile Include="Reusable Classes\TagVisualizerSynchronizationMode.cs" />
-    <Compile Include="SurfaceWindow1.xaml.cs">
-      <DependentUpon>SurfaceWindow1.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -399,9 +351,6 @@
     <Resource Include="Res\Spielerdaten.xml">
       <SubType>Designer</SubType>
     </Resource>
-    <Content Include="SurfacePoker.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Res\Cards\herz10.png" />
