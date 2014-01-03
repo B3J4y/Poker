@@ -98,6 +98,9 @@
     <Compile Include="Game.cs" />
     <Compile Include="HandEvaluator.cs" />
     <Compile Include="Log.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NoPlayerInGameException.cs" />
     <Compile Include="PlayerCard.xaml.cs">
       <DependentUpon>PlayerCard.xaml</DependentUpon>
@@ -118,6 +121,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="GlowVisualization.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

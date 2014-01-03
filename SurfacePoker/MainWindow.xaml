@@ -1,0 +1,80 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Custom="http://schemas.microsoft.com/surface/2008" x:Class="WpfApplication1.MainWindow"
+        Title="SurfacePoker" Width="1920" Height="1080" WindowStyle="None" WindowState="Maximized">
+
+
+
+
+
+
+    <Grid>
+
+        <Image Name="backgroundImg"  Source="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur3.jpg"/>
+
+        <!--Spieler Position 1-->
+        <Rectangle x:Name="Pos1" MouseDown="addPlayer"  Opacity="0.5" Margin="50,400,1600,400" >
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <!--Spieler Position 2-->
+        <Rectangle x:Name="Pos2" MouseDown="addPlayer" Opacity="0.5" Margin="450,50,1190,810" >
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <!--Spieler Position 3-->
+        <Rectangle x:Name="Pos3" MouseDown="addPlayer"  Opacity="0.5" Margin="1190,50,450,810" >
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <!--Spieler Position 4-->
+        <Rectangle x:Name="Pos4" MouseDown="addPlayer"  Opacity="0.5" Margin="1600,400,50,400" >
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <!--Spieler Position 6-->
+        <Rectangle x:Name="Pos6" MouseDown="addPlayer"  Opacity="0.5" Margin="450,810,1190,50" >
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <!--Spieler Position 5-->
+        <Rectangle x:Name="Pos5"  MouseDown="addPlayer" Opacity="0.5" Margin="1190,810,450,50" >
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <!--Tischmitte-->
+        <Rectangle x:Name="Mitte" MouseDown="start" Opacity="0.5" Margin="680,405,680,405" >
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
+            </Rectangle.Fill>
+        </Rectangle>
+            
+            <!--Spieler anlegen-->
+        <Custom:ScatterView HorizontalAlignment="Left" VerticalAlignment="Top" Height="1042" Width="1904">
+            <Custom:ScatterViewItem x:Name="addplayerscatteru" Background="#C32D2D2D" CanMove="False" CanRotate="False" CanScale="False" Orientation="0" Center="550,550">
+                <StackPanel Margin="8">
+                    <Button Content="X" HorizontalAlignment="Right" Width="25" Foreground="White" Click="closePlayerAdd"  TouchDown="closePlayerAdd" Margin="0">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FF181818" Offset="0"/>
+                                <GradientStop Color="#FF525252" Offset="0.5"/>
+                                <GradientStop Color="#FF2F2F2F" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Label Content="Neuen Spieler anlegen" Foreground="White"/>
+                    <Label Content="Spielername:" Foreground="White"/>
+                    <Custom:SurfaceTextBox Margin="0" TextWrapping="Wrap" Height="18"/>
+                    <Custom:SurfaceButton Content="Spieler speichern" Click="switchAdd" Margin="0"/>
+                </StackPanel>
+            </Custom:ScatterViewItem>
+        </Custom:ScatterView>
+    </Grid>
+</Window>
