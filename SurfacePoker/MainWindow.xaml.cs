@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Surface.Presentation.Controls;
-using System.Drawing;
 
 namespace SurfacePoker
 {
@@ -120,13 +119,24 @@ namespace SurfacePoker
         {
             canAddPlayer = false;
             Grid.Children.Remove(btn);
+            showCards();
 
         }
 
-        private void showCards(Player player)
+        private void showCards()
         {
             ScatterViewItem card1 = new ScatterViewItem();
-            String text = "pack://siteoforigin:,,,/Cards/kherz8.png";
+            BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/herz10.png"));
+            Image image = new Image();
+            image.Source = bmpimage;
+            card1.Height = 123.04;
+            card1.Width = 80;
+            card1.Content = image;
+            card1.CanMove = true;
+            card1.CanRotate = true;
+            Grid.Children.Add(card1);
+            
+
             
             
         }
