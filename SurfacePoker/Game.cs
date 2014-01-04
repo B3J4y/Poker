@@ -33,6 +33,10 @@ namespace SurfacePoker
             this.bigBlind = bb;
             pot = new Pot();
             round = 0;
+            for (int i = 0; i < players.Count; i++)
+            {
+                players.Find(x => (x.position > i) && (x.ingamePosition == -1)).ingamePosition = i;
+            }
 	    }
 
         private String boardToString()
@@ -358,10 +362,7 @@ namespace SurfacePoker
             players = new List<Player>();
             for (int i = 0; i < PLAYERCOUNT; i++)
             {
-                Player player = new Player("Player" + i, 1000);
-                player.position = i + 1;
-                player.ingamePosition = i;
-
+                Player player = new Player("Player" + i, 1000, i+1);
                 players.Add(player);
             }
             gl = new Game(players, bb, sb);

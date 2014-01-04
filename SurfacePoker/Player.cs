@@ -20,7 +20,7 @@ namespace SurfacePoker
         public String name { get; set; }
         public bool hasChecked { get; set; }
 
-        public Player(String name, int stack)
+        public Player(String name, int stack, int position)
         {
             this.name = name;
             this.stack = stack;
@@ -29,6 +29,8 @@ namespace SurfacePoker
             inPot = 0;
             this.cards = new List<Card>();
             hasChecked = false;
+            this.position = position;
+            this.ingamePosition = -1;
         }
 
         public Player(Player player)
