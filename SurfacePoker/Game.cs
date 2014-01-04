@@ -34,6 +34,15 @@ namespace SurfacePoker
             pot = new Pot();
             round = 0;
 	    }
+
+        private String boardToString()
+        {
+            String str = "";
+            foreach(Card c in board){
+                str += c.ToString() + " ";
+            }
+            return str;
+        }
         /// <summary>
         /// starts a new game and set back all relevant attributes
         /// </summary>
@@ -52,19 +61,20 @@ namespace SurfacePoker
                 {
                     player.ingamePosition = 1;
                 }
-                if (player.position == players.Count)
+                if (player.ingamePosition == players.Count)
                 {
                     pot.raisePot(player.action(bigBlind));
                     pot.amountPerPlayer = bigBlind;
                     pot.raiseSize = bigBlind;
                 }
-                if (player.position == players.Count - 1)
+                if (player.ingamePosition == players.Count - 1)
                 {
                     pot.raisePot(player.action(smallBlind));
                 }
                 player.setOneCard(deck.DealNext());
                 player.setOneCard(deck.DealNext());
-                
+                player.isActive = true;
+                player.hasChecked = false;
             }
             activePlayer = players.Find(x => x.ingamePosition == 1);
             nextActivePlayer = players.Find(x => x.ingamePosition == 2);
@@ -178,15 +188,9 @@ namespace SurfacePoker
                 Player player = players.FindAll(x => (x.ingamePosition >= i)).Find(x => x.isActive);
                 if (player.inPot == pot.amountPerPlayer)
                 {
-                    if (!player.hasChecked)
-                    {
-                        return player;
-                    }
-                    else
-                    {
-
-                        throw new EndRoundException("Finished Round");
-                    }
+                    
+                    return player;
+                    
                 }
                 else
                 {
@@ -201,7 +205,8 @@ namespace SurfacePoker
 
                     if (player.inPot == pot.amountPerPlayer)
                     {
-                        throw new EndRoundException("Finished Round");
+                        return player;
+                        
                     }
                     else
                     {
@@ -282,9 +287,51 @@ namespace SurfacePoker
             activePlayer = whoIsNext(players.Count - 1);
             nextActivePlayer = whoIsNext(players.Count);
         }
+
+        public List<KeyValuePair<Player, int>> whoIsWinner()
+        {
+            List<KeyValuePair<Player, int>> result = new List<KeyValuePair<Player,int>>();
+            List<Player> playersInGame = players.FindAll(x => x.isActive);
+            List<KeyValuePair<Player, Hand>> playerHand = new List<KeyValuePair<Player, Hand>>();
+            Console.WriteLine(boardToString());
+            foreach (Player player in playersInGame)
+            {
+                playerHand.Add(new KeyValuePair<Player, Hand>(player, new Hand(player.getCardsToString(), boardToString())));
+                Console.WriteLine(player.name + " " + player.getCardsToString() + " " + new Hand(player.getCardsToString(), boardToString()).HandValue + " " + new Hand(player.getCardsToString(), boardToString()).HandTypeValue);
+            }
+            playerHand.Sort((x, y ) => x.Value.HandValue.CompareTo(y.Value.HandValue));
+            result.Add(new KeyValuePair<Player, int>(playerHand[playerHand.Count - 1].Key, 0));
+            for (int i = playerHand.Count - 2; i >= 0; i--)
+            {
+                if (playerHand[playerHand.Count - 1].Value.HandValue == playerHand[i].Value.HandValue)
+                {
+                    result.Add(new KeyValuePair<Player, int>(playerHand[i].Key, 0));
+                }
+                else
+                {
+                    break;
+                }
+            }
+            int mod = (pot.value / result.Count) % bigBlind;
+            Player first = whoIsNext(players.Count - 1);
+            while (mod > 0)
+            {
+                KeyValuePair<Player, int> myPlayer = result.Find(x => x.Key.name == first.name);
+                myPlayer = new KeyValuePair<Player, int>(myPlayer.Key, myPlayer.Value + smallBlind);
+                pot.value -= smallBlind;
+                mod = (pot.value / result.Count) % bigBlind;
+            }
+            for (int j = 0; j < result.Count; j++ )
+            {
+                result[j] = new KeyValuePair<Player, int>(result[j].Key, result[j].Value + (pot.value / result.Count));
+            }
+            pot.value = 0;
+            return result;
+        }
     }
 
-
+    //TODO: allin
+    //TODO: side pot
     
     [TestClass]
     public class TestGame
@@ -374,55 +421,110 @@ namespace SurfacePoker
         public void TestPreFlopTurnRiver()
         {
             NewPlayRound();
-            gl.newGame();
-            foreach (Player player in gl.players)
+            for (int i = 0; i < 1000; i++)
             {
 
-                Console.WriteLine(player.cards[0].ToString() + " " + player.cards[1].ToString());
-            }
-            try
-            {
-                gl.activeAction(Action.playerAction.fold, 0);
-                gl.nextPlayer();
-                gl.activeAction(Action.playerAction.fold, 0);
-                gl.nextPlayer();
-                gl.activeAction(Action.playerAction.fold, 0);
-                gl.nextPlayer();
-                gl.activeAction(Action.playerAction.call, bb);
-                gl.nextPlayer();
-                gl.activeAction(Action.playerAction.call, bb);
-                gl.nextPlayer();
-                gl.activeAction(Action.playerAction.check, 0);
-                gl.nextPlayer();
-            }
-            catch (NoPlayerInGameException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            catch (EndRoundException e)
-            {
+                gl.newGame();
 
-                gl.nextRound();
-            }
-            try
-            {
-                gl.activeAction(Action.playerAction.check, 0);
-                gl.nextPlayer();
-                gl.activeAction(Action.playerAction.check, 0);
-                gl.nextPlayer();
-                gl.activeAction(Action.playerAction.check, 0);
-                gl.nextPlayer();
-            }
-            catch (NoPlayerInGameException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            catch (EndRoundException e)
-            {
+                //preflop
+                try
+                {
+                    gl.activeAction(Action.playerAction.fold, 0);
+                    gl.nextPlayer();
+                    gl.activeAction(Action.playerAction.fold, 0);
+                    gl.nextPlayer();
+                    gl.activeAction(Action.playerAction.fold, 0);
+                    gl.nextPlayer();
+                    gl.activeAction(Action.playerAction.call, bb);
+                    gl.nextPlayer();
+                    gl.activeAction(Action.playerAction.call, bb);
+                    gl.nextPlayer();
+                    gl.activeAction(Action.playerAction.check, 0);
+                    gl.nextPlayer();
+                }
+                catch (NoPlayerInGameException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                catch (EndRoundException e)
+                {
 
-                gl.nextRound();
-            }
+                    gl.nextRound();
+                }
+                //flop
+                try
+                {
+                    gl.activeAction(Action.playerAction.check, 0);
+                    gl.nextPlayer();
+                    gl.activeAction(Action.playerAction.check, 0);
+                    gl.nextPlayer();
+                    gl.activeAction(Action.playerAction.check, 0);
+                    gl.nextPlayer();
+                }
+                catch (NoPlayerInGameException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                catch (EndRoundException e)
+                {
 
+                    gl.nextRound();
+                }
+                //turn
+                try
+                {
+                    gl.activeAction(Action.playerAction.check, 0);
+                    gl.nextPlayer();
+                    gl.activeAction(Action.playerAction.check, 0);
+                    gl.nextPlayer();
+                    gl.activeAction(Action.playerAction.check, 0);
+                    gl.nextPlayer();
+                }
+                catch (NoPlayerInGameException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                catch (EndRoundException e)
+                {
+
+                    gl.nextRound();
+                }
+
+                //river
+                try
+                {
+                    gl.activeAction(Action.playerAction.check, 0);
+                    gl.nextPlayer();
+                    gl.activeAction(Action.playerAction.check, 0);
+                    gl.nextPlayer();
+                    gl.activeAction(Action.playerAction.check, 0);
+                    gl.nextPlayer();
+                }
+                catch (NoPlayerInGameException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                catch (EndRoundException e)
+                {
+
+                    List<KeyValuePair<Player, int>> winners = gl.whoIsWinner();
+                    //give the earnings to the winner
+                    Console.WriteLine("---------------------------------------");
+                    foreach (KeyValuePair<Player, int> kvp in winners)
+                    {
+                        Console.WriteLine(kvp.Key.name + " won " + kvp.Value);
+                        players.Find(x => x.name == kvp.Key.name).stack += kvp.Value;
+                    }
+                    Console.WriteLine("---------------------------------------");
+
+                    
+                }
+
+                foreach (Player player in players)
+                {
+                    Console.WriteLine(player.name + " Stack: " + player.stack);
+                }
+            }
         }
     }
 }
