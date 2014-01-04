@@ -9,7 +9,7 @@
 
 
 
-    <Grid>
+    <Grid Name="Grid">
 
         <Image Name="backgroundImg"  Source="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur3.jpg"/>
 
@@ -50,7 +50,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <!--Tischmitte-->
-        <Rectangle x:Name="Mitte" MouseDown="start" Opacity="0.5" Margin="680,405,680,405" >
+        <Rectangle x:Name="Mitte" MouseDown="shutDown" Opacity="0.5" Margin="680,405,680,405" >
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -58,7 +58,7 @@
             
             <!--Spieler anlegen-->
         <Custom:ScatterView HorizontalAlignment="Left" VerticalAlignment="Top" Height="1042" Width="1904">
-            <Custom:ScatterViewItem x:Name="addplayerscatteru" Background="#C32D2D2D" CanMove="False" CanRotate="False" CanScale="False" Orientation="0" Center="550,550">
+            <Custom:ScatterViewItem x:Name="addplayerscatteru" Background="#C32D2D2D" CanMove="False" CanRotate="False" CanScale="False" Orientation="0" Center="550,550" Visibility="Hidden">
                 <StackPanel Margin="8">
                     <Button Content="X" HorizontalAlignment="Right" Width="25" Foreground="White" Click="closeAddPlayer"  TouchDown="closeAddPlayer" Margin="0">
                         <Button.Background>
@@ -71,7 +71,7 @@
                     </Button>
                     <Label Content="Neuen Spieler anlegen" Foreground="White"/>
                     <Label Content="Spielername:" Foreground="White"/>
-                    <Custom:SurfaceTextBox Margin="0" TextWrapping="Wrap" Height="18"/>
+                    <Custom:SurfaceTextBox Margin="0" TextWrapping="Wrap" Height="18" Name="playerName"/>
                     <Custom:SurfaceButton Content="Spieler speichern" Click="savePlayer" Margin="0"/>
                 </StackPanel>
             </Custom:ScatterViewItem>

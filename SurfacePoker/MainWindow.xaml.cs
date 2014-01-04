@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Surface.Presentation.Controls;
+using System.Drawing;
 
 namespace SurfacePoker
 {
@@ -24,74 +26,110 @@ namespace SurfacePoker
         public List<Player> players { get; set; }
       
         private bool canAddPlayer { get; set; }
+
+        private int position { get; set; }
+
+        private int stack { get; set; }
         
-        private void start(object sender, RoutedEventArgs e)
+        private void shutDown(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown(0); 
         }
 
+        private System.Windows.Controls.Button btn;
+
+        public MainWindow()
+        {
+            players = new List<Player>();
+            canAddPlayer = true;
+            position = 0;
+            stack = 1000;
+            btn = new Button();
+            LinearGradientBrush gradientBrush = new  LinearGradientBrush( Color.FromRgb( 24, 24, 24),  Color.FromRgb(47, 47, 47), new Point(0.5, 0), new Point(0.5, 1));            
+            Background = gradientBrush;
+            btn.Background = Background;
+            
+
+        }
         private void openAddPlayer(object sender, RoutedEventArgs e)
         {
-            Rectangle r = (Rectangle)sender;
-            String name = r.Name;
-            Console.Out.WriteLine("Spieler an" + name + "meldet sich an");
-            Point point = new Point();
-
-            switch (r.Name) {
-                case "Pos1" : point.X = 270; point.Y = 550; break;
-                case "Pos2" : point.X = 470; point.Y = 170; break;
-                case "Pos3" : point.X = 1210; point.Y = 170; break;
-                case "Pos4" : point.X = 1620; point.Y = 550; break;
-                case "Pos5" : point.X = 1210; point.Y = 930; break;
-                case "Pos6" : point.X = 470; point.Y = 930; break;
-            }
-            
+            //TODO
+            //prüfen ob an dieser stelle schon ein Spieler sitzt
             if (canAddPlayer) {
+                Rectangle r = (Rectangle)sender;
+                String name = r.Name;
+                Console.Out.WriteLine("Spieler an" + name + "meldet sich an");
+                Point point = new Point();
+
+                switch (r.Name)
+                {
+                    case "Pos1": point.X = 270; point.Y = 550; position = 1; break;
+                    case "Pos2": point.X = 470; point.Y = 170; position = 2; break;
+                    case "Pos3": point.X = 1210; point.Y = 170; position = 3; break;
+                    case "Pos4": point.X = 1620; point.Y = 550; position = 4; break;
+                    case "Pos5": point.X = 1210; point.Y = 930; position = 5; break;
+                    case "Pos6": point.X = 470; point.Y = 930; position = 6; break;
+                }
                 addplayerscatteru.Center = point;
                 addplayerscatteru.Visibility = Visibility.Visible;
+
+
                 
             }
         }
         private void closeAddPlayer(object sender, RoutedEventArgs e)
         {
-            addplayerscatteru.Visibility = Visibility.Hidden;
+            Button s = (Button)sender;
+            StackPanel stackPanel = (StackPanel)s.Parent;
+            SurfaceTextBox text = (SurfaceTextBox)stackPanel.FindName("playerName");
+            text.Text = "";
+            position = 0;
+            addplayerscatteru.Visibility = Visibility.Collapsed;
+            addStartButton();
         }
 
         private void savePlayer(object sender, RoutedEventArgs e)
         {
-            Rectangle r = (Rectangle)sender;
-            String name = r.Name;
-            int ingamepos = 0;
+           
+            SurfaceButton s = (SurfaceButton)sender;
+            StackPanel stackPanel = (StackPanel)s.Parent;
+            SurfaceTextBox text = (SurfaceTextBox)stackPanel.FindName("playerName");
+            
+            players.Add(new Player(text.Text, stack, position));
 
-            switch (r.Name)
-            {
-                case "Pos1": ingamepos = 1; break;
-                case "Pos2": ingamepos = 2; break;
-                case "Pos3": ingamepos = 3; break;
-                case "Pos4": ingamepos = 4; break;
-                case "Pos5": ingamepos = 5; break;
-                case "Pos6": ingamepos = 6; break;
-            }
-
-
+            text.Text = "";
+            addplayerscatteru.Visibility = Visibility.Collapsed;
+            
 
         }
 
-        private void switchAdd(object sender, RoutedEventArgs e)
+        private void addStartButton()
         {
-            if (canAddPlayer)
+            btn.Name = "btnStart";
+            btn.Content = "Spiel starten";
+            btn.Margin = new Thickness(800, 700, 800, 320);
+            btn.Click += new RoutedEventHandler(startGame);         
+            if (!Grid.Children.Contains(btn))
             {
-                canAddPlayer = false;
-            }
-            else
-            {
-                canAddPlayer = true;
+
+                Grid.Children.Add(btn);
             }
         }
 
+        private void startGame(object sender, RoutedEventArgs e)
+        {
+            canAddPlayer = false;
+            Grid.Children.Remove(btn);
 
+        }
 
-
+        private void showCards(Player player)
+        {
+            ScatterViewItem card1 = new ScatterViewItem();
+            String text = "pack://siteoforigin:,,,/Cards/kherz8.png";
+            
+            
+        }
 
 
 
