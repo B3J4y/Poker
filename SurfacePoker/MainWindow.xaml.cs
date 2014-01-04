@@ -21,16 +21,17 @@ namespace WpfApplication1
     public partial class MainWindow : Window
     {
 
+        
       
         private bool canAddPlayer { get; set; }
 
-
+        
         private void start(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown(0); 
         }
 
-        private void addPlayer(object sender, RoutedEventArgs e)
+        private void openAddPlayer(object sender, RoutedEventArgs e)
         {
             Rectangle r = (Rectangle)sender;
             String name = r.Name;
@@ -52,9 +53,29 @@ namespace WpfApplication1
                 
             }
         }
-        private void closePlayerAdd(object sender, RoutedEventArgs e)
+        private void closeAddPlayer(object sender, RoutedEventArgs e)
         {
             addplayerscatteru.Visibility = Visibility.Hidden;
+        }
+
+        private void savePlayer(object sender, RoutedEventArgs e)
+        {
+            Rectangle r = (Rectangle)sender;
+            String name = r.Name;
+            int ingamepos = 0;
+
+            switch (r.Name)
+            {
+                case "Pos1": ingamepos = 1; break;
+                case "Pos2": ingamepos = 2; break;
+                case "Pos3": ingamepos = 3; break;
+                case "Pos4": ingamepos = 4; break;
+                case "Pos5": ingamepos = 5; break;
+                case "Pos6": ingamepos = 6; break;
+            }
+
+
+
         }
 
         private void switchAdd(object sender, RoutedEventArgs e)
