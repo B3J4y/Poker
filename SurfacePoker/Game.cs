@@ -37,6 +37,7 @@ namespace SurfacePoker
             {
                 players.Find(x => (x.position > i) && (x.ingamePosition == -1)).ingamePosition = i;
             }
+            players.Sort((x, y) => x.position.CompareTo(y.position));
 	    }
 
         private String boardToString()
