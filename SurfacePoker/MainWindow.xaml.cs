@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApplication1
+namespace SurfacePoker
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -21,10 +21,9 @@ namespace WpfApplication1
     public partial class MainWindow : Window
     {
 
-        
+        public List<Player> players { get; set; }
       
         private bool canAddPlayer { get; set; }
-
         
         private void start(object sender, RoutedEventArgs e)
         {

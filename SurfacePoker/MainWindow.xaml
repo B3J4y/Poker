@@ -1,7 +1,7 @@
 ﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Custom="http://schemas.microsoft.com/surface/2008" x:Class="WpfApplication1.MainWindow"
+        xmlns:Custom="http://schemas.microsoft.com/surface/2008" x:Class="SurfacePoker.MainWindow"
         Title="SurfacePoker" Width="1920" Height="1080" WindowStyle="None" WindowState="Maximized">
 
 
@@ -72,7 +72,7 @@
                     <Label Content="Neuen Spieler anlegen" Foreground="White"/>
                     <Label Content="Spielername:" Foreground="White"/>
                     <Custom:SurfaceTextBox Margin="0" TextWrapping="Wrap" Height="18"/>
-                    <Custom:SurfaceButton Content="Spieler speichern" Click="" Margin="0"/>
+                    <Custom:SurfaceButton Content="Spieler speichern" Click="savePlayer" Margin="0"/>
                 </StackPanel>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
