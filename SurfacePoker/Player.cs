@@ -19,6 +19,7 @@ namespace SurfacePoker
         public int inPot { get; set; }
         public String name { get; set; }
         public bool hasChecked { get; set; }
+        public bool isAllin { get; set; }
 
         public Player(String name, int stack, int position)
         {
@@ -31,6 +32,7 @@ namespace SurfacePoker
             hasChecked = false;
             this.position = position;
             this.ingamePosition = -1;
+            this.isAllin = false;
         }
 
         public Player(Player player)
@@ -44,6 +46,7 @@ namespace SurfacePoker
             this.inPot = player.inPot;
             this.name = player.name;
             this.hasChecked = player.hasChecked;
+            this.isAllin = player.isAllin;
         }
 
         public int toCall(List<Player> players)
@@ -76,6 +79,9 @@ namespace SurfacePoker
             {
                 int diff = this.stack -this.inPot;
                 inPot = this.stack;
+                this.stack = 0;
+                this.isAllin = true;
+                this.isActive = false;
                 return diff;
             }
         }

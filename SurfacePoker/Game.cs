@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using log4net;
+using log4net.Config;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SurfacePoker
@@ -24,10 +25,11 @@ namespace SurfacePoker
         /// </summary>
         private int round;
         public List<Card> board { get; set; }
-
+        //private ILog logger;
 	    public Game(List<Player> players, int bb, int sb)
 	    {
-
+            //logger = LogManager.GetLogger(typeof(Game));
+            //logger.Info("Construction Game");
             this.players = players;
             this.smallBlind = sb;
             this.bigBlind = bb;
@@ -56,6 +58,7 @@ namespace SurfacePoker
             deck = new Deck();
             round = 0;
             board = new List<Card>();
+            pot.amountPerPlayer = bigBlind;
             foreach (Player player in players)
             {
                 if (player.ingamePosition < players.Count)
@@ -68,17 +71,19 @@ namespace SurfacePoker
                 }
                 if (player.ingamePosition == players.Count)
                 {
-                    pot.raisePot(player.action(bigBlind));
-                    pot.amountPerPlayer = bigBlind;
-                    pot.raiseSize = bigBlind;
+                    
+                    pot.raisePot(player, player.action(bigBlind));
                 }
                 if (player.ingamePosition == players.Count - 1)
                 {
-                    pot.raisePot(player.action(smallBlind));
+                    pot.amountPerPlayer = smallBlind;
+                    pot.raisePot(player, player.action(smallBlind));
                 }
+                pot.amountPerPlayer = bigBlind;
+                pot.raiseSize = bigBlind;
                 player.setOneCard(deck.DealNext());
                 player.setOneCard(deck.DealNext());
-                player.isActive = true;
+                player.isActive = !player.isAllin;
                 player.hasChecked = false;
             }
             activePlayer = players.Find(x => x.ingamePosition == 1);
@@ -135,7 +140,9 @@ namespace SurfacePoker
         {
             if (players.FindAll(x => (x.ingamePosition > activePlayer.ingamePosition)).Exists(x => x.isActive))
             {
-                Player player = players.FindAll(x => (x.ingamePosition > activePlayer.ingamePosition)).Find(x => x.isActive);
+                List<Player> nextPlayers = players.FindAll(x => (x.ingamePosition > activePlayer.ingamePosition));
+                nextPlayers.Sort((x, y) => x.ingamePosition.CompareTo(y.ingamePosition));
+                Player player = nextPlayers.Find(x => x.isActive);
                 if (player.inPot == pot.amountPerPlayer)
                 {
                     if (! activePlayer.hasChecked)
@@ -155,7 +162,9 @@ namespace SurfacePoker
             {
                 if (players.FindAll(x => (x.ingamePosition >= 1)).Exists(x => x.isActive))
                 {
-                    Player player = players.FindAll(x => (x.ingamePosition >= 1)).Find(x => x.isActive);
+                    List<Player> nextPlayers = players.FindAll(x => (x.ingamePosition >= 1));
+                    nextPlayers.Sort((x, y) => x.ingamePosition.CompareTo(y.ingamePosition));
+                    Player player = nextPlayers.Find(x => x.isActive);
 
                     if (player.inPot == pot.amountPerPlayer)
                     {
@@ -245,15 +254,15 @@ namespace SurfacePoker
 
                     break;
                 case Action.playerAction.call:
-                    pot.raisePot(activePlayer.action(amount));
+                    pot.raisePot(activePlayer, activePlayer.action(amount));
                     break;
                 case Action.playerAction.bet:
-                    pot.raisePot(activePlayer.action(amount));
+                    pot.raisePot(activePlayer,  activePlayer.action(amount));
                     pot.amountPerPlayer = amount;
                     pot.raiseSize = amount;
                     break;
                 case Action.playerAction.raise:
-                    pot.raisePot(activePlayer.action(amount));
+                    pot.raisePot(activePlayer,  activePlayer.action(amount));
                     pot.raiseSize = amount - pot.raiseSize;
                     pot.amountPerPlayer = amount;
                     break;
@@ -262,7 +271,9 @@ namespace SurfacePoker
         }
 
 
-
+        /// <summary>
+        /// initialize the next round
+        /// </summary>
         public void nextRound()
         {
             round++;
@@ -291,12 +302,18 @@ namespace SurfacePoker
             //active Player after DealerButton
             activePlayer = whoIsNext(players.Count - 1);
             nextActivePlayer = whoIsNext(players.Count);
+            pot.endOfRound();
         }
 
-        public List<KeyValuePair<Player, int>> whoIsWinner()
+        /// <summary>
+        /// determines the winning players and shows how much they won
+        /// </summary>
+        /// <returns></returns>
+        public List<KeyValuePair<Player, int>> whoIsWinner(Pot pot)
         {
             List<KeyValuePair<Player, int>> result = new List<KeyValuePair<Player,int>>();
             List<Player> playersInGame = players.FindAll(x => x.isActive);
+            playersInGame.AddRange(pot.player);
             List<KeyValuePair<Player, Hand>> playerHand = new List<KeyValuePair<Player, Hand>>();
             Console.WriteLine(boardToString());
             foreach (Player player in playersInGame)
@@ -311,26 +328,41 @@ namespace SurfacePoker
                 if (playerHand[playerHand.Count - 1].Value.HandValue == playerHand[i].Value.HandValue)
                 {
                     result.Add(new KeyValuePair<Player, int>(playerHand[i].Key, 0));
+
                 }
                 else
                 {
-                    break;
+                    playerHand[i].Key.isActive = false;
                 }
             }
             int mod = (pot.value / result.Count) % bigBlind;
             Player first = whoIsNext(players.Count - 1);
+            
             while (mod > 0)
             {
                 KeyValuePair<Player, int> myPlayer = result.Find(x => x.Key.name == first.name);
+                result.Remove(myPlayer);
                 myPlayer = new KeyValuePair<Player, int>(myPlayer.Key, myPlayer.Value + smallBlind);
+                result.Add(myPlayer);
                 pot.value -= smallBlind;
                 mod = (pot.value / result.Count) % bigBlind;
             }
+
             for (int j = 0; j < result.Count; j++ )
             {
                 result[j] = new KeyValuePair<Player, int>(result[j].Key, result[j].Value + (pot.value / result.Count));
             }
+            if (pot.sidePot != null)
+            {
+                result.AddRange(whoIsWinner(pot.sidePot));
+                pot.sidePot = null;
+            }
+            foreach (Player p in playersInGame)
+            {
+                p.cards = new List<Card>();
+            }
             pot.value = 0;
+            pot.potThisRound = 0;
             return result;
         }
     }
@@ -509,23 +541,28 @@ namespace SurfacePoker
                 catch (EndRoundException e)
                 {
 
-                    List<KeyValuePair<Player, int>> winners = gl.whoIsWinner();
+                    List<KeyValuePair<Player, int>> winners = gl.whoIsWinner(gl.pot);
                     //give the earnings to the winner
                     Console.WriteLine("---------------------------------------");
                     foreach (KeyValuePair<Player, int> kvp in winners)
                     {
                         Console.WriteLine(kvp.Key.name + " won " + kvp.Value);
                         players.Find(x => x.name == kvp.Key.name).stack += kvp.Value;
+                        players.Find(x => x.name == kvp.Key.name).isAllin = false;
                     }
                     Console.WriteLine("---------------------------------------");
 
                     
                 }
-
+                int stuck = 0;
                 foreach (Player player in players)
                 {
                     Console.WriteLine(player.name + " Stack: " + player.stack);
+                    stuck += player.stack;
                 }
+                Console.WriteLine("::::::::::::::::::::::::::::::::::::::::::");
+                Console.WriteLine("Stacks gesamt: " + stuck);
+                Console.WriteLine("::::::::::::::::::::::::::::::::::::::::::");
             }
         }
     }
