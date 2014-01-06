@@ -156,100 +156,100 @@
     <None Include="Res\Backgrounds\pokertesttextur8.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\herzbube.png">
+    <None Include="Res\Cards\jh.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\herzdame.png">
+    <None Include="Res\Cards\qh.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\herzkoenig.png">
+    <None Include="Res\Cards\kh.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\karobube.png">
+    <None Include="Res\Cards\jd.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\karodame.png">
+    <None Include="Res\Cards\qd.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\karokoenig.png">
+    <None Include="Res\Cards\kd.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\kreuz10.png">
+    <None Include="Res\Cards\tc.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\kreuz2.png">
+    <None Include="Res\Cards\2c.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\kreuz3.png">
+    <None Include="Res\Cards\3c.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\kreuz4.png">
+    <None Include="Res\Cards\4c.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\kreuz5.png">
+    <None Include="Res\Cards\5c.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\kreuz6.png">
+    <None Include="Res\Cards\6c.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\kreuz7.png">
+    <None Include="Res\Cards\7c.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\kreuz8.png">
+    <None Include="Res\Cards\8c.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\kreuz9.png">
+    <None Include="Res\Cards\9c.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\kreuzas.png">
+    <None Include="Res\Cards\ac.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\kreuzbube.png">
+    <None Include="Res\Cards\jc.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\kreuzdame.png">
+    <None Include="Res\Cards\qc.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\kreuzkoenig.png">
+    <None Include="Res\Cards\kc.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\pik10.png">
+    <None Include="Res\Cards\ts.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\pik2.png">
+    <None Include="Res\Cards\2s.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\pik3.png">
+    <None Include="Res\Cards\3s.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\pik4.png">
+    <None Include="Res\Cards\4s.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\pik5.png">
+    <None Include="Res\Cards\5s.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\pik6.png">
+    <None Include="Res\Cards\6s.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\pik7.png">
+    <None Include="Res\Cards\7s.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\pik8.png">
+    <None Include="Res\Cards\8s.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\pik9.png">
+    <None Include="Res\Cards\9s.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\pikas.png">
+    <None Include="Res\Cards\as.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\pikbube.png">
+    <None Include="Res\Cards\js.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\pikdame.png">
+    <None Include="Res\Cards\qs.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Res\Cards\pikkoenig.png">
+    <None Include="Res\Cards\ks.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Res\Logo\Logo.png">
@@ -317,6 +317,7 @@
     <Content Include="Res\Icon\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Res\Kartenrueckseite\kartenruecken_1.jpg" />
     <Content Include="Res\Libs\log4net.dll" />
     <Content Include="Res\Libs\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll" />
     <Content Include="Res\Sounds\chipsinderhand.wav" />
@@ -353,26 +354,26 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Res\Cards\herz10.png" />
-    <Resource Include="Res\Cards\herz2.png" />
-    <Resource Include="Res\Cards\herz3.png" />
-    <Resource Include="Res\Cards\herz4.png" />
-    <Resource Include="Res\Cards\herz5.png" />
-    <Resource Include="Res\Cards\herz6.png" />
-    <Resource Include="Res\Cards\herz7.png" />
-    <Resource Include="Res\Cards\herz8.png" />
-    <Resource Include="Res\Cards\herz9.png" />
-    <Resource Include="Res\Cards\herzas.png" />
-    <Resource Include="Res\Cards\karo10.png" />
-    <Resource Include="Res\Cards\karo2.png" />
-    <Resource Include="Res\Cards\karo3.png" />
-    <Resource Include="Res\Cards\karo4.png" />
-    <Resource Include="Res\Cards\karo5.png" />
-    <Resource Include="Res\Cards\karo6.png" />
-    <Resource Include="Res\Cards\karo7.png" />
-    <Resource Include="Res\Cards\karo8.png" />
-    <Resource Include="Res\Cards\karo9.png" />
-    <Resource Include="Res\Cards\karoas.png" />
+    <Resource Include="Res\Cards\th.png" />
+    <Resource Include="Res\Cards\2h.png" />
+    <Resource Include="Res\Cards\3h.png" />
+    <Resource Include="Res\Cards\4h.png" />
+    <Resource Include="Res\Cards\5h.png" />
+    <Resource Include="Res\Cards\6h.png" />
+    <Resource Include="Res\Cards\7h.png" />
+    <Resource Include="Res\Cards\8h.png" />
+    <Resource Include="Res\Cards\9h.png" />
+    <Resource Include="Res\Cards\ah.png" />
+    <Resource Include="Res\Cards\td.png" />
+    <Resource Include="Res\Cards\2d.png" />
+    <Resource Include="Res\Cards\3d.png" />
+    <Resource Include="Res\Cards\4d.png" />
+    <Resource Include="Res\Cards\5d.png" />
+    <Resource Include="Res\Cards\6d.png" />
+    <Resource Include="Res\Cards\7d.png" />
+    <Resource Include="Res\Cards\8d.png" />
+    <Resource Include="Res\Cards\9d.png" />
+    <Resource Include="Res\Cards\ad.png" />
     <Resource Include="Res\Chips\Pokerchip_final_10.png" />
     <Resource Include="Res\Chips\Pokerchip_final_100.png" />
     <Resource Include="Res\Chips\Pokerchip_final_20.png" />

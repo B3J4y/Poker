@@ -29,17 +29,17 @@ namespace SurfacePoker
         private int position { get; set; }
 
         private int stack { get; set; }
-        
+
+        private System.Windows.Controls.Button btn;
+
+        private Game gl;        
         private void shutDown(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown(0); 
         }
 
-        private System.Windows.Controls.Button btn;
-
         public MainWindow()
         {
-            players = new List<Player>();
             canAddPlayer = true;
             position = 0;
             stack = 1000;
@@ -47,7 +47,22 @@ namespace SurfacePoker
             LinearGradientBrush gradientBrush = new  LinearGradientBrush( Color.FromRgb( 24, 24, 24),  Color.FromRgb(47, 47, 47), new Point(0.5, 0), new Point(0.5, 1));            
             Background = gradientBrush;
             btn.Background = Background;
+            Player player1 = new Player("Anton", 1000, 1);
+            Player player2 = new Player("Berta", 1000, 2);
+            Player player3 = new Player("Cäsar", 1000, 3);
+            Player player4 = new Player("Dora", 1000, 4);
+            Player player5 = new Player("Emil", 1000, 5);
+            Player player6 = new Player("Friedrich", 1000, 6);
+            players = new List<Player>();
+            players.Add(player1);
+            players.Add(player2);
+            players.Add(player3);
+            players.Add(player4);
+            players.Add(player5);
+            players.Add(player6);
+            gl = new Game(players, 100, 50);
             
+            bool b = false;
 
         }
         private void openAddPlayer(object sender, RoutedEventArgs e)
@@ -70,11 +85,9 @@ namespace SurfacePoker
                     case "Pos6": point.X = 470; point.Y = 930; position = 6; break;
                 }
                 addplayerscatteru.Center = point;
-                addplayerscatteru.Visibility = Visibility.Visible;
-
-
-                
+                addplayerscatteru.Visibility = Visibility.Visible;                
             }
+            e.Handled = true;
         }
         private void closeAddPlayer(object sender, RoutedEventArgs e)
         {
@@ -85,6 +98,7 @@ namespace SurfacePoker
             position = 0;
             addplayerscatteru.Visibility = Visibility.Collapsed;
             addStartButton();
+            e.Handled = true;
         }
 
         private void savePlayer(object sender, RoutedEventArgs e)
@@ -98,7 +112,7 @@ namespace SurfacePoker
 
             text.Text = "";
             addplayerscatteru.Visibility = Visibility.Collapsed;
-            
+            e.Handled = true;
 
         }
 
@@ -119,28 +133,73 @@ namespace SurfacePoker
         {
             canAddPlayer = false;
             Grid.Children.Remove(btn);
+            //Start new Game
+            gl.newGame();
+            //Show Cards
             showCards();
+            e.Handled = true;
 
         }
 
         private void showCards()
         {
-            ScatterViewItem card1 = new ScatterViewItem();
-            BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/herz10.png"));
-            Image image = new Image();
-            image.Source = bmpimage;
-            card1.Height = 123.04;
-            card1.Width = 80;
-            card1.Content = image;
-            card1.CanMove = true;
-            card1.CanRotate = true;
-            Grid.Children.Add(card1);
-            
+            foreach (Player iPlayer in gl.players.FindAll(x => x.isActive))
+            {
+                switch (iPlayer.position)
+                {
+                    case 1:
+                        player1interface.Visibility = Visibility.Visible;
+                        break;
+                    case 2:
+                        player2interface.Visibility = Visibility.Visible;
+                        break;
+                    case 3:
+                        player3interface.Visibility = Visibility.Visible;
+                        break;
+                    case 4:
+                        player4interface.Visibility = Visibility.Visible;
+                        break;
+                    case 5:
+                        player5interface.Visibility = Visibility.Visible;
+                        break;
+                    case 6:
+                        player6interface.Visibility = Visibility.Visible;
+                        break;
 
-            
-            
+                }
+            }
         }
 
+        
+        private void turnToFront(object sender, RoutedEventArgs e)
+        {
+            Image s = (Image)sender;
+            ScatterViewItem svi = (ScatterViewItem)s.Parent;
+            //pos gets position from player - can be 1-6
+            int pos = (Int32)Convert.ToInt32(svi.Name[6].ToString());
+            //pcard gets which card from player - can be 1 or 2
+            int pcard = (Int32)Convert.ToInt32(svi.Name[11].ToString());
+
+            Console.WriteLine(gl.players.Find(x => x.position == pos).cards[pcard - 1]);
+            
+            //Console.WriteLine(players.Find(x => x.position == position).cards[0]);
+            //Console.WriteLine(players.Find(x => x.position == position).cards[1]);
+            BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.players.Find(x => x.position == pos).cards[pcard - 1] + ".png"));
+                Image image = (Image)sender;
+                image.Source = bmpimage;
+                e.Handled = true;
+                
+        }
+
+        private void turnToBack(object sender, RoutedEventArgs e)
+        {
+
+            BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Kartenrueckseite/kartenruecken_1.jpg"));
+            Image image = (Image)sender;
+            image.Source = bmpimage;
+            e.Handled = true;
+
+        }
 
 
     }
