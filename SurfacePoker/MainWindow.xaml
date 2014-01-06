@@ -12,14 +12,14 @@
         <Thickness x:Key="p4">1600,400,50,400</Thickness>
         <Thickness x:Key="p5">1190,810,450,50</Thickness>
         <Thickness x:Key="p6">450,810,1190,50</Thickness>
-        
+
     </Window.Resources>
 
-    
+
 
 
     <Grid Name="Grid">
-        
+
         <Image Name="backgroundImg"  Source="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur3.jpg"/>
 
         <!--Spieler Position 1-->
@@ -28,6 +28,18 @@
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
         </Rectangle>
+        <!--Anzeige Name-->
+        <TextBlock Name="player1name" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="120" MaxWidth="120" Margin="50,370" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.00"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <!--Scatterview Karten-->
         <Custom:ScatterView Name="player1interface" Margin="{StaticResource p1}" Visibility="Collapsed">
             <Custom:ScatterViewItem Name="player1card1" Width="80" Height="123.04" >
                 <Image Name="player1card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
@@ -43,6 +55,18 @@
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
         </Rectangle>
+        <!--Anzeige Name-->
+        <TextBlock Name="player2name" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="120" MaxWidth="120" Margin="750,70" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90.00"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <!--Scatterview Karten-->
         <Custom:ScatterView Name="player2interface" Margin="{StaticResource p2}" Visibility="Collapsed">
             <Custom:ScatterViewItem Name="player2card1" Width="80" Height="123.04" >
                 <Image Name="player2card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
@@ -51,13 +75,25 @@
                 <Image Name="player2card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
-        
+
         <!--Spieler Position 3-->
         <Rectangle x:Name="Pos3" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p3}" >
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
         </Rectangle>
+        <!--Anzeige Name-->
+        <TextBlock Name="player3name" Text="" VerticalAlignment="Top" HorizontalAlignment="Right" MinWidth="120" MaxWidth="120" Margin="300,70" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90.00"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <!--Scatterview Karten-->
         <Custom:ScatterView Name="player3interface" Margin="{StaticResource p3}" Visibility="Collapsed">
             <Custom:ScatterViewItem Name="player3card1" Width="80" Height="123.04" >
                 <Image Name="player3card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
@@ -66,13 +102,25 @@
                 <Image Name="player3card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
-        
+
         <!--Spieler Position 4-->
         <Rectangle x:Name="Pos4" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p4}" >
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
         </Rectangle>
+        <!--Anzeige Name-->
+        <TextBlock Name="player4name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="120" MaxWidth="120" Margin="-50,350" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-180.00"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <!--Scatterview Karten-->
         <Custom:ScatterView Name="player4interface" Margin="{StaticResource p4}" Visibility="Collapsed">
             <Custom:ScatterViewItem Name="player4card1" Width="80" Height="123.04" >
                 <Image Name="player4card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
@@ -81,13 +129,25 @@
                 <Image Name="player4card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
-                
+
         <!--Spieler Position 5-->
         <Rectangle x:Name="Pos5"  MouseDown="openAddPlayer" Opacity="0.5" Margin="{StaticResource p5}" >
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
-            </Rectangle.Fill>            
+            </Rectangle.Fill>
         </Rectangle>
+        <!--Anzeige Name-->
+        <TextBlock Name="player5name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="120" MaxWidth="120" Margin="0,0,630,50" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90.00"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <!--Scatterview Karten-->
         <Custom:ScatterView Name="player5interface" Margin="{StaticResource p5}" Visibility="Collapsed">
             <Custom:ScatterViewItem Name="player5card1" Width="80" Height="123.04" >
                 <Image Name="player5card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
@@ -97,12 +157,24 @@
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
 
-        <!--Spieler Position 6-->
+        <!--Spieler Position 6-->    
         <Rectangle x:Name="Pos6" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p6}" >
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
-            </Rectangle.Fill>
+            </Rectangle.Fill>            
         </Rectangle>
+        <!--Anzeige Name-->
+        <TextBlock Name="player6name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Left" MinWidth="120" MaxWidth="120" Margin="420,50" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90.00"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <!--Scatterview Karten-->
         <Custom:ScatterView Name="player6interface" Margin="{StaticResource p6}" Visibility="Collapsed">
             <Custom:ScatterViewItem Name="player6card1" Width="80" Height="123.04" >
                 <Image Name="player6card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
@@ -111,15 +183,15 @@
                 <Image Name="player6card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
-        
+
         <!--Tischmitte-->
         <Rectangle x:Name="Mitte" MouseDown="shutDown" Opacity="0.5" Margin="680,405,680,405" >
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
         </Rectangle>
-            
-            <!--Fenster Spieler anlegen-->
+
+        <!--Fenster Spieler anlegen-->
         <Custom:ScatterView HorizontalAlignment="Left" VerticalAlignment="Top" Height="1042" Width="1904">
             <Custom:ScatterViewItem x:Name="addplayerscatteru" Background="#C32D2D2D" CanMove="False" CanRotate="False" CanScale="False" Orientation="0" Center="550,550" Visibility="Hidden">
                 <StackPanel Margin="8">
@@ -139,6 +211,6 @@
                 </StackPanel>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
-        
+
     </Grid>
 </Window>

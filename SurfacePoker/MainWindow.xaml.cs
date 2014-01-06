@@ -32,7 +32,7 @@ namespace SurfacePoker
 
         private System.Windows.Controls.Button btn;
 
-        private Game gl;        
+        public Game gl;        
         private void shutDown(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown(0); 
@@ -47,20 +47,20 @@ namespace SurfacePoker
             LinearGradientBrush gradientBrush = new  LinearGradientBrush( Color.FromRgb( 24, 24, 24),  Color.FromRgb(47, 47, 47), new Point(0.5, 0), new Point(0.5, 1));            
             Background = gradientBrush;
             btn.Background = Background;
-            Player player1 = new Player("Anton", 1000, 1);
-            Player player2 = new Player("Berta", 1000, 2);
-            Player player3 = new Player("Cäsar", 1000, 3);
-            Player player4 = new Player("Dora", 1000, 4);
-            Player player5 = new Player("Emil", 1000, 5);
-            Player player6 = new Player("Friedrich", 1000, 6);
+            //Player player1 = new Player("Anton", 1000, 1);
+            //Player player2 = new Player("Berta", 1000, 2);
+            //Player player3 = new Player("Cäsar", 1000, 3);
+            //Player player4 = new Player("Dora", 1000, 4);
+            //Player player5 = new Player("Emil", 1000, 5);
+            //Player player6 = new Player("Friedrich", 1000, 6);
             players = new List<Player>();
-            players.Add(player1);
-            players.Add(player2);
-            players.Add(player3);
-            players.Add(player4);
-            players.Add(player5);
-            players.Add(player6);
-            gl = new Game(players, 100, 50);
+            //players.Add(player1);
+            //players.Add(player2);
+            //players.Add(player3);
+            //players.Add(player4);
+            //players.Add(player5);
+            //players.Add(player6);
+            //gl = new Game(players, 100, 50);
             
             bool b = false;
 
@@ -101,17 +101,48 @@ namespace SurfacePoker
             e.Handled = true;
         }
 
+        private void setSurfaceName(int pos, String name) {
+            switch (pos)
+            {
+                case 1: 
+                    player1name.Text = name;
+                    break;
+                case 2:
+                    player2name.Text = name;
+                    break;
+                case 3:
+                    player3name.Text = name;
+                    break;
+                case 4:
+                    player4name.Text = name;
+                    break;
+                case 5:
+                    player5name.Text = name;
+                    break;
+                case 6:
+                    player6name.Text = name;
+                    break;
+
+            }
+        }
+
         private void savePlayer(object sender, RoutedEventArgs e)
         {
            
             SurfaceButton s = (SurfaceButton)sender;
             StackPanel stackPanel = (StackPanel)s.Parent;
             SurfaceTextBox text = (SurfaceTextBox)stackPanel.FindName("playerName");
-            
-            players.Add(new Player(text.Text, stack, position));
+            setSurfaceName(position, text.Text);
+
+            //TODO Wenn schon ein Spieler am Platz sitz dann Namen überschreiben
+            players.Add(new Player(text.Text, stack, position));            
 
             text.Text = "";
             addplayerscatteru.Visibility = Visibility.Collapsed;
+            if (players.Count >= 2)
+            {
+                addStartButton();
+            }
             e.Handled = true;
 
         }
@@ -131,10 +162,23 @@ namespace SurfacePoker
 
         private void startGame(object sender, RoutedEventArgs e)
         {
+            //Disable adding new players and hide poition fields
             canAddPlayer = false;
+            Pos1.Visibility = Visibility.Collapsed;
+            Pos2.Visibility = Visibility.Collapsed;
+            Pos3.Visibility = Visibility.Collapsed;
+            Pos4.Visibility = Visibility.Collapsed;
+            Pos5.Visibility = Visibility.Collapsed;
+            Pos6.Visibility = Visibility.Collapsed;
+            //Remove 'start new game' button
             Grid.Children.Remove(btn);
             //Start new Game
+            gl = new Game(players, 50, 100);
             gl.newGame();
+            
+            
+
+
             //Show Cards
             showCards();
             e.Handled = true;
@@ -148,21 +192,27 @@ namespace SurfacePoker
                 switch (iPlayer.position)
                 {
                     case 1:
+                        Pos1.Visibility = Visibility.Visible;
                         player1interface.Visibility = Visibility.Visible;
                         break;
                     case 2:
+                        Pos2.Visibility = Visibility.Visible;
                         player2interface.Visibility = Visibility.Visible;
                         break;
                     case 3:
+                        Pos3.Visibility = Visibility.Visible;
                         player3interface.Visibility = Visibility.Visible;
                         break;
                     case 4:
+                        Pos4.Visibility = Visibility.Visible;
                         player4interface.Visibility = Visibility.Visible;
                         break;
                     case 5:
+                        Pos5.Visibility = Visibility.Visible;
                         player5interface.Visibility = Visibility.Visible;
                         break;
                     case 6:
+                        Pos6.Visibility = Visibility.Visible;
                         player6interface.Visibility = Visibility.Visible;
                         break;
 
@@ -179,11 +229,9 @@ namespace SurfacePoker
             int pos = (Int32)Convert.ToInt32(svi.Name[6].ToString());
             //pcard gets which card from player - can be 1 or 2
             int pcard = (Int32)Convert.ToInt32(svi.Name[11].ToString());
-
-            Console.WriteLine(gl.players.Find(x => x.position == pos).cards[pcard - 1]);
             
-            //Console.WriteLine(players.Find(x => x.position == position).cards[0]);
-            //Console.WriteLine(players.Find(x => x.position == position).cards[1]);
+            //Console.WriteLine(gl.players.Find(x => x.position == pos).cards[pcard - 1]);
+            
             BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.players.Find(x => x.position == pos).cards[pcard - 1] + ".png"));
                 Image image = (Image)sender;
                 image.Source = bmpimage;
@@ -198,6 +246,7 @@ namespace SurfacePoker
             Image image = (Image)sender;
             image.Source = bmpimage;
             e.Handled = true;
+            
 
         }
 
