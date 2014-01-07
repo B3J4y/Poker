@@ -53,7 +53,7 @@ namespace SurfacePoker
         /// <summary>
         /// starts a new game and set back all relevant attributes
         /// </summary>
-        public void newGame()
+        public KeyValuePair<Player, List<Action>> newGame()
         {
             deck = new Deck();
             round = 0;
@@ -88,7 +88,7 @@ namespace SurfacePoker
             }
             activePlayer = players.Find(x => x.ingamePosition == 1);
             nextActivePlayer = players.Find(x => x.ingamePosition == 2);
-
+            return getActions();
         }
         /// <summary>
         /// determines which possibilities the active player has
@@ -110,7 +110,12 @@ namespace SurfacePoker
             {
                 throw exp;
             }
-        
+
+            return getActions();
+        }
+
+        private KeyValuePair<Player, List<Action>> getActions()
+        {
             List<Action> actions = new List<Action>();
             actions.Add(new Action(Action.playerAction.fold, 0));
             if (activePlayer.inPot == pot.amountPerPlayer)
@@ -131,7 +136,6 @@ namespace SurfacePoker
             }
             return new KeyValuePair<Player, List<Action>>(activePlayer, actions);
         }
-
         /// <summary>
         /// determines who is the next player after the active Player
         /// </summary>
@@ -274,7 +278,7 @@ namespace SurfacePoker
         /// <summary>
         /// initialize the next round
         /// </summary>
-        public void nextRound()
+        public KeyValuePair<Player, List<Action>> nextRound()
         {
             round++;
             switch (round) {
@@ -303,6 +307,8 @@ namespace SurfacePoker
             activePlayer = whoIsNext(players.Count - 1);
             nextActivePlayer = whoIsNext(players.Count);
             pot.endOfRound();
+
+            return getActions()
         }
 
         /// <summary>
@@ -455,7 +461,7 @@ namespace SurfacePoker
         public void TestPreFlopTurnRiver()
         {
             NewPlayRound();
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 10000; i++)
             {
 
                 gl.newGame();
