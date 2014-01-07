@@ -157,11 +157,11 @@
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
 
-        <!--Spieler Position 6-->    
+        <!--Spieler Position 6-->
         <Rectangle x:Name="Pos6" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p6}" >
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
-            </Rectangle.Fill>            
+            </Rectangle.Fill>
         </Rectangle>
         <!--Anzeige Name-->
         <TextBlock Name="player6name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Left" MinWidth="120" MaxWidth="120" Margin="420,50" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
@@ -211,6 +211,34 @@
                 </StackPanel>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
+
+        <!--Actionbuttons for players 2,3,5,6 @orientation top and bottom horizontal-->
+        <Grid Name="Buttons_h" Margin="{StaticResource p6}" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <Button Name="buttonAction_h" Margin="190,20,20,170" Content="Action" Click="actionButtonClicked"/>
+            <Button Margin="190,60,20,130" Content="Fold"  Click="shutDown"/>
+        </Grid>
+
+        <!--Actionbuttons for players 1 and 4 @orientation left and right vertical-->
+        <Grid Name="Buttons_v" Margin="{StaticResource p4}" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <Button Name="buttonAction_v" Margin="190,20,20,230" Content="Action" Click="actionButtonClicked"/>
+            <Button Margin="190,60,20,190" Content="Fold"  Click="shutDown"/>
+        </Grid>
 
     </Grid>
 </Window>

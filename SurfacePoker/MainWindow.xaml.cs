@@ -32,7 +32,12 @@ namespace SurfacePoker
 
         private System.Windows.Controls.Button btn;
 
-        public Game gl;        
+        private Game gl;
+
+        private bool startNewGame;
+
+        private KeyValuePair<Player, List<Action>> kvp;
+
         private void shutDown(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown(0); 
@@ -41,6 +46,7 @@ namespace SurfacePoker
         public MainWindow()
         {
             canAddPlayer = true;
+            startNewGame = true;
             position = 0;
             stack = 1000;
             btn = new Button();
@@ -173,14 +179,10 @@ namespace SurfacePoker
             //Remove 'start new game' button
             Grid.Children.Remove(btn);
             //Start new Game
-            gl = new Game(players, 50, 100);
-            gl.newGame();
-            
-            
-
-
-            //Show Cards
+            gl = new Game(players,100,50);
+            kvp = gl.newGame();
             showCards();
+            showActionButton(kvp);
             e.Handled = true;
 
         }
@@ -215,7 +217,6 @@ namespace SurfacePoker
                         Pos6.Visibility = Visibility.Visible;
                         player6interface.Visibility = Visibility.Visible;
                         break;
-
                 }
             }
         }
@@ -236,7 +237,6 @@ namespace SurfacePoker
                 Image image = (Image)sender;
                 image.Source = bmpimage;
                 e.Handled = true;
-                
         }
 
         private void turnToBack(object sender, RoutedEventArgs e)
@@ -245,11 +245,119 @@ namespace SurfacePoker
             BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Kartenrueckseite/kartenruecken_1.jpg"));
             Image image = (Image)sender;
             image.Source = bmpimage;
-            e.Handled = true;
-            
+            e.Handled = true;           
+        }
+        /// <summary>
+        /// Shows the two Actionbuttons at players position 
+        /// </summary>
+        /// <param name="pos"></param>
+        private void showActionButton(KeyValuePair<Player,List<Action>> ikvp)
+        {
+            //<Thickness x:Key="p1">50,400,1600,400</Thickness>
+            //<Thickness x:Key="p2">450,50,1190,810</Thickness>
+            //<Thickness x:Key="p3">1190,50,450,810</Thickness>
+            //<Thickness x:Key="p4">1600,400,50,400</Thickness>
+            //<Thickness x:Key="p5">1190,810,450,50</Thickness>
+            //<Thickness x:Key="p6">450,810,1190,50</Thickness>
+            Thickness t;
+            String action = "";
+
+            if (ikvp.Value.Exists(x => x.action == Action.playerAction.check))
+            {
+                action += ikvp.Value.Find(x => x.action == Action.playerAction.check).action.ToString();
+            }
+            else
+            {
+                action += ikvp.Value.Find(x => x.action == Action.playerAction.call).action.ToString() + " " + ikvp.Value.Find(x => x.action == Action.playerAction.call).amount;
+            }
+
+            switch (ikvp.Key.position)
+            {
+                case 1: 
+                    t = new Thickness(50, 400, 1600, 400);
+                    Buttons_v.Margin = t;
+                    Buttons_v.RenderTransform = new RotateTransform(90);
+                    buttonAction_v.Content = action;
+                    Buttons_v.Visibility = Visibility.Visible;
+                    break;
+                case 2: 
+                    t = new Thickness(450,50,1190,810);
+                    Buttons_h.Margin = t;
+                    Buttons_h.RenderTransform = new RotateTransform(180);
+                    buttonAction_h.Content = action;
+                    Buttons_h.Visibility = Visibility.Visible;
+                    break;
+                case 3:
+                    t = new Thickness(1190, 50, 450, 810);
+                    Buttons_h.Margin = t;
+                    Buttons_h.RenderTransform = new RotateTransform(180);
+                    buttonAction_h.Content = action;
+                    Buttons_h.Visibility = Visibility.Visible;
+                    break;
+                case 4:
+                    t = new Thickness(1600, 400, 50, 400);
+                    Buttons_v.Margin = t;
+                    Buttons_v.RenderTransform = new RotateTransform(-90);
+                    buttonAction_v.Content = action;
+                    Buttons_v.Visibility = Visibility.Visible;
+                    break;
+                case 5:
+                    t = new Thickness(1190, 810, 450, 50);
+                    Buttons_h.Margin = t;
+                    Buttons_h.RenderTransform = new RotateTransform(0);
+                    buttonAction_h.Content = action;
+                    Buttons_h.Visibility = Visibility.Visible;
+                    break;
+                case 6:
+                    t = new Thickness(450, 810, 1190, 50);
+                    Buttons_h.Margin = t;
+                    Buttons_h.RenderTransform = new RotateTransform(0);
+                    buttonAction_h.Content = action;
+                    Buttons_h.Visibility = Visibility.Visible;
+                    break;
+            }          
 
         }
+        /// <summary>
+        /// Hides the Grid for the two action buttons
+        /// </summary>
+        private void hideActionButton()
+        {
+            Buttons_h.Visibility = Visibility.Collapsed;
+            Buttons_v.Visibility = Visibility.Collapsed;
+            
+        }
 
+        private void actionButtonClicked(object sender, RoutedEventArgs e)
+        {
+            Button s = (Button)sender;
+            switch (s.Content.ToString().Split(' ')[0])
+            {
+                case "check":
+                    gl.activeAction(Action.playerAction.check, 0);                    
+                    break;
+                case "call":
+                    gl.activeAction(Action.playerAction.call, (Int32)Convert.ToInt32(s.Content.ToString().Split(' ')[1]));
+                    break;
+                case "bet":
+                    gl.activeAction(Action.playerAction.bet, (Int32)Convert.ToInt32(s.Content.ToString().Split(' ')[1]));
+                    break;
+                case "raise":
+                    gl.activeAction(Action.playerAction.raise, (Int32)Convert.ToInt32(s.Content.ToString().Split(' ')[1]));
+                    break;
+            }
+            hideActionButton();
+            try
+            {
+                kvp = gl.nextPlayer();
+                showActionButton(kvp);
+            }
+            catch (EndRoundException exp)
+            {
+                throw exp;
+            }
+            e.Handled = true;
+        }
 
     }
 }
