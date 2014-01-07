@@ -308,7 +308,7 @@ namespace SurfacePoker
             nextActivePlayer = whoIsNext(players.Count);
             pot.endOfRound();
 
-            return getActions()
+            return getActions();
         }
 
         /// <summary>
