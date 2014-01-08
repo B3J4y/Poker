@@ -34,7 +34,7 @@ namespace SurfacePoker
 
         private Game gl;
 
-        private bool startNewGame;
+        private int round;
 
         private KeyValuePair<Player, List<Action>> kvp;
 
@@ -46,7 +46,7 @@ namespace SurfacePoker
         public MainWindow()
         {
             canAddPlayer = true;
-            startNewGame = true;
+            round = 0;
             position = 0;
             stack = 1000;
             btn = new Button();
@@ -333,6 +333,9 @@ namespace SurfacePoker
             Button s = (Button)sender;
             switch (s.Content.ToString().Split(' ')[0])
             {
+                case "fold":
+                    gl.activeAction(Action.playerAction.fold, 0);
+                    break;
                 case "check":
                     gl.activeAction(Action.playerAction.check, 0);                    
                     break;
@@ -354,9 +357,33 @@ namespace SurfacePoker
             }
             catch (EndRoundException exp)
             {
-                throw exp;
+                round++;
+                kvp = gl.nextRound();
+                switch (round)
+                {
+                    case 1:
+                        BitmapImage f1image = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.board[0].ToString() + ".png"));
+                        f1.Source = f1image;
+                        BitmapImage f2image = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.board[1].ToString() + ".png"));
+                        f2.Source = f2image;
+                        BitmapImage f3image = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.board[2].ToString() + ".png"));
+                        f3.Source = f3image;
+                        break;
+                    case 2:
+                        BitmapImage tcimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.board[3].ToString() + ".png"));
+                        tc.Source = tcimage;
+                        break;
+                    case 3:
+                        BitmapImage rcimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.board[4].ToString() + ".png"));
+                        rc.Source = rcimage;
+                        break;
+                    case 4:
+                        break;
+                }
+                communityCards.Visibility = Visibility.Visible;
+                showActionButton(kvp);
             }
-            e.Handled = true;
+            
         }
 
     }

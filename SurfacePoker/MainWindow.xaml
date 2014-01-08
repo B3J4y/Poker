@@ -223,7 +223,7 @@
                 </TransformGroup>
             </Grid.RenderTransform>
             <Button Name="buttonAction_h" Margin="190,20,20,170" Content="Action" Click="actionButtonClicked"/>
-            <Button Margin="190,60,20,130" Content="Fold"  Click="shutDown"/>
+            <Button Margin="190,60,20,130" Content="fold"  Click="actionButtonClicked"/>
         </Grid>
 
         <!--Actionbuttons for players 1 and 4 @orientation left and right vertical-->
@@ -237,8 +237,15 @@
                 </TransformGroup>
             </Grid.RenderTransform>
             <Button Name="buttonAction_v" Margin="190,20,20,230" Content="Action" Click="actionButtonClicked"/>
-            <Button Margin="190,60,20,190" Content="Fold"  Click="shutDown"/>
+            <Button Margin="190,60,20,190" Content="fold"  Click="actionButtonClicked"/>
         </Grid>
 
+        <Grid Name="communityCards" Margin="680,405,680,405" Visibility="Hidden">
+            <Image Name="f1" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="15.2,69.48"/>
+            <Image Name="f2" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="125.6,69.48"/>
+            <Image Name="f3" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" Margin="236,69.48,236,69.48"/>
+            <Image Name="tc" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="125.6,69.48"/>
+            <Image Name="rc" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="15.2,69.48"/>
+        </Grid>
     </Grid>
 </Window>
