@@ -257,11 +257,18 @@
         PreviewTouchDown="DragSourcePreviewInputDeviceDown"
         Custom:SurfaceDragDrop.DragCanceled="DragCanceled"
         Custom:SurfaceDragDrop.DragCompleted="DragCompleted">
-                <Image Source="Res/Chips/Pokerchip_final_500.png" Width="100" Height="100"/>
+                <Image Name="Chip1" Source="Res/Chips/Pokerchip_final_500.png" Width="100" Height="100"/>
             </Custom:ScatterViewItem>
             
         </Custom:ScatterView>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="762,919,0,0" VerticalAlignment="Top" Width="100"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="762,919,0,0" VerticalAlignment="Top" Width="100" >
+            <Custom:ScatterView Custom:SurfaceDragDrop.DragEnter="DropTargetDragEnter"
+        Custom:SurfaceDragDrop.DragLeave="DropTargetDragLeave"
+        Custom:SurfaceDragDrop.Drop="DropTargetDrop"
+                >
+                
+            </Custom:ScatterView>
+        </Border>
 
 
 

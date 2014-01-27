@@ -91,7 +91,6 @@
     </ApplicationDefinition>
     <Compile Include="Action.cs" />
     <Compile Include="Chip.cs" />
-    <Compile Include="DataItem.cs" />
     <Compile Include="EndRoundException.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="HandEvaluator.cs" />

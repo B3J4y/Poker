@@ -453,7 +453,7 @@ namespace SurfacePoker
             // Create the cursor visual.
             ContentControl cursorVisual = new ContentControl()
             {
-                Content = draggedElement.DataContext,
+                Content = draggedElement.FindName("Chip1"),
                 //Style = FindResource("CursorStyle") as Style
             };
 
@@ -504,17 +504,19 @@ namespace SurfacePoker
         private void DropTargetDragEnter(object sender, SurfaceDragDropEventArgs e)
         {
             e.Cursor.Visual.Tag = "DragEnter";
+            Console.WriteLine("DropTargetDragEnter");
         }
         private void DropTargetDragLeave(object sender, SurfaceDragDropEventArgs e)
         {
             e.Cursor.Visual.Tag = null;
+            Console.WriteLine("DropTargetDragLeave");
         }
 
         private void DragCanceled(object sender, SurfaceDragDropEventArgs e)
         {
-            DataItem data = e.Cursor.Data as DataItem;
-            ScatterViewItem item = data.DraggedElement as ScatterViewItem;
-            if (item != null)
+            object data = e.Cursor.Data ;
+            //ScatterViewItem item = data.DraggedElement as ScatterViewItem;
+            if (data != null)
             {
                 Console.WriteLine("Drop Canceled");
             }
@@ -530,6 +532,7 @@ namespace SurfacePoker
             {
                Console.WriteLine("On Move");
             }
+            Console.WriteLine("Drag Complete");
         }
     }
 
