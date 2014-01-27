@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Surface.Presentation.Controls;
+using Microsoft.Surface.Presentation;
+using System.Collections.ObjectModel;
 
 namespace SurfacePoker
 {
@@ -67,12 +69,12 @@ namespace SurfacePoker
             //players.Add(player5);
             //players.Add(player6);
             //gl = new Game(players, 100, 50);
-            
-            bool b = false;
+            DataContext = this;
 
         }
         private void openAddPlayer(object sender, RoutedEventArgs e)
         {
+            createChip();
             //TODO
             //prüfen ob an dieser stelle schon ein Spieler sitzt
             if (canAddPlayer) {
@@ -253,12 +255,12 @@ namespace SurfacePoker
         /// <param name="pos"></param>
         private void showActionButton(KeyValuePair<Player,List<Action>> ikvp)
         {
-            //<Thickness x:Key="p1">50,400,1600,400</Thickness>
-            //<Thickness x:Key="p2">450,50,1190,810</Thickness>
-            //<Thickness x:Key="p3">1190,50,450,810</Thickness>
-            //<Thickness x:Key="p4">1600,400,50,400</Thickness>
-            //<Thickness x:Key="p5">1190,810,450,50</Thickness>
-            //<Thickness x:Key="p6">450,810,1190,50</Thickness>
+        //<Thickness x:Key="p1">40,300,1600,300</Thickness>
+        //<Thickness x:Key="p2">400,40,1040,760</Thickness>
+        //<Thickness x:Key="p3">1040,40,400,760</Thickness>
+        //<Thickness x:Key="p4">1600,300,40,300</Thickness>
+        //<Thickness x:Key="p5">1040,760,400,40</Thickness>
+        //<Thickness x:Key="p6">400,760,1040,40</Thickness>
             Thickness t;
             String action = "";
 
@@ -274,42 +276,42 @@ namespace SurfacePoker
             switch (ikvp.Key.position)
             {
                 case 1: 
-                    t = new Thickness(50, 400, 1600, 400);
+                    t = new Thickness(40, 300, 1600, 300);
                     Buttons_v.Margin = t;
                     Buttons_v.RenderTransform = new RotateTransform(90);
                     buttonAction_v.Content = action;
                     Buttons_v.Visibility = Visibility.Visible;
                     break;
                 case 2: 
-                    t = new Thickness(450,50,1190,810);
+                    t = new Thickness(400,40,1040,760);
                     Buttons_h.Margin = t;
                     Buttons_h.RenderTransform = new RotateTransform(180);
                     buttonAction_h.Content = action;
                     Buttons_h.Visibility = Visibility.Visible;
                     break;
                 case 3:
-                    t = new Thickness(1190, 50, 450, 810);
+                    t = new Thickness(1040, 40, 400, 760);
                     Buttons_h.Margin = t;
                     Buttons_h.RenderTransform = new RotateTransform(180);
                     buttonAction_h.Content = action;
                     Buttons_h.Visibility = Visibility.Visible;
                     break;
                 case 4:
-                    t = new Thickness(1600, 400, 50, 400);
+                    t = new Thickness(1600, 300, 40, 300);
                     Buttons_v.Margin = t;
                     Buttons_v.RenderTransform = new RotateTransform(-90);
                     buttonAction_v.Content = action;
                     Buttons_v.Visibility = Visibility.Visible;
                     break;
                 case 5:
-                    t = new Thickness(1190, 810, 450, 50);
+                    t = new Thickness(1040, 760, 400, 40);
                     Buttons_h.Margin = t;
                     Buttons_h.RenderTransform = new RotateTransform(0);
                     buttonAction_h.Content = action;
                     Buttons_h.Visibility = Visibility.Visible;
                     break;
                 case 6:
-                    t = new Thickness(450, 810, 1190, 50);
+                    t = new Thickness(400, 760, 1040, 40);
                     Buttons_h.Margin = t;
                     Buttons_h.RenderTransform = new RotateTransform(0);
                     buttonAction_h.Content = action;
@@ -386,5 +388,151 @@ namespace SurfacePoker
             
         }
 
+        private void createChip()
+        {
+            ScatterView sv = (ScatterView)this.FindName("Test");
+            
+            Image im = new Image();
+            BitmapImage bitImage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_10.png"));
+            im.Source = bitImage;
+            im.Width = 100;
+            im.Height = 100;
+            //im.MouseDown += new MouseButtonEventHandler(this.test);
+            
+            ScatterViewItem chip = new ScatterViewItem();
+            chip.Content = im;
+            chip.Center = new Point(500,100);
+            chip.Background = Brushes.Transparent;
+            chip.CanMove = true;
+            //chip.MouseDown += new MouseButtonEventHandler(this.test);
+            sv.Items.Add(chip);
+            //g.Children.Add()
+            //player1.setChip(new Chip(p1c10, 300, 750, 208, 10, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_10.png")));
+        }
+
+        private void test(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Test");
+            e.Handled = true;
+        }
+
+        
+
+        //Drag and Drop
+        private void DragSourcePreviewInputDeviceDown(object sender, InputEventArgs e)
+        {
+            FrameworkElement findSource = e.OriginalSource as FrameworkElement;
+            ScatterViewItem draggedElement = null;
+
+            // Find the ScatterViewItem object that is being touched.
+            while (draggedElement == null && findSource != null)
+            {
+                if ((draggedElement = findSource as ScatterViewItem) == null)
+                {
+                    findSource = VisualTreeHelper.GetParent(findSource) as FrameworkElement;
+                }
+            }
+
+            if (draggedElement == null)
+            {
+                return;
+            }
+
+            object data = draggedElement.Content;
+
+            // If the data has not been specified as draggable, 
+            // or the ScatterViewItem cannot move, return.
+            if (data == null)
+            {
+                return;
+            }
+
+            // Set the dragged element. This is needed in case the drag operation is canceled.
+            //data.DraggedElement = draggedElement;
+
+            // Create the cursor visual.
+            ContentControl cursorVisual = new ContentControl()
+            {
+                Content = draggedElement.DataContext,
+                //Style = FindResource("CursorStyle") as Style
+            };
+
+            // Create a list of input devices, 
+            // and add the device passed to this event handler.
+            List<InputDevice> devices = new List<InputDevice>();
+            devices.Add(e.Device);
+
+            // If there are touch devices captured within the element,
+            // add them to the list of input devices.
+            foreach (InputDevice device in draggedElement.TouchesCapturedWithin)
+            {
+                if (device != e.Device)
+                {
+                    devices.Add(device);
+                }
+            }
+
+            // Get the drag source object.
+            ItemsControl dragSource = ItemsControl.ItemsControlFromItemContainer(draggedElement);
+
+            // Start the drag-and-drop operation.
+            SurfaceDragCursor cursor =
+                SurfaceDragDrop.BeginDragDrop(
+                // The ScatterView object that the cursor is dragged out from.
+                  dragSource,
+                // The ScatterViewItem object that is dragged from the drag source.
+                  draggedElement,
+                // The visual element of the cursor.
+                  cursorVisual,
+                // The data attached with the cursor.
+                  draggedElement.DataContext,
+                // The input devices that start dragging the cursor.
+                  devices,
+                // The allowed drag-and-drop effects of the operation.
+                  DragDropEffects.Move);
+
+            // If the cursor was created, the drag-and-drop operation was successfully started.
+            if (cursor != null)
+            {
+                // Hide the ScatterViewItem.
+                //draggedElement.Visibility = Visibility.Hidden;
+                Console.WriteLine("Begin Drag");
+                // This event has been handled.
+                e.Handled = true;
+            }
+        }
+        private void DropTargetDragEnter(object sender, SurfaceDragDropEventArgs e)
+        {
+            e.Cursor.Visual.Tag = "DragEnter";
+        }
+        private void DropTargetDragLeave(object sender, SurfaceDragDropEventArgs e)
+        {
+            e.Cursor.Visual.Tag = null;
+        }
+
+        private void DragCanceled(object sender, SurfaceDragDropEventArgs e)
+        {
+            DataItem data = e.Cursor.Data as DataItem;
+            ScatterViewItem item = data.DraggedElement as ScatterViewItem;
+            if (item != null)
+            {
+                Console.WriteLine("Drop Canceled");
+            }
+        }
+        private void DropTargetDrop(object sender, SurfaceDragDropEventArgs e)
+        {
+            Console.WriteLine("Drop Target");
+        }
+        private void DragCompleted(object sender, SurfaceDragCompletedEventArgs e)
+        {
+            // If the operation is Move, remove the data from drag source.
+            if (e.Cursor.Effects == DragDropEffects.Move)
+            {
+               Console.WriteLine("On Move");
+            }
+        }
     }
+
+
+
 }

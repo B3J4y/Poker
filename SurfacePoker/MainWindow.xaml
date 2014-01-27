@@ -2,17 +2,17 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Custom="http://schemas.microsoft.com/surface/2008" x:Class="SurfacePoker.MainWindow"
-        Title="SurfacePoker" Width="1920" Height="1080" WindowStyle="None" WindowState="Maximized">
+        Title="SurfacePoker" Width="1920" Height="1080" WindowStyle="None" WindowState="Maximized" AllowsTransparency="True" Background="Transparent">
 
 
     <Window.Resources>
-        <Thickness x:Key="p1">50,400,1600,400</Thickness>
-        <Thickness x:Key="p2">450,50,1190,810</Thickness>
-        <Thickness x:Key="p3">1190,50,450,810</Thickness>
-        <Thickness x:Key="p4">1600,400,50,400</Thickness>
-        <Thickness x:Key="p5">1190,810,450,50</Thickness>
-        <Thickness x:Key="p6">450,810,1190,50</Thickness>
-
+        <Thickness x:Key="p1">40,300,1600,300</Thickness>
+        <Thickness x:Key="p2">400,40,1040,760</Thickness>
+        <Thickness x:Key="p3">1040,40,400,760</Thickness>
+        <Thickness x:Key="p4">1600,300,40,300</Thickness>
+        <Thickness x:Key="p5">1040,760,400,40</Thickness>
+        <Thickness x:Key="p6">400,760,1040,40</Thickness>
+        
     </Window.Resources>
 
 
@@ -29,7 +29,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <!--Anzeige Name-->
-        <TextBlock Name="player1name" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="120" MaxWidth="120" Margin="50,370" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+        <TextBlock Name="player1name" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="50,310" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -56,7 +56,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <!--Anzeige Name-->
-        <TextBlock Name="player2name" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="120" MaxWidth="120" Margin="750,70" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+        <TextBlock Name="player2name" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="860,50" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -83,7 +83,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <!--Anzeige Name-->
-        <TextBlock Name="player3name" Text="" VerticalAlignment="Top" HorizontalAlignment="Right" MinWidth="120" MaxWidth="120" Margin="300,70" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+        <TextBlock Name="player3name" Text="" VerticalAlignment="Top" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="170,50" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -110,7 +110,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <!--Anzeige Name-->
-        <TextBlock Name="player4name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="120" MaxWidth="120" Margin="-50,350" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+        <TextBlock Name="player4name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="-190,290" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -137,7 +137,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <!--Anzeige Name-->
-        <TextBlock Name="player5name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="120" MaxWidth="120" Margin="0,0,630,50" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+        <TextBlock Name="player5name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="0,0,620,40" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -164,7 +164,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <!--Anzeige Name-->
-        <TextBlock Name="player6name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Left" MinWidth="120" MaxWidth="120" Margin="420,50" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+        <TextBlock Name="player6name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="410,40" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -222,22 +222,22 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <Button Name="buttonAction_h" Margin="190,20,20,170" Content="Action" Click="actionButtonClicked"/>
-            <Button Margin="190,60,20,130" Content="fold"  Click="actionButtonClicked"/>
+            <Button Name="buttonAction_h" Margin="390,20,20,220" Content="Action" Click="actionButtonClicked"/>
+            <Button Margin="390,70,20,170" Content="fold"  Click="actionButtonClicked"/>
         </Grid>
 
         <!--Actionbuttons for players 1 and 4 @orientation left and right vertical-->
-        <Grid Name="Buttons_v" Margin="{StaticResource p4}" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+        <Grid Name="Buttons_v" Margin="{StaticResource p1}" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="-90"/>
+                    <RotateTransform Angle="90"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <Button Name="buttonAction_v" Margin="190,20,20,230" Content="Action" Click="actionButtonClicked"/>
-            <Button Margin="190,60,20,190" Content="fold"  Click="actionButtonClicked"/>
+            <Button Name="buttonAction_v" Margin="290,120,-80,310" Content="Action" Click="actionButtonClicked"/>
+            <Button Margin="290,180,-80,250" Content="fold"  Click="actionButtonClicked"/>
         </Grid>
 
         <Grid Name="communityCards" Margin="680,405,680,405" Visibility="Hidden">
@@ -247,5 +247,23 @@
             <Image Name="tc" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="125.6,69.48"/>
             <Image Name="rc" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="15.2,69.48"/>
         </Grid>
+        <Custom:ScatterView 
+            Name="Test" 
+            PreviewMouseDown="DragSourcePreviewInputDeviceDown"
+            PreviewTouchDown="DragSourcePreviewInputDeviceDown"
+            Custom:SurfaceDragDrop.DragCanceled="DragCanceled"
+            Custom:SurfaceDragDrop.DragCompleted="DragCompleted">
+            <Custom:ScatterViewItem Background="Transparent" PreviewMouseDown="DragSourcePreviewInputDeviceDown"
+        PreviewTouchDown="DragSourcePreviewInputDeviceDown"
+        Custom:SurfaceDragDrop.DragCanceled="DragCanceled"
+        Custom:SurfaceDragDrop.DragCompleted="DragCompleted">
+                <Image Source="Res/Chips/Pokerchip_final_500.png" Width="100" Height="100"/>
+            </Custom:ScatterViewItem>
+            
+        </Custom:ScatterView>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="762,919,0,0" VerticalAlignment="Top" Width="100"/>
+
+
+
     </Grid>
 </Window>
