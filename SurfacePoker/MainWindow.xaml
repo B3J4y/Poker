@@ -12,7 +12,30 @@
         <Thickness x:Key="p4">1600,300,40,300</Thickness>
         <Thickness x:Key="p5">1040,760,400,40</Thickness>
         <Thickness x:Key="p6">400,760,1040,40</Thickness>
-        
+        <DataTemplate x:Key="ScatterViewItemDataTemplate" >
+            <Border BorderThickness="2" BorderBrush="White" Margin="10">
+                <StackPanel >
+                    <Label Content="{Binding Name}" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   FontSize="20"/>
+
+                    <Label Content="{Binding CanDrag}"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   FontSize="18"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="SurfaceListBoxItemDataTemplate">
+            <Grid Width="190" Height="50">
+                <Label Content="{Binding Name}" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center"
+               Foreground="White"
+               FontSize="20"/>
+            </Grid>
+        </DataTemplate>
     </Window.Resources>
 
 
@@ -224,6 +247,25 @@
             </Grid.RenderTransform>
             <Button Name="buttonAction_h" Margin="390,20,20,220" Content="Action" Click="actionButtonClicked"/>
             <Button Margin="390,70,20,170" Content="fold"  Click="actionButtonClicked"/>
+            <!--Chip Images-->
+            <Image Name="ChipImg10_h" Source="Res/Chips/Pokerchip_final_10.png" Width="90" Height="90" Margin="10,10,380,180"/>
+            <Image Name="ChipImg20_h" Source="Res/Chips/Pokerchip_final_20.png" Width="90" Height="90" Margin="100,10,290,180"/>
+            <Image Name="ChipImg100_h" Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90" Margin="190,10,200,180"/>
+            <Image Name="ChipImg500_h" Source="Res/Chips/Pokerchip_final_500.png" Width="90" Height="90" Margin="280,10,110,180"/>
+            <!--Bet Area-->
+            <Custom:SurfaceListBox 
+            Name="DropTarget" 
+            TextBlock.TextAlignment="Center"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Margin="370,0,0,10"
+            Width="100"
+            Height="100"
+            AllowDrop="True"
+            Custom:SurfaceDragDrop.Drop="DropTargetDrop" Background="#540F0000" >
+            </Custom:SurfaceListBox>
+            <TextBlock Name="personalStackField_h" Width="100" Height="100" Text="Bet Area" Background="{x:Null}" Foreground="Gray" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="370,0,0,10"/>
+
         </Grid>
 
         <!--Actionbuttons for players 1 and 4 @orientation left and right vertical-->
@@ -238,6 +280,25 @@
             </Grid.RenderTransform>
             <Button Name="buttonAction_v" Margin="290,120,-80,310" Content="Action" Click="actionButtonClicked"/>
             <Button Margin="290,180,-80,250" Content="fold"  Click="actionButtonClicked"/>
+            <!--Chip Images-->
+            <Image Name="ChipImg10_v" Source="Res/Chips/Pokerchip_final_10.png" Width="90" Height="90" Margin="-90,110,280,280"/>
+            <Image Name="ChipImg20_v" Source="Res/Chips/Pokerchip_final_20.png" Width="90" Height="90" Margin="0,110,190,280" />
+            <Image Name="ChipImg100_v" Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90" Margin="90,110,100,280" />
+            <Image Name="ChipImg500_v" Source="Res/Chips/Pokerchip_final_500.png" Width="90" Height="90" Margin="180,110,10,280" />
+            <!--Bet Area-->
+            <Custom:SurfaceListBox 
+            Name="DropTarget_v" 
+            TextBlock.TextAlignment="Center"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Margin="272,0,-92,115"
+            Width="100"
+            Height="100"
+            AllowDrop="True"
+            Custom:SurfaceDragDrop.Drop="DropTargetDrop" Background="#540F0000">
+            </Custom:SurfaceListBox>
+            <TextBlock Name="personalStackField_v" Width="100" Height="100" Text="Bet Area" Background="{x:Null}" Foreground="Gray" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="272,0,-92,115" />
+
         </Grid>
 
         <Grid Name="communityCards" Margin="680,405,680,405" Visibility="Hidden">
@@ -247,28 +308,43 @@
             <Image Name="tc" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="125.6,69.48"/>
             <Image Name="rc" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="15.2,69.48"/>
         </Grid>
-        <Custom:ScatterView 
-            Name="Test" 
-            PreviewMouseDown="DragSourcePreviewInputDeviceDown"
-            PreviewTouchDown="DragSourcePreviewInputDeviceDown"
-            Custom:SurfaceDragDrop.DragCanceled="DragCanceled"
-            Custom:SurfaceDragDrop.DragCompleted="DragCompleted">
-            <Custom:ScatterViewItem Background="Transparent" PreviewMouseDown="DragSourcePreviewInputDeviceDown"
-        PreviewTouchDown="DragSourcePreviewInputDeviceDown"
-        Custom:SurfaceDragDrop.DragCanceled="DragCanceled"
-        Custom:SurfaceDragDrop.DragCompleted="DragCompleted">
-                <Image Name="Chip1" Source="Res/Chips/Pokerchip_final_500.png" Width="100" Height="100"/>
+
+
+        <Custom:ScatterView Name="Chips" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+            <Custom:ScatterViewItem Name="ChipSVI10" Center="450,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+                PreviewMouseDown="DragSourcePreviewInputDeviceDown"
+                PreviewTouchDown="DragSourcePreviewInputDeviceDown"
+                Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+                <Image Source="Res/Chips/Pokerchip_final_10.png" Width="90" Height="90"/>
             </Custom:ScatterViewItem>
-            
+            <Custom:ScatterViewItem Name="ChipSVI20" Center="545,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+                PreviewMouseDown="DragSourcePreviewInputDeviceDown"
+                PreviewTouchDown="DragSourcePreviewInputDeviceDown"
+                Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+                <Image Source="Res/Chips/Pokerchip_final_20.png" Width="90" Height="90"/>
+            </Custom:ScatterViewItem>
+            <Custom:ScatterViewItem Name="ChipSVI100" Center="640,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+                PreviewMouseDown="DragSourcePreviewInputDeviceDown"
+                PreviewTouchDown="DragSourcePreviewInputDeviceDown"
+                Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+                <Image Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90"/>
+            </Custom:ScatterViewItem>
+            <Custom:ScatterViewItem Name="ChipSVI500" Center="735,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+                PreviewMouseDown="DragSourcePreviewInputDeviceDown"
+                PreviewTouchDown="DragSourcePreviewInputDeviceDown"
+                Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+                <Image Source="Res/Chips/Pokerchip_final_500.png" Width="90" Height="90"/>
+            </Custom:ScatterViewItem>
         </Custom:ScatterView>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="762,919,0,0" VerticalAlignment="Top" Width="100" >
-            <Custom:ScatterView Custom:SurfaceDragDrop.DragEnter="DropTargetDragEnter"
-        Custom:SurfaceDragDrop.DragLeave="DropTargetDragLeave"
-        Custom:SurfaceDragDrop.Drop="DropTargetDrop"
-                >
-                
-            </Custom:ScatterView>
-        </Border>
+
+
+
+
+
+
+        
+
+
 
 
 

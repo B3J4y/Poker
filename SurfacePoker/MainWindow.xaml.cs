@@ -40,6 +40,8 @@ namespace SurfacePoker
 
         private KeyValuePair<Player, List<Action>> kvp;
 
+        private int personalStack { get; set; }
+
         private void shutDown(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown(0); 
@@ -50,7 +52,8 @@ namespace SurfacePoker
             canAddPlayer = true;
             round = 0;
             position = 0;
-            stack = 1000;
+            stack = 600;
+            personalStack = 0;
             btn = new Button();
             LinearGradientBrush gradientBrush = new  LinearGradientBrush( Color.FromRgb( 24, 24, 24),  Color.FromRgb(47, 47, 47), new Point(0.5, 0), new Point(0.5, 1));            
             Background = gradientBrush;
@@ -74,7 +77,6 @@ namespace SurfacePoker
         }
         private void openAddPlayer(object sender, RoutedEventArgs e)
         {
-            createChip();
             //TODO
             //prüfen ob an dieser stelle schon ein Spieler sitzt
             if (canAddPlayer) {
@@ -146,6 +148,7 @@ namespace SurfacePoker
             players.Add(new Player(text.Text, stack, position));            
 
             text.Text = "";
+            position = 0;
             addplayerscatteru.Visibility = Visibility.Collapsed;
             if (players.Count >= 2)
             {
@@ -159,7 +162,7 @@ namespace SurfacePoker
         {
             btn.Name = "btnStart";
             btn.Content = "Spiel starten";
-            btn.Margin = new Thickness(800, 700, 800, 320);
+            btn.Margin = new Thickness(900, 700, 900, 320);
             btn.Click += new RoutedEventHandler(startGame);         
             if (!Grid.Children.Contains(btn))
             {
@@ -263,14 +266,20 @@ namespace SurfacePoker
         //<Thickness x:Key="p6">400,760,1040,40</Thickness>
             Thickness t;
             String action = "";
+            position = ikvp.Key.position;
 
             if (ikvp.Value.Exists(x => x.action == Action.playerAction.check))
             {
                 action += ikvp.Value.Find(x => x.action == Action.playerAction.check).action.ToString();
+                personalStackField_h.Text = "Bet Area";
+                personalStackField_v.Text = "Bet Area";
             }
             else
             {
                 action += ikvp.Value.Find(x => x.action == Action.playerAction.call).action.ToString() + " " + ikvp.Value.Find(x => x.action == Action.playerAction.call).amount;
+                personalStack = ikvp.Value.Find(x => x.action == Action.playerAction.call).amount;
+                personalStackField_h.Text = "" + ikvp.Value.Find(x => x.action == Action.playerAction.call).amount;
+                personalStackField_v.Text = "" + ikvp.Value.Find(x => x.action == Action.playerAction.call).amount;
             }
 
             switch (ikvp.Key.position)
@@ -280,6 +289,11 @@ namespace SurfacePoker
                     Buttons_v.Margin = t;
                     Buttons_v.RenderTransform = new RotateTransform(90);
                     buttonAction_v.Content = action;
+                    ChipSVI10.Center = new Point(270,360);
+                    ChipSVI20.Center = new Point(270, 455);
+                    ChipSVI100.Center = new Point(270, 545);
+                    ChipSVI500.Center = new Point(270, 635);
+                    checkCash(ikvp.Key.position);
                     Buttons_v.Visibility = Visibility.Visible;
                     break;
                 case 2: 
@@ -287,6 +301,11 @@ namespace SurfacePoker
                     Buttons_h.Margin = t;
                     Buttons_h.RenderTransform = new RotateTransform(180);
                     buttonAction_h.Content = action;
+                    ChipSVI10.Center = new Point(830,270);
+                    ChipSVI20.Center = new Point(740, 270);
+                    ChipSVI100.Center = new Point(650, 270);
+                    ChipSVI500.Center = new Point(560, 270);
+                    checkCash(ikvp.Key.position);
                     Buttons_h.Visibility = Visibility.Visible;
                     break;
                 case 3:
@@ -294,6 +313,11 @@ namespace SurfacePoker
                     Buttons_h.Margin = t;
                     Buttons_h.RenderTransform = new RotateTransform(180);
                     buttonAction_h.Content = action;
+                    ChipSVI10.Center = new Point(1470,270);
+                    ChipSVI20.Center = new Point(1380, 270);
+                    ChipSVI100.Center = new Point(1290, 270);
+                    ChipSVI500.Center = new Point(1200, 270);
+                    checkCash(ikvp.Key.position);
                     Buttons_h.Visibility = Visibility.Visible;
                     break;
                 case 4:
@@ -301,6 +325,11 @@ namespace SurfacePoker
                     Buttons_v.Margin = t;
                     Buttons_v.RenderTransform = new RotateTransform(-90);
                     buttonAction_v.Content = action;
+                    ChipSVI10.Center = new Point(1660, 730);
+                    ChipSVI20.Center = new Point(1660, 640);
+                    ChipSVI100.Center = new Point(1660, 550);
+                    ChipSVI500.Center = new Point(1660, 460);
+                    checkCash(ikvp.Key.position);
                     Buttons_v.Visibility = Visibility.Visible;
                     break;
                 case 5:
@@ -308,6 +337,11 @@ namespace SurfacePoker
                     Buttons_h.Margin = t;
                     Buttons_h.RenderTransform = new RotateTransform(0);
                     buttonAction_h.Content = action;
+                    ChipSVI10.Center = new Point(1105,820);
+                    ChipSVI20.Center = new Point(1190, 820);
+                    ChipSVI100.Center = new Point(1280, 820);
+                    ChipSVI500.Center = new Point(1375, 820);
+                    checkCash(ikvp.Key.position);
                     Buttons_h.Visibility = Visibility.Visible;
                     break;
                 case 6:
@@ -315,6 +349,11 @@ namespace SurfacePoker
                     Buttons_h.Margin = t;
                     Buttons_h.RenderTransform = new RotateTransform(0);
                     buttonAction_h.Content = action;
+                    ChipSVI10.Center = new Point(465,820);
+                    ChipSVI20.Center = new Point(555, 820);
+                    ChipSVI100.Center = new Point(640, 820);
+                    ChipSVI500.Center = new Point(735, 820);
+                    checkCash(ikvp.Key.position);
                     Buttons_h.Visibility = Visibility.Visible;
                     break;
             }          
@@ -388,33 +427,33 @@ namespace SurfacePoker
             
         }
 
-        private void createChip()
-        {
-            ScatterView sv = (ScatterView)this.FindName("Test");
+        //private void createChip()
+        //{
+        //    ScatterView sv = (ScatterView)this.FindName("Test");
             
-            Image im = new Image();
-            BitmapImage bitImage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_10.png"));
-            im.Source = bitImage;
-            im.Width = 100;
-            im.Height = 100;
-            //im.MouseDown += new MouseButtonEventHandler(this.test);
+        //    Image im = new Image();
+        //    BitmapImage bitImage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_10.png"));
+        //    im.Source = bitImage;
+        //    im.Width = 100;
+        //    im.Height = 100;
+        //    //im.MouseDown += new MouseButtonEventHandler(this.test);
             
-            ScatterViewItem chip = new ScatterViewItem();
-            chip.Content = im;
-            chip.Center = new Point(500,100);
-            chip.Background = Brushes.Transparent;
-            chip.CanMove = true;
-            //chip.MouseDown += new MouseButtonEventHandler(this.test);
-            sv.Items.Add(chip);
-            //g.Children.Add()
-            //player1.setChip(new Chip(p1c10, 300, 750, 208, 10, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_10.png")));
-        }
+        //    ScatterViewItem chip = new ScatterViewItem();
+        //    chip.Content = im;
+        //    chip.Center = new Point(500,100);
+        //    chip.Background = Brushes.Transparent;
+        //    chip.CanMove = true;
+        //    //chip.MouseDown += new MouseButtonEventHandler(this.test);
+        //    sv.Items.Add(chip);
+        //    //g.Children.Add()
+        //    //player1.setChip(new Chip(p1c10, 300, 750, 208, 10, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_10.png")));
+        //}
 
-        private void test(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine("Test");
-            e.Handled = true;
-        }
+        //private void test(object sender, RoutedEventArgs e)
+        //{
+        //    Console.WriteLine("Test");
+        //    e.Handled = true;
+        //}
 
         
 
@@ -423,6 +462,8 @@ namespace SurfacePoker
         {
             FrameworkElement findSource = e.OriginalSource as FrameworkElement;
             ScatterViewItem draggedElement = null;
+            ScatterViewItem sci = sender as ScatterViewItem;
+            Image img = sci.Content as Image;
 
             // Find the ScatterViewItem object that is being touched.
             while (draggedElement == null && findSource != null)
@@ -453,7 +494,7 @@ namespace SurfacePoker
             // Create the cursor visual.
             ContentControl cursorVisual = new ContentControl()
             {
-                Content = draggedElement.FindName("Chip1"),
+                Content = img,
                 //Style = FindResource("CursorStyle") as Style
             };
 
@@ -485,7 +526,7 @@ namespace SurfacePoker
                 // The visual element of the cursor.
                   cursorVisual,
                 // The data attached with the cursor.
-                  draggedElement.DataContext,
+                  img,
                 // The input devices that start dragging the cursor.
                   devices,
                 // The allowed drag-and-drop effects of the operation.
@@ -501,16 +542,18 @@ namespace SurfacePoker
                 e.Handled = true;
             }
         }
-        private void DropTargetDragEnter(object sender, SurfaceDragDropEventArgs e)
-        {
-            e.Cursor.Visual.Tag = "DragEnter";
-            Console.WriteLine("DropTargetDragEnter");
-        }
-        private void DropTargetDragLeave(object sender, SurfaceDragDropEventArgs e)
-        {
-            e.Cursor.Visual.Tag = null;
-            Console.WriteLine("DropTargetDragLeave");
-        }
+        //private void DropTargetDragEnter(object sender, SurfaceDragDropEventArgs e)
+        //{
+        //    e.Cursor.Visual.Tag = "DragEnter";
+        //    Console.WriteLine("DropTargetDragEnter");
+        //    e.Handled = true;
+        //}
+        //private void DropTargetDragLeave(object sender, SurfaceDragDropEventArgs e)
+        //{
+        //    e.Cursor.Visual.Tag = null;
+        //    Console.WriteLine("DropTargetDragLeave");
+        //    e.Handled = true;
+        //}
 
         private void DragCanceled(object sender, SurfaceDragDropEventArgs e)
         {
@@ -520,19 +563,85 @@ namespace SurfacePoker
             {
                 Console.WriteLine("Drop Canceled");
             }
+            e.Handled = true;
         }
         private void DropTargetDrop(object sender, SurfaceDragDropEventArgs e)
         {
-            Console.WriteLine("Drop Target");
+
+            Image img = e.Cursor.Data as Image;
+            //Get Chip Value
+            char[] delimiterChars = { '_', '.'};
+            string text = img.Source.ToString();
+            string[] words = text.Split(delimiterChars);
+
+            //Update the personal stack
+            personalStack += (Int32)Convert.ToInt32(words[2]);
+            personalStackField_h.Text = personalStack.ToString();
+            personalStackField_v.Text = personalStack.ToString();
+            checkCash(position);
+            buttonAction_h.Content = "raise " + personalStack;
+            buttonAction_v.Content = "raise " + personalStack;
+            e.Handled = true;
         }
-        private void DragCompleted(object sender, SurfaceDragCompletedEventArgs e)
+        //private void DragCompleted(object sender, SurfaceDragCompletedEventArgs e)
+        //{
+        //    // If the operation is Move, remove the data from drag source.
+        //    if (e.Cursor.Effects == DragDropEffects.Move)
+        //    {
+        //       Console.WriteLine("On Move");
+        //    }
+        //    Console.WriteLine("Drag Complete");
+        //    e.Handled = true;
+        //}
+        private void checkCash(int pos)
         {
-            // If the operation is Move, remove the data from drag source.
-            if (e.Cursor.Effects == DragDropEffects.Move)
-            {
-               Console.WriteLine("On Move");
+            if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 500) {
+                ChipImg500_h.Visibility = Visibility.Collapsed;
+                ChipImg500_v.Visibility = Visibility.Collapsed;
+                ChipSVI500.Visibility = Visibility.Collapsed;
+                if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 100) {
+                    ChipImg100_h.Visibility = Visibility.Collapsed;
+                    ChipImg100_v.Visibility = Visibility.Collapsed;
+                    ChipSVI100.Visibility = Visibility.Collapsed;
+                    if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 20)
+                    {
+                        ChipImg20_h.Visibility = Visibility.Collapsed;
+                        ChipImg20_v.Visibility = Visibility.Collapsed;
+                        ChipSVI20.Visibility = Visibility.Collapsed;
+                        if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 10)
+                        {
+                            ChipImg10_h.Visibility = Visibility.Collapsed;
+                            ChipImg10_v.Visibility = Visibility.Collapsed;
+                            ChipSVI10.Visibility = Visibility.Collapsed;
+
+                        }
+                        else
+                        {
+                            ChipImg10_h.Visibility = Visibility.Visible;
+                            ChipImg10_v.Visibility = Visibility.Visible;
+                            ChipSVI10.Visibility = Visibility.Visible;
+                        }
+                    } 
+                    else
+                    {
+                        ChipImg20_h.Visibility = Visibility.Visible;
+                        ChipImg20_v.Visibility = Visibility.Visible;
+                        ChipSVI20.Visibility = Visibility.Visible;
+                    }
+                }
+                else
+                {
+                    ChipImg100_h.Visibility = Visibility.Visible;
+                    ChipImg100_v.Visibility = Visibility.Visible;
+                    ChipSVI100.Visibility = Visibility.Visible;
+                }
             }
-            Console.WriteLine("Drag Complete");
+            else
+            {
+                ChipImg500_h.Visibility = Visibility.Visible;
+                ChipImg500_v.Visibility = Visibility.Visible;
+                ChipSVI500.Visibility = Visibility.Visible;
+            }
         }
     }
 
