@@ -34,7 +34,7 @@ namespace SurfacePoker
 
         private System.Windows.Controls.Button btn;
 
-        private Game gl;
+        private Game gl {get; set;}
 
         private int round;
 
@@ -274,6 +274,7 @@ namespace SurfacePoker
             personalStackField_h.Text = "Bet Area";
             personalStackField_v.Text = "Bet Area";
             personalStack = 0;
+            updateBalance();
             setActionButtonText();
             
 
@@ -465,6 +466,22 @@ namespace SurfacePoker
                 showActionButton(kvp);
             }
             
+        }
+
+        private void updateBalance()
+        {
+            foreach (Player iPlayer in gl.players.FindAll(x => x.isActive))
+            {
+                switch (iPlayer.position)
+                {
+                    case 1: player1balance.Text = iPlayer.stack.ToString(); break;
+                    case 2: player2balance.Text = iPlayer.stack.ToString(); break;
+                    case 3: player3balance.Text = iPlayer.stack.ToString(); break;
+                    case 4: player4balance.Text = iPlayer.stack.ToString(); break;
+                    case 5: player5balance.Text = iPlayer.stack.ToString(); break;
+                    case 6: player6balance.Text = iPlayer.stack.ToString(); break;
+                }
+            }    
         }
 
         //private void createChip()
