@@ -42,6 +42,8 @@ namespace SurfacePoker
 
         private int personalStack { get; set; }
 
+        private bool isBet { get; set; }
+
         private void shutDown(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown(0); 
@@ -49,6 +51,7 @@ namespace SurfacePoker
 
         public MainWindow()
         {
+            isBet = true;
             canAddPlayer = true;
             round = 0;
             position = 0;
@@ -265,22 +268,14 @@ namespace SurfacePoker
         //<Thickness x:Key="p5">1040,760,400,40</Thickness>
         //<Thickness x:Key="p6">400,760,1040,40</Thickness>
             Thickness t;
-            String action = "";
             position = ikvp.Key.position;
-
-            if (ikvp.Value.Exists(x => x.action == Action.playerAction.check))
-            {
-                action += ikvp.Value.Find(x => x.action == Action.playerAction.check).action.ToString();
-                personalStackField_h.Text = "Bet Area";
-                personalStackField_v.Text = "Bet Area";
-            }
-            else
-            {
-                action += ikvp.Value.Find(x => x.action == Action.playerAction.call).action.ToString() + " " + ikvp.Value.Find(x => x.action == Action.playerAction.call).amount;
-                personalStack = ikvp.Value.Find(x => x.action == Action.playerAction.call).amount;
-                personalStackField_h.Text = "" + ikvp.Value.Find(x => x.action == Action.playerAction.call).amount;
-                personalStackField_v.Text = "" + ikvp.Value.Find(x => x.action == Action.playerAction.call).amount;
-            }
+            buttonAction_h.IsEnabled = false;
+            buttonAction_v.IsEnabled = false;
+            personalStackField_h.Text = "Bet Area";
+            personalStackField_v.Text = "Bet Area";
+            personalStack = 0;
+            setActionButtonText();
+            
 
             switch (ikvp.Key.position)
             {
@@ -288,7 +283,6 @@ namespace SurfacePoker
                     t = new Thickness(40, 300, 1600, 300);
                     Buttons_v.Margin = t;
                     Buttons_v.RenderTransform = new RotateTransform(90);
-                    buttonAction_v.Content = action;
                     ChipSVI10.Center = new Point(270,360);
                     ChipSVI20.Center = new Point(270, 455);
                     ChipSVI100.Center = new Point(270, 545);
@@ -300,7 +294,6 @@ namespace SurfacePoker
                     t = new Thickness(400,40,1040,760);
                     Buttons_h.Margin = t;
                     Buttons_h.RenderTransform = new RotateTransform(180);
-                    buttonAction_h.Content = action;
                     ChipSVI10.Center = new Point(830,270);
                     ChipSVI20.Center = new Point(740, 270);
                     ChipSVI100.Center = new Point(650, 270);
@@ -312,7 +305,6 @@ namespace SurfacePoker
                     t = new Thickness(1040, 40, 400, 760);
                     Buttons_h.Margin = t;
                     Buttons_h.RenderTransform = new RotateTransform(180);
-                    buttonAction_h.Content = action;
                     ChipSVI10.Center = new Point(1470,270);
                     ChipSVI20.Center = new Point(1380, 270);
                     ChipSVI100.Center = new Point(1290, 270);
@@ -324,7 +316,6 @@ namespace SurfacePoker
                     t = new Thickness(1600, 300, 40, 300);
                     Buttons_v.Margin = t;
                     Buttons_v.RenderTransform = new RotateTransform(-90);
-                    buttonAction_v.Content = action;
                     ChipSVI10.Center = new Point(1660, 730);
                     ChipSVI20.Center = new Point(1660, 640);
                     ChipSVI100.Center = new Point(1660, 550);
@@ -336,7 +327,6 @@ namespace SurfacePoker
                     t = new Thickness(1040, 760, 400, 40);
                     Buttons_h.Margin = t;
                     Buttons_h.RenderTransform = new RotateTransform(0);
-                    buttonAction_h.Content = action;
                     ChipSVI10.Center = new Point(1105,820);
                     ChipSVI20.Center = new Point(1190, 820);
                     ChipSVI100.Center = new Point(1280, 820);
@@ -348,7 +338,6 @@ namespace SurfacePoker
                     t = new Thickness(400, 760, 1040, 40);
                     Buttons_h.Margin = t;
                     Buttons_h.RenderTransform = new RotateTransform(0);
-                    buttonAction_h.Content = action;
                     ChipSVI10.Center = new Point(465,820);
                     ChipSVI20.Center = new Point(555, 820);
                     ChipSVI100.Center = new Point(640, 820);
@@ -359,6 +348,52 @@ namespace SurfacePoker
             }          
 
         }
+        private void setActionButtonText()
+        {
+            String action = "";
+            if (kvp.Value.Exists(x => x.action == Action.playerAction.check) && personalStack == 0)
+            {
+                action += kvp.Value.Find(x => x.action == Action.playerAction.check).action.ToString();
+                buttonAction_h.IsEnabled = true;
+                buttonAction_v.IsEnabled = true;
+            }
+            else
+            {
+                if (kvp.Value.Exists(x => x.action == Action.playerAction.check) && personalStack != 0)
+                {
+                    action += "bet " + personalStack;
+                    buttonAction_h.IsEnabled = true;
+                    buttonAction_v.IsEnabled = true;
+                }
+                else
+                {
+                    if (kvp.Value.Find(x => x.action == Action.playerAction.call).amount < personalStack)
+                    {
+                        action += "raise " + personalStack;
+                        buttonAction_h.IsEnabled = true;
+                        buttonAction_v.IsEnabled = true;
+                    }
+                    else
+                    {
+                        if (kvp.Value.Find(x => x.action == Action.playerAction.call).amount == personalStack)
+                        {
+                            action += "call " + personalStack;
+                            buttonAction_h.IsEnabled = true;
+                            buttonAction_v.IsEnabled = true;
+                        }
+                        else
+                        {
+                            action += kvp.Value.Find(x => x.action == Action.playerAction.call).action.ToString() + " " + kvp.Value.Find(x => x.action == Action.playerAction.call).amount;
+                            buttonAction_h.IsEnabled = false;
+                            buttonAction_v.IsEnabled = false;
+                        }
+                    }
+                }                
+            }
+            buttonAction_h.Content = action;
+            buttonAction_v.Content = action;
+        }
+
         /// <summary>
         /// Hides the Grid for the two action buttons
         /// </summary>
@@ -396,8 +431,13 @@ namespace SurfacePoker
                 kvp = gl.nextPlayer();
                 showActionButton(kvp);
             }
+            catch (NoPlayerInGameException exp)
+            {
+                Console.WriteLine(exp.Message);
+            }
             catch (EndRoundException exp)
             {
+                Console.WriteLine(exp.Message.ToString());
                 round++;
                 kvp = gl.nextRound();
                 switch (round)
@@ -561,7 +601,7 @@ namespace SurfacePoker
             //ScatterViewItem item = data.DraggedElement as ScatterViewItem;
             if (data != null)
             {
-                Console.WriteLine("Drop Canceled");
+                //Console.WriteLine("Drop Canceled");
             }
             e.Handled = true;
         }
@@ -579,27 +619,32 @@ namespace SurfacePoker
             personalStackField_h.Text = personalStack.ToString();
             personalStackField_v.Text = personalStack.ToString();
             checkCash(position);
-            buttonAction_h.Content = "raise " + personalStack;
-            buttonAction_v.Content = "raise " + personalStack;
+            setActionButtonText();
             e.Handled = true;
         }
-        //private void DragCompleted(object sender, SurfaceDragCompletedEventArgs e)
-        //{
-        //    // If the operation is Move, remove the data from drag source.
-        //    if (e.Cursor.Effects == DragDropEffects.Move)
-        //    {
-        //       Console.WriteLine("On Move");
-        //    }
-        //    Console.WriteLine("Drag Complete");
-        //    e.Handled = true;
-        //}
+
         private void checkCash(int pos)
         {
-            if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 500) {
+            ChipImg10_h.Visibility = Visibility.Visible;
+            ChipImg10_v.Visibility = Visibility.Visible;
+            ChipSVI10.Visibility = Visibility.Visible;
+            ChipImg20_h.Visibility = Visibility.Visible;
+            ChipImg20_v.Visibility = Visibility.Visible;
+            ChipSVI20.Visibility = Visibility.Visible;
+            ChipImg100_h.Visibility = Visibility.Visible;
+            ChipImg100_v.Visibility = Visibility.Visible;
+            ChipSVI100.Visibility = Visibility.Visible;
+            ChipImg500_h.Visibility = Visibility.Visible;
+            ChipImg500_v.Visibility = Visibility.Visible;
+            ChipSVI500.Visibility = Visibility.Visible;
+
+            if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 500)
+            {
                 ChipImg500_h.Visibility = Visibility.Collapsed;
                 ChipImg500_v.Visibility = Visibility.Collapsed;
                 ChipSVI500.Visibility = Visibility.Collapsed;
-                if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 100) {
+                if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 100)
+                {
                     ChipImg100_h.Visibility = Visibility.Collapsed;
                     ChipImg100_v.Visibility = Visibility.Collapsed;
                     ChipSVI100.Visibility = Visibility.Collapsed;
@@ -615,32 +660,8 @@ namespace SurfacePoker
                             ChipSVI10.Visibility = Visibility.Collapsed;
 
                         }
-                        else
-                        {
-                            ChipImg10_h.Visibility = Visibility.Visible;
-                            ChipImg10_v.Visibility = Visibility.Visible;
-                            ChipSVI10.Visibility = Visibility.Visible;
-                        }
-                    } 
-                    else
-                    {
-                        ChipImg20_h.Visibility = Visibility.Visible;
-                        ChipImg20_v.Visibility = Visibility.Visible;
-                        ChipSVI20.Visibility = Visibility.Visible;
                     }
                 }
-                else
-                {
-                    ChipImg100_h.Visibility = Visibility.Visible;
-                    ChipImg100_v.Visibility = Visibility.Visible;
-                    ChipSVI100.Visibility = Visibility.Visible;
-                }
-            }
-            else
-            {
-                ChipImg500_h.Visibility = Visibility.Visible;
-                ChipImg500_v.Visibility = Visibility.Visible;
-                ChipSVI500.Visibility = Visibility.Visible;
             }
         }
     }

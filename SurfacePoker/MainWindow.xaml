@@ -245,7 +245,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <Button Name="buttonAction_h" Margin="390,20,20,220" Content="Action" Click="actionButtonClicked"/>
+            <Button Name="buttonAction_h" Margin="390,20,20,220" Content="Action" Click="actionButtonClicked" IsEnabled="False" />
             <Button Margin="390,70,20,170" Content="fold"  Click="actionButtonClicked"/>
             <!--Chip Images-->
             <Image Name="ChipImg10_h" Source="Res/Chips/Pokerchip_final_10.png" Width="90" Height="90" Margin="10,10,380,180"/>
@@ -264,7 +264,7 @@
             AllowDrop="True"
             Custom:SurfaceDragDrop.Drop="DropTargetDrop" Background="#540F0000" >
             </Custom:SurfaceListBox>
-            <TextBlock Name="personalStackField_h" Width="100" Height="100" Text="Bet Area" Background="{x:Null}" Foreground="Gray" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="370,0,0,10"/>
+            <TextBlock Name="personalStackField_h" Width="100" Height="100" Text="Bet Area" Background="{x:Null}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="370,0,0,10"/>
 
         </Grid>
 
@@ -278,7 +278,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <Button Name="buttonAction_v" Margin="290,120,-80,310" Content="Action" Click="actionButtonClicked"/>
+            <Button Name="buttonAction_v" Margin="290,120,-80,310" Content="Action" Click="actionButtonClicked" IsEnabled="False"/>
             <Button Margin="290,180,-80,250" Content="fold"  Click="actionButtonClicked"/>
             <!--Chip Images-->
             <Image Name="ChipImg10_v" Source="Res/Chips/Pokerchip_final_10.png" Width="90" Height="90" Margin="-90,110,280,280"/>
@@ -297,7 +297,7 @@
             AllowDrop="True"
             Custom:SurfaceDragDrop.Drop="DropTargetDrop" Background="#540F0000">
             </Custom:SurfaceListBox>
-            <TextBlock Name="personalStackField_v" Width="100" Height="100" Text="Bet Area" Background="{x:Null}" Foreground="Gray" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="272,0,-92,115" />
+            <TextBlock Name="personalStackField_v" Width="100" Height="100" Text="Bet Area" Background="{x:Null}" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="272,0,-92,115" />
 
         </Grid>
 
