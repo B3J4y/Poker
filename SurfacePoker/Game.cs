@@ -170,7 +170,7 @@ namespace SurfacePoker
                     nextPlayers.Sort((x, y) => x.ingamePosition.CompareTo(y.ingamePosition));
                     Player player = nextPlayers.Find(x => x.isActive);
 
-                    if (player.inPot == pot.amountPerPlayer)
+                    if (activePlayer.inPot == pot.amountPerPlayer)
                     {
                         if (!activePlayer.hasChecked)
                         {
@@ -204,7 +204,7 @@ namespace SurfacePoker
             if (players.FindAll(x => (x.ingamePosition >= i)).Exists(x => x.isActive))
             {
                 Player player = players.FindAll(x => (x.ingamePosition >= i)).Find(x => x.isActive);
-                if (player.inPot == pot.amountPerPlayer)
+                if (activePlayer.inPot == pot.amountPerPlayer)
                 {
                     
                     return player;
@@ -221,7 +221,7 @@ namespace SurfacePoker
                 {
                     Player player = players.FindAll(x => (x.ingamePosition >= 1)).Find(x => x.isActive);
 
-                    if (player.inPot == pot.amountPerPlayer)
+                    if (activePlayer.inPot == pot.amountPerPlayer)
                     {
                         return player;
                         
@@ -266,9 +266,9 @@ namespace SurfacePoker
                     pot.raiseSize = amount;
                     break;
                 case Action.playerAction.raise:
+                    pot.amountPerPlayer = amount + activePlayer.inPot;
                     pot.raiseSize = amount - pot.amountPerPlayer;
                     pot.raisePot(activePlayer,  activePlayer.action(amount));
-                    pot.amountPerPlayer = amount;
                     break;
             }
             activePlayer.hasChecked = true;
