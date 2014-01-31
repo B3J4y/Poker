@@ -49,6 +49,9 @@ namespace SurfacePoker
             Application.Current.Shutdown(0); 
         }
 
+
+        private int bb = 20;
+
         public MainWindow()
         {
             isBet = true;
@@ -187,7 +190,7 @@ namespace SurfacePoker
             //Remove 'start new game' button
             Grid.Children.Remove(btn);
             //Start new Game
-            gl = new Game(players,100,50);
+            gl = new Game(players,bb,bb/2);
             kvp = gl.newGame();
             showCards();
             showActionButton(kvp);
@@ -240,7 +243,7 @@ namespace SurfacePoker
             int pcard = (Int32)Convert.ToInt32(svi.Name[11].ToString());
             
             //Console.WriteLine(gl.players.Find(x => x.position == pos).cards[pcard - 1]);
-            
+            //TODO: ein Find muss immer mit einem Exist abgesichert werden
             BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.players.Find(x => x.position == pos).cards[pcard - 1] + ".png"));
                 Image image = (Image)sender;
                 image.Source = bmpimage;
