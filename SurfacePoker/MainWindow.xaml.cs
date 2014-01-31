@@ -58,7 +58,7 @@ namespace SurfacePoker
             canAddPlayer = true;
             round = 0;
             position = 0;
-            stack = 600;
+            stack = 1000;
             personalStack = 0;
             btn = new Button();
             LinearGradientBrush gradientBrush = new  LinearGradientBrush( Color.FromRgb( 24, 24, 24),  Color.FromRgb(47, 47, 47), new Point(0.5, 0), new Point(0.5, 1));            
@@ -88,7 +88,7 @@ namespace SurfacePoker
             if (canAddPlayer) {
                 Rectangle r = (Rectangle)sender;
                 String name = r.Name;
-                Console.Out.WriteLine("Spieler an" + name + "meldet sich an");
+                //Console.Out.WriteLine("Spieler an" + name + "meldet sich an");
                 Point point = new Point();
 
                 switch (r.Name)
@@ -206,27 +206,27 @@ namespace SurfacePoker
                 {
                     case 1:
                         Pos1.Visibility = Visibility.Visible;
-                        player1interface.Visibility = Visibility.Visible;
+                        player1cards.Visibility = Visibility.Visible;
                         break;
                     case 2:
                         Pos2.Visibility = Visibility.Visible;
-                        player2interface.Visibility = Visibility.Visible;
+                        player2cards.Visibility = Visibility.Visible;
                         break;
                     case 3:
                         Pos3.Visibility = Visibility.Visible;
-                        player3interface.Visibility = Visibility.Visible;
+                        player3cards.Visibility = Visibility.Visible;
                         break;
                     case 4:
                         Pos4.Visibility = Visibility.Visible;
-                        player4interface.Visibility = Visibility.Visible;
+                        player4cards.Visibility = Visibility.Visible;
                         break;
                     case 5:
                         Pos5.Visibility = Visibility.Visible;
-                        player5interface.Visibility = Visibility.Visible;
+                        player5cards.Visibility = Visibility.Visible;
                         break;
                     case 6:
                         Pos6.Visibility = Visibility.Visible;
-                        player6interface.Visibility = Visibility.Visible;
+                        player6cards.Visibility = Visibility.Visible;
                         break;
                 }
             }
@@ -241,13 +241,16 @@ namespace SurfacePoker
             int pos = (Int32)Convert.ToInt32(svi.Name[6].ToString());
             //pcard gets which card from player - can be 1 or 2
             int pcard = (Int32)Convert.ToInt32(svi.Name[11].ToString());
-            
+
             //Console.WriteLine(gl.players.Find(x => x.position == pos).cards[pcard - 1]);
-            //TODO: ein Find muss immer mit einem Exist abgesichert werden
-            BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.players.Find(x => x.position == pos).cards[pcard - 1] + ".png"));
+            //x => x.position == pos
+            //TODO: ein Find muss immer mit einem Exist abgesichert werde
+
+                BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.players.Find(x => x.position == pos).cards[pcard - 1] + ".png"));
                 Image image = (Image)sender;
                 image.Source = bmpimage;
-                e.Handled = true;
+
+            e.Handled = true;
         }
 
         private void turnToBack(object sender, RoutedEventArgs e)
@@ -355,44 +358,36 @@ namespace SurfacePoker
         private void setActionButtonText()
         {
             String action = "";
-            if (kvp.Value.Exists(x => x.action == Action.playerAction.check) && personalStack == 0)
+            int i = 0;
+            //Console.WriteLine(kvp.Value[0].action);
+            buttonAction_h.IsEnabled = false;
+            buttonAction_v.IsEnabled = false;
+            
+            if (personalStack > kvp.Value[1].amount)
             {
-                action += kvp.Value.Find(x => x.action == Action.playerAction.check).action.ToString();
-                buttonAction_h.IsEnabled = true;
-                buttonAction_v.IsEnabled = true;
-            }
-            else
-            {
-                if (kvp.Value.Exists(x => x.action == Action.playerAction.check) && personalStack != 0)
+                i = kvp.Value[1].amount + kvp.Value[2].amount;
+                action = kvp.Value[2].action.ToString() + " " + i;
+
+                if (personalStack >= i)
                 {
-                    action += "bet " + personalStack;
+                    action = kvp.Value[2].action.ToString() + " " + personalStack;
                     buttonAction_h.IsEnabled = true;
                     buttonAction_v.IsEnabled = true;
                 }
-                else
+
+            }
+            else
+            {
+                action = kvp.Value[1].action.ToString();
+                if (kvp.Value[1].amount > 0)
                 {
-                    if (kvp.Value.Find(x => x.action == Action.playerAction.call).amount < personalStack)
-                    {
-                        action += "raise " + personalStack;
-                        buttonAction_h.IsEnabled = true;
-                        buttonAction_v.IsEnabled = true;
-                    }
-                    else
-                    {
-                        if (kvp.Value.Find(x => x.action == Action.playerAction.call).amount == personalStack)
-                        {
-                            action += "call " + personalStack;
-                            buttonAction_h.IsEnabled = true;
-                            buttonAction_v.IsEnabled = true;
-                        }
-                        else
-                        {
-                            action += kvp.Value.Find(x => x.action == Action.playerAction.call).action.ToString() + " " + kvp.Value.Find(x => x.action == Action.playerAction.call).amount;
-                            buttonAction_h.IsEnabled = false;
-                            buttonAction_v.IsEnabled = false;
-                        }
-                    }
-                }                
+                    action += " " + kvp.Value[1].amount.ToString();
+                }
+                if (personalStack == kvp.Value[1].amount)
+                {
+                    buttonAction_h.IsEnabled = true;
+                    buttonAction_v.IsEnabled = true;
+                }
             }
             buttonAction_h.Content = action;
             buttonAction_v.Content = action;
@@ -437,6 +432,8 @@ namespace SurfacePoker
             }
             catch (NoPlayerInGameException exp)
             {
+                hideUI();
+                updateBalance();
                 Console.WriteLine(exp.Message);
             }
             catch (EndRoundException exp)
@@ -473,6 +470,7 @@ namespace SurfacePoker
 
         private void updateBalance()
         {
+            mainPot.Text = "Pot: " + gl.pot.value.ToString();
             foreach (Player iPlayer in gl.players.FindAll(x => x.isActive))
             {
                 switch (iPlayer.position)
@@ -683,6 +681,30 @@ namespace SurfacePoker
                     }
                 }
             }
+        }
+
+        private void hideUI()
+        {
+            player1cards.Visibility = Visibility.Collapsed;
+            player2cards.Visibility = Visibility.Collapsed;
+            player3cards.Visibility = Visibility.Collapsed;
+            player4cards.Visibility = Visibility.Collapsed;
+            player5cards.Visibility = Visibility.Collapsed;
+            player6cards.Visibility = Visibility.Collapsed;
+
+            
+            ChipImg10_h.Visibility = Visibility.Collapsed;
+            ChipImg10_v.Visibility = Visibility.Collapsed;
+            ChipSVI10.Visibility = Visibility.Collapsed;
+            ChipImg20_h.Visibility = Visibility.Collapsed;
+            ChipImg20_v.Visibility = Visibility.Collapsed;
+            ChipSVI20.Visibility = Visibility.Collapsed;
+            ChipImg100_h.Visibility = Visibility.Collapsed;
+            ChipImg100_v.Visibility = Visibility.Collapsed;
+            ChipSVI100.Visibility = Visibility.Collapsed;
+            ChipImg500_h.Visibility = Visibility.Collapsed;
+            ChipImg500_v.Visibility = Visibility.Collapsed;
+            ChipSVI500.Visibility = Visibility.Collapsed;
         }
     }
 

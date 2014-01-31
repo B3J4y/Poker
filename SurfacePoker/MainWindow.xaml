@@ -63,11 +63,19 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player1interface" Margin="{StaticResource p1}" Visibility="Collapsed">
-            <Custom:ScatterViewItem Name="player1card1" Width="80" Height="123.04" >
+        <Custom:ScatterView Name="player1cards" Margin="{StaticResource p1}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5">
+            <Custom:ScatterView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Custom:ScatterView.RenderTransform>
+            <Custom:ScatterViewItem Name="player1card1" Width="80" Height="123.04"  Center="300,200">
                 <Image Name="player1card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player1card2" Width="80" Height="123.04">
+            <Custom:ScatterViewItem Name="player1card2" Width="80" Height="123.04" Center="150,200">
                 <Image Name="player1card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
@@ -90,11 +98,11 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player2interface" Margin="{StaticResource p2}" Visibility="Collapsed">
-            <Custom:ScatterViewItem Name="player2card1" Width="80" Height="123.04" >
+        <Custom:ScatterView Name="player2cards" Margin="{StaticResource p2}" Visibility="Collapsed">
+            <Custom:ScatterViewItem Name="player2card1" Width="80" Height="123.04" Center="200,100">
                 <Image Name="player2card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player2card2" Width="80" Height="123.04">
+            <Custom:ScatterViewItem Name="player2card2" Width="80" Height="123.04" Center="350,100">
                 <Image Name="player2card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
@@ -117,11 +125,11 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player3interface" Margin="{StaticResource p3}" Visibility="Collapsed">
-            <Custom:ScatterViewItem Name="player3card1" Width="80" Height="123.04" >
+        <Custom:ScatterView Name="player3cards" Margin="{StaticResource p3}" Visibility="Collapsed">
+            <Custom:ScatterViewItem Name="player3card1" Width="80" Height="123.04" Center="200,100">
                 <Image Name="player3card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player3card2" Width="80" Height="123.04">
+            <Custom:ScatterViewItem Name="player3card2" Width="80" Height="123.04" Center="350,100">
                 <Image Name="player3card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
@@ -144,11 +152,19 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player4interface" Margin="{StaticResource p4}" Visibility="Collapsed">
-            <Custom:ScatterViewItem Name="player4card1" Width="80" Height="123.04" >
+        <Custom:ScatterView Name="player4cards" Margin="{StaticResource p4}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5">
+            <Custom:ScatterView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Custom:ScatterView.RenderTransform>
+            <Custom:ScatterViewItem Name="player4card1" Width="80" Height="123.04" Center="150,200">
                 <Image Name="player4card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player4card2" Width="80" Height="123.04">
+            <Custom:ScatterViewItem Name="player4card2" Width="80" Height="123.04" Center="300,200">
                 <Image Name="player4card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
@@ -171,11 +187,11 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player5interface" Margin="{StaticResource p5}" Visibility="Collapsed">
-            <Custom:ScatterViewItem Name="player5card1" Width="80" Height="123.04" >
+        <Custom:ScatterView Name="player5cards" Margin="{StaticResource p5}" Visibility="Collapsed">
+            <Custom:ScatterViewItem Name="player5card1" Width="80" Height="123.04" Center="100,200">
                 <Image Name="player5card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player5card2" Width="80" Height="123.04">
+            <Custom:ScatterViewItem Name="player5card2" Width="80" Height="123.04" Center="250,200">
                 <Image Name="player5card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
@@ -197,6 +213,16 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
+        <!--Scatterview Karten-->
+        <Custom:ScatterView Name="player6cards" Margin="{StaticResource p6}" Visibility="Collapsed">
+            <Custom:ScatterViewItem Name="player6card1" Width="80" Height="123.04" Center="100,200">
+                <Image Name="player6card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
+            </Custom:ScatterViewItem>
+            <Custom:ScatterViewItem Name="player6card2" Width="80" Height="123.04" Center="250,200">
+                <Image Name="player6card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
+            </Custom:ScatterViewItem>
+        </Custom:ScatterView>
+
         <!--Balance Textblocks-->
         <TextBlock Name="player6balance" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="705,325" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Center"/>
         <TextBlock Name="player5balance" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="335,325" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Center"/>
@@ -240,16 +266,9 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
+        <!--PotsTextBlock-->
+        <TextBlock Name="mainPot" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="700,380" MinWidth="100" MaxWidth="100" Text="" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque"/>
 
-        <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player6interface" Margin="{StaticResource p6}" Visibility="Collapsed">
-            <Custom:ScatterViewItem Name="player6card1" Width="80" Height="123.04" >
-                <Image Name="player6card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
-            </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player6card2" Width="80" Height="123.04">
-                <Image Name="player6card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
-            </Custom:ScatterViewItem>
-        </Custom:ScatterView>
 
         <!--Tischmitte-->
         <Rectangle x:Name="Mitte" MouseDown="shutDown" Opacity="0.5" Margin="680,405,680,405" >
@@ -344,7 +363,7 @@
             <TextBlock Name="personalStackField_v" Width="100" Height="100" Text="Bet Area" Background="{x:Null}" Foreground="Ivory" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="272,0,-92,115" TextAlignment="Center"/>
 
         </Grid>
-
+        <!--communityCards-->
         <Grid Name="communityCards" Margin="680,405,680,405" Visibility="Hidden">
             <Image Name="f1" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="15.2,69.48"/>
             <Image Name="f2" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="125.6,69.48"/>
@@ -386,7 +405,7 @@
 
 
 
-        
+
 
 
 
