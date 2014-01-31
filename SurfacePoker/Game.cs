@@ -147,7 +147,7 @@ namespace SurfacePoker
                 List<Player> nextPlayers = players.FindAll(x => (x.ingamePosition > activePlayer.ingamePosition));
                 nextPlayers.Sort((x, y) => x.ingamePosition.CompareTo(y.ingamePosition));
                 Player player = nextPlayers.Find(x => x.isActive);
-                if (player.inPot == pot.amountPerPlayer)
+                if (activePlayer.inPot == pot.amountPerPlayer)
                 {
                     if (! activePlayer.hasChecked)
                     {
@@ -261,8 +261,8 @@ namespace SurfacePoker
                     pot.raisePot(activePlayer, activePlayer.action(amount));
                     break;
                 case Action.playerAction.bet:
+                    pot.amountPerPlayer = amount + activePlayer.inPot;
                     pot.raisePot(activePlayer,  activePlayer.action(amount));
-                    pot.amountPerPlayer = amount;
                     pot.raiseSize = amount;
                     break;
                 case Action.playerAction.raise:

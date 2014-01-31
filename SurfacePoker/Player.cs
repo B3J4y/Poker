@@ -70,10 +70,10 @@ namespace SurfacePoker
         {
             if (move < this.stack)
             {
-                int diff = (move - this.inPot); 
-                this.stack -= diff;
-                inPot = (move);
-                return diff;
+                //int diff = (move - this.inPot); 
+                this.stack -= move;
+                inPot = (this.inPot + move);
+                return move;
             }
             else
             {
