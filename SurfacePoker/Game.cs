@@ -212,7 +212,9 @@ namespace SurfacePoker
             }
             if (players.FindAll(x => (x.ingamePosition >= i)).Exists(x => x.isActive))
             {
-                Player player = players.FindAll(x => (x.ingamePosition >= i)).Find(x => x.isActive);
+                List<Player> nextPlayers = players.FindAll(x => (x.ingamePosition >= i));
+                nextPlayers.Sort((x, y) => x.ingamePosition.CompareTo(y.ingamePosition));
+                Player player = nextPlayers.Find(x => x.isActive);
                 if (activePlayer.inPot == pot.amountPerPlayer)
                 {
                     
@@ -228,7 +230,9 @@ namespace SurfacePoker
             {
                 if (players.FindAll(x => (x.ingamePosition >= 1)).Exists(x => x.isActive))
                 {
-                    Player player = players.FindAll(x => (x.ingamePosition >= 1)).Find(x => x.isActive);
+                    List<Player> nextPlayers = players.FindAll(x => (x.ingamePosition >= 1));
+                    nextPlayers.Sort((x, y) => x.ingamePosition.CompareTo(y.ingamePosition));
+                    Player player = nextPlayers.Find(x => x.isActive);
 
                     if (activePlayer.inPot == pot.amountPerPlayer)
                     {
