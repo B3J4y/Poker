@@ -81,6 +81,7 @@ namespace SurfacePoker
                 }
                 pot.amountPerPlayer = bigBlind;
                 pot.raiseSize = bigBlind;
+                player.cards = new List<Card>();
                 player.setOneCard(deck.DealNext());
                 player.setOneCard(deck.DealNext());
                 player.isActive = !player.isAllin;
@@ -350,7 +351,14 @@ namespace SurfacePoker
                 }
             }
             int mod = (pot.value / result.Count) % bigBlind;
-            Player first = whoIsNext(players.Count - 1);
+            Player first = new Player(activePlayer);
+            try { 
+                first = whoIsNext(players.Count - 1);
+            }
+            catch (NoPlayerInGameException e)
+            {
+                first = activePlayer;
+            }
             
             while (mod > 0)
             {
@@ -371,10 +379,6 @@ namespace SurfacePoker
             {
                 result.AddRange(whoIsWinner(pot.sidePot));
                 pot.sidePot = null;
-            }
-            foreach (Player p in playersInGame)
-            {
-                p.cards = new List<Card>();
             }
             pot.value = 0;
             pot.potThisRound = 0;
