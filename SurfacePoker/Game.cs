@@ -142,6 +142,10 @@ namespace SurfacePoker
         /// <returns>next Player</returns>
         private Player whoIsNext()
         {
+            if (!players.Exists(x => x.isActive & (x.name != activePlayer.name)))
+            {
+                throw new NoPlayerInGameException("No Next Player");
+            }
             if (players.FindAll(x => (x.ingamePosition > activePlayer.ingamePosition)).Exists(x => x.isActive))
             {
                 List<Player> nextPlayers = players.FindAll(x => (x.ingamePosition > activePlayer.ingamePosition));
@@ -201,6 +205,10 @@ namespace SurfacePoker
         /// <returns>next Player</returns>
         private Player whoIsNext(int i)
         {
+            if (!players.Exists(x => x.isActive & (x.name != activePlayer.name)))
+            {
+                throw new NoPlayerInGameException("No Next Player");
+            }
             if (players.FindAll(x => (x.ingamePosition >= i)).Exists(x => x.isActive))
             {
                 Player player = players.FindAll(x => (x.ingamePosition >= i)).Find(x => x.isActive);
@@ -357,6 +365,7 @@ namespace SurfacePoker
             for (int j = 0; j < result.Count; j++ )
             {
                 result[j] = new KeyValuePair<Player, int>(result[j].Key, result[j].Value + (pot.value / result.Count));
+                result[j].Key.stack += result[j].Value;
             }
             if (pot.sidePot != null)
             {
