@@ -274,8 +274,8 @@ namespace SurfacePoker
                     pot.raiseSize = amount;
                     break;
                 case Action.playerAction.raise:
+                    pot.raiseSize = amount - pot.amountPerPlayer + activePlayer.inPot;
                     pot.amountPerPlayer = amount + activePlayer.inPot;
-                    pot.raiseSize = amount - pot.amountPerPlayer;
                     pot.raisePot(activePlayer,  activePlayer.action(amount));
                     break;
             }
