@@ -187,6 +187,7 @@ namespace SurfacePoker
             Pos4.Visibility = Visibility.Collapsed;
             Pos5.Visibility = Visibility.Collapsed;
             Pos6.Visibility = Visibility.Collapsed;
+            hideUI();
             //Remove 'start new game' button
             Grid.Children.Remove(btn);
             //Start new Game
@@ -267,6 +268,29 @@ namespace SurfacePoker
             
                 
             e.Handled = true;
+        }
+
+        private void turnCardsToFront(int pos)
+        {
+            if (gl.players.Exists(x => x.position == pos))
+            {
+                if (gl.players.Find(x => x.position == pos).cards.Count != 0)
+                {
+                    BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.players.Find(x => x.position == pos).cards[0] + ".png"));
+                    BitmapImage bmpimage2 = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.players.Find(x => x.position == pos).cards[1] + ".png"));
+                    Image image = this.FindName("player" + pos + "card1image") as Image;
+                    image.Source = bmpimage;
+                    image = this.FindName("player" + pos + "card2image") as Image;
+                    image.Source = bmpimage2;
+                    ScatterView sv = this.FindName("player" + pos + "cards") as ScatterView;
+                    sv.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    Console.WriteLine("Ney");
+                }
+
+            }
         }
 
         private void turnToBack(object sender, RoutedEventArgs e)
@@ -497,18 +521,16 @@ namespace SurfacePoker
                         break;
                     case 4:
                         List<KeyValuePair<Player, int>> winners = gl.whoIsWinner(gl.pot);
-                    //give the earnings to the winner
-                    Console.WriteLine("---------------------------------------");
+                        updateBalance();
                         mainPot.Text = "";
+                        newRound();
+                        foreach (KeyValuePair<Player, int> ikvp in winners)
+                        {
                         
-                    foreach (KeyValuePair<Player, int> ikvp in winners)
-                    {
-                        
-                        mainPot.Text += ikvp.Key.name + " won " + ikvp.Value + "\n has Cards: " +ikvp.Key.cards.Count;
+                            mainPot.Text += ikvp.Key.name + " won " + ikvp.Value + "\n has Cards: " +ikvp.Key.cards.Count;
+                            turnCardsToFront(ikvp.Key.position);
+                        }
 
-                    }
-                    Console.WriteLine("---------------------------------------");
-                    newRound();
                         break;
                     default: Console.WriteLine("Round: " + round); break;
                 }
@@ -519,7 +541,8 @@ namespace SurfacePoker
 
         private void newRound()
         {
-            hideUI();
+            //hideUI();
+            hideChips();
             round = 0;
             addStartButton("start new Round");
         }
@@ -527,7 +550,14 @@ namespace SurfacePoker
         private void updateBalance()
         {
             //Pot
+            if (gl.pot.value == 0)
+            {
+                mainPot.Text = "";
+            }
+            else
+            {
             mainPot.Text = "Pot: " + gl.pot.value.ToString();
+            }
 
 
             //Cash for all Players
@@ -743,6 +773,21 @@ namespace SurfacePoker
             }
         }
 
+        private void hideChips() {
+            ChipImg10_h.Visibility = Visibility.Collapsed;
+            ChipImg10_v.Visibility = Visibility.Collapsed;
+            ChipSVI10.Visibility = Visibility.Collapsed;
+            ChipImg20_h.Visibility = Visibility.Collapsed;
+            ChipImg20_v.Visibility = Visibility.Collapsed;
+            ChipSVI20.Visibility = Visibility.Collapsed;
+            ChipImg100_h.Visibility = Visibility.Collapsed;
+            ChipImg100_v.Visibility = Visibility.Collapsed;
+            ChipSVI100.Visibility = Visibility.Collapsed;
+            ChipImg500_h.Visibility = Visibility.Collapsed;
+            ChipImg500_v.Visibility = Visibility.Collapsed;
+            ChipSVI500.Visibility = Visibility.Collapsed;
+        }
+
         private void hideUI()
         {
             player1cards.Visibility = Visibility.Collapsed;
@@ -771,20 +816,7 @@ namespace SurfacePoker
             player6card1image.Source = f1image;
             player6card2image.Source = f1image;
 
-
-            
-            ChipImg10_h.Visibility = Visibility.Collapsed;
-            ChipImg10_v.Visibility = Visibility.Collapsed;
-            ChipSVI10.Visibility = Visibility.Collapsed;
-            ChipImg20_h.Visibility = Visibility.Collapsed;
-            ChipImg20_v.Visibility = Visibility.Collapsed;
-            ChipSVI20.Visibility = Visibility.Collapsed;
-            ChipImg100_h.Visibility = Visibility.Collapsed;
-            ChipImg100_v.Visibility = Visibility.Collapsed;
-            ChipSVI100.Visibility = Visibility.Collapsed;
-            ChipImg500_h.Visibility = Visibility.Collapsed;
-            ChipImg500_v.Visibility = Visibility.Collapsed;
-            ChipSVI500.Visibility = Visibility.Collapsed;
+            hideChips();
         }
     }
 
