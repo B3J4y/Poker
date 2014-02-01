@@ -113,7 +113,7 @@ namespace SurfacePoker
             text.Text = "";
             position = 0;
             addplayerscatteru.Visibility = Visibility.Collapsed;
-            addStartButton();
+            addStartButton("Spiel starten");
             e.Handled = true;
         }
 
@@ -158,16 +158,16 @@ namespace SurfacePoker
             addplayerscatteru.Visibility = Visibility.Collapsed;
             if (players.Count >= 2)
             {
-                addStartButton();
+                addStartButton("Spiel starten");
             }
             e.Handled = true;
 
         }
 
-        private void addStartButton()
+        private void addStartButton(String text)
         {
             btn.Name = "btnStart";
-            btn.Content = "Spiel starten";
+            btn.Content = text;
             btn.Margin = new Thickness(900, 700, 900, 320);
             btn.Click += new RoutedEventHandler(startGame);         
             if (!Grid.Children.Contains(btn))
@@ -190,7 +190,11 @@ namespace SurfacePoker
             //Remove 'start new game' button
             Grid.Children.Remove(btn);
             //Start new Game
-            gl = new Game(players,bb,bb/2);
+            if (gl == null)
+            {
+                gl = new Game(players, bb, bb / 2);
+            }
+            
             kvp = gl.newGame();
             showCards();
             showActionButton(kvp);
@@ -496,19 +500,28 @@ namespace SurfacePoker
                     //give the earnings to the winner
                     Console.WriteLine("---------------------------------------");
                         mainPot.Text = "";
+                        
                     foreach (KeyValuePair<Player, int> ikvp in winners)
                     {
                         
-                        mainPot.Text += ikvp.Key.name + " won " + ikvp.Value + "/n has Cards: " +ikvp.Key.cards.Count;
+                        mainPot.Text += ikvp.Key.name + " won " + ikvp.Value + "\n has Cards: " +ikvp.Key.cards.Count;
 
                     }
                     Console.WriteLine("---------------------------------------");
+                    newRound();
                         break;
                     default: Console.WriteLine("Round: " + round); break;
                 }
 
             }
             
+        }
+
+        private void newRound()
+        {
+            hideUI();
+            round = 0;
+            addStartButton("start new Round");
         }
 
         private void updateBalance()
@@ -738,6 +751,13 @@ namespace SurfacePoker
             player4cards.Visibility = Visibility.Collapsed;
             player5cards.Visibility = Visibility.Collapsed;
             player6cards.Visibility = Visibility.Collapsed;
+            communityCards.Visibility = Visibility.Collapsed;
+            BitmapImage f1image = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Kartenrueckseite/kartenruecken_1.jpg"));
+            f1.Source = f1image;
+            f2.Source = f1image;
+            f3.Source = f1image;
+            tc.Source = f1image;
+            rc.Source = f1image;
 
             
             ChipImg10_h.Visibility = Visibility.Collapsed;
