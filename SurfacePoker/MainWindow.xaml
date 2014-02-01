@@ -267,7 +267,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--PotsTextBlock-->
-        <TextBlock Name="mainPot" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="700,380" MinWidth="100" MaxWidth="100" Text="" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque"/>
+        <TextBlock Name="mainPot" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="700,380" MinWidth="200" MaxWidth="200" Text="" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque"/>
 
 
         <!--Tischmitte-->

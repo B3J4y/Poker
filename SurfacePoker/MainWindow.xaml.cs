@@ -245,11 +245,23 @@ namespace SurfacePoker
             //Console.WriteLine(gl.players.Find(x => x.position == pos).cards[pcard - 1]);
             //x => x.position == pos
             //TODO: ein Find muss immer mit einem Exist abgesichert werde
+            if (gl.players.Exists(x => x.position == pos))
+            {
+                if (gl.players.Find(x => x.position == pos).cards.Count != 0)
+                {
+                    BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.players.Find(x => x.position == pos).cards[pcard - 1] + ".png"));
+                    Image image = (Image)sender;
+                    image.Source = bmpimage;
 
-                BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.players.Find(x => x.position == pos).cards[pcard - 1] + ".png"));
-                Image image = (Image)sender;
-                image.Source = bmpimage;
-
+                }
+                else
+                {
+                    Console.WriteLine("Yay");
+                }
+                
+            }
+            
+                
             e.Handled = true;
         }
 
@@ -403,6 +415,19 @@ namespace SurfacePoker
             
         }
 
+        private void foldCards(int i)
+        {
+            switch (i)
+            {
+                case 1: player1cards.Visibility = Visibility.Collapsed; break;
+                case 2: player2cards.Visibility = Visibility.Collapsed; break;
+                case 3: player3cards.Visibility = Visibility.Collapsed; break;
+                case 4: player4cards.Visibility = Visibility.Collapsed; break;
+                case 5: player5cards.Visibility = Visibility.Collapsed; break;
+                case 6: player6cards.Visibility = Visibility.Collapsed; break;
+            }
+        }
+
         private void actionButtonClicked(object sender, RoutedEventArgs e)
         {
             Button s = (Button)sender;
@@ -410,6 +435,7 @@ namespace SurfacePoker
             {
                 case "fold":
                     gl.activeAction(Action.playerAction.fold, 0);
+                    foldCards(kvp.Key.position);                    
                     break;
                 case "check":
                     gl.activeAction(Action.playerAction.check, 0);                    
@@ -450,27 +476,48 @@ namespace SurfacePoker
                         f2.Source = f2image;
                         BitmapImage f3image = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.board[2].ToString() + ".png"));
                         f3.Source = f3image;
+                        communityCards.Visibility = Visibility.Visible;
+                        showActionButton(kvp);
                         break;
                     case 2:
                         BitmapImage tcimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.board[3].ToString() + ".png"));
                         tc.Source = tcimage;
+                        communityCards.Visibility = Visibility.Visible;
+                        showActionButton(kvp);
                         break;
                     case 3:
                         BitmapImage rcimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.board[4].ToString() + ".png"));
                         rc.Source = rcimage;
+                        communityCards.Visibility = Visibility.Visible;
+                        showActionButton(kvp);
                         break;
                     case 4:
+                        List<KeyValuePair<Player, int>> winners = gl.whoIsWinner(gl.pot);
+                    //give the earnings to the winner
+                    Console.WriteLine("---------------------------------------");
+                        mainPot.Text = "";
+                    foreach (KeyValuePair<Player, int> ikvp in winners)
+                    {
+                        
+                        mainPot.Text += ikvp.Key.name + " won " + ikvp.Value + "/n has Cards: " +ikvp.Key.cards.Count;
+
+                    }
+                    Console.WriteLine("---------------------------------------");
                         break;
+                    default: Console.WriteLine("Round: " + round); break;
                 }
-                communityCards.Visibility = Visibility.Visible;
-                showActionButton(kvp);
+
             }
             
         }
 
         private void updateBalance()
         {
+            //Pot
             mainPot.Text = "Pot: " + gl.pot.value.ToString();
+
+
+            //Cash for all Players
             foreach (Player iPlayer in gl.players.FindAll(x => x.isActive))
             {
                 switch (iPlayer.position)
@@ -595,7 +642,7 @@ namespace SurfacePoker
             {
                 // Hide the ScatterViewItem.
                 //draggedElement.Visibility = Visibility.Hidden;
-                Console.WriteLine("Begin Drag");
+                //Console.WriteLine("Begin Drag");
                 // This event has been handled.
                 e.Handled = true;
             }
