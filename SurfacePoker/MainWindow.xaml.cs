@@ -758,6 +758,19 @@ namespace SurfacePoker
             f3.Source = f1image;
             tc.Source = f1image;
             rc.Source = f1image;
+            player1card1image.Source = f1image;
+            player1card2image.Source = f1image;
+            player2card1image.Source = f1image;
+            player2card2image.Source = f1image;
+            player3card1image.Source = f1image;
+            player3card2image.Source = f1image;
+            player4card1image.Source = f1image;
+            player4card2image.Source = f1image;
+            player5card1image.Source = f1image;
+            player5card2image.Source = f1image;
+            player6card1image.Source = f1image;
+            player6card2image.Source = f1image;
+
 
             
             ChipImg10_h.Visibility = Visibility.Collapsed;
