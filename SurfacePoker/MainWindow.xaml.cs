@@ -486,9 +486,15 @@ namespace SurfacePoker
             }
             catch (NoPlayerInGameException exp)
             {
-                hideUI();
+                newRound();
+                mainPot.Text = "";
+                List<KeyValuePair<Player, int>> winners = gl.whoIsWinner(gl.pot);
                 updateBalance();
-                Console.WriteLine(exp.Message);
+                hideChips();
+                foreach (KeyValuePair<Player, int> ikvp in winners)
+                {
+                    mainPot.Text += ikvp.Key.name + " won " + ikvp.Value + "\n has Cards: " + ikvp.Key.cards.Count;
+                }
             }
             catch (EndRoundException exp)
             {
@@ -522,11 +528,11 @@ namespace SurfacePoker
                     case 4:
                         List<KeyValuePair<Player, int>> winners = gl.whoIsWinner(gl.pot);
                         updateBalance();
+                        hideChips();
                         mainPot.Text = "";
                         newRound();
                         foreach (KeyValuePair<Player, int> ikvp in winners)
                         {
-                        
                             mainPot.Text += ikvp.Key.name + " won " + ikvp.Value + "\n has Cards: " +ikvp.Key.cards.Count;
                             turnCardsToFront(ikvp.Key.position);
                         }
@@ -542,7 +548,6 @@ namespace SurfacePoker
         private void newRound()
         {
             //hideUI();
-            hideChips();
             round = 0;
             addStartButton("start new Round");
         }
