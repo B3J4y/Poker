@@ -59,22 +59,50 @@ namespace SurfacePoker
             round = 0;
             board = new List<Card>();
             pot.amountPerPlayer = bigBlind;
+            int nonActives = players.FindAll(x =>  (x.stack == 0)).Count;
             foreach (Player player in players)
             {
-                if (player.ingamePosition < players.Count)
+                if (player.stack > 0)
                 {
-                    player.ingamePosition++;
+                    player.isActive = true;
+                    player.isAllin = false;
                 }
                 else
                 {
-                    player.ingamePosition = 1;
+                    player.isActive = false;
+                    player.isAllin = false;
                 }
-                if (player.ingamePosition == players.Count)
+                
+                player.inPot = 0;
+                if (player.ingamePosition < (players.Count - nonActives))
+                {
+                    if (player.isActive)
+                    {
+                        player.ingamePosition++;
+                    }
+                    else
+                    {
+                        player.ingamePosition = 0;
+                    }
+                }
+                else
+                {
+                    if (player.isActive)
+                    {
+                        player.ingamePosition = 1;
+                    }
+                    else
+                    {
+                        player.ingamePosition = 0;
+                    }
+                }
+
+                if (player.ingamePosition == (players.Count - nonActives))
                 {
                     
                     pot.raisePot(player, player.action(bigBlind));
                 }
-                if (player.ingamePosition == players.Count - 1)
+                if (player.ingamePosition == players.Count - nonActives - 1)
                 {
                     pot.amountPerPlayer = smallBlind;
                     pot.raisePot(player, player.action(smallBlind));
@@ -84,7 +112,7 @@ namespace SurfacePoker
                 player.cards = new List<Card>();
                 player.setOneCard(deck.DealNext());
                 player.setOneCard(deck.DealNext());
-                player.isActive = !player.isAllin;
+                player.isAllin = false;
                 player.hasChecked = false;
             }
             activePlayer = players.Find(x => x.ingamePosition == 1);
@@ -125,7 +153,14 @@ namespace SurfacePoker
             }
             else
             {
-                actions.Add(new Action(Action.playerAction.call, (pot.amountPerPlayer - activePlayer.inPot)));
+                if (pot.amountPerPlayer - activePlayer.inPot <= activePlayer.stack)
+                {
+                    actions.Add(new Action(Action.playerAction.call, (pot.amountPerPlayer - activePlayer.inPot)));
+                }
+                else
+                {
+                    actions.Add(new Action(Action.playerAction.call, (activePlayer.stack)));
+                }
             }
             if (pot.amountPerPlayer == 0)
             {
@@ -317,8 +352,9 @@ namespace SurfacePoker
             pot.amountPerPlayer = 0;
             pot.raiseSize = 0;
             //active Player after DealerButton
-            activePlayer = whoIsNext(players.Count - 1);
-            nextActivePlayer = whoIsNext(players.Count);
+            int nonActives = players.FindAll(x => (x.isAllin) | (!x.isActive)).Count;
+            activePlayer = whoIsNext(players.Count - nonActives - 1);
+            nextActivePlayer = whoIsNext(activePlayer.ingamePosition + 1);
             pot.endOfRound();
 
             return getActions();
@@ -356,8 +392,9 @@ namespace SurfacePoker
             }
             int mod = (pot.value / result.Count) % bigBlind;
             Player first = new Player(activePlayer);
-            try { 
-                first = whoIsNext(players.Count - 1);
+            try {
+                int nonActives = players.FindAll(x => (!x.isActive)).Count;
+                first = whoIsNext(players.Count- nonActives - 1);
             }
             catch (NoPlayerInGameException e)
             {
@@ -378,6 +415,7 @@ namespace SurfacePoker
             {
                 result[j] = new KeyValuePair<Player, int>(result[j].Key, result[j].Value + (pot.value / result.Count));
                 result[j].Key.stack += result[j].Value;
+                result[j].Key.isAllin = false;
             }
             if (pot.sidePot != null)
             {
@@ -392,7 +430,7 @@ namespace SurfacePoker
 
     //TODO: allin
     //TODO: side pot
-    
+    #region Testclasses
     [TestClass]
     public class TestGame
     {
@@ -590,3 +628,4 @@ namespace SurfacePoker
         }
     }
 }
+    #endregion

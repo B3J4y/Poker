@@ -56,7 +56,7 @@ public class Pot
         public void raisePot(Player player,int value)
         {
 
-            if ((player.inPot + value < amountPerPlayer) || (player.isAllin))
+            if ((player.inPot < amountPerPlayer) || (player.isAllin) || (player.stack == 0))
             {
                 if (sidePot != null)
                 {
@@ -76,10 +76,18 @@ public class Pot
             }
             else
             {
-                this.value += value;
-                this.potThisRound += value;
+                if (this.sidePot == null)
+                {
+                    this.value += value;
+                    this.potThisRound += value;
+                }
+                else
+                {
+                    this.value += value - this.sidePot.amountPerPlayer;
+                    this.potThisRound += value - this.sidePot.amountPerPlayer;
+                    sidePot.raisePot(player, sidePot.amountPerPlayer);
+                }
             }
-            //Todo: Sidepots
         }
         /// <summary>
         /// adds a sidepot to the pot
@@ -94,6 +102,7 @@ public class Pot
             Pot p = new Pot(value - potThisRound, value, value * times, newPlayers, sidePot);
             potThisRound = potThisRound - value * (times - 1);
             value = potThisRound;
+            amountPerPlayer -= p.amountPerPlayer;
             sidePot = p;
         }
 
