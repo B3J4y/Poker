@@ -62,15 +62,15 @@ namespace SurfacePoker
             Background = gradientBrush;
             btn.Background = Background;
             //Player player1 = new Player("Anton", 1000, 1);
-            //Player player2 = new Player("Berta", 1000, 2);
-            //Player player3 = new Player("Cäsar", 1000, 3);
+            Player player2 = new Player("Berta", 500, 2);
+            Player player3 = new Player("Cäsar", 1000, 3);
             //Player player4 = new Player("Dora", 1000, 4);
             //Player player5 = new Player("Emil", 1000, 5);
             //Player player6 = new Player("Friedrich", 1000, 6);
             players = new List<Player>();
             //players.Add(player1);
-            //players.Add(player2);
-            //players.Add(player3);
+            players.Add(player2);
+            players.Add(player3);
             //players.Add(player4);
             //players.Add(player5);
             //players.Add(player6);
@@ -106,7 +106,6 @@ namespace SurfacePoker
             StackPanel stackPanel = (StackPanel)s.Parent;
             SurfaceTextBox text = (SurfaceTextBox)stackPanel.FindName("playerName");
             text.Text = "";
-            //position = 0;
             addplayerscatteru.Visibility = Visibility.Collapsed;
             addStartButton("Spiel starten");
             e.Handled = true;
@@ -175,7 +174,7 @@ namespace SurfacePoker
             {
                 gl = new Game(players, bb, bb / 2);
             }
-            
+            //Start new round
             kvp = gl.newGame();
             showCards();
             showActionButton(kvp);
@@ -507,7 +506,8 @@ namespace SurfacePoker
             }
             else
             {
-            mainPot.Text = "Pot: " + gl.pot.value.ToString();
+                mainPot.Text = "Pot: " + gl.pot.value.ToString() + " ";
+                mainPot.Text += getSidePots(gl.pot.sidePot,0,"");
             }
 
 
@@ -515,7 +515,7 @@ namespace SurfacePoker
             foreach (Player iPlayer in gl.players)
             {
                 TextBlock tb = this.FindName("player" + iPlayer.position + "balance") as TextBlock;
-                if (iPlayer.isActive)
+                if (iPlayer.stack != 0)
                 {
                     tb.Text = iPlayer.stack.ToString();
                 }
@@ -530,6 +530,18 @@ namespace SurfacePoker
                     }
                 }
             }    
+        }
+
+        private static string getSidePots(Pot sidePot, int i, string s)
+        {
+            if (sidePot == null)
+            {
+                return s;
+            }
+            else
+            {
+                return getSidePots(sidePot.sidePot, i++, "SidePod" + i + ": " + sidePot.value.ToString() + " ");
+            }
         }
 
         //private void createChip()
