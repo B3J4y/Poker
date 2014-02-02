@@ -279,7 +279,7 @@
 
         <!--Fenster Spieler anlegen-->
         <Custom:ScatterView HorizontalAlignment="Left" VerticalAlignment="Top" Height="1042" Width="1904">
-            <Custom:ScatterViewItem x:Name="addplayerscatteru" Background="#C32D2D2D" CanMove="False" CanRotate="False" CanScale="False" Orientation="0" Center="550,550" Visibility="Hidden">
+            <Custom:ScatterViewItem x:Name="addplayerscatteru" Background="#C32D2D2D" CanMove="False" CanRotate="False" CanScale="False" Orientation="0" Center="550,550" Visibility="Visible">
                 <StackPanel Margin="8">
                     <Button Content="X" HorizontalAlignment="Right" Width="25" Foreground="White" Click="closeAddPlayer"  TouchDown="closeAddPlayer" Margin="0">
                         <Button.Background>
@@ -293,6 +293,7 @@
                     <Label Content="Neuen Spieler anlegen" Foreground="White"/>
                     <Label Content="Spielername:" Foreground="White"/>
                     <Custom:SurfaceTextBox Margin="0" TextWrapping="Wrap" Height="18" Name="playerName"/>
+                    <TextBlock Name="playerPos" MaxHeight="0" MaxWidth="0" Text=""/>
                     <Custom:SurfaceButton Content="Spieler speichern" Click="savePlayer" Margin="0"/>
                 </StackPanel>
             </Custom:ScatterViewItem>

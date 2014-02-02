@@ -93,12 +93,12 @@ namespace SurfacePoker
 
                 switch (r.Name)
                 {
-                    case "Pos1": point.X = 270; point.Y = 550; position = 1; break;
-                    case "Pos2": point.X = 470; point.Y = 170; position = 2; break;
-                    case "Pos3": point.X = 1210; point.Y = 170; position = 3; break;
-                    case "Pos4": point.X = 1620; point.Y = 550; position = 4; break;
-                    case "Pos5": point.X = 1210; point.Y = 930; position = 5; break;
-                    case "Pos6": point.X = 470; point.Y = 930; position = 6; break;
+                    case "Pos1": point.X = 270; point.Y = 550; position = 1; playerPos.Text = "1"; break;
+                    case "Pos2": point.X = 470; point.Y = 170; position = 2; playerPos.Text = "2"; break;
+                    case "Pos3": point.X = 1210; point.Y = 170; position = 3; playerPos.Text = "3"; break;
+                    case "Pos4": point.X = 1620; point.Y = 550; position = 4; playerPos.Text = "4"; break;
+                    case "Pos5": point.X = 1210; point.Y = 930; position = 5; playerPos.Text = "5"; break;
+                    case "Pos6": point.X = 470; point.Y = 930; position = 6; playerPos.Text = "6"; break;
                 }
                 addplayerscatteru.Center = point;
                 addplayerscatteru.Visibility = Visibility.Visible;                
@@ -118,28 +118,8 @@ namespace SurfacePoker
         }
 
         private void setSurfaceName(int pos, String name) {
-            switch (pos)
-            {
-                case 1: 
-                    player1name.Text = name;
-                    break;
-                case 2:
-                    player2name.Text = name;
-                    break;
-                case 3:
-                    player3name.Text = name;
-                    break;
-                case 4:
-                    player4name.Text = name;
-                    break;
-                case 5:
-                    player5name.Text = name;
-                    break;
-                case 6:
-                    player6name.Text = name;
-                    break;
-
-            }
+            TextBlock tb = this.FindName("player" + pos + "name") as TextBlock;
+            tb.Text = name;
         }
 
         private void savePlayer(object sender, RoutedEventArgs e)
@@ -172,7 +152,6 @@ namespace SurfacePoker
             btn.Click += new RoutedEventHandler(startGame);         
             if (!Grid.Children.Contains(btn))
             {
-
                 Grid.Children.Add(btn);
             }
         }
@@ -207,33 +186,10 @@ namespace SurfacePoker
         {
             foreach (Player iPlayer in gl.players.FindAll(x => x.isActive))
             {
-                switch (iPlayer.position)
-                {
-                    case 1:
-                        Pos1.Visibility = Visibility.Visible;
-                        player1cards.Visibility = Visibility.Visible;
-                        break;
-                    case 2:
-                        Pos2.Visibility = Visibility.Visible;
-                        player2cards.Visibility = Visibility.Visible;
-                        break;
-                    case 3:
-                        Pos3.Visibility = Visibility.Visible;
-                        player3cards.Visibility = Visibility.Visible;
-                        break;
-                    case 4:
-                        Pos4.Visibility = Visibility.Visible;
-                        player4cards.Visibility = Visibility.Visible;
-                        break;
-                    case 5:
-                        Pos5.Visibility = Visibility.Visible;
-                        player5cards.Visibility = Visibility.Visible;
-                        break;
-                    case 6:
-                        Pos6.Visibility = Visibility.Visible;
-                        player6cards.Visibility = Visibility.Visible;
-                        break;
-                }
+                Rectangle r = this.FindName("Pos" + iPlayer.position) as Rectangle;
+                r.Visibility = Visibility.Visible;
+                ScatterView sv = this.FindName("player" + iPlayer.position + "cards") as ScatterView;
+                sv.Visibility = Visibility.Visible;
             }
         }
 
@@ -255,18 +211,15 @@ namespace SurfacePoker
                 if (gl.players.Find(x => x.position == pos).cards.Count != 0)
                 {
                     BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.players.Find(x => x.position == pos).cards[pcard - 1] + ".png"));
-                    Image image = (Image)sender;
+                    Image image = sender as Image;
                     image.Source = bmpimage;
-
                 }
                 else
                 {
                     Console.WriteLine("Yay");
                 }
-                
             }
-            
-                
+
             e.Handled = true;
         }
 
@@ -295,12 +248,12 @@ namespace SurfacePoker
 
         private void turnToBack(object sender, RoutedEventArgs e)
         {
-
             BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Kartenrueckseite/kartenruecken_1.jpg"));
             Image image = (Image)sender;
             image.Source = bmpimage;
             e.Handled = true;           
         }
+
         /// <summary>
         /// Shows the two Actionbuttons at players position 
         /// </summary>
@@ -445,15 +398,8 @@ namespace SurfacePoker
 
         private void foldCards(int i)
         {
-            switch (i)
-            {
-                case 1: player1cards.Visibility = Visibility.Collapsed; break;
-                case 2: player2cards.Visibility = Visibility.Collapsed; break;
-                case 3: player3cards.Visibility = Visibility.Collapsed; break;
-                case 4: player4cards.Visibility = Visibility.Collapsed; break;
-                case 5: player5cards.Visibility = Visibility.Collapsed; break;
-                case 6: player6cards.Visibility = Visibility.Collapsed; break;
-            }
+            ScatterView sv = this.FindName("player" + i + "cards") as ScatterView;
+            sv.Visibility = Visibility.Collapsed;
         }
 
         private void actionButtonClicked(object sender, RoutedEventArgs e)
@@ -566,16 +512,22 @@ namespace SurfacePoker
 
 
             //Cash for all Players
-            foreach (Player iPlayer in gl.players.FindAll(x => x.isActive))
+            foreach (Player iPlayer in gl.players)
             {
-                switch (iPlayer.position)
+                TextBlock tb = this.FindName("player" + iPlayer.position + "balance") as TextBlock;
+                if (iPlayer.isActive)
                 {
-                    case 1: player1balance.Text = iPlayer.stack.ToString(); break;
-                    case 2: player2balance.Text = iPlayer.stack.ToString(); break;
-                    case 3: player3balance.Text = iPlayer.stack.ToString(); break;
-                    case 4: player4balance.Text = iPlayer.stack.ToString(); break;
-                    case 5: player5balance.Text = iPlayer.stack.ToString(); break;
-                    case 6: player6balance.Text = iPlayer.stack.ToString(); break;
+                    tb.Text = iPlayer.stack.ToString();
+                }
+                else
+                {
+                    if(iPlayer.isAllin) {
+                        tb.Text = "All in";
+                    }
+                    else
+                    {
+                    tb.Text = "";
+                    }
                 }
             }    
         }
@@ -824,7 +776,5 @@ namespace SurfacePoker
             hideChips();
         }
     }
-
-
 
 }
