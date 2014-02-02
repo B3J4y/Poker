@@ -46,7 +46,7 @@
         <Image Name="backgroundImg"  Source="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur3.jpg"/>
 
         <!--Spieler Position 1-->
-        <Rectangle x:Name="Pos1" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p1}">
+        <Rectangle x:Name="Pos1" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p1}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -81,7 +81,7 @@
         </Custom:ScatterView>
 
         <!--Spieler Position 2-->
-        <Rectangle x:Name="Pos2" MouseDown="openAddPlayer" Opacity="0.5" Margin="{StaticResource p2}">
+        <Rectangle x:Name="Pos2" MouseDown="openAddPlayer" Opacity="0.5" Margin="{StaticResource p2}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -108,7 +108,7 @@
         </Custom:ScatterView>
 
         <!--Spieler Position 3-->
-        <Rectangle x:Name="Pos3" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p3}" >
+        <Rectangle x:Name="Pos3" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p3}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -135,7 +135,7 @@
         </Custom:ScatterView>
 
         <!--Spieler Position 4-->
-        <Rectangle x:Name="Pos4" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p4}" >
+        <Rectangle x:Name="Pos4" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p4}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -170,7 +170,7 @@
         </Custom:ScatterView>
 
         <!--Spieler Position 5-->
-        <Rectangle x:Name="Pos5"  MouseDown="openAddPlayer" Opacity="0.5" Margin="{StaticResource p5}" >
+        <Rectangle x:Name="Pos5"  MouseDown="openAddPlayer" Opacity="0.5" Margin="{StaticResource p5}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -197,7 +197,7 @@
         </Custom:ScatterView>
 
         <!--Spieler Position 6-->
-        <Rectangle x:Name="Pos6" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p6}" >
+        <Rectangle x:Name="Pos6" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p6}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -271,7 +271,7 @@
 
 
         <!--Tischmitte-->
-        <Rectangle x:Name="Mitte" MouseDown="shutDown" Opacity="0.5" Margin="680,405,680,405" >
+        <Rectangle x:Name="Mitte" Opacity="0.5" Margin="680,405,680,405" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -411,7 +411,13 @@
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
 
-
+        <Custom:ElementMenu Name="MainMenu" ActivationMode="AlwaysActive" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,10">
+            <Custom:ElementMenuItem Header="Game">
+                <Custom:ElementMenuItem Header="New Game" Click="createNewGame"/>
+                <Custom:ElementMenuItem Header="Shut down" Click="shutDown" />
+            </Custom:ElementMenuItem>
+            
+        </Custom:ElementMenu>
 
 
 

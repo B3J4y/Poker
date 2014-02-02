@@ -40,11 +40,10 @@ namespace SurfacePoker
 
         private int personalStack { get; set; }
 
-        private bool isBet { get; set; }
-
         private void shutDown(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown(0); 
+            Application.Current.Shutdown(0);
+            e.Handled = true;
         }
 
 
@@ -52,32 +51,53 @@ namespace SurfacePoker
 
         public MainWindow()
         {
-            isBet = true;
-            canAddPlayer = true;
-            round = 0;
-            stack = 1000;
-            personalStack = 0;
             btn = new Button();
             LinearGradientBrush gradientBrush = new  LinearGradientBrush( Color.FromRgb( 24, 24, 24),  Color.FromRgb(47, 47, 47), new Point(0.5, 0), new Point(0.5, 1));            
             Background = gradientBrush;
             btn.Background = Background;
             //Player player1 = new Player("Anton", 1000, 1);
-            Player player2 = new Player("Berta", 500, 2);
-            Player player3 = new Player("Cäsar", 1000, 3);
+            //Player player2 = new Player("Berta", 500, 2);
+            //Player player3 = new Player("Cäsar", 1000, 3);
             //Player player4 = new Player("Dora", 1000, 4);
             //Player player5 = new Player("Emil", 1000, 5);
             //Player player6 = new Player("Friedrich", 1000, 6);
-            players = new List<Player>();
             //players.Add(player1);
-            players.Add(player2);
-            players.Add(player3);
+            //players.Add(player2);
+            //players.Add(player3);
             //players.Add(player4);
             //players.Add(player5);
             //players.Add(player6);
-            //gl = new Game(players, 100, 50);
             DataContext = this;
 
         }
+
+        private void createNewGame(object sender, RoutedEventArgs e)
+        {
+
+            TextBlock tb;
+            Rectangle r;
+            for (int i = 1; i <= 6; i++)
+            {
+                r = this.FindName("Pos" + i) as Rectangle;
+                r.Visibility = Visibility.Visible;
+                tb = this.FindName("player" + i + "name") as TextBlock;
+                tb.Text = "";
+                tb = this.FindName("player" + i + "balance") as TextBlock;
+                tb.Text = "";
+            }
+            mainPot.Text = "";
+            Mitte.Visibility = Visibility.Collapsed;
+            hideUI();
+            hideActionButton();
+            canAddPlayer = true;
+            round = 0;
+            stack = 1000;
+            personalStack = 0;
+            players = new List<Player>();
+            gl = null;
+            e.Handled = true;
+        }
+
         private void openAddPlayer(object sender, RoutedEventArgs e)
         {
             if (canAddPlayer) {
@@ -170,6 +190,7 @@ namespace SurfacePoker
             //Remove 'start new game' button
             Grid.Children.Remove(btn);
             //Start new Game
+            Mitte.Visibility = Visibility.Visible;
             if (gl == null)
             {
                 gl = new Game(players, bb, bb / 2);
@@ -438,7 +459,7 @@ namespace SurfacePoker
                 hideChips();
                 foreach (KeyValuePair<Player, int> ikvp in winners)
                 {
-                    mainPot.Text += ikvp.Key.name + " won " + ikvp.Value + "\n has Cards: " + ikvp.Key.cards.Count;
+                    mainPot.Text += ikvp.Key.name + " won " + ikvp.Value + "\n ";
                 }
             }
             catch (EndRoundException exp)
@@ -769,7 +790,7 @@ namespace SurfacePoker
             ChipSVI500.Visibility = Visibility.Collapsed;
         }
 
-        private void hideUI()
+        private void hideCards()
         {
             player1cards.Visibility = Visibility.Collapsed;
             player2cards.Visibility = Visibility.Collapsed;
@@ -796,7 +817,11 @@ namespace SurfacePoker
             player5card2image.Source = f1image;
             player6card1image.Source = f1image;
             player6card2image.Source = f1image;
+        }
 
+        private void hideUI()
+        {
+            hideCards();
             hideChips();
         }
 
