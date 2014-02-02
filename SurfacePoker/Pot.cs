@@ -33,7 +33,7 @@ public class Pot
 	    }
         public Pot(int value, int amountPerPlayer, int potThisRound, List<Player> player, Pot sidePot)
         {
-            this.value = value + potThisRound;
+            this.value = value;
             this.sidePot = sidePot;
             this.player = player;
             this.amountPerPlayer = amountPerPlayer;
@@ -99,9 +99,10 @@ public class Pot
             int times = 1 + (potThisRound / amountPerPlayer);
             List<Player> newPlayers = new List<Player>();
             newPlayers.Add(player);
-            Pot p = new Pot(value - potThisRound, value, value * times, newPlayers, sidePot);
-            potThisRound = potThisRound - value * (times - 1);
-            value = potThisRound;
+            int diff = (this.amountPerPlayer - value) * (times - 1);
+            Pot p = new Pot(this.value - diff + value, value, this.value - diff + value, newPlayers, sidePot);
+            potThisRound = diff;
+            this.value = diff;
             amountPerPlayer -= p.amountPerPlayer;
             sidePot = p;
         }

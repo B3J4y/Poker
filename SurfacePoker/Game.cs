@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using log4net;
 using log4net.Config;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
 namespace SurfacePoker
 {
 
     public class Game
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger
+    (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public List<Player> players { get; set; }
         public int smallBlind { get; set; }
         public int bigBlind { get; set; }
@@ -28,8 +31,12 @@ namespace SurfacePoker
         //private ILog logger;
 	    public Game(List<Player> players, int bb, int sb)
 	    {
-            //logger = LogManager.GetLogger(typeof(Game));
-            //logger.Info("Construction Game");
+            log.Debug("Game() - Enter");
+            log.Info("New Game - Player: " + players.Count + " Stakes: " + sb + "/" + bb);
+            foreach (Player p in players)
+            {
+                log.Info("Name: " + p.name + ", Position: " + p.position + ", Stack: " + p.stack);
+            }
             this.players = players;
             this.smallBlind = sb;
             this.bigBlind = bb;
@@ -40,6 +47,7 @@ namespace SurfacePoker
             {
                 players.Find(x => (x.position > i) && (x.ingamePosition == -1)).ingamePosition = i;
             }
+            log.Debug("Game() End");
 	    }
 
         private String boardToString()
@@ -55,6 +63,8 @@ namespace SurfacePoker
         /// </summary>
         public KeyValuePair<Player, List<Action>> newGame()
         {
+            
+            log.Debug("new Game() - Enter");
             deck = new Deck();
             round = 0;
             board = new List<Card>();
@@ -117,6 +127,12 @@ namespace SurfacePoker
             }
             activePlayer = players.Find(x => x.ingamePosition == 1);
             nextActivePlayer = players.Find(x => x.ingamePosition == 2);
+
+            foreach (Player p in players)
+            {
+                log.Info("Name: " + p.name + ", Position: " + p.ingamePosition + ", Stack: " + p.stack);
+            }
+            log.Debug("new Game() - End");
             return getActions();
         }
         /// <summary>
