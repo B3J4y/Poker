@@ -83,8 +83,6 @@ namespace SurfacePoker
         }
         private void openAddPlayer(object sender, RoutedEventArgs e)
         {
-            //TODO
-            //prüfen ob an dieser stelle schon ein Spieler sitzt
             if (canAddPlayer) {
                 Rectangle r = (Rectangle)sender;
                 String name = r.Name;
@@ -93,12 +91,12 @@ namespace SurfacePoker
 
                 switch (r.Name)
                 {
-                    case "Pos1": point.X = 270; point.Y = 550; position = 1; playerPos.Text = "1"; break;
-                    case "Pos2": point.X = 470; point.Y = 170; position = 2; playerPos.Text = "2"; break;
-                    case "Pos3": point.X = 1210; point.Y = 170; position = 3; playerPos.Text = "3"; break;
-                    case "Pos4": point.X = 1620; point.Y = 550; position = 4; playerPos.Text = "4"; break;
-                    case "Pos5": point.X = 1210; point.Y = 930; position = 5; playerPos.Text = "5"; break;
-                    case "Pos6": point.X = 470; point.Y = 930; position = 6; playerPos.Text = "6"; break;
+                    case "Pos1": point.X = 270; point.Y = 550; playerPos.Text = "1"; break;
+                    case "Pos2": point.X = 470; point.Y = 170; playerPos.Text = "2"; break;
+                    case "Pos3": point.X = 1210; point.Y = 170; playerPos.Text = "3"; break;
+                    case "Pos4": point.X = 1620; point.Y = 550; playerPos.Text = "4"; break;
+                    case "Pos5": point.X = 1210; point.Y = 930; playerPos.Text = "5"; break;
+                    case "Pos6": point.X = 470; point.Y = 930; playerPos.Text = "6"; break;
                 }
                 addplayerscatteru.Center = point;
                 addplayerscatteru.Visibility = Visibility.Visible;                
@@ -111,7 +109,7 @@ namespace SurfacePoker
             StackPanel stackPanel = (StackPanel)s.Parent;
             SurfaceTextBox text = (SurfaceTextBox)stackPanel.FindName("playerName");
             text.Text = "";
-            position = 0;
+            //position = 0;
             addplayerscatteru.Visibility = Visibility.Collapsed;
             addStartButton("Spiel starten");
             e.Handled = true;
@@ -127,14 +125,20 @@ namespace SurfacePoker
            
             SurfaceButton s = (SurfaceButton)sender;
             StackPanel stackPanel = (StackPanel)s.Parent;
-            SurfaceTextBox text = (SurfaceTextBox)stackPanel.FindName("playerName");
-            setSurfaceName(position, text.Text);
+            SurfaceTextBox tb = (SurfaceTextBox)stackPanel.FindName("playerName");
+            int pos = Convert.ToInt32(playerPos.Text);
+            setSurfaceName(pos, tb.Text);
 
-            //TODO Wenn schon ein Spieler am Platz sitz dann Namen überschreiben
-            players.Add(new Player(text.Text, stack, position));            
+            if (!(players.Exists(x => x.position == pos)))
+            {
+            players.Add(new Player(tb.Text, stack, pos));
+            }
+            else
+            {
+                players.Find(x => x.position == pos).name = tb.Text;
+            }
 
-            text.Text = "";
-            position = 0;
+            tb.Text = "";
             addplayerscatteru.Visibility = Visibility.Collapsed;
             if (players.Count >= 2)
             {
