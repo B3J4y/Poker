@@ -811,7 +811,7 @@ namespace SurfacePoker
             e.Handled = true;
         }
 
-        private void resetPersonalStack(object sender, MouseButtonEventArgs e)
+        private void resetPersonalStack(object sender, RoutedEventArgs e)
         {
             personalStack = 0;
             checkCash(kvp.Key.position);

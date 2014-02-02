@@ -328,8 +328,9 @@
                 Height="100"
                 AllowDrop="True"
                 Fill="#540F0000" 
-                MouseLeftButtonDown="setMinValue"
-                MouseRightButtonDown="resetPersonalStack"
+                TouchDown="resetPersonalStack"
+                MouseLeftButtonDown="resetPersonalStack"
+                MouseRightButtonDown="setMinValue"
                 Custom:SurfaceDragDrop.Drop="DropTargetDrop" 
             />
 
@@ -365,8 +366,9 @@
                 Height="100"
                 AllowDrop="True"
                 Fill="#540F0000"
-                MouseLeftButtonDown="setMinValue"
-                MouseRightButtonDown="resetPersonalStack"
+                TouchDown="resetPersonalStack"
+                MouseLeftButtonDown="resetPersonalStack"
+                MouseRightButtonDown="setMinValue"
                 Custom:SurfaceDragDrop.Drop="DropTargetDrop" 
             />
 
