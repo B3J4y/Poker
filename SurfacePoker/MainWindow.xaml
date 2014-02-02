@@ -317,18 +317,22 @@
             <Image Name="ChipImg100_h" Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90" Margin="190,10,200,180"/>
             <Image Name="ChipImg500_h" Source="Res/Chips/Pokerchip_final_500.png" Width="90" Height="90" Margin="280,10,110,180"/>
             <!--Bet Area-->
-            <Custom:SurfaceListBox 
-            Name="DropTarget" 
-            TextBlock.TextAlignment="Center"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            Margin="370,0,0,10"
-            Width="100"
-            Height="100"
-            AllowDrop="True"
-            Custom:SurfaceDragDrop.Drop="DropTargetDrop" Background="#540F0000" >
-            </Custom:SurfaceListBox>
             <TextBlock Name="personalStackField_h" Width="100" Height="100" Text="Bet Area" Background="{x:Null}" Foreground="Ivory" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="370,0,0,10" TextAlignment="Center"/>
+            <Rectangle
+                Name="DropTarget" 
+                TextBlock.TextAlignment="Center"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="370,0,0,10"
+                Width="100"
+                Height="100"
+                AllowDrop="True"
+                Fill="#540F0000" 
+                MouseLeftButtonDown="setMinValue"
+                MouseRightButtonDown="resetPersonalStack"
+                Custom:SurfaceDragDrop.Drop="DropTargetDrop" 
+            />
+
 
         </Grid>
 
@@ -350,18 +354,22 @@
             <Image Name="ChipImg100_v" Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90" Margin="90,110,100,280" />
             <Image Name="ChipImg500_v" Source="Res/Chips/Pokerchip_final_500.png" Width="90" Height="90" Margin="180,110,10,280" />
             <!--Bet Area-->
-            <Custom:SurfaceListBox 
-            Name="DropTarget_v" 
-            TextBlock.TextAlignment="Center"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            Margin="272,0,-92,115"
-            Width="100"
-            Height="100"
-            AllowDrop="True"
-            Custom:SurfaceDragDrop.Drop="DropTargetDrop" Background="#540F0000">
-            </Custom:SurfaceListBox>
             <TextBlock Name="personalStackField_v" Width="100" Height="100" Text="Bet Area" Background="{x:Null}" Foreground="Ivory" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="272,0,-92,115" TextAlignment="Center"/>
+            <Rectangle
+                Name="DropTarget_v" 
+                TextBlock.TextAlignment="Center"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="272,0,-92,115"
+                Width="100"
+                Height="100"
+                AllowDrop="True"
+                Fill="#540F0000"
+                MouseLeftButtonDown="setMinValue"
+                MouseRightButtonDown="resetPersonalStack"
+                Custom:SurfaceDragDrop.Drop="DropTargetDrop" 
+            />
+
 
         </Grid>
         <!--communityCards-->

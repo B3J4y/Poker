@@ -715,6 +715,18 @@ namespace SurfacePoker
             ChipImg500_v.Visibility = Visibility.Visible;
             ChipSVI500.Visibility = Visibility.Visible;
 
+            
+            if (personalStack == 0)
+            {
+                personalStackField_h.Text = "Bet Area";
+                personalStackField_v.Text = "Bet Area";
+            }
+            else
+            {
+            personalStackField_h.Text = personalStack.ToString();
+            personalStackField_v.Text = personalStack.ToString();
+            }
+
             if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 500)
             {
                 ChipImg500_h.Visibility = Visibility.Collapsed;
@@ -786,6 +798,25 @@ namespace SurfacePoker
             player6card2image.Source = f1image;
 
             hideChips();
+        }
+
+        private void setMinValue(object sender, MouseButtonEventArgs e)
+        {
+            //Update the personal stack
+            personalStack = kvp.Value[1].amount;
+            personalStackField_h.Text = personalStack.ToString();
+            personalStackField_v.Text = personalStack.ToString();
+            checkCash(kvp.Key.position);
+            setActionButtonText();
+            e.Handled = true;
+        }
+
+        private void resetPersonalStack(object sender, MouseButtonEventArgs e)
+        {
+            personalStack = 0;
+            checkCash(kvp.Key.position);
+            setActionButtonText();
+            e.Handled = true;
         }
     }
 
