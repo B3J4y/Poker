@@ -28,8 +28,6 @@ namespace SurfacePoker
       
         private bool canAddPlayer { get; set; }
 
-        private int position { get; set; }
-
         private int stack { get; set; }
 
         private System.Windows.Controls.Button btn;
@@ -57,7 +55,6 @@ namespace SurfacePoker
             isBet = true;
             canAddPlayer = true;
             round = 0;
-            position = 0;
             stack = 1000;
             personalStack = 0;
             btn = new Button();
@@ -271,7 +268,6 @@ namespace SurfacePoker
         //<Thickness x:Key="p5">1040,760,400,40</Thickness>
         //<Thickness x:Key="p6">400,760,1040,40</Thickness>
             Thickness t;
-            position = ikvp.Key.position;
             buttonAction_h.IsEnabled = false;
             buttonAction_v.IsEnabled = false;
             personalStackField_h.Text = "Bet Area";
@@ -687,7 +683,7 @@ namespace SurfacePoker
             personalStack += (Int32)Convert.ToInt32(words[2]);
             personalStackField_h.Text = personalStack.ToString();
             personalStackField_v.Text = personalStack.ToString();
-            checkCash(position);
+            checkCash(kvp.Key.position);
             setActionButtonText();
             e.Handled = true;
         }
