@@ -131,7 +131,6 @@ namespace SurfacePoker
             SurfaceTextBox text = (SurfaceTextBox)stackPanel.FindName("playerName");
             text.Text = "";
             addplayerscatteru.Visibility = Visibility.Collapsed;
-            addStartButton("Spiel starten");
             e.Handled = true;
         }
 
@@ -142,44 +141,49 @@ namespace SurfacePoker
 
         private void savePlayer(object sender, RoutedEventArgs e)
         {
-           
-            SurfaceButton s = (SurfaceButton)sender;
-            StackPanel stackPanel = (StackPanel)s.Parent;
-            SurfaceTextBox tb = (SurfaceTextBox)stackPanel.FindName("playerName");
-            Label l = this.FindName("addPlayerLabel") as Label;
-            int pos = Convert.ToInt32(playerPos.Text);
-            //check if player name is taken
-            if (players.Exists(x => x.name == tb.Text)) {
-                //player name taken
-                l.Foreground = Brushes.Red;
-                l.Content = "Choose Another Name";
-                tb.Text = "";
-            } 
-            else
-            {
-                setSurfaceName(pos, tb.Text);
-                //check if player allready exits at pos 
-                if (!(players.Exists(x => x.position == pos)))
-                {
-                    //add new player at pos
-                    players.Add(new Player(tb.Text, stack, pos));
-                }
+            
+            if (canAddPlayer) { 
+            
+                SurfaceButton s = (SurfaceButton)sender;
+                StackPanel stackPanel = (StackPanel)s.Parent;
+                SurfaceTextBox tb = (SurfaceTextBox)stackPanel.FindName("playerName");
+                Label l = this.FindName("addPlayerLabel") as Label;
+                int pos = Convert.ToInt32(playerPos.Text);
+
+                //check if player name is taken
+                if (players.Exists(x => x.name == tb.Text)) {
+                    //player name taken
+                    l.Foreground = Brushes.Red;
+                    l.Content = "Choose Another Name";
+                    tb.Text = "";
+                } 
                 else
                 {
-                    //updates Player name at pos
-                    players.Find(x => x.position == pos).name = tb.Text;
-                }
+                    setSurfaceName(pos, tb.Text);
 
-                //clean up
-                l.Foreground = Brushes.White;
-                l.Content = "Add New Player";
-                tb.Text = "";
-                addplayerscatteru.Visibility = Visibility.Collapsed;
+                    //check if player allready exits at pos 
+                    if (!(players.Exists(x => x.position == pos)))
+                    {
+                        //add new player at pos
+                        players.Add(new Player(tb.Text, stack, pos));
+                    }
+                    else
+                    {
+                        //updates Player name at pos
+                        players.Find(x => x.position == pos).name = tb.Text;
+                    }
 
-                //add start btn if 2 or more players
-                if (players.Count >= 2)
-                {
-                    addStartButton("Start Game");
+                    //clean up
+                    l.Foreground = Brushes.White;
+                    l.Content = "Add New Player";
+                    tb.Text = "";
+                    addplayerscatteru.Visibility = Visibility.Collapsed;
+
+                    //add start btn if 2 or more players
+                    if (players.Count >= 2)
+                    {
+                        addStartButton("Start Game");
+                    }
                 }
             }
             e.Handled = true;
@@ -491,33 +495,36 @@ namespace SurfacePoker
             {
                 Console.WriteLine(exp.Message.ToString());
                 round++;
-                kvp = gl.nextRound();
+                try
+                {
+                    kvp = gl.nextRound();
+                }
+                catch (EndRoundException inexp)
+                {
+                    Console.WriteLine("Hey ho");
+                    hideChips();
+                    hideActionButton();
+                    allAreAllin();
+                    //gl.nextRound();
+                    
+                }
                 switch (round)
                 {
                     case 1:
-                        BitmapImage f1image = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.board[0].ToString() + ".png"));
-                        f1.Source = f1image;
-                        BitmapImage f2image = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.board[1].ToString() + ".png"));
-                        f2.Source = f2image;
-                        BitmapImage f3image = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.board[2].ToString() + ".png"));
-                        f3.Source = f3image;
-                        communityCards.Visibility = Visibility.Visible;
+                        showCommunityCards(gl.board.Count);
                         showActionButton(kvp);
                         break;
                     case 2:
-                        BitmapImage tcimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.board[3].ToString() + ".png"));
-                        tc.Source = tcimage;
-                        communityCards.Visibility = Visibility.Visible;
+                        showCommunityCards(gl.board.Count);
                         showActionButton(kvp);
                         break;
                     case 3:
-                        BitmapImage rcimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.board[4].ToString() + ".png"));
-                        rc.Source = rcimage;
-                        communityCards.Visibility = Visibility.Visible;
+                        showCommunityCards(gl.board.Count);
                         showActionButton(kvp);
                         break;
                     case 4:
                         List<KeyValuePair<Player, int>> winners = gl.whoIsWinner(gl.pot);
+                        showCommunityCards(gl.board.Count);
                         updateBalance();
                         hideChips();
                         mainPot.Text = "";
@@ -534,6 +541,24 @@ namespace SurfacePoker
 
             }
             
+        }
+
+        private void allAreAllin()
+        {
+            try{
+                gl.nextRound();
+            }
+            catch (EndRoundException e){
+                if (round == 4)
+                {
+                    return ;
+                }
+                else
+                {
+                    round++;
+                    allAreAllin();
+                }
+            }
         }
 
         private void newRound()
@@ -854,11 +879,11 @@ namespace SurfacePoker
             player6cards.Visibility = Visibility.Collapsed;
             communityCards.Visibility = Visibility.Collapsed;
             BitmapImage f1image = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Kartenrueckseite/kartenruecken_1.jpg"));
-            f1.Source = f1image;
-            f2.Source = f1image;
-            f3.Source = f1image;
-            tc.Source = f1image;
-            rc.Source = f1image;
+            cc0.Source = f1image;
+            cc1.Source = f1image;
+            cc2.Source = f1image;
+            cc3.Source = f1image;
+            cc4.Source = f1image;
             player1card1image.Source = f1image;
             player1card2image.Source = f1image;
             player2card1image.Source = f1image;
@@ -896,6 +921,19 @@ namespace SurfacePoker
             checkCash(kvp.Key.position);
             setActionButtonText();
             e.Handled = true;
+        }
+
+        private void showCommunityCards(int i)
+        {
+            BitmapImage bi;
+            Image cc;
+            for (int j = 0; j < i; j++)
+            {
+                bi = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.board[j].ToString() + ".png"));
+                cc = this.FindName("cc" + j) as Image;
+                cc.Source = bi;
+            }
+            communityCards.Visibility = Visibility.Visible;
         }
 
         private void setDealerButtonPos(int pos)

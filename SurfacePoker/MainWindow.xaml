@@ -279,7 +279,7 @@
 
         <!--Fenster Spieler anlegen-->
         <Custom:ScatterView HorizontalAlignment="Left" VerticalAlignment="Top" Height="1042" Width="1904">
-            <Custom:ScatterViewItem x:Name="addplayerscatteru" Background="#C32D2D2D" CanMove="False" CanRotate="False" CanScale="False" Orientation="0" Center="550,550" Visibility="Collapsed">
+            <Custom:ScatterViewItem x:Name="addplayerscatteru" Background="#C32D2D2D" CanMove="False" CanRotate="False" CanScale="False" Orientation="0" Center="550,550" Visibility="Collapsed" Width="180">
                 <StackPanel Margin="8">
                     <Button Content="X" HorizontalAlignment="Right" Width="25" Foreground="White" Click="closeAddPlayer"  TouchDown="closeAddPlayer" Margin="0">
                         <Button.Background>
@@ -378,11 +378,11 @@
         </Grid>
         <!--communityCards-->
         <Grid Name="communityCards" Margin="680,405,680,405" Visibility="Hidden">
-            <Image Name="f1" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="15.2,69.48"/>
-            <Image Name="f2" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="125.6,69.48"/>
-            <Image Name="f3" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" Margin="236,69.48,236,69.48"/>
-            <Image Name="tc" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="125.6,69.48"/>
-            <Image Name="rc" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="15.2,69.48"/>
+            <Image Name="cc0" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="15.2,69.48"/>
+            <Image Name="cc1" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="125.6,69.48"/>
+            <Image Name="cc2" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" Margin="236,69.48,236,69.48"/>
+            <Image Name="cc3" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="125.6,69.48"/>
+            <Image Name="cc4" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="15.2,69.48"/>
         </Grid>
 
 
