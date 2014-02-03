@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using log4net;
+using log4net.Config;
 namespace SurfacePoker
 {
 
 public class Pot
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger
+        (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public int value { get; set; }
         public int raiseSize { get; set; }
         private int AmountPerPlayer;
@@ -27,26 +31,32 @@ public class Pot
         public int potThisRound { get; set; }
 	    public Pot()
 	    {
+            log.Debug("Pot() - Begin");
             potThisRound = 0;
             value = 0;
             player = new List<Player>();
+            log.Debug("Pot() - Begin");
 	    }
         public Pot(int value, int amountPerPlayer, int potThisRound, List<Player> player, Pot sidePot)
         {
-            this.value = value + potThisRound;
+            log.Debug("Pot(int " + value + ", int " + amountPerPlayer + ", int " + potThisRound + ", List<Player> player, Pot sidePot) - Begin");
+            this.value = value;
             this.sidePot = sidePot;
             this.player = player;
             this.amountPerPlayer = amountPerPlayer;
             this.potThisRound = potThisRound;
+            log.Debug("Pot() - End");
         }
         public void endOfRound()
         {
+            log.Debug("endOfRound() - Begin");
             if (this.sidePot != null)
             {
                 this.sidePot.amountPerPlayer = 0;
                 this.sidePot.endOfRound();
             }
             potThisRound = 0;
+            log.Debug("endOfRound() - End");
         }
         /// <summary>
         /// a player who want to raise the pot
@@ -55,8 +65,8 @@ public class Pot
         /// <param name="value"></param>
         public void raisePot(Player player,int value)
         {
-
-            if ((player.inPot + value < amountPerPlayer) || (player.isAllin))
+            log.Debug("raisePot(Player" +player.name + ",int " + value + ") - Begin");
+            if ((player.inPot < amountPerPlayer) || (player.isAllin) || (player.stack == 0))
             {
                 if (sidePot != null)
                 {
@@ -76,10 +86,19 @@ public class Pot
             }
             else
             {
-                this.value += value;
-                this.potThisRound += value;
+                if (this.sidePot == null)
+                {
+                    this.value += value;
+                    this.potThisRound += value;
+                }
+                else
+                {
+                    this.value += value - this.sidePot.amountPerPlayer;
+                    this.potThisRound += value - this.sidePot.amountPerPlayer;
+                    sidePot.raisePot(player, sidePot.amountPerPlayer);
+                }
             }
-            //Todo: Sidepots
+            log.Debug("raisePot() - End");
         }
         /// <summary>
         /// adds a sidepot to the pot
@@ -88,13 +107,17 @@ public class Pot
         /// <param name="value"></param>
         private void addMySidePot(Player player, int value)
         {
+            log.Debug("addMySidePot(Player "  +player.name + ", int " + value + ") - Begin");
             int times = 1 + (potThisRound / amountPerPlayer);
             List<Player> newPlayers = new List<Player>();
             newPlayers.Add(player);
-            Pot p = new Pot(value - potThisRound, value, value * times, newPlayers, sidePot);
-            potThisRound = potThisRound - value * (times - 1);
-            value = potThisRound;
+            int diff = (this.amountPerPlayer - value) * (times - 1);
+            Pot p = new Pot(this.value - diff + value, value, this.value - diff + value, newPlayers, sidePot);
+            potThisRound = diff;
+            this.value = diff;
+            amountPerPlayer -= p.amountPerPlayer;
             sidePot = p;
+            log.Debug("addMySidePot() - End");
         }
 
         /// <summary>
@@ -105,6 +128,7 @@ public class Pot
         /// <param name="value"></param>
         public void createSidePot(Player player, int value)
         {
+            log.Debug("createSidePot(Player " + player.name + ", int " + value + ") - Begin");
             if (this.sidePot == null)
             {
                 addMySidePot(player, value);
@@ -140,6 +164,7 @@ public class Pot
                     }
                 }
             }
+            log.Debug("createSidePot() - End");
         }
     }
 }

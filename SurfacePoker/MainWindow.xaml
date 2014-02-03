@@ -2,17 +2,40 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Custom="http://schemas.microsoft.com/surface/2008" x:Class="SurfacePoker.MainWindow"
-        Title="SurfacePoker" Width="1920" Height="1080" WindowStyle="None" WindowState="Maximized">
+        Title="SurfacePoker" Width="1920" Height="1080" WindowStyle="None" WindowState="Maximized" AllowsTransparency="True" Background="Transparent">
 
 
     <Window.Resources>
-        <Thickness x:Key="p1">50,400,1600,400</Thickness>
-        <Thickness x:Key="p2">450,50,1190,810</Thickness>
-        <Thickness x:Key="p3">1190,50,450,810</Thickness>
-        <Thickness x:Key="p4">1600,400,50,400</Thickness>
-        <Thickness x:Key="p5">1190,810,450,50</Thickness>
-        <Thickness x:Key="p6">450,810,1190,50</Thickness>
+        <Thickness x:Key="p1">40,300,1600,300</Thickness>
+        <Thickness x:Key="p2">400,40,1040,760</Thickness>
+        <Thickness x:Key="p3">1040,40,400,760</Thickness>
+        <Thickness x:Key="p4">1600,300,40,300</Thickness>
+        <Thickness x:Key="p5">1040,760,400,40</Thickness>
+        <Thickness x:Key="p6">400,760,1040,40</Thickness>
+        <DataTemplate x:Key="ScatterViewItemDataTemplate" >
+            <Border BorderThickness="2" BorderBrush="White" Margin="10">
+                <StackPanel >
+                    <Label Content="{Binding Name}" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   FontSize="20"/>
 
+                    <Label Content="{Binding CanDrag}"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   FontSize="18"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="SurfaceListBoxItemDataTemplate">
+            <Grid Width="190" Height="50">
+                <Label Content="{Binding Name}" 
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center"
+               Foreground="White"
+               FontSize="20"/>
+            </Grid>
+        </DataTemplate>
     </Window.Resources>
 
 
@@ -23,13 +46,13 @@
         <Image Name="backgroundImg"  Source="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur3.jpg"/>
 
         <!--Spieler Position 1-->
-        <Rectangle x:Name="Pos1" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p1}">
+        <Rectangle x:Name="Pos1" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p1}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
         </Rectangle>
         <!--Anzeige Name-->
-        <TextBlock Name="player1name" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="120" MaxWidth="120" Margin="50,370" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+        <TextBlock Name="player1name" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="50,310" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -40,23 +63,31 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player1interface" Margin="{StaticResource p1}" Visibility="Collapsed">
-            <Custom:ScatterViewItem Name="player1card1" Width="80" Height="123.04" >
+        <Custom:ScatterView Name="player1cards" Margin="{StaticResource p1}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5">
+            <Custom:ScatterView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Custom:ScatterView.RenderTransform>
+            <Custom:ScatterViewItem Name="player1card1" Width="80" Height="123.04"  Center="300,200">
                 <Image Name="player1card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player1card2" Width="80" Height="123.04">
+            <Custom:ScatterViewItem Name="player1card2" Width="80" Height="123.04" Center="150,200">
                 <Image Name="player1card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
 
         <!--Spieler Position 2-->
-        <Rectangle x:Name="Pos2" MouseDown="openAddPlayer" Opacity="0.5" Margin="{StaticResource p2}">
+        <Rectangle x:Name="Pos2" MouseDown="openAddPlayer" Opacity="0.5" Margin="{StaticResource p2}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
         </Rectangle>
         <!--Anzeige Name-->
-        <TextBlock Name="player2name" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="120" MaxWidth="120" Margin="750,70" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+        <TextBlock Name="player2name" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="860,50" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -67,23 +98,23 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player2interface" Margin="{StaticResource p2}" Visibility="Collapsed">
-            <Custom:ScatterViewItem Name="player2card1" Width="80" Height="123.04" >
+        <Custom:ScatterView Name="player2cards" Margin="{StaticResource p2}" Visibility="Collapsed">
+            <Custom:ScatterViewItem Name="player2card1" Width="80" Height="123.04" Center="200,100">
                 <Image Name="player2card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player2card2" Width="80" Height="123.04">
+            <Custom:ScatterViewItem Name="player2card2" Width="80" Height="123.04" Center="350,100">
                 <Image Name="player2card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
 
         <!--Spieler Position 3-->
-        <Rectangle x:Name="Pos3" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p3}" >
+        <Rectangle x:Name="Pos3" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p3}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
         </Rectangle>
         <!--Anzeige Name-->
-        <TextBlock Name="player3name" Text="" VerticalAlignment="Top" HorizontalAlignment="Right" MinWidth="120" MaxWidth="120" Margin="300,70" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+        <TextBlock Name="player3name" Text="" VerticalAlignment="Top" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="170,50" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -94,23 +125,23 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player3interface" Margin="{StaticResource p3}" Visibility="Collapsed">
-            <Custom:ScatterViewItem Name="player3card1" Width="80" Height="123.04" >
+        <Custom:ScatterView Name="player3cards" Margin="{StaticResource p3}" Visibility="Collapsed">
+            <Custom:ScatterViewItem Name="player3card1" Width="80" Height="123.04" Center="200,100">
                 <Image Name="player3card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player3card2" Width="80" Height="123.04">
+            <Custom:ScatterViewItem Name="player3card2" Width="80" Height="123.04" Center="350,100">
                 <Image Name="player3card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
 
         <!--Spieler Position 4-->
-        <Rectangle x:Name="Pos4" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p4}" >
+        <Rectangle x:Name="Pos4" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p4}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
         </Rectangle>
         <!--Anzeige Name-->
-        <TextBlock Name="player4name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="120" MaxWidth="120" Margin="-50,350" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+        <TextBlock Name="player4name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="-190,290" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -121,23 +152,31 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player4interface" Margin="{StaticResource p4}" Visibility="Collapsed">
-            <Custom:ScatterViewItem Name="player4card1" Width="80" Height="123.04" >
+        <Custom:ScatterView Name="player4cards" Margin="{StaticResource p4}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5">
+            <Custom:ScatterView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Custom:ScatterView.RenderTransform>
+            <Custom:ScatterViewItem Name="player4card1" Width="80" Height="123.04" Center="150,200">
                 <Image Name="player4card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player4card2" Width="80" Height="123.04">
+            <Custom:ScatterViewItem Name="player4card2" Width="80" Height="123.04" Center="300,200">
                 <Image Name="player4card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
 
         <!--Spieler Position 5-->
-        <Rectangle x:Name="Pos5"  MouseDown="openAddPlayer" Opacity="0.5" Margin="{StaticResource p5}" >
+        <Rectangle x:Name="Pos5"  MouseDown="openAddPlayer" Opacity="0.5" Margin="{StaticResource p5}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
         </Rectangle>
         <!--Anzeige Name-->
-        <TextBlock Name="player5name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="120" MaxWidth="120" Margin="0,0,630,50" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+        <TextBlock Name="player5name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="0,0,620,40" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -148,23 +187,23 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player5interface" Margin="{StaticResource p5}" Visibility="Collapsed">
-            <Custom:ScatterViewItem Name="player5card1" Width="80" Height="123.04" >
+        <Custom:ScatterView Name="player5cards" Margin="{StaticResource p5}" Visibility="Collapsed">
+            <Custom:ScatterViewItem Name="player5card1" Width="80" Height="123.04" Center="100,200">
                 <Image Name="player5card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player5card2" Width="80" Height="123.04">
+            <Custom:ScatterViewItem Name="player5card2" Width="80" Height="123.04" Center="250,200">
                 <Image Name="player5card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
 
         <!--Spieler Position 6-->
-        <Rectangle x:Name="Pos6" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p6}" >
+        <Rectangle x:Name="Pos6" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p6}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
         </Rectangle>
         <!--Anzeige Name-->
-        <TextBlock Name="player6name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Left" MinWidth="120" MaxWidth="120" Margin="420,50" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+        <TextBlock Name="player6name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="410,40" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -175,17 +214,64 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player6interface" Margin="{StaticResource p6}" Visibility="Collapsed">
-            <Custom:ScatterViewItem Name="player6card1" Width="80" Height="123.04" >
+        <Custom:ScatterView Name="player6cards" Margin="{StaticResource p6}" Visibility="Collapsed">
+            <Custom:ScatterViewItem Name="player6card1" Width="80" Height="123.04" Center="100,200">
                 <Image Name="player6card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player6card2" Width="80" Height="123.04">
+            <Custom:ScatterViewItem Name="player6card2" Width="80" Height="123.04" Center="250,200">
                 <Image Name="player6card2image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" MouseDown="turnToFront" MouseUp="turnToBack" TouchDown="turnToFront" TouchUp="turnToBack"/>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
 
+        <!--Balance Textblocks-->
+        <TextBlock Name="player6balance" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="705,325" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Center"/>
+        <TextBlock Name="player5balance" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="335,325" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Center"/>
+        <TextBlock Name="player2balance" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="565,345" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Center">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Name="player3balance" Text="" VerticalAlignment="Top" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="470,345" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Center">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Name="player1balance" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="350,460" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Center">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Name="player4balance" Text="" VerticalAlignment="Top" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="110,480" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Center">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <!--PotsTextBlock-->
+        <TextBlock Name="mainPot" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="700,380" MinWidth="200" MaxWidth="200" Text="" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque"/>
+
+
         <!--Tischmitte-->
-        <Rectangle x:Name="Mitte" MouseDown="shutDown" Opacity="0.5" Margin="680,405,680,405" >
+        <Rectangle x:Name="Mitte" Opacity="0.5" Margin="680,405,680,405" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -193,7 +279,7 @@
 
         <!--Fenster Spieler anlegen-->
         <Custom:ScatterView HorizontalAlignment="Left" VerticalAlignment="Top" Height="1042" Width="1904">
-            <Custom:ScatterViewItem x:Name="addplayerscatteru" Background="#C32D2D2D" CanMove="False" CanRotate="False" CanScale="False" Orientation="0" Center="550,550" Visibility="Hidden">
+            <Custom:ScatterViewItem x:Name="addplayerscatteru" Background="#C32D2D2D" CanMove="False" CanRotate="False" CanScale="False" Orientation="0" Center="550,550" Visibility="Collapsed">
                 <StackPanel Margin="8">
                     <Button Content="X" HorizontalAlignment="Right" Width="25" Foreground="White" Click="closeAddPlayer"  TouchDown="closeAddPlayer" Margin="0">
                         <Button.Background>
@@ -207,6 +293,7 @@
                     <Label Content="Neuen Spieler anlegen" Foreground="White"/>
                     <Label Content="Spielername:" Foreground="White"/>
                     <Custom:SurfaceTextBox Margin="0" TextWrapping="Wrap" Height="18" Name="playerName"/>
+                    <TextBlock Name="playerPos" MaxHeight="0" MaxWidth="0" Text=""/>
                     <Custom:SurfaceButton Content="Spieler speichern" Click="savePlayer" Margin="0"/>
                 </StackPanel>
             </Custom:ScatterViewItem>
@@ -222,24 +309,72 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <Button Name="buttonAction_h" Margin="190,20,20,170" Content="Action" Click="actionButtonClicked"/>
-            <Button Margin="190,60,20,130" Content="fold"  Click="actionButtonClicked"/>
+            <Button Name="buttonAction_h" Margin="390,20,20,220" Content="Action" Click="actionButtonClicked" IsEnabled="False" />
+            <Button Margin="390,70,20,170" Content="fold"  Click="actionButtonClicked"/>
+            <!--Chip Images-->
+            <Image Name="ChipImg10_h" Source="Res/Chips/Pokerchip_final_10.png" Width="90" Height="90" Margin="10,10,380,180"/>
+            <Image Name="ChipImg20_h" Source="Res/Chips/Pokerchip_final_20.png" Width="90" Height="90" Margin="100,10,290,180"/>
+            <Image Name="ChipImg100_h" Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90" Margin="190,10,200,180"/>
+            <Image Name="ChipImg500_h" Source="Res/Chips/Pokerchip_final_500.png" Width="90" Height="90" Margin="280,10,110,180"/>
+            <!--Bet Area-->
+            <TextBlock Name="personalStackField_h" Width="100" Height="100" Text="Bet Area" Background="{x:Null}" Foreground="Ivory" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="370,0,0,10" TextAlignment="Center"/>
+            <Rectangle
+                Name="DropTarget" 
+                TextBlock.TextAlignment="Center"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="370,0,0,10"
+                Width="100"
+                Height="100"
+                AllowDrop="True"
+                Fill="#540F0000" 
+                TouchDown="resetPersonalStack"
+                MouseLeftButtonDown="resetPersonalStack"
+                MouseRightButtonDown="setMinValue"
+                Custom:SurfaceDragDrop.Drop="DropTargetDrop" 
+            />
+
+
         </Grid>
 
         <!--Actionbuttons for players 1 and 4 @orientation left and right vertical-->
-        <Grid Name="Buttons_v" Margin="{StaticResource p4}" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+        <Grid Name="Buttons_v" Margin="{StaticResource p1}" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="-90"/>
+                    <RotateTransform Angle="90"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <Button Name="buttonAction_v" Margin="190,20,20,230" Content="Action" Click="actionButtonClicked"/>
-            <Button Margin="190,60,20,190" Content="fold"  Click="actionButtonClicked"/>
-        </Grid>
+            <Button Name="buttonAction_v" Margin="290,120,-80,310" Content="Action" Click="actionButtonClicked" IsEnabled="False"/>
+            <Button Margin="290,180,-80,250" Content="fold"  Click="actionButtonClicked"/>
+            <!--Chip Images-->
+            <Image Name="ChipImg10_v" Source="Res/Chips/Pokerchip_final_10.png" Width="90" Height="90" Margin="-90,110,280,280"/>
+            <Image Name="ChipImg20_v" Source="Res/Chips/Pokerchip_final_20.png" Width="90" Height="90" Margin="0,110,190,280" />
+            <Image Name="ChipImg100_v" Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90" Margin="90,110,100,280" />
+            <Image Name="ChipImg500_v" Source="Res/Chips/Pokerchip_final_500.png" Width="90" Height="90" Margin="180,110,10,280" />
+            <!--Bet Area-->
+            <TextBlock Name="personalStackField_v" Width="100" Height="100" Text="Bet Area" Background="{x:Null}" Foreground="Ivory" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="272,0,-92,115" TextAlignment="Center"/>
+            <Rectangle
+                Name="DropTarget_v" 
+                TextBlock.TextAlignment="Center"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="272,0,-92,115"
+                Width="100"
+                Height="100"
+                AllowDrop="True"
+                Fill="#540F0000"
+                TouchDown="resetPersonalStack"
+                MouseLeftButtonDown="resetPersonalStack"
+                MouseRightButtonDown="setMinValue"
+                Custom:SurfaceDragDrop.Drop="DropTargetDrop" 
+            />
 
+
+        </Grid>
+        <!--communityCards-->
         <Grid Name="communityCards" Margin="680,405,680,405" Visibility="Hidden">
             <Image Name="f1" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="15.2,69.48"/>
             <Image Name="f2" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="125.6,69.48"/>
@@ -247,5 +382,51 @@
             <Image Name="tc" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="125.6,69.48"/>
             <Image Name="rc" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="15.2,69.48"/>
         </Grid>
+
+
+        <Custom:ScatterView Name="Chips" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+            <Custom:ScatterViewItem Name="ChipSVI10" Center="450,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+                PreviewMouseDown="DragSourcePreviewInputDeviceDown"
+                PreviewTouchDown="DragSourcePreviewInputDeviceDown"
+                Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+                <Image Source="Res/Chips/Pokerchip_final_10.png" Width="90" Height="90"/>
+            </Custom:ScatterViewItem>
+            <Custom:ScatterViewItem Name="ChipSVI20" Center="545,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+                PreviewMouseDown="DragSourcePreviewInputDeviceDown"
+                PreviewTouchDown="DragSourcePreviewInputDeviceDown"
+                Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+                <Image Source="Res/Chips/Pokerchip_final_20.png" Width="90" Height="90"/>
+            </Custom:ScatterViewItem>
+            <Custom:ScatterViewItem Name="ChipSVI100" Center="640,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+                PreviewMouseDown="DragSourcePreviewInputDeviceDown"
+                PreviewTouchDown="DragSourcePreviewInputDeviceDown"
+                Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+                <Image Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90"/>
+            </Custom:ScatterViewItem>
+            <Custom:ScatterViewItem Name="ChipSVI500" Center="735,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+                PreviewMouseDown="DragSourcePreviewInputDeviceDown"
+                PreviewTouchDown="DragSourcePreviewInputDeviceDown"
+                Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+                <Image Source="Res/Chips/Pokerchip_final_500.png" Width="90" Height="90"/>
+            </Custom:ScatterViewItem>
+        </Custom:ScatterView>
+
+        <Custom:ElementMenu Name="MainMenu" ActivationMode="AlwaysActive" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,10">
+            <Custom:ElementMenuItem Header="Game">
+                <Custom:ElementMenuItem Header="New Game" Click="createNewGame"/>
+                <Custom:ElementMenuItem Header="Shut down" Click="shutDown" />
+            </Custom:ElementMenuItem>
+            
+        </Custom:ElementMenu>
+
+
+
+
+
+
+
+
+
+
     </Grid>
 </Window>

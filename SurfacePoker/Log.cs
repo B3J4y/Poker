@@ -1,33 +1,42 @@
 ﻿using SurfacePoker;
 using System;
 using System.Collections.Generic;
+using log4net;
+using log4net.Config;
 
 
 namespace Log
 {
     
-    public class Main 
+    public class Logger 
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger
+    (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public List<KeyValuePair<string, LogPlayer>> players { get; set; }
-	    public Main()
+	    public Logger()
 	    {
             players = new List<KeyValuePair<string, LogPlayer>>();
 	    }
 
-        public void newGame(List<Player> players)
+        public static void newGame()
         {
-            
-            foreach (Player player in players)
-            {
-                this.players.Add(new KeyValuePair<string, LogPlayer>(player.name, new LogPlayer((double)player.stack, player.cards)));
-                
-            }
+            log.Info("Name;Stack;Action;Amount;Hand;Board");
         }
 
-        public void action(Player player, string action, double amount)
+        public static void action(Player player, SurfacePoker.Action.playerAction action, int amount, List<Card> board)
         {
-            KeyValuePair<string, LogPlayer> current = this.players.Find(x => x.Key.Equals(player.name));
-            current.Value.addAction(action, amount);
+            String str = "";
+            foreach(Card c in board){
+                str += c.ToString();
+            }
+            if (player.cards.Count != 0)
+            {
+                log.Info(player.name+ ";" + player.stack + ";" + action.ToString() + ";" + amount + ";" + player.getCardsToString() + ";" + str);
+            }
+            else
+            {
+                log.Info(player.name + ";" + player.stack + ";" + action.ToString() + ";" + amount + "; ;" + str);
+            }
         }
 
         public void finishRound()
