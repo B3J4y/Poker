@@ -209,8 +209,17 @@ namespace SurfacePoker
             log.Debug("whoIsNext() - Begin");
             if (!players.Exists(x => x.isActive & (x.name != activePlayer.name)))
             {
-                log.Debug("NoPlayerInGameException");
-                throw new NoPlayerInGameException("No Next Player");
+                if (players.Exists(x => x.isAllin))
+                {
+                    log.Debug("EndRoundException");
+                    throw new EndRoundException("Finished Round");
+                }
+                else
+                {
+
+                    log.Debug("NoPlayerInGameException");
+                    throw new NoPlayerInGameException("No Next Player");
+                }
             }
             if (players.FindAll(x => (x.ingamePosition > activePlayer.ingamePosition)).Exists(x => x.isActive))
             {
