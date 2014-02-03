@@ -87,7 +87,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <!--Anzeige Name-->
-        <TextBlock Name="player2name" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="860,50" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+        <TextBlock Name="player2name" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="880,50" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -176,7 +176,7 @@
             </Rectangle.Fill>
         </Rectangle>
         <!--Anzeige Name-->
-        <TextBlock Name="player5name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="0,0,620,40" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
+        <TextBlock Name="player5name" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="0,0,640,40" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Gray">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
