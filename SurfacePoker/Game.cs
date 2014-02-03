@@ -66,7 +66,7 @@ namespace SurfacePoker
         /// <summary>
         /// starts a new game and set back all relevant attributes
         /// </summary>
-        public KeyValuePair<Player, List<Action>> newGame()
+        public Player newGame()
         {
             
             log.Debug("new Game() - Begin");
@@ -131,16 +131,23 @@ namespace SurfacePoker
                 player.isAllin = false;
                 player.hasChecked = false;
             }
-            activePlayer = players.Find(x => x.ingamePosition == 1);
-            nextActivePlayer = players.Find(x => x.ingamePosition == 2);
+            
 
             foreach (Player p in players)
             {
                 Logger.action(p, Action.playerAction.nothing, 0, new List<Card>());
                 log.Debug("Name: " + p.name + ", Position: " + p.ingamePosition + ", Stack: " + p.stack);
             }
-            log.Debug("new Game() - End");
-            return getActions();
+            if ((players.Count - nonActives) >= 3)
+            {
+                log.Debug("new Game() - End");
+                return players[players.Count - nonActives - 2];
+            }
+            else
+            {
+                log.Debug("new Game() - End");
+                return players[players.Count - nonActives];
+            }
         }
         /// <summary>
         /// determines which possibilities the active player has
@@ -149,21 +156,30 @@ namespace SurfacePoker
         public KeyValuePair<Player, List<Action>> nextPlayer()
         {
             log.Debug("nextPlayer() - Begin");
-            activePlayer = nextActivePlayer;
-            try
+            if ((activePlayer == null) && (nextActivePlayer == null))
             {
+                activePlayer = players.Find(x => x.ingamePosition == 1);
+                nextActivePlayer = players.Find(x => x.ingamePosition == 2);
+            }
+            else
+            {
+                activePlayer = nextActivePlayer;
+                try
+                {
 
-                nextActivePlayer = whoIsNext();
-            }
-            catch (NoPlayerInGameException exp)
-            {
-                log.Debug("NoPlayerInGameException");
-                throw exp;
-            }
-            catch (EndRoundException exp)
-            {
-                log.Debug("EndRoundException");
-                throw exp;
+                    nextActivePlayer = whoIsNext();
+                }
+                catch (NoPlayerInGameException exp)
+                {
+                    log.Debug("NoPlayerInGameException");
+                    throw exp;
+                }
+                catch (EndRoundException exp)
+                {
+                    log.Debug("EndRoundException");
+                    throw exp;
+                }
+
             }
             log.Debug("nextPlayer() - End");
             return getActions();
