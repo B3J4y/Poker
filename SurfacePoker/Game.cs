@@ -21,6 +21,7 @@ namespace SurfacePoker
         private Player activePlayer;
         private Player nextActivePlayer;
         private Player dealer = new Player("dealer", 0, 0);
+        private int nonActives;
 
         /// <summary>
         ///round = 0 => Preflop
@@ -46,9 +47,9 @@ namespace SurfacePoker
             pot = new Pot();
             round = 0;
             players.Sort((x, y) => x.position.CompareTo(y.position));
-            for (int i = 0; i < players.Count; i++)
+            for (int i = 2; i < players.Count + 2; i++)
             {
-                players.Find(x => (x.position > i) && (x.ingamePosition == -1)).ingamePosition = i;
+                players.Find(x => (x.position > (i - 2)) && (x.ingamePosition == -1)).ingamePosition = i;
             }
             log.Debug("Game() - End");
 	    }
@@ -74,7 +75,7 @@ namespace SurfacePoker
             round = 0;
             board = new List<Card>();
             pot.amountPerPlayer = bigBlind;
-            int nonActives = players.FindAll(x =>  (x.stack == 0)).Count;
+            nonActives = players.FindAll(x =>  (x.stack == 0)).Count;
             foreach (Player player in players)
             {
                 if (player.stack > 0)
@@ -89,11 +90,11 @@ namespace SurfacePoker
                 }
                 
                 player.inPot = 0;
-                if (player.ingamePosition < (players.Count - nonActives))
+                if (player.ingamePosition > 1)
                 {
                     if (player.isActive)
                     {
-                        player.ingamePosition++;
+                        player.ingamePosition--;
                     }
                     else
                     {
@@ -104,7 +105,7 @@ namespace SurfacePoker
                 {
                     if (player.isActive)
                     {
-                        player.ingamePosition = 1;
+                        player.ingamePosition = (players.Count - nonActives);
                     }
                     else
                     {
@@ -138,15 +139,17 @@ namespace SurfacePoker
                 Logger.action(p, Action.playerAction.nothing, 0, new List<Card>());
                 log.Debug("Name: " + p.name + ", Position: " + p.ingamePosition + ", Stack: " + p.stack);
             }
+            activePlayer = null;
+            nextActivePlayer = null;
             if ((players.Count - nonActives) >= 3)
             {
                 log.Debug("new Game() - End");
-                return players[players.Count - nonActives - 3];
+                return players.Find(x => x.ingamePosition == (players.Count - nonActives - 2));
             }
             else
             {
                 log.Debug("new Game() - End");
-                return players[players.Count - nonActives - 1];
+                return players.Find(x => x.ingamePosition == (players.Count - nonActives));
             }
         }
         /// <summary>
@@ -422,7 +425,7 @@ namespace SurfacePoker
             pot.amountPerPlayer = 0;
             pot.raiseSize = 0;
             //active Player after DealerButton
-            int nonActives = players.FindAll(x => (x.isAllin) | (!x.isActive)).Count;
+            //int nonActives = players.FindAll(x => (x.isAllin) | (!x.isActive)).Count;
             activePlayer = whoIsNext(players.Count - nonActives - 1);
             nextActivePlayer = whoIsNext(activePlayer.ingamePosition + 1);
             pot.endOfRound();
@@ -464,7 +467,7 @@ namespace SurfacePoker
             int mod = (pot.value / result.Count) % bigBlind;
             Player first = new Player(activePlayer);
             try {
-                int nonActives = players.FindAll(x => (!x.isActive)).Count;
+                // nonActives = players.FindAll(x => (!x.isActive)).Count;
                 first = whoIsNext(players.Count- nonActives - 1);
             }
             catch (NoPlayerInGameException e)
