@@ -267,7 +267,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--PotsTextBlock-->
-        <TextBlock Name="mainPot" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="700,380" MinWidth="200" MaxWidth="200" Text="" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque"/>
+        <TextBlock Name="mainPot" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="700,380" MinWidth="600" MaxWidth="600" Text="" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque"/>
 
 
         <!--Tischmitte-->
@@ -422,7 +422,11 @@
                 <Custom:ElementMenuItem Header="New Game" Click="createNewGame"/>
                 <Custom:ElementMenuItem Header="Shut down" Click="shutDown" />
             </Custom:ElementMenuItem>
-            
+            <Custom:ElementMenuItem Name="EMIchangeStack" Header="Stack" Visibility="Collapsed">
+                <Custom:ElementMenuItem Header="Stack: 1000" Click="setStack"/>
+                <Custom:ElementMenuItem Header="Stack: 2000" Click="setStack"/>
+                <Custom:ElementMenuItem Header="Stack: 4000" Click="setStack"/>
+            </Custom:ElementMenuItem>
         </Custom:ElementMenu>
 
 

@@ -28,6 +28,8 @@ namespace SurfacePoker
       
         private bool canAddPlayer { get; set; }
 
+        private bool canChangeStack { get; set; }
+
         private int stack { get; set; }
 
         private System.Windows.Controls.Button btn;
@@ -76,27 +78,34 @@ namespace SurfacePoker
 
             TextBlock tb;
             Rectangle r;
+            //Set all names and stacks to null
             for (int i = 1; i <= 6; i++)
             {
                 r = this.FindName("Pos" + i) as Rectangle;
                 r.Visibility = Visibility.Visible;
-                tb = this.FindName("player" + i + "name") as TextBlock;
-                tb.Text = "";
+                setSurfaceName(i, "");
                 tb = this.FindName("player" + i + "balance") as TextBlock;
                 tb.Text = "";
             }
-            mainPot.Text = "";
             Mitte.Visibility = Visibility.Collapsed;
+            //Hide Startbtn
             if (Grid.Children.Contains(btn))
             {
                 Grid.Children.Remove(btn);
             }
             hideUI();
             hideActionButton();
-            canAddPlayer = true;
             round = 0;
-            stack = 1000;
             personalStack = 0;
+            canAddPlayer = true;
+            canChangeStack = true;
+            EMIchangeStack.Visibility = Visibility.Visible;
+            //if no stack value is given set default
+            if (stack == 0)
+            {
+                stack = 1000;
+            }
+            mainPot.Text = "Touch Grey Area To Create A New Player!             Player Stacks: " + stack.ToString();
             players = new List<Player>();
             gl = null;
             e.Handled = true;
@@ -179,7 +188,7 @@ namespace SurfacePoker
                     tb.Text = "";
                     addplayerscatteru.Visibility = Visibility.Collapsed;
 
-                    //add start btn if 2 or more players
+                    //add start btn if two or more players
                     if (players.Count >= 2)
                     {
                         addStartButton("Start Game");
@@ -206,6 +215,8 @@ namespace SurfacePoker
         {
             //Disable adding new players and hide poition fields
             canAddPlayer = false;
+            EMIchangeStack.Visibility = Visibility.Collapsed;
+            canChangeStack = false;
             Pos1.Visibility = Visibility.Collapsed;
             Pos2.Visibility = Visibility.Collapsed;
             Pos3.Visibility = Visibility.Collapsed;
@@ -978,6 +989,24 @@ namespace SurfacePoker
                     dealerButton.Visibility = Visibility.Visible;
                     break;
             }
+        }
+        private void setStack(object sender, RoutedEventArgs e)
+        {
+            if (canChangeStack)
+            {
+                ElementMenuItem emi = sender as ElementMenuItem;
+                string t = emi.Header.ToString();
+                stack = (Int32)Convert.ToInt32(emi.Header.ToString().Split(' ')[1]);
+                mainPot.Text = "Player Stacks: " + stack.ToString();
+                if (players.Exists(x => x.stack != stack))
+                {
+                    foreach (Player p in players) {
+                        p.stack = stack;                    
+                    }
+
+                }
+            }
+            e.Handled = true;
         }
     }
 
