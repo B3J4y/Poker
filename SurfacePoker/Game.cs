@@ -31,7 +31,6 @@ namespace SurfacePoker
         /// </summary>
         private int round;
         public List<Card> board { get; set; }
-        //private ILog logger;
 	    public Game(List<Player> players, int bb, int sb)
 	    {
             log.Debug("Game() - Begin");
@@ -301,19 +300,16 @@ namespace SurfacePoker
         /// </summary>
         /// <param name="i">i determines fron which position the function has to search</param>
         /// <returns>next Player</returns>
-        private Player whoIsNext(int i)
+        private Player whoIsNext(int i, bool b)
         {
             log.Debug("whoIsNext(int "+ i+") - Begin");
-            if (!players.Exists(x => x.isActive & (x.name != activePlayer.name)))
+            if (!players.Exists(x => x.isActive & (x.name != activePlayer.name)) && b)
             {
                 if (players.Exists(x => x.isAllin))
                 {
-                    if (board.Count < 5)
-                    {
-
-                        log.Debug("EndRoundException");
-                        throw new EndRoundException("Finished Round");
-                    }
+                    log.Debug("EndRoundException");
+                    throw new EndRoundException("Finished Round");
+                    
                 }
                 else
                 {
@@ -439,8 +435,8 @@ namespace SurfacePoker
             pot.raiseSize = 0;
             //active Player after DealerButton
             //int nonActives = players.FindAll(x => (x.isAllin) | (!x.isActive)).Count;
-            activePlayer = whoIsNext(players.Count - nonActives - 1);
-            nextActivePlayer = whoIsNext(activePlayer.ingamePosition + 1);
+            activePlayer = whoIsNext(players.Count - nonActives - 1, true);
+            nextActivePlayer = whoIsNext(activePlayer.ingamePosition + 1, true);
             pot.endOfRound();
             log.Debug("nextRound() - End");
             return getActions();
@@ -481,7 +477,7 @@ namespace SurfacePoker
             Player first = new Player(activePlayer);
             try {
                 // nonActives = players.FindAll(x => (!x.isActive)).Count;
-                first = whoIsNext(players.Count- nonActives - 1);
+                first = whoIsNext(players.Count- nonActives - 1, false);
             }
             catch (NoPlayerInGameException e)
             {
