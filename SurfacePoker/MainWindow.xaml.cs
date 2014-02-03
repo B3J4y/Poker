@@ -87,6 +87,10 @@ namespace SurfacePoker
             }
             mainPot.Text = "";
             Mitte.Visibility = Visibility.Collapsed;
+            if (Grid.Children.Contains(btn))
+            {
+                Grid.Children.Remove(btn);
+            }
             hideUI();
             hideActionButton();
             canAddPlayer = true;
