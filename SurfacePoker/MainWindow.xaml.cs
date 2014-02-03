@@ -213,7 +213,7 @@ namespace SurfacePoker
 
         private void startGame(object sender, RoutedEventArgs e)
         {
-            //Disable adding new players and hide poition fields
+            //Disable adding new players, changing stacks and hide position fields
             canAddPlayer = false;
             EMIchangeStack.Visibility = Visibility.Collapsed;
             canChangeStack = false;
@@ -542,7 +542,7 @@ namespace SurfacePoker
                         newRound();
                         foreach (KeyValuePair<Player, int> ikvp in winners)
                         {
-                            mainPot.Text += ikvp.Key.name + " won " + ikvp.Value + "\n has Cards: " +ikvp.Key.cards.Count;
+                            mainPot.Text += ikvp.Key.name + " won " + ikvp.Value + "\n";
                             turnCardsToFront(ikvp.Key.position);
                         }
 
