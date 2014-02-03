@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using log4net;
+using log4net.Config;
 
 namespace SurfacePoker
 {
@@ -10,6 +12,8 @@ namespace SurfacePoker
     /// </summary>
     public class Player
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger
+    (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public bool isActive { get; set; }
         public int stack { get; set; }
         public List<Card> cards { get; set; }
@@ -23,6 +27,7 @@ namespace SurfacePoker
 
         public Player(String name, int stack, int position)
         {
+            log.Debug("Player(String " + name + ", int"+ stack +", int" + position + ") - Begin");
             this.name = name;
             this.stack = stack;
             isActive = true;
@@ -33,10 +38,12 @@ namespace SurfacePoker
             this.position = position;
             this.ingamePosition = -1;
             this.isAllin = false;
+            log.Debug("Player() - End");
         }
 
         public Player(Player player)
         {
+            log.Debug("Player(Player " + player.name + ")");
             this.isActive = player.isActive;
             this.stack = player.stack;
             this.cards = player.cards;
@@ -47,6 +54,7 @@ namespace SurfacePoker
             this.name = player.name;
             this.hasChecked = player.hasChecked;
             this.isAllin = player.isAllin;
+            log.Debug("Player() - End");
         }
 
         public int toCall(List<Player> players)
@@ -68,11 +76,13 @@ namespace SurfacePoker
         //auf wie viel erhöht der Player
         public int action(int move)
         {
+            log.Debug("action(int " + move + ") - Begin");
             if (move < this.stack)
             {
                 //int diff = (move - this.inPot); 
                 this.stack -= move;
                 inPot = (this.inPot + move);
+                log.Debug("action() - End");
                 return move;
             }
             else
@@ -82,13 +92,17 @@ namespace SurfacePoker
                 this.stack = 0;
                 this.isAllin = true;
                 this.isActive = false;
+                log.Debug("action() - End");
                 return diff;
             }
+            
         }
 
         public void setOneCard(Card card)
         {
+            log.Debug("setOneCard(Card " + card.ToString() + ") - Begin");
             cards.Add(card);
+            log.Debug("setOneCard() - End");
         }
 
         /// <summary>
