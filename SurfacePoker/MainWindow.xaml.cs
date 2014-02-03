@@ -588,7 +588,13 @@ namespace SurfacePoker
                 TextBlock tb = this.FindName("player" + iPlayer.position + "balance") as TextBlock;
                 if (iPlayer.stack != 0)
                 {
-                    tb.Text = iPlayer.stack.ToString();
+                    tb.Text = "";
+                    if (iPlayer.inPot != 0)
+                    {
+                        tb.Text = "Pot: " + iPlayer.inPot.ToString() + "    ";
+                    }
+                   
+                    tb.Text += "Stack: " + iPlayer.stack.ToString();
                 }
                 else
                 {

@@ -314,6 +314,7 @@
     <Resource Include="Res\Cards\kpikbube.png" />
     <Resource Include="Res\Cards\kpikdame.png" />
     <Resource Include="Res\Cards\kpikkoenig.png" />
+    <Resource Include="Res\Chips\D_Button.png" />
     <Content Include="Res\Icon\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

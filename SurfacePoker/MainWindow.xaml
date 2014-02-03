@@ -224,9 +224,9 @@
         </Custom:ScatterView>
 
         <!--Balance Textblocks-->
-        <TextBlock Name="player6balance" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="705,325" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Center"/>
-        <TextBlock Name="player5balance" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="335,325" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Center"/>
-        <TextBlock Name="player2balance" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="565,345" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Center">
+        <TextBlock Name="player6balance" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="640,325" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Right"/>
+        <TextBlock Name="player5balance" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="410,325" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Right"/>
+        <TextBlock Name="player2balance" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="650,345" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Right">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -236,7 +236,7 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <TextBlock Name="player3balance" Text="" VerticalAlignment="Top" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="470,345" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Center">
+        <TextBlock Name="player3balance" Text="" VerticalAlignment="Top" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="400,345" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Right">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -246,7 +246,7 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <TextBlock Name="player1balance" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="350,460" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Center">
+        <TextBlock Name="player1balance" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="240" MaxWidth="240" Margin="350,530" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Right">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -256,7 +256,7 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <TextBlock Name="player4balance" Text="" VerticalAlignment="Top" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="110,480" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Center">
+        <TextBlock Name="player4balance" Text="" VerticalAlignment="Bottom" HorizontalAlignment="Right" MinWidth="240" MaxWidth="240" Margin="110,490" Background="{x:Null}" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque" TextAlignment="Right">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -414,7 +414,7 @@
         </Custom:ScatterView>
 
 
-        <Image Name="dealerButton" Source="Res/Chips/Pokerchip_final_20.png" Width="90" Height="90" Visibility="Collapsed" Margin="554,665,1276,325"/>
+        <Image Name="dealerButton" Source="Res/Chips/D_Button.png" Width="90" Height="90" Visibility="Collapsed" Margin="554,665,1276,325"/>
 
 
         <Custom:ElementMenu Name="MainMenu" ActivationMode="AlwaysActive" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,10">
