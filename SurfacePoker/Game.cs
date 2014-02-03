@@ -141,12 +141,12 @@ namespace SurfacePoker
             if ((players.Count - nonActives) >= 3)
             {
                 log.Debug("new Game() - End");
-                return players[players.Count - nonActives - 2];
+                return players[players.Count - nonActives - 3];
             }
             else
             {
                 log.Debug("new Game() - End");
-                return players[players.Count - nonActives];
+                return players[players.Count - nonActives - 1];
             }
         }
         /// <summary>

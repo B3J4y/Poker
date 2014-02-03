@@ -300,7 +300,7 @@
         </Custom:ScatterView>
 
         <!--Actionbuttons for players 2,3,5,6 @orientation top and bottom horizontal-->
-        <Grid Name="Buttons_h" Margin="{StaticResource p6}" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+        <Grid Name="Buttons_h" Margin="{StaticResource p5}" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -331,7 +331,8 @@
                 TouchDown="resetPersonalStack"
                 MouseLeftButtonDown="resetPersonalStack"
                 MouseRightButtonDown="setMinValue"
-                Custom:SurfaceDragDrop.Drop="DropTargetDrop" 
+                Custom:SurfaceDragDrop.DragEnter="DropTargetDragEnter"
+                Custom:SurfaceDragDrop.DragLeave="DropTargetDragLeave"
             />
 
 
@@ -369,7 +370,8 @@
                 TouchDown="resetPersonalStack"
                 MouseLeftButtonDown="resetPersonalStack"
                 MouseRightButtonDown="setMinValue"
-                Custom:SurfaceDragDrop.Drop="DropTargetDrop" 
+                Custom:SurfaceDragDrop.DragEnter="DropTargetDragEnter"
+                Custom:SurfaceDragDrop.DragLeave="DropTargetDragLeave"
             />
 
 
@@ -403,13 +405,17 @@
                 Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
                 <Image Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="ChipSVI500" Center="735,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+            <Custom:ScatterViewItem Name="ChipSVI500" Center="1375,820" Background="Transparent" CanRotate="False" Visibility="Collapsed"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown"
                 Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
                 <Image Source="Res/Chips/Pokerchip_final_500.png" Width="90" Height="90"/>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
+
+
+        <Image Name="dealerButton" Source="Res/Chips/Pokerchip_final_20.png" Width="90" Height="90" Visibility="Collapsed" Margin="554,665,1276,325"/>
+
 
         <Custom:ElementMenu Name="MainMenu" ActivationMode="AlwaysActive" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,10">
             <Custom:ElementMenuItem Header="Game">

@@ -196,7 +196,9 @@ namespace SurfacePoker
                 gl = new Game(players, bb, bb / 2);
             }
             //Start new round
-            kvp = gl.newGame();
+            Player p = gl.newGame();
+            setDealerButtonPos(p.position);
+            kvp = gl.nextPlayer();
             showCards();
             showActionButton(kvp);
             e.Handled = true;
@@ -721,6 +723,35 @@ namespace SurfacePoker
             e.Handled = true;
         }
 
+        private void DropTargetDragEnter(object sender, SurfaceDragDropEventArgs e)
+        {
+
+            e.Cursor.Visual.Tag = "DragEnter";
+            Image img = e.Cursor.Data as Image;
+            //Get Chip Value
+            char[] delimiterChars = { '_', '.' };
+            string text = img.Source.ToString();
+            string[] words = text.Split(delimiterChars);
+
+            //Update the personal stack
+            personalStack += (Int32)Convert.ToInt32(words[2]);
+            personalStackField_h.Text = personalStack.ToString();
+            personalStackField_v.Text = personalStack.ToString();
+            checkCash(kvp.Key.position);
+            setActionButtonText();
+            e.Handled = true;
+        }
+
+        private void DropTargetDragLeave(object sender, SurfaceDragDropEventArgs e)
+        {
+
+            e.Cursor.Visual.Tag = null;
+            Console.WriteLine("DropTargetDragLeave");
+            SurfaceDragDrop.CancelDragDrop(e.Cursor);
+            e.Handled = true;
+            
+        }
+
         private void checkCash(int pos)
         {
             ChipImg10_h.Visibility = Visibility.Visible;
@@ -842,6 +873,44 @@ namespace SurfacePoker
             checkCash(kvp.Key.position);
             setActionButtonText();
             e.Handled = true;
+        }
+
+        private void setDealerButtonPos(int pos)
+        {
+            Thickness t;
+            switch (pos)
+            {
+                case 1:
+                    t = new Thickness(325, 610, 1505, 380);
+                    dealerButton.Margin = t;
+                    dealerButton.Visibility = Visibility.Visible;
+                    break;
+                case 2:
+                    t = new Thickness(585, 325, 1245, 665);
+                    dealerButton.Margin = t;
+                    dealerButton.Visibility = Visibility.Visible;
+                    break;
+                case 3:
+                    t = new Thickness(1229, 325, 601, 665);
+                    dealerButton.Margin = t;
+                    dealerButton.Visibility = Visibility.Visible;
+                    break;
+                case 4:
+                    t = new Thickness(1430, 363, 400, 627);
+                    dealerButton.Margin = t;
+                    dealerButton.Visibility = Visibility.Visible;
+                    break;
+                case 5:
+                    t = new Thickness(1160, 665, 670, 325);
+                    dealerButton.Margin = t;
+                    dealerButton.Visibility = Visibility.Visible;
+                    break;
+                case 6:
+                    t = new Thickness(554, 665, 1276, 325);
+                    dealerButton.Margin = t;
+                    dealerButton.Visibility = Visibility.Visible;
+                    break;
+            }
         }
     }
 
