@@ -146,23 +146,41 @@ namespace SurfacePoker
             SurfaceButton s = (SurfaceButton)sender;
             StackPanel stackPanel = (StackPanel)s.Parent;
             SurfaceTextBox tb = (SurfaceTextBox)stackPanel.FindName("playerName");
+            Label l = this.FindName("addPlayerLabel") as Label;
             int pos = Convert.ToInt32(playerPos.Text);
-            setSurfaceName(pos, tb.Text);
-
-            if (!(players.Exists(x => x.position == pos)))
-            {
-            players.Add(new Player(tb.Text, stack, pos));
-            }
+            //check if player name is taken
+            if (players.Exists(x => x.name == tb.Text)) {
+                //player name taken
+                l.Foreground = Brushes.Red;
+                l.Content = "Choose Another Name";
+                tb.Text = "";
+            } 
             else
             {
-                players.Find(x => x.position == pos).name = tb.Text;
-            }
+                setSurfaceName(pos, tb.Text);
+                //check if player allready exits at pos 
+                if (!(players.Exists(x => x.position == pos)))
+                {
+                    //add new player at pos
+                    players.Add(new Player(tb.Text, stack, pos));
+                }
+                else
+                {
+                    //updates Player name at pos
+                    players.Find(x => x.position == pos).name = tb.Text;
+                }
 
-            tb.Text = "";
-            addplayerscatteru.Visibility = Visibility.Collapsed;
-            if (players.Count >= 2)
-            {
-                addStartButton("Spiel starten");
+                //clean up
+                l.Foreground = Brushes.White;
+                l.Content = "Add New Player";
+                tb.Text = "";
+                addplayerscatteru.Visibility = Visibility.Collapsed;
+
+                //add start btn if 2 or more players
+                if (players.Count >= 2)
+                {
+                    addStartButton("Start Game");
+                }
             }
             e.Handled = true;
 
@@ -199,9 +217,10 @@ namespace SurfacePoker
             {
                 gl = new Game(players, bb, bb / 2);
             }
-            //Start new round
+            //set dealer button to pos
             Player p = gl.newGame();
             setDealerButtonPos(p.position);
+            //get first player
             kvp = gl.nextPlayer();
             showCards();
             showActionButton(kvp);

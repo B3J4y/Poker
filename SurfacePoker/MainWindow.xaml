@@ -290,11 +290,11 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
-                    <Label Content="Neuen Spieler anlegen" Foreground="White"/>
-                    <Label Content="Spielername:" Foreground="White"/>
+                    <Label Name="addPlayerLabel" Content="Add New Player" Foreground="White"/>
+                    <Label Content="Playername:" Foreground="White"/>
                     <Custom:SurfaceTextBox Margin="0" TextWrapping="Wrap" Height="18" Name="playerName"/>
                     <TextBlock Name="playerPos" MaxHeight="0" MaxWidth="0" Text=""/>
-                    <Custom:SurfaceButton Content="Spieler speichern" Click="savePlayer" Margin="0"/>
+                    <Custom:SurfaceButton Content="Save Player" Click="savePlayer" Margin="0" />
                 </StackPanel>
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
