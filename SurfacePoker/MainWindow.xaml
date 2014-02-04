@@ -387,25 +387,25 @@
 
 
         <Custom:ScatterView Name="Chips" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
-            <Custom:ScatterViewItem Name="ChipSVI10" Center="450,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+            <Custom:ScatterViewItem Name="SVIChip10" Center="450,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown"
                 Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
                 <Image Source="Res/Chips/Pokerchip_final_10.png" Width="90" Height="90"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="ChipSVI20" Center="545,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+            <Custom:ScatterViewItem Name="SVIChip20" Center="545,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown"
                 Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
                 <Image Source="Res/Chips/Pokerchip_final_20.png" Width="90" Height="90"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="ChipSVI100" Center="640,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+            <Custom:ScatterViewItem Name="SVIChip100" Center="640,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown"
                 Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
                 <Image Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="ChipSVI500" Center="1375,820" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+            <Custom:ScatterViewItem Name="SVIChip500" Center="1375,820" Background="Transparent" CanRotate="False" Visibility="Collapsed"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown"
                 Custom:SurfaceDragDrop.DragCanceled="DragCanceled">

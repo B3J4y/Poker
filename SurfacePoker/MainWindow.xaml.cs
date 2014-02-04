@@ -343,10 +343,6 @@ namespace SurfacePoker
                     t = new Thickness(40, 300, 1600, 300);
                     Buttons_v.Margin = t;
                     Buttons_v.RenderTransform = new RotateTransform(90);
-                    ChipSVI10.Center = new Point(270,360);
-                    ChipSVI20.Center = new Point(270, 455);
-                    ChipSVI100.Center = new Point(270, 545);
-                    ChipSVI500.Center = new Point(270, 635);
                     checkCash(ikvp.Key.position);
                     Buttons_v.Visibility = Visibility.Visible;
                     break;
@@ -354,10 +350,6 @@ namespace SurfacePoker
                     t = new Thickness(400,40,1040,760);
                     Buttons_h.Margin = t;
                     Buttons_h.RenderTransform = new RotateTransform(180);
-                    ChipSVI10.Center = new Point(830,270);
-                    ChipSVI20.Center = new Point(740, 270);
-                    ChipSVI100.Center = new Point(650, 270);
-                    ChipSVI500.Center = new Point(560, 270);
                     checkCash(ikvp.Key.position);
                     Buttons_h.Visibility = Visibility.Visible;
                     break;
@@ -365,10 +357,6 @@ namespace SurfacePoker
                     t = new Thickness(1040, 40, 400, 760);
                     Buttons_h.Margin = t;
                     Buttons_h.RenderTransform = new RotateTransform(180);
-                    ChipSVI10.Center = new Point(1470,270);
-                    ChipSVI20.Center = new Point(1380, 270);
-                    ChipSVI100.Center = new Point(1290, 270);
-                    ChipSVI500.Center = new Point(1200, 270);
                     checkCash(ikvp.Key.position);
                     Buttons_h.Visibility = Visibility.Visible;
                     break;
@@ -376,10 +364,6 @@ namespace SurfacePoker
                     t = new Thickness(1600, 300, 40, 300);
                     Buttons_v.Margin = t;
                     Buttons_v.RenderTransform = new RotateTransform(-90);
-                    ChipSVI10.Center = new Point(1660, 730);
-                    ChipSVI20.Center = new Point(1660, 640);
-                    ChipSVI100.Center = new Point(1660, 550);
-                    ChipSVI500.Center = new Point(1660, 460);
                     checkCash(ikvp.Key.position);
                     Buttons_v.Visibility = Visibility.Visible;
                     break;
@@ -387,10 +371,6 @@ namespace SurfacePoker
                     t = new Thickness(1040, 760, 400, 40);
                     Buttons_h.Margin = t;
                     Buttons_h.RenderTransform = new RotateTransform(0);
-                    ChipSVI10.Center = new Point(1105,820);
-                    ChipSVI20.Center = new Point(1190, 820);
-                    ChipSVI100.Center = new Point(1280, 820);
-                    ChipSVI500.Center = new Point(1375, 820);
                     checkCash(ikvp.Key.position);
                     Buttons_h.Visibility = Visibility.Visible;
                     break;
@@ -398,10 +378,6 @@ namespace SurfacePoker
                     t = new Thickness(400, 760, 1040, 40);
                     Buttons_h.Margin = t;
                     Buttons_h.RenderTransform = new RotateTransform(0);
-                    ChipSVI10.Center = new Point(465,820);
-                    ChipSVI20.Center = new Point(555, 820);
-                    ChipSVI100.Center = new Point(640, 820);
-                    ChipSVI500.Center = new Point(735, 820);
                     checkCash(ikvp.Key.position);
                     Buttons_h.Visibility = Visibility.Visible;
                     break;
@@ -819,18 +795,19 @@ namespace SurfacePoker
 
         private void checkCash(int pos)
         {
+            setSVIChipPos(kvp.Key.position);
             ChipImg10_h.Visibility = Visibility.Visible;
             ChipImg10_v.Visibility = Visibility.Visible;
-            ChipSVI10.Visibility = Visibility.Visible;
+            SVIChip10.Visibility = Visibility.Visible;
             ChipImg20_h.Visibility = Visibility.Visible;
             ChipImg20_v.Visibility = Visibility.Visible;
-            ChipSVI20.Visibility = Visibility.Visible;
+            SVIChip20.Visibility = Visibility.Visible;
             ChipImg100_h.Visibility = Visibility.Visible;
             ChipImg100_v.Visibility = Visibility.Visible;
-            ChipSVI100.Visibility = Visibility.Visible;
+            SVIChip100.Visibility = Visibility.Visible;
             ChipImg500_h.Visibility = Visibility.Visible;
             ChipImg500_v.Visibility = Visibility.Visible;
-            ChipSVI500.Visibility = Visibility.Visible;
+            SVIChip500.Visibility = Visibility.Visible;
 
             
             if (personalStack == 0)
@@ -848,22 +825,22 @@ namespace SurfacePoker
             {
                 ChipImg500_h.Visibility = Visibility.Collapsed;
                 ChipImg500_v.Visibility = Visibility.Collapsed;
-                ChipSVI500.Visibility = Visibility.Collapsed;
+                SVIChip500.Visibility = Visibility.Collapsed;
                 if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 100)
                 {
                     ChipImg100_h.Visibility = Visibility.Collapsed;
                     ChipImg100_v.Visibility = Visibility.Collapsed;
-                    ChipSVI100.Visibility = Visibility.Collapsed;
+                    SVIChip100.Visibility = Visibility.Collapsed;
                     if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 20)
                     {
                         ChipImg20_h.Visibility = Visibility.Collapsed;
                         ChipImg20_v.Visibility = Visibility.Collapsed;
-                        ChipSVI20.Visibility = Visibility.Collapsed;
+                        SVIChip20.Visibility = Visibility.Collapsed;
                         if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 10)
                         {
                             ChipImg10_h.Visibility = Visibility.Collapsed;
                             ChipImg10_v.Visibility = Visibility.Collapsed;
-                            ChipSVI10.Visibility = Visibility.Collapsed;
+                            SVIChip10.Visibility = Visibility.Collapsed;
 
                         }
                     }
@@ -874,16 +851,16 @@ namespace SurfacePoker
         private void hideChips() {
             ChipImg10_h.Visibility = Visibility.Collapsed;
             ChipImg10_v.Visibility = Visibility.Collapsed;
-            ChipSVI10.Visibility = Visibility.Collapsed;
+            SVIChip10.Visibility = Visibility.Collapsed;
             ChipImg20_h.Visibility = Visibility.Collapsed;
             ChipImg20_v.Visibility = Visibility.Collapsed;
-            ChipSVI20.Visibility = Visibility.Collapsed;
+            SVIChip20.Visibility = Visibility.Collapsed;
             ChipImg100_h.Visibility = Visibility.Collapsed;
             ChipImg100_v.Visibility = Visibility.Collapsed;
-            ChipSVI100.Visibility = Visibility.Collapsed;
+            SVIChip100.Visibility = Visibility.Collapsed;
             ChipImg500_h.Visibility = Visibility.Collapsed;
             ChipImg500_v.Visibility = Visibility.Collapsed;
-            ChipSVI500.Visibility = Visibility.Collapsed;
+            SVIChip500.Visibility = Visibility.Collapsed;
         }
 
         private void hideCards()
@@ -974,7 +951,7 @@ namespace SurfacePoker
                     dealerButton.Visibility = Visibility.Visible;
                     break;
                 case 4:
-                    t = new Thickness(1430, 363, 400, 627);
+                    t = new Thickness(1505, 380, 325, 610);
                     dealerButton.Margin = t;
                     dealerButton.Visibility = Visibility.Visible;
                     break;
@@ -1007,6 +984,49 @@ namespace SurfacePoker
                 }
             }
             e.Handled = true;
+        }
+        private void setSVIChipPos(int i)
+        {
+            switch (i)
+            {
+                case 1:
+                    
+                    SVIChip10.Center = new Point(270, 360);
+                    SVIChip20.Center = new Point(270, 455);
+                    SVIChip100.Center = new Point(270, 545);
+                    SVIChip500.Center = new Point(270, 635);
+                    break;
+                case 2:
+                    SVIChip10.Center = new Point(830, 270);
+                    SVIChip20.Center = new Point(740, 270);
+                    SVIChip100.Center = new Point(650, 270);
+                    SVIChip500.Center = new Point(560, 270);
+                    break;
+                case 3:
+                    SVIChip10.Center = new Point(1470, 270);
+                    SVIChip20.Center = new Point(1380, 270);
+                    SVIChip100.Center = new Point(1290, 270);
+                    SVIChip500.Center = new Point(1200, 270);
+                    break;
+                case 4:
+                    SVIChip10.Center = new Point(1660, 730);
+                    SVIChip20.Center = new Point(1660, 640);
+                    SVIChip100.Center = new Point(1660, 550);
+                    SVIChip500.Center = new Point(1660, 460);
+                    break;
+                case 5:
+                    SVIChip10.Center = new Point(1105, 820);
+                    SVIChip20.Center = new Point(1190, 820);
+                    SVIChip100.Center = new Point(1280, 820);
+                    SVIChip500.Center = new Point(1375, 820);
+                    break;
+                case 6:
+                    SVIChip10.Center = new Point(465, 820);
+                    SVIChip20.Center = new Point(555, 820);
+                    SVIChip100.Center = new Point(640, 820);
+                    SVIChip500.Center = new Point(735, 820);
+                    break;
+            }          
         }
     }
 
