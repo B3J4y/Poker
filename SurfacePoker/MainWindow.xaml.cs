@@ -796,17 +796,17 @@ namespace SurfacePoker
         private void checkCash(int pos)
         {
             setSVIChipPos(kvp.Key.position);
-            ChipImg10_h.Visibility = Visibility.Visible;
-            ChipImg10_v.Visibility = Visibility.Visible;
+            ImgChip10_h.Visibility = Visibility.Visible;
+            ImgChip10_v.Visibility = Visibility.Visible;
             SVIChip10.Visibility = Visibility.Visible;
-            ChipImg20_h.Visibility = Visibility.Visible;
-            ChipImg20_v.Visibility = Visibility.Visible;
+            ImgChip20_h.Visibility = Visibility.Visible;
+            ImgChip20_v.Visibility = Visibility.Visible;
             SVIChip20.Visibility = Visibility.Visible;
-            ChipImg100_h.Visibility = Visibility.Visible;
-            ChipImg100_v.Visibility = Visibility.Visible;
+            ImgChip100_h.Visibility = Visibility.Visible;
+            ImgChip100_v.Visibility = Visibility.Visible;
             SVIChip100.Visibility = Visibility.Visible;
-            ChipImg500_h.Visibility = Visibility.Visible;
-            ChipImg500_v.Visibility = Visibility.Visible;
+            ImgChip500_h.Visibility = Visibility.Visible;
+            ImgChip500_v.Visibility = Visibility.Visible;
             SVIChip500.Visibility = Visibility.Visible;
 
             
@@ -823,23 +823,23 @@ namespace SurfacePoker
 
             if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 500)
             {
-                ChipImg500_h.Visibility = Visibility.Collapsed;
-                ChipImg500_v.Visibility = Visibility.Collapsed;
+                ImgChip500_h.Visibility = Visibility.Collapsed;
+                ImgChip500_v.Visibility = Visibility.Collapsed;
                 SVIChip500.Visibility = Visibility.Collapsed;
                 if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 100)
                 {
-                    ChipImg100_h.Visibility = Visibility.Collapsed;
-                    ChipImg100_v.Visibility = Visibility.Collapsed;
+                    ImgChip100_h.Visibility = Visibility.Collapsed;
+                    ImgChip100_v.Visibility = Visibility.Collapsed;
                     SVIChip100.Visibility = Visibility.Collapsed;
                     if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 20)
                     {
-                        ChipImg20_h.Visibility = Visibility.Collapsed;
-                        ChipImg20_v.Visibility = Visibility.Collapsed;
+                        ImgChip20_h.Visibility = Visibility.Collapsed;
+                        ImgChip20_v.Visibility = Visibility.Collapsed;
                         SVIChip20.Visibility = Visibility.Collapsed;
                         if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 10)
                         {
-                            ChipImg10_h.Visibility = Visibility.Collapsed;
-                            ChipImg10_v.Visibility = Visibility.Collapsed;
+                            ImgChip10_h.Visibility = Visibility.Collapsed;
+                            ImgChip10_v.Visibility = Visibility.Collapsed;
                             SVIChip10.Visibility = Visibility.Collapsed;
 
                         }
@@ -849,17 +849,17 @@ namespace SurfacePoker
         }
 
         private void hideChips() {
-            ChipImg10_h.Visibility = Visibility.Collapsed;
-            ChipImg10_v.Visibility = Visibility.Collapsed;
+            ImgChip10_h.Visibility = Visibility.Collapsed;
+            ImgChip10_v.Visibility = Visibility.Collapsed;
             SVIChip10.Visibility = Visibility.Collapsed;
-            ChipImg20_h.Visibility = Visibility.Collapsed;
-            ChipImg20_v.Visibility = Visibility.Collapsed;
+            ImgChip20_h.Visibility = Visibility.Collapsed;
+            ImgChip20_v.Visibility = Visibility.Collapsed;
             SVIChip20.Visibility = Visibility.Collapsed;
-            ChipImg100_h.Visibility = Visibility.Collapsed;
-            ChipImg100_v.Visibility = Visibility.Collapsed;
+            ImgChip100_h.Visibility = Visibility.Collapsed;
+            ImgChip100_v.Visibility = Visibility.Collapsed;
             SVIChip100.Visibility = Visibility.Collapsed;
-            ChipImg500_h.Visibility = Visibility.Collapsed;
-            ChipImg500_v.Visibility = Visibility.Collapsed;
+            ImgChip500_h.Visibility = Visibility.Collapsed;
+            ImgChip500_v.Visibility = Visibility.Collapsed;
             SVIChip500.Visibility = Visibility.Collapsed;
         }
 
