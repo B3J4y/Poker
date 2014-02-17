@@ -15,7 +15,7 @@ public class Pot
         public int amountPerPlayer { get{
             if (sidePot != null)
             {
-                return (AmountPerPlayer + sidePot.AmountPerPlayer);
+                return (AmountPerPlayer + sidePot.amountPerPlayer);
             }
             else
             {
@@ -93,9 +93,9 @@ public class Pot
                 }
                 else
                 {
-                    this.value += value - this.sidePot.amountPerPlayer;
-                    this.potThisRound += value - this.sidePot.amountPerPlayer;
-                    sidePot.raisePot(player, sidePot.amountPerPlayer);
+                    this.value += player.inPot - this.sidePot.amountPerPlayer;
+                    this.potThisRound += player.inPot - this.sidePot.amountPerPlayer;
+                    sidePot.raisePot(player, value);
                 }
             }
             log.Debug("raisePot() - End");
@@ -107,15 +107,29 @@ public class Pot
         /// <param name="value"></param>
         private void addMySidePot(Player player, int value)
         {
+            //if amountPerPlayer > potThisRound, dann nimm alles mit und potThisRound == value + player.inPot
             log.Debug("addMySidePot(Player "  +player.name + ", int " + value + ") - Begin");
-            int times = 1 + (potThisRound / amountPerPlayer);
             List<Player> newPlayers = new List<Player>();
             newPlayers.Add(player);
-            int diff = (this.amountPerPlayer - value) * (times - 1);
-            Pot p = new Pot(this.value - diff + value, value, this.value - diff + value, newPlayers, sidePot);
-            potThisRound = diff;
-            this.value = diff;
-            amountPerPlayer -= p.amountPerPlayer;
+            Pot p;
+            if (amountPerPlayer > potThisRound && amountPerPlayer == player.inPot)
+            {
+                p = new Pot(potThisRound + value, amountPerPlayer, potThisRound + value, newPlayers, sidePot);
+                potThisRound = 0;
+                this.value = 0;
+                amountPerPlayer = 0;
+            }
+            else
+            {
+                int times = 1 + (potThisRound / amountPerPlayer);
+                
+                int diff = (this.amountPerPlayer - value) * (times - 1);
+                p = new Pot(this.value - diff + value, value, this.value - diff + value, newPlayers, sidePot);
+                potThisRound = diff;
+                this.value = diff;
+                amountPerPlayer -= p.amountPerPlayer;
+
+            }
             sidePot = p;
             log.Debug("addMySidePot() - End");
         }
@@ -136,7 +150,7 @@ public class Pot
             else
             {
 
-                if (this.sidePot.amountPerPlayer == value)
+                if (this.sidePot.amountPerPlayer == player.inPot)
                 {
                     this.sidePot.potThisRound += value;
                     this.sidePot.value += value;

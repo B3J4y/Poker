@@ -87,13 +87,13 @@ namespace SurfacePoker
             }
             else
             {
-                int diff = this.stack -this.inPot;
-                inPot = this.stack;
+                //int diff = this.stack -this.inPot;
+                inPot += this.stack;
                 this.stack = 0;
                 this.isAllin = true;
                 this.isActive = false;
                 log.Debug("action() - End");
-                return diff;
+                return move;
             }
             
         }

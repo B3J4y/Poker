@@ -209,11 +209,25 @@ namespace SurfacePoker
             }
             if (pot.amountPerPlayer == 0)
             {
-                actions.Add(new Action(Action.playerAction.bet, (bigBlind)));
+                if (bigBlind < activePlayer.stack)
+                {
+                    actions.Add(new Action(Action.playerAction.bet, (bigBlind)));
+                }
+                else
+                {
+                    actions.Add(new Action(Action.playerAction.bet, (activePlayer.stack)));
+                }
             }
             else
             {
-                actions.Add(new Action(Action.playerAction.raise, (pot.raiseSize)));
+                if (pot.raiseSize < activePlayer.stack)
+                {
+                    actions.Add(new Action(Action.playerAction.raise, (pot.raiseSize)));
+                }
+                else
+                {
+                    actions.Add(new Action(Action.playerAction.raise, (activePlayer.stack)));
+                }
             }
             log.Debug("getActions() - End");
             return new KeyValuePair<Player, List<Action>>(activePlayer, actions);
@@ -229,8 +243,18 @@ namespace SurfacePoker
             {
                 if (players.Exists(x => x.isAllin))
                 {
-                    log.Debug("EndRoundException");
-                    throw new EndRoundException("Finished Round");
+                    if (activePlayer.inPot == pot.amountPerPlayer)
+                    {
+                        log.Debug("EndRoundException");
+                        throw new EndRoundException("Finished Round");
+                    }
+                    else
+                    {
+                        List<Player> nextPlayers = players.FindAll(x => x.isAllin);
+                        nextPlayers.Sort((x, y) => x.ingamePosition.CompareTo(y.ingamePosition));
+                        log.Debug("whoIsNext() - End");
+                        return nextPlayers.Find(x => x.isAllin);
+                    }
                 }
                 else
                 {
@@ -246,7 +270,7 @@ namespace SurfacePoker
                 Player player = nextPlayers.Find(x => x.isActive);
                 if (activePlayer.inPot == pot.amountPerPlayer)
                 {
-                    if (! activePlayer.hasChecked)
+                    if (! activePlayer.hasChecked && ! activePlayer.isAllin)
                     {
                         log.Debug("whoIsNext() - End");
                         return player;
@@ -257,8 +281,17 @@ namespace SurfacePoker
                 }
                 else
                 {
-                    log.Debug("whoIsNext() - End");
-                    return player;
+                    if (activePlayer.isAllin)
+                    {
+                        log.Debug("EndRoundException");
+                        throw new EndRoundException("Finished Round");
+                    }
+                    else
+                    {
+                        log.Debug("whoIsNext() - End");
+                        return player;
+
+                    }
                 }
             }
             else
@@ -271,7 +304,7 @@ namespace SurfacePoker
 
                     if (activePlayer.inPot == pot.amountPerPlayer)
                     {
-                        if (!activePlayer.hasChecked)
+                        if (!activePlayer.hasChecked && !activePlayer.isAllin)
                         {
                             log.Debug("whoIsNext() - End");
                             return player;
@@ -284,8 +317,17 @@ namespace SurfacePoker
                     }
                     else
                     {
-                        log.Debug("whoIsNext() - End");
-                        return player;
+                        if (activePlayer.isAllin)
+                        {
+                            log.Debug("EndRoundException");
+                            throw new EndRoundException("Finished Round");
+                        }
+                        else
+                        {
+                            log.Debug("whoIsNext() - End");
+                            return player;
+
+                        }
                     }
                 }
                 else
@@ -307,8 +349,18 @@ namespace SurfacePoker
             {
                 if (players.Exists(x => x.isAllin))
                 {
-                    log.Debug("EndRoundException");
-                    throw new EndRoundException("Finished Round");
+                    if (activePlayer.inPot == pot.amountPerPlayer)
+                    {
+                        List<Player> nextPlayers = players.FindAll(x => x.isAllin);
+                        nextPlayers.Sort((x, y) => x.ingamePosition.CompareTo(y.ingamePosition));
+                        log.Debug("whoIsNext() - End");
+                        return nextPlayers.Find(x => x.isActive);
+                    }
+                    else
+                    {
+                        log.Debug("EndRoundException");
+                        throw new EndRoundException("Finished Round");
+                    }
                     
                 }
                 else
@@ -454,12 +506,14 @@ namespace SurfacePoker
             playersInGame.AddRange(pot.player);
             List<KeyValuePair<Player, Hand>> playerHand = new List<KeyValuePair<Player, Hand>>();
             Console.WriteLine(boardToString());
+            //determines Hand Value
             foreach (Player player in playersInGame)
             {
                 playerHand.Add(new KeyValuePair<Player, Hand>(player, new Hand(player.getCardsToString(), boardToString())));
                 Console.WriteLine(player.name + " " + player.getCardsToString() + " " + new Hand(player.getCardsToString(), boardToString()).HandValue + " " + new Hand(player.getCardsToString(), boardToString()).HandTypeValue);
             }
             playerHand.Sort((x, y ) => x.Value.HandValue.CompareTo(y.Value.HandValue));
+            //WinnerHands
             result.Add(new KeyValuePair<Player, int>(playerHand[playerHand.Count - 1].Key, 0));
             for (int i = playerHand.Count - 2; i >= 0; i--)
             {
@@ -473,33 +527,44 @@ namespace SurfacePoker
                     playerHand[i].Key.isActive = false;
                 }
             }
-            int mod = (pot.value / result.Count) % bigBlind;
-            Player first = new Player(activePlayer);
-            try {
-                // nonActives = players.FindAll(x => (!x.isActive)).Count;
-                first = whoIsNext(players.Count- nonActives - 1, false);
-            }
-            catch (NoPlayerInGameException e)
+            if (result.Count == 1)
             {
-                first = activePlayer;
+                result[0] = new KeyValuePair<Player, int>(result[0].Key, pot.value);
+                result[0].Key.stack += result[0].Value;
+                result[0].Key.isAllin = false;
+            }
+            else
+            {
+                int mod = (pot.value / result.Count) % bigBlind;
+                Player first = new Player(activePlayer);
+                try
+                {
+                    // nonActives = players.FindAll(x => (!x.isActive)).Count;
+                    first = whoIsNext(players.Count - nonActives - 1, false);
+                }
+                catch (NoPlayerInGameException e)
+                {
+                    first = activePlayer;
+                }
+
+                while (mod > 0)
+                {
+                    KeyValuePair<Player, int> myPlayer = result.Find(x => x.Key.name == first.name);
+                    result.Remove(myPlayer);
+                    myPlayer = new KeyValuePair<Player, int>(myPlayer.Key, myPlayer.Value + smallBlind);
+                    result.Add(myPlayer);
+                    pot.value -= smallBlind;
+                    mod = (pot.value / result.Count) % bigBlind;
+                }
+
+                for (int j = 0; j < result.Count; j++)
+                {
+                    result[j] = new KeyValuePair<Player, int>(result[j].Key, result[j].Value + (pot.value / result.Count));
+                    result[j].Key.stack += result[j].Value;
+                    result[j].Key.isAllin = false;
+                }
             }
             
-            while (mod > 0)
-            {
-                KeyValuePair<Player, int> myPlayer = result.Find(x => x.Key.name == first.name);
-                result.Remove(myPlayer);
-                myPlayer = new KeyValuePair<Player, int>(myPlayer.Key, myPlayer.Value + smallBlind);
-                result.Add(myPlayer);
-                pot.value -= smallBlind;
-                mod = (pot.value / result.Count) % bigBlind;
-            }
-
-            for (int j = 0; j < result.Count; j++ )
-            {
-                result[j] = new KeyValuePair<Player, int>(result[j].Key, result[j].Value + (pot.value / result.Count));
-                result[j].Key.stack += result[j].Value;
-                result[j].Key.isAllin = false;
-            }
             foreach(KeyValuePair<Player, int> kvp in result){
                 Logger.action(kvp.Key, Action.playerAction.wins, kvp.Value, board);
             }
