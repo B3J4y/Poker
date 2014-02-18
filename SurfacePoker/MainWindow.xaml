@@ -339,6 +339,16 @@
             </Rectangle.Fill>
         </Rectangle>
 
+        <!--communityCards-->
+        <Grid Name="communityCards" Margin="680,405,680,405" Visibility="Hidden">
+
+            <Image Name="cc0" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="15.2,69.48" />
+            <Image Name="cc1" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="125.6,69.48"/>
+            <Image Name="cc2" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" Margin="236,69.48,236,69.48"/>
+            <Image Name="cc3" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="125.6,69.48"/>
+            <Image Name="cc4" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="15.2,69.48"/>
+        </Grid>
+
         <!--PotsTextBlock-->
         <TextBlock Name="mainPot" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="700,380" MinWidth="600" MaxWidth="600" Text="" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque"/>
 
@@ -440,17 +450,6 @@
             />
         </Grid>
         <!--END OF Actionbuttons for players 1 and 4 @orientation left and right vertical-->
-        
-        <!--communityCards-->
-        <Grid Name="communityCards" Margin="680,405,680,405" Visibility="Hidden">
-            
-            <Image Name="cc0" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="15.2,69.48" />
-            <Image Name="cc1" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="125.6,69.48"/>
-            <Image Name="cc2" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" Margin="236,69.48,236,69.48"/>
-            <Image Name="cc3" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="125.6,69.48"/>
-            <Image Name="cc4" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="15.2,69.48"/>
-        </Grid>
-
 
         <Custom:ScatterView Name="Chips" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
             <Custom:ScatterViewItem Name="SVIChip10" Center="450,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
