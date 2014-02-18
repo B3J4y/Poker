@@ -493,7 +493,7 @@ namespace SurfacePoker
             }
             buttonAction_h.Content = action;
             buttonAction_v.Content = action;
-            log.Debug("setActionButtonText() - Begin");
+            log.Debug("setActionButtonText(action: " + action + ") - End");
         }
 
         /// <summary>
@@ -679,9 +679,10 @@ namespace SurfacePoker
         {
             log.Debug("updateBalance() - Begin");
             //Pot
+            mainPot.Text = "";
             if (gl.pot.sidePot == null)
             {
-                mainPot.Text = "";
+                mainPot.Text = "Pot: " + gl.pot.value.ToString() + " ";
             }
             else
             {
