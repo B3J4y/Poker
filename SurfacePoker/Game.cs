@@ -498,10 +498,10 @@ namespace SurfacePoker
         /// determines the winning players and shows how much they won
         /// </summary>
         /// <returns></returns>
-        public List<KeyValuePair<Player, int>> whoIsWinner(Pot pot)
+        public List<Winner> whoIsWinner(Pot pot)
         {
             log.Debug("whoIsWinner() - Begin");
-            List<KeyValuePair<Player, int>> result = new List<KeyValuePair<Player,int>>();
+            List<Winner> result = new List<Winner>();
             List<Player> playersInGame = players.FindAll(x => x.isActive);
             playersInGame.AddRange(pot.player);
             List<KeyValuePair<Player, Hand>> playerHand = new List<KeyValuePair<Player, Hand>>();
@@ -514,12 +514,12 @@ namespace SurfacePoker
             }
             playerHand.Sort((x, y ) => x.Value.HandValue.CompareTo(y.Value.HandValue));
             //WinnerHands
-            result.Add(new KeyValuePair<Player, int>(playerHand[playerHand.Count - 1].Key, 0));
+            result.Add(new Winner(playerHand[playerHand.Count - 1].Key, playerHand[playerHand.Count - 1].Value.HandTypeValue.ToString()));
             for (int i = playerHand.Count - 2; i >= 0; i--)
             {
                 if (playerHand[playerHand.Count - 1].Value.HandValue == playerHand[i].Value.HandValue)
                 {
-                    result.Add(new KeyValuePair<Player, int>(playerHand[i].Key, 0));
+                    result.Add(new Winner(playerHand[i].Key, playerHand[i].Value.HandTypeValue.ToString()));
 
                 }
                 else
@@ -529,9 +529,9 @@ namespace SurfacePoker
             }
             if (result.Count == 1)
             {
-                result[0] = new KeyValuePair<Player, int>(result[0].Key, pot.value);
-                result[0].Key.stack += result[0].Value;
-                result[0].Key.isAllin = false;
+                result[0].value = pot.value;
+                result[0].player.stack += result[0].value;
+                result[0].player.isAllin = false;
             }
             else
             {
@@ -549,24 +549,22 @@ namespace SurfacePoker
 
                 while (mod > 0)
                 {
-                    KeyValuePair<Player, int> myPlayer = result.Find(x => x.Key.name == first.name);
-                    result.Remove(myPlayer);
-                    myPlayer = new KeyValuePair<Player, int>(myPlayer.Key, myPlayer.Value + smallBlind);
-                    result.Add(myPlayer);
+                    Winner myPlayer = result.Find(x => x.player.name == first.name);
+                    myPlayer.value += smallBlind;
                     pot.value -= smallBlind;
                     mod = (pot.value / result.Count) % bigBlind;
                 }
 
                 for (int j = 0; j < result.Count; j++)
                 {
-                    result[j] = new KeyValuePair<Player, int>(result[j].Key, result[j].Value + (pot.value / result.Count));
-                    result[j].Key.stack += result[j].Value;
-                    result[j].Key.isAllin = false;
+                    result[j].value += (pot.value / result.Count));
+                    result[j].player.stack += result[j].value;
+                    result[j].player.isAllin = false;
                 }
             }
             
-            foreach(KeyValuePair<Player, int> kvp in result){
-                Logger.action(kvp.Key, Action.playerAction.wins, kvp.Value, board);
+            foreach(Winner w in result){
+                Logger.action(w.player, Action.playerAction.wins, w.value, board);
             }
             if (pot.sidePot != null)
             {
