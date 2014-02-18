@@ -599,6 +599,7 @@ namespace SurfacePoker
                 catch (EndRoundException inexp)
                 {
                     log.Debug("catch EndRoundException inexp: " + inexp.ToString());
+                    updateBalance();
                     hideChips();
                     hideActionButton();
                     allAreAllin();
@@ -726,7 +727,7 @@ namespace SurfacePoker
         /// <returns></returns>
         private static string getSidePots(Pot sidePot, int i, string s)
         {
-            log.Debug("getSidePots(Pot: " + sidePot.ToString() + ", i: " + i.ToString() + ", s: " + s.ToString() + ") - Begin");
+            log.Debug("getSidePots(Pot, i: " + i.ToString() + ", s: " + s.ToString() + ") - Begin");
             if (sidePot == null)
             {
                 log.Debug("getSidePots() == null - End");
