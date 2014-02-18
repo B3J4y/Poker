@@ -875,8 +875,14 @@ namespace SurfacePoker
         //    e.Handled = true;
         //}
 
+        /// <summary>
+        /// get help at msdn: Dragging and Dropping Items from ScatterView Controls to SurfaceListBox Controls
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DragCanceled(object sender, SurfaceDragDropEventArgs e)
         {
+            log.Debug("DragCanceled(object " + sender.ToString() + " SurfaceDragDropEventArgs " + e.ToString() + ") - Begin");
             Image data = e.Cursor.Data as Image;
             List<ScatterViewItem> svis = new List<ScatterViewItem>();
             Console.WriteLine(data.Name);
@@ -900,29 +906,36 @@ namespace SurfacePoker
                 //item.Center = e.Cursor.GetPosition(this);
                 //Console.WriteLine("Drop Canceled");
             }
+            log.Debug("DragCanceled() - End");
             e.Handled = true;
         }
-        private void DropTargetDrop(object sender, SurfaceDragDropEventArgs e)
-        {
+        //private void DropTargetDrop(object sender, SurfaceDragDropEventArgs e)
+        //{
 
-            Image img = e.Cursor.Data as Image;
-            //Get Chip Value
-            char[] delimiterChars = { '_', '.'};
-            string text = img.Source.ToString();
-            string[] words = text.Split(delimiterChars);
+        //    Image img = e.Cursor.Data as Image;
+        //    //Get Chip Value
+        //    char[] delimiterChars = { '_', '.'};
+        //    string text = img.Source.ToString();
+        //    string[] words = text.Split(delimiterChars);
 
-            //Update the personal stack
-            personalStack += (Int32)Convert.ToInt32(words[2]);
-            personalStackField_h.Text = personalStack.ToString();
-            personalStackField_v.Text = personalStack.ToString();
-            checkCash(kvp.Key.position);
-            setActionButtonText();
-            e.Handled = true;
-        }
+        //    //Update the personal stack
+        //    personalStack += (Int32)Convert.ToInt32(words[2]);
+        //    personalStackField_h.Text = personalStack.ToString();
+        //    personalStackField_v.Text = personalStack.ToString();
+        //    checkCash(kvp.Key.position);
+        //    setActionButtonText();
+        //    e.Handled = true;
+        //}
 
+        /// <summary>
+        /// collectes chip value in TargetArea
+        /// get help at msdn: Dragging and Dropping Items from ScatterView Controls to SurfaceListBox Controls
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DropTargetDragEnter(object sender, SurfaceDragDropEventArgs e)
         {
-
+            log.Debug("DropTargetDragEnter(object " + sender.ToString() + " SurfaceDragDropEventArgs " + e.ToString() + ") - Begin");
             e.Cursor.Visual.Tag = "DragEnter";
             Image img = e.Cursor.Data as Image;
             //Get Chip Value
@@ -939,23 +952,26 @@ namespace SurfacePoker
                 checkCash(kvp.Key.position);
                 setActionButtonText();
             }
+            log.Debug("DropTargetDragEnter() - End");
             e.Handled = true;
         }
 
         private void DropTargetDragLeave(object sender, SurfaceDragDropEventArgs e)
         {
-
+            log.Debug("DropTargetDragLeave(object " + sender.ToString() + " SurfaceDragDropEventArgs " + e.ToString() + ") - Begin");
             e.Cursor.Visual.Tag = null;
-            Console.WriteLine("DropTargetDragLeave");
             SurfaceDragDrop.CancelDragDrop(e.Cursor);
+            log.Debug("DropTargetDragLeave() - End");
             e.Handled = true;
-            
         }
 
+        /// <summary>
+        /// checks how many dragable chips are shown at players pos
+        /// </summary>
+        /// <param name="pos"></param>
         private void checkCash(int pos)
         {
-
-            //DealCardTo(0, 0, 0);
+            log.Debug("checkCash(pos " + pos.ToString() + ") - Begin");
             setSVIChipPos(kvp.Key.position);
             ImgChip10_h.Visibility = Visibility.Visible;
             ImgChip10_v.Visibility = Visibility.Visible;
@@ -969,7 +985,6 @@ namespace SurfacePoker
             ImgChip500_h.Visibility = Visibility.Visible;
             ImgChip500_v.Visibility = Visibility.Visible;
             SVIChip500.Visibility = Visibility.Visible;
-
             
             if (personalStack == 0)
             {
@@ -978,8 +993,8 @@ namespace SurfacePoker
             }
             else
             {
-            personalStackField_h.Text = personalStack.ToString();
-            personalStackField_v.Text = personalStack.ToString();
+                personalStackField_h.Text = personalStack.ToString();
+                personalStackField_v.Text = personalStack.ToString();
             }
 
             if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 500)
@@ -1007,9 +1022,14 @@ namespace SurfacePoker
                     }
                 }
             }
+            log.Debug("checkCash() - End");
         }
 
+        /// <summary>
+        /// Hide all draggable chips
+        /// </summary>
         private void hideChips() {
+            log.Debug("hideChips() - Begin");
             ImgChip10_h.Visibility = Visibility.Collapsed;
             ImgChip10_v.Visibility = Visibility.Collapsed;
             SVIChip10.Visibility = Visibility.Collapsed;
@@ -1022,10 +1042,15 @@ namespace SurfacePoker
             ImgChip500_h.Visibility = Visibility.Collapsed;
             ImgChip500_v.Visibility = Visibility.Collapsed;
             SVIChip500.Visibility = Visibility.Collapsed;
+            log.Debug("hideChips() - End");
         }
 
+        /// <summary>
+        /// Hide all player and community cards
+        /// </summary>
         private void hideCards()
         {
+            log.Debug("hideCards() - Begin");
             player1cards.Visibility = Visibility.Collapsed;
             player2cards.Visibility = Visibility.Collapsed;
             player3cards.Visibility = Visibility.Collapsed;
@@ -1051,35 +1076,60 @@ namespace SurfacePoker
             player5card2image.Source = f1image;
             player6card1image.Source = f1image;
             player6card2image.Source = f1image;
+            log.Debug("hideCards() - End");
         }
 
+        /// <summary>
+        /// Hide chips and cards
+        /// </summary>
         private void hideUI()
         {
+            log.Debug("hideUI() - Begin");
             hideCards();
             hideChips();
+            log.Debug("hideUI() - End");
         }
 
+        /// <summary>
+        /// sets Personal Stack to min value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void setMinValue(object sender, MouseButtonEventArgs e)
         {
+            log.Debug("setMinValue(object " + sender.ToString() + " MouseButtonEventArgs " + e.ToString() + ") - Begin");
             //Update the personal stack
             personalStack = kvp.Value[1].amount;
             personalStackField_h.Text = personalStack.ToString();
             personalStackField_v.Text = personalStack.ToString();
             checkCash(kvp.Key.position);
             setActionButtonText();
+            log.Debug("setMinValue() - End");
             e.Handled = true;
         }
 
+        /// <summary>
+        /// set personal stack to 0, undo bet in bet area
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void resetPersonalStack(object sender, RoutedEventArgs e)
         {
+            log.Debug("resetPersonalStack(object " + sender.ToString() + " RoutedEventArgs " + e.ToString() + ") - Begin");
             personalStack = 0;
             checkCash(kvp.Key.position);
             setActionButtonText();
+            log.Debug("resetPersonalStack() - End");
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Show i community cards
+        /// </summary>
+        /// <param name="i"></param>
         private void showCommunityCards(int i)
         {
+            log.Debug("showCommunityCards(i " + i.ToString() + ") - Begin");
             BitmapImage bi;
             Image cc;
             for (int j = 0; j < i; j++)
@@ -1089,10 +1139,16 @@ namespace SurfacePoker
                 cc.Source = bi;
             }
             communityCards.Visibility = Visibility.Visible;
+            log.Debug("showCommunityCards() - End");
         }
 
+        /// <summary>
+        /// sets DealerButton at player pos
+        /// </summary>
+        /// <param name="pos"></param>
         private void setDealerButtonPos(int pos)
         {
+            log.Debug("setDealerButton(pos " + pos.ToString() + ") - Begin");
             Thickness t;
             switch (pos)
             {
@@ -1127,9 +1183,17 @@ namespace SurfacePoker
                     dealerButton.Visibility = Visibility.Visible;
                     break;
             }
+            log.Debug("setDealerButton() - End");
         }
+
+        /// <summary>
+        /// change player stacks 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void setStack(object sender, RoutedEventArgs e)
         {
+            log.Debug("setStack(object " + sender.ToString() + " RoutedEventArgs " + e.ToString() + ") - Begin");
             if (canChangeStack)
             {
                 ElementMenuItem emi = sender as ElementMenuItem;
@@ -1144,11 +1208,18 @@ namespace SurfacePoker
 
                 }
             }
+            log.Debug("setStack() - End");
             e.Handled = true;
         }
-        private void setSVIChipPos(int i)
+
+        /// <summary>
+        /// Set the dragabe Chips ScatterViewItem at player pos
+        /// </summary>
+        /// <param name="pos"></param>
+        private void setSVIChipPos(int pos)
         {
-            switch (i)
+            log.Debug("setSVIChipPos(pos " + pos.ToString() + ") - Begin");
+            switch (pos)
             {
                 case 1:
                     
@@ -1187,23 +1258,24 @@ namespace SurfacePoker
                     SVIChip100.Center = new Point(640, 820);
                     SVIChip500.Center = new Point(735, 820);
                     break;
-            }          
+            }
+            log.Debug("setSVIChipPos() - End");
         }
 
-        private void DealCardTo(int i, double newX, double newY)
-        {
-            Image target = this.FindName("player1card1image") as Image;            
-            target.Visibility = Visibility.Visible;
-            int top = 500;
-            int left = 500;
-            TranslateTransform trans = new TranslateTransform();
-            target.RenderTransform = trans;
-            DoubleAnimation anim1 = new DoubleAnimation(top, newY - top, TimeSpan.FromSeconds(1));
-            DoubleAnimation anim2 = new DoubleAnimation(left, newX - left, TimeSpan.FromSeconds(1));
-            trans.BeginAnimation(TranslateTransform.XProperty, anim1);
-            trans.BeginAnimation(TranslateTransform.YProperty, anim2);
+        //private void DealCardTo(int i, double newX, double newY)
+        //{
+        //    Image target = this.FindName("player1card1image") as Image;            
+        //    target.Visibility = Visibility.Visible;
+        //    int top = 500;
+        //    int left = 500;
+        //    TranslateTransform trans = new TranslateTransform();
+        //    target.RenderTransform = trans;
+        //    DoubleAnimation anim1 = new DoubleAnimation(top, newY - top, TimeSpan.FromSeconds(1));
+        //    DoubleAnimation anim2 = new DoubleAnimation(left, newX - left, TimeSpan.FromSeconds(1));
+        //    trans.BeginAnimation(TranslateTransform.XProperty, anim1);
+        //    trans.BeginAnimation(TranslateTransform.YProperty, anim2);
             
-        }
+        //}
             //<Image Name="cc0" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="15.2,69.48"/>
             //<Image Name="cc1" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="125.6,69.48"/>
             //<Image Name="cc2" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" Margin="236,69.48,236,69.48"/>
