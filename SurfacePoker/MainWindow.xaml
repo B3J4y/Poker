@@ -331,9 +331,6 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <!--PotsTextBlock-->
-        <TextBlock Name="mainPot" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="700,380" MinWidth="600" MaxWidth="600" Text="" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque"/>
-
 
         <!--Tischmitte-->
         <Rectangle x:Name="Mitte" Opacity="0.5" Margin="680,405,680,405" Visibility="Collapsed">
@@ -341,6 +338,9 @@
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
         </Rectangle>
+
+        <!--PotsTextBlock-->
+        <TextBlock Name="mainPot" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="700,380" MinWidth="600" MaxWidth="600" Text="" FontSize="16" FontFamily="Segoe UI Symbol" Foreground="Bisque"/>
 
         <!--Fenster Spieler anlegen-->
         <Custom:ScatterView HorizontalAlignment="Left" VerticalAlignment="Top" Height="1042" Width="1904">

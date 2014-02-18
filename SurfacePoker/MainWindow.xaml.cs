@@ -13,9 +13,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using Microsoft.Surface.Presentation.Controls;
 using Microsoft.Surface.Presentation;
 using System.Collections.ObjectModel;
+using Log;
+using log4net;
+using log4net.Config;
 
 namespace SurfacePoker
 {
@@ -24,6 +28,8 @@ namespace SurfacePoker
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger
+                (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public List<Player> players { get; set; }
       
@@ -43,17 +49,18 @@ namespace SurfacePoker
 
         private int personalStack { get; set; }
 
+        private int showCardDelay { get; set; }
+
+        private int bb = 20;
         private void shutDown(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown(0);
             e.Handled = true;
         }
 
-
-        private int bb = 20;
-
         public MainWindow()
         {
+            log.Debug("MainWindow() - Begin");
             btn = new Button();
             LinearGradientBrush gradientBrush = new  LinearGradientBrush( Color.FromRgb( 24, 24, 24),  Color.FromRgb(47, 47, 47), new Point(0.5, 0), new Point(0.5, 1));            
             Background = gradientBrush;
@@ -71,14 +78,17 @@ namespace SurfacePoker
             //players.Add(player5);
             //players.Add(player6);
             DataContext = this;
-
+            log.Debug("MainWindow() - End");
         }
 
         private void createNewGame(object sender, RoutedEventArgs e)
         {
-
+            log.Debug("createNewGame(object: "+ sender.ToString() + " RoutedEventArgs: " +e.ToString() + ") - Begin");
             TextBlock tb;
             Rectangle r;
+            //set mainPot Font to default
+            mainPot.FontSize = 16;
+            mainPot.Foreground = Brushes.Bisque;
             //Set all names and stacks to null
             for (int i = 1; i <= 6; i++)
             {
@@ -98,6 +108,7 @@ namespace SurfacePoker
             hideActionButton();
             round = 0;
             personalStack = 0;
+            showCardDelay = 1500;
             canAddPlayer = true;
             canChangeStack = true;
             EMIchangeStack.IsEnabled = true;
@@ -109,11 +120,13 @@ namespace SurfacePoker
             mainPot.Text = "Touch Grey Area To Create A New Player!             Player Stacks: " + stack.ToString();
             players = new List<Player>();
             gl = null;
+            log.Debug("createNewGame() - End");
             e.Handled = true;
         }
 
         private void openAddPlayer(object sender, RoutedEventArgs e)
         {
+            log.Debug("openAddPlayer(object: " + sender.ToString() + " RoutedEventArgs: " + e.ToString() + ") - Begin");
             if (canAddPlayer) {
                 Rectangle r = (Rectangle)sender;
                 String name = r.Name;
@@ -132,25 +145,31 @@ namespace SurfacePoker
                 addplayerscatteru.Center = point;
                 addplayerscatteru.Visibility = Visibility.Visible;                
             }
+            log.Debug("openAddPlayer() - End");
             e.Handled = true;
         }
         private void closeAddPlayer(object sender, RoutedEventArgs e)
         {
+            log.Debug("closeAddPlayer(object: " + sender.ToString() + " RoutedEventArgs: " + e.ToString() + ") - Begin");
             Button s = (Button)sender;
             StackPanel stackPanel = (StackPanel)s.Parent;
             SurfaceTextBox text = (SurfaceTextBox)stackPanel.FindName("playerName");
             text.Text = "";
             addplayerscatteru.Visibility = Visibility.Collapsed;
+            log.Debug("closeAddPlayer() - End");
             e.Handled = true;
         }
 
         private void setSurfaceName(int pos, String name) {
+            log.Debug("setSurfaceName(pos: " + pos.ToString() + " name: " + name.ToString() + ") - Begin");
             TextBlock tb = this.FindName("player" + pos + "name") as TextBlock;
             tb.Text = name;
+            log.Debug("setSurfaceName() - End");
         }
 
         private void savePlayer(object sender, RoutedEventArgs e)
         {
+            log.Debug("savePlayer(object: " + sender.ToString() + " RoutedEventArgs: " + e.ToString() + ") - Begin");
             
             if (canAddPlayer) { 
             
@@ -196,12 +215,14 @@ namespace SurfacePoker
                     }
                 }
             }
+            log.Debug("savePlayer() - End");
             e.Handled = true;
 
         }
 
         private void addStartButton(String text)
         {
+            log.Debug("addStartButton(text: " + text.ToString() + ") - Begin");
             btn.Name = "btnStart";
             btn.Content = text;
             btn.Margin = new Thickness(900, 700, 900, 320);
@@ -210,10 +231,12 @@ namespace SurfacePoker
             {
                 Grid.Children.Add(btn);
             }
+            log.Debug("addStartButton() - End");
         }
 
         private void startGame(object sender, RoutedEventArgs e)
         {
+            log.Debug("startGame(object: " + sender.ToString() + " RoutedEventArgs: " + e.ToString() + ") - Begin");
             //Disable adding new players, changing stacks and hide position fields
             canAddPlayer = false;
             EMIchangeStack.IsEnabled = false;
@@ -244,12 +267,16 @@ namespace SurfacePoker
             kvp = gl.nextPlayer();
             showCards();
             showActionButton(kvp);
+            log.Debug("startGame() - End");
             e.Handled = true;
-
         }
 
+        /// <summary>
+        /// deals player cards to all active players
+        /// </summary>
         private void showCards()
         {
+            log.Debug("showCards() - Begin");
             foreach (Player iPlayer in gl.players.FindAll(x => x.isActive))
             {
                 Rectangle r = this.FindName("Pos" + iPlayer.position) as Rectangle;
@@ -259,10 +286,17 @@ namespace SurfacePoker
                 setBackground(iPlayer.position,1);
                 setBackground(iPlayer.position,2);
             }
+            log.Debug("showCards() - End");
         }
 
+        /// <summary>
+        /// sets the Backgound with the true card value eg: ad, 8c
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="pcard"></param>
         private void setBackground(int pos, int pcard)
         {
+            log.Debug("setBackground(pos: " + pos.ToString() + " pcard: " + pcard.ToString() + ") - Begin");
             if (gl.players.Exists(x => x.position == pos))
             {
                 if (gl.players.Find(x => x.position == pos).cards.Count != 0)
@@ -277,42 +311,48 @@ namespace SurfacePoker
                 }
                 else
                 {
-                    Console.WriteLine("Yay");
+                    //Console.WriteLine("Yay");
                 }
             }
+            log.Debug("setBackground() - End");
         }
         
-        private void turnToFront(object sender, RoutedEventArgs e)
-        {
-            Image s = (Image)sender;
-            ScatterViewItem svi = (ScatterViewItem)s.Parent;
-            //pos gets position from player - can be 1-6
-            int pos = (Int32)Convert.ToInt32(svi.Name[6].ToString());
-            //pcard gets which card from player - can be 1 or 2
-            int pcard = (Int32)Convert.ToInt32(svi.Name[11].ToString());
+        //private void turnToFront(object sender, RoutedEventArgs e)
+        //{
+        //    Image s = (Image)sender;
+        //    ScatterViewItem svi = (ScatterViewItem)s.Parent;
+        //    //pos gets position from player - can be 1-6
+        //    int pos = (Int32)Convert.ToInt32(svi.Name[6].ToString());
+        //    //pcard gets which card from player - can be 1 or 2
+        //    int pcard = (Int32)Convert.ToInt32(svi.Name[11].ToString());
 
-            //Console.WriteLine(gl.players.Find(x => x.position == pos).cards[pcard - 1]);
-            //x => x.position == pos
-            //TODO: ein Find muss immer mit einem Exist abgesichert werde
-            if (gl.players.Exists(x => x.position == pos))
-            {
-                if (gl.players.Find(x => x.position == pos).cards.Count != 0)
-                {
-                    BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.players.Find(x => x.position == pos).cards[pcard - 1] + ".png"));
-                    Image image = sender as Image;
-                    image.Source = bmpimage;
-                }
-                else
-                {
-                    Console.WriteLine("Yay");
-                }
-            }
+        //    //Console.WriteLine(gl.players.Find(x => x.position == pos).cards[pcard - 1]);
+        //    //x => x.position == pos
+        //    //TODO: ein Find muss immer mit einem Exist abgesichert werde
+        //    if (gl.players.Exists(x => x.position == pos))
+        //    {
+        //        if (gl.players.Find(x => x.position == pos).cards.Count != 0)
+        //        {
+        //            BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.players.Find(x => x.position == pos).cards[pcard - 1] + ".png"));
+        //            Image image = sender as Image;
+        //            image.Source = bmpimage;
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine("Yay");
+        //        }
+        //    }
 
-            e.Handled = true;
-        }
+        //    e.Handled = true;
+        //}
 
+        /// <summary>
+        /// show cards from player at pos
+        /// </summary>
+        /// <param name="pos"></param>
         private void turnCardsToFront(int pos)
         {
+            log.Debug("turnCardsToFront(pos: " + pos.ToString() + ") - Begin");
             if (gl.players.Exists(x => x.position == pos))
             {
                 if (gl.players.Find(x => x.position == pos).cards.Count != 0)
@@ -328,27 +368,28 @@ namespace SurfacePoker
                 }
                 else
                 {
-                    Console.WriteLine("Ney");
+                    //Console.WriteLine("Ney");
                 }
-
             }
+            log.Debug("turnCardsToFront() - End");
         }
 
-        private void turnToBack(object sender, RoutedEventArgs e)
-        {
-            BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Kartenrueckseite/kartenruecken_1.jpg"));
-            Image image = (Image)sender;
-            image.Source = bmpimage;
-            e.Handled = true;           
-        }
+        //private void turnToBack(object sender, RoutedEventArgs e)
+        //{
+        //    BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Kartenrueckseite/kartenruecken_1.jpg"));
+        //    Image image = (Image)sender;
+        //    image.Source = bmpimage;
+        //    e.Handled = true;           
+        //}
 
 
         /// <summary>
-        /// Shows the two Actionbuttons at players position 
+        /// Shows the two actionbuttons at players position 
         /// </summary>
         /// <param name="pos"></param>
         private void showActionButton(KeyValuePair<Player,List<Action>> ikvp)
         {
+            log.Debug("showActionButton(KeyValuePair<Player(Name: "+ ikvp.Key.name.ToString() +" , Pos: "+ ikvp.Key.position.ToString() +")>,List<Action(" + ikvp.Value.ToString() + ")>) - Begin");
         //<Thickness x:Key="p1">40,300,1600,300</Thickness>
         //<Thickness x:Key="p2">400,40,1040,760</Thickness>
         //<Thickness x:Key="p3">1040,40,400,760</Thickness>
@@ -409,14 +450,18 @@ namespace SurfacePoker
                     checkCash(ikvp.Key.position);
                     Buttons_h.Visibility = Visibility.Visible;
                     break;
-            }          
-
+            }
+            log.Debug("showActionButton() - End");
         }
+
+        /// <summary>
+        /// Sets text for upper action button. eg: check, call, bet, raise
+        /// </summary>
         private void setActionButtonText()
         {
+            log.Debug("setActionButtonText() - Begin");
             String action = "";
             int i = 0;
-            //Console.WriteLine(kvp.Value[0].action);
             buttonAction_h.IsEnabled = false;
             buttonAction_v.IsEnabled = false;
             
@@ -448,26 +493,40 @@ namespace SurfacePoker
             }
             buttonAction_h.Content = action;
             buttonAction_v.Content = action;
+            log.Debug("setActionButtonText() - Begin");
         }
 
         /// <summary>
-        /// Hides the Grid for the two action buttons
+        /// Hides the Grid with the two action buttons, horizontal AND vertical
         /// </summary>
         private void hideActionButton()
         {
+            log.Debug("hideActionButton() - Begin");
             Buttons_h.Visibility = Visibility.Collapsed;
             Buttons_v.Visibility = Visibility.Collapsed;
-            
+            log.Debug("hideActionButton() - End");
         }
 
-        private void foldCards(int i)
+        /// <summary>
+        /// Hide cards from player at pos
+        /// </summary>
+        /// <param name="pos"></param>
+        private void foldCards(int pos)
         {
-            ScatterView sv = this.FindName("player" + i + "cards") as ScatterView;
+            log.Debug("foldCards(pos: " + pos.ToString() + ") - Begin");
+            ScatterView sv = this.FindName("player" + pos + "cards") as ScatterView;
             sv.Visibility = Visibility.Collapsed;
+            log.Debug("foldCards() - End");
         }
 
+        /// <summary>
+        /// catches event when action button is clicked. eg: call 100, fold
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void actionButtonClicked(object sender, RoutedEventArgs e)
         {
+            log.Debug("actionButtonClicked(object: " + sender.ToString() + " , RoutedEventsArgs: " + e.ToString() + ") - Begin");
             Button s = (Button)sender;
             switch (s.Content.ToString().Split(' ')[0])
             {
@@ -496,102 +555,130 @@ namespace SurfacePoker
             }
             catch (NoPlayerInGameException exp)
             {
+                log.Debug("catch NoPlayerInGameException exp: " + exp.ToString());
                 newRound();
-                
-                List<KeyValuePair<Player, int>> winners = gl.whoIsWinner(gl.pot);
                 updateBalance();
                 hideChips();
-                announceWinner(winners);
+                announceWinner(gl.whoIsWinner(gl.pot));
             }
             catch (EndRoundException exp)
             {
+                log.Debug("catch EndRoundException exp: " + exp.ToString());
                 Console.WriteLine(exp.Message.ToString());
                 round++;
                 try
                 {
                     kvp = gl.nextRound();
+                    switch (round)
+                    {
+                        case 1:
+                            showCommunityCards(gl.board.Count);
+                            showActionButton(kvp);
+                            break;
+                        case 2:
+                            showCommunityCards(gl.board.Count);
+                            showActionButton(kvp);
+                            break;
+                        case 3:
+                            showCommunityCards(gl.board.Count);
+                            showActionButton(kvp);
+                            break;
+                        case 4:
+                            showCommunityCards(gl.board.Count);
+                            updateBalance();
+                            hideChips();
+                            announceWinner(gl.whoIsWinner(gl.pot));
+                        
+
+                            break;
+                        default:
+                            log.Debug("switch default in round: " + round.ToString()); break;
+                    }
+                    log.Debug("actionButtonClicked(object: " + sender.ToString() + " , RoutedEventsArgs: " + e.ToString() + ") - Begin");
                 }
                 catch (EndRoundException inexp)
                 {
-                    Console.WriteLine("Hey ho");
+                    log.Debug("catch EndRoundException inexp: " + inexp.ToString());
                     hideChips();
                     hideActionButton();
                     allAreAllin();
-                    //gl.nextRound();
-                    
                 }
-                switch (round)
-                {
-                    case 1:
-                        showCommunityCards(gl.board.Count);
-                        showActionButton(kvp);
-                        break;
-                    case 2:
-                        showCommunityCards(gl.board.Count);
-                        showActionButton(kvp);
-                        break;
-                    case 3:
-                        showCommunityCards(gl.board.Count);
-                        showActionButton(kvp);
-                        break;
-                    case 4:
-                        List<KeyValuePair<Player, int>> winners = gl.whoIsWinner(gl.pot);
-                        showCommunityCards(gl.board.Count);
-                        updateBalance();
-                        hideChips();
-                        announceWinner(winners);
-                        
-
-                        break;
-                    default: Console.WriteLine("Round: " + round); break;
-                }
-
             }
-            
+            log.Debug("actionButtonClicked() - End");
         }
 
-        private void allAreAllin()
+        /// <summary>
+        /// deals rest of community cards if no player can do any actions
+        /// </summary>
+        private async void allAreAllin()
         {
+            log.Debug("allAreAllin() - Begin");
+            showCommunityCards(gl.board.Count);
+            await Task.Delay(showCardDelay);
             try{
                 gl.nextRound();
+                log.Debug("allAreAllin() Round: " + round.ToString() + " - End");
+                return;
             }
             catch (EndRoundException e){
                 if (round == 4)
                 {
+                    announceWinner(gl.whoIsWinner(gl.pot));
+                    log.Debug("allAreAllin() Round: " + round.ToString() + " == 4 - End");
                     return ;
                 }
                 else
                 {
-                    round++;
-                    allAreAllin();
+                        round++;
+                        allAreAllin();
                 }
             }
+            log.Debug("allAreAllin() Round: " + round.ToString() + " - End");
         }
 
+        /// <summary>
+        /// set var round to 0 and adds start button
+        /// </summary>
         private void newRound()
         {
-            //hideUI();
+            log.Debug("newRound() - Begin");
             round = 0;
-            addStartButton("start new Round");
+            addStartButton("Start New Round");
+            log.Debug("newRound() - End");
         }
 
-        private void announceWinner(List<KeyValuePair<Player, int>> winners)
+        /// <summary>
+        /// write all winner names and amount to screen and show cards on show down
+        /// </summary>
+        /// <param name="winners"></param>
+        private void announceWinner(List<Winner> winners)
         {
+            log.Debug("announceWinner(List<KVP<Player,int>> winners count: " + winners.Count() + ") - Begin");
             mainPot.Foreground = Brushes.Fuchsia;
             mainPot.FontSize = 20;
             mainPot.Text = "";
-            newRound();
-            foreach (KeyValuePair<Player, int> ikvp in winners)
+            foreach (Winner w in winners)
             {
-                mainPot.Text += ikvp.Key.name + " won " + ikvp.Value + "\n";
-                turnCardsToFront(ikvp.Key.position);
+                if (round >= 4)
+                {
+                    mainPot.Text += w.player.name + " won " + w.value + " with " + w.hand + "\n";
+                    turnCardsToFront(w.player.position);
+                } else {
+                    mainPot.Text += w.player.name + " won " + w.value + "\n";
+                }
             }
+            newRound();
+            log.Debug("announceWinner() - End");
         }
 
+        /// <summary>
+        /// Show pot value and player balance(2000, All in)
+        /// </summary>
         private void updateBalance()
         {
+            log.Debug("updateBalance() - Begin");
             //Pot
-            if (gl.pot.value == 0)
+            if (gl.pot.sidePot == null)
             {
                 mainPot.Text = "";
             }
@@ -626,17 +713,28 @@ namespace SurfacePoker
                     tb.Text = "";
                     }
                 }
-            }    
+            }
+            log.Debug("updateBalance() - End");
         }
 
+        /// <summary>
+        /// builds string for the side pots
+        /// </summary>
+        /// <param name="sidePot"></param>
+        /// <param name="i"></param>
+        /// <param name="s"></param>
+        /// <returns></returns>
         private static string getSidePots(Pot sidePot, int i, string s)
         {
+            log.Debug("getSidePots(Pot: " + sidePot.ToString() + ", i: " + i.ToString() + ", s: " + s.ToString() + ") - Begin");
             if (sidePot == null)
             {
+                log.Debug("getSidePots() == null - End");
                 return s;
             }
             else
             {
+                log.Debug("getSidePots() - End");
                 return getSidePots(sidePot.sidePot, i++, "SidePot" + i + ": " + sidePot.value.ToString() + " ");
             }
         }
@@ -672,8 +770,14 @@ namespace SurfacePoker
         
 
         //Drag and Drop
+        /// <summary>
+        /// get help at msdn: Dragging and Dropping Items from ScatterView Controls to SurfaceListBox Controls
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DragSourcePreviewInputDeviceDown(object sender, InputEventArgs e)
         {
+            log.Debug("DragSourcePreviewInputDeviceDown(object " + sender.ToString() + ", InputEventArgs " + e.ToString() + ") - Begin");
             FrameworkElement findSource = e.OriginalSource as FrameworkElement;
             ScatterViewItem draggedElement = null;
             ScatterViewItem sci = sender as ScatterViewItem;
@@ -753,8 +857,10 @@ namespace SurfacePoker
                 //draggedElement.Visibility = Visibility.Hidden;
                 //Console.WriteLine("Begin Drag");
                 // This event has been handled.
+                log.Debug("DragSourcePreviewInputDeviceDown() handled - End");
                 e.Handled = true;
             }
+            log.Debug("DragSourcePreviewInputDeviceDown() check if handled - End");
         }
         //private void DropTargetDragEnter(object sender, SurfaceDragDropEventArgs e)
         //{
@@ -784,13 +890,9 @@ namespace SurfacePoker
                 svi.Content = null;
                 svi.Content = image;
                 Console.WriteLine();
-                //image.Source = bimage;
                 image.Visibility = Visibility.Visible;
             }
 
-            //svis.AddRange(e.Cursor.DragSource);
-            //ScatterViewItem svi = data.Parent as ScatterViewItem;
-            //ScatterViewItem item = data.DraggedElement as ScatterViewItem;
             if (data != null)
             {
                 //item.Visibility = Visibility.Visible;

@@ -557,7 +557,7 @@ namespace SurfacePoker
 
                 for (int j = 0; j < result.Count; j++)
                 {
-                    result[j].value += (pot.value / result.Count));
+                    result[j].value += (pot.value / result.Count);
                     result[j].player.stack += result[j].value;
                     result[j].player.isAllin = false;
                 }
@@ -752,14 +752,14 @@ namespace SurfacePoker
                 catch (EndRoundException e)
                 {
 
-                    List<KeyValuePair<Player, int>> winners = gl.whoIsWinner(gl.pot);
+                    List<Winner> winners = gl.whoIsWinner(gl.pot);
                     //give the earnings to the winner
                     Console.WriteLine("---------------------------------------");
-                    foreach (KeyValuePair<Player, int> kvp in winners)
+                    foreach (Winner kvp in winners)
                     {
-                        Console.WriteLine(kvp.Key.name + " won " + kvp.Value);
-                        players.Find(x => x.name == kvp.Key.name).stack += kvp.Value;
-                        players.Find(x => x.name == kvp.Key.name).isAllin = false;
+                        Console.WriteLine(kvp.player.name + " won " + kvp.value);
+                        players.Find(x => x.name == kvp.player.name).stack += kvp.value;
+                        players.Find(x => x.name == kvp.player.name).isAllin = false;
                     }
                     Console.WriteLine("---------------------------------------");
 

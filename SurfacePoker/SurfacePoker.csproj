@@ -102,6 +102,7 @@
     <Compile Include="Pot.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="SidePot.cs" />
+    <Compile Include="Winner.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
