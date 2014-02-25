@@ -114,12 +114,12 @@ namespace SurfacePoker
 
                 if (player.ingamePosition == (players.Count - nonActives))
                 {
-                    Logger.action(player, Action.playerAction.bigblind, bigBlind, board);
+                    Logger.action(this, player, Action.playerAction.bigblind, bigBlind, board);
                     pot.raisePot(player, player.action(bigBlind));
                 }
                 if (player.ingamePosition == players.Count - nonActives - 1)
                 {
-                    Logger.action(player, Action.playerAction.smallblind, smallBlind, board);
+                    Logger.action(this, player, Action.playerAction.smallblind, smallBlind, board);
                     pot.amountPerPlayer = smallBlind;
                     pot.raisePot(player, player.action(smallBlind));
                 }
@@ -131,11 +131,12 @@ namespace SurfacePoker
                 player.isAllin = false;
                 player.hasChecked = false;
             }
-            
+
+            Logger.calculateWinChance(this);
 
             foreach (Player p in players)
             {
-                Logger.action(p, Action.playerAction.nothing, 0, new List<Card>());
+                Logger.action(this, p, Action.playerAction.nothing, 0, new List<Card>());
                 log.Debug("Name: " + p.name + ", Position: " + p.ingamePosition + ", Stack: " + p.stack);
             }
             activePlayer = null;
@@ -449,7 +450,7 @@ namespace SurfacePoker
                     pot.raisePot(activePlayer,  activePlayer.action(amount));
                     break;
             }
-            Logger.action(activePlayer, pa, amount, this.board);
+            Logger.action(this, activePlayer, pa, amount, this.board);
             activePlayer.hasChecked = true;
             log.Debug("activeAction() - End");
         }
@@ -477,7 +478,8 @@ namespace SurfacePoker
                 case 4:
                     break;
             }
-            Logger.action(dealer, Action.playerAction.nothing, 0, board);
+            Logger.action(this, dealer, Action.playerAction.nothing, 0, board);
+            Logger.calculateWinChance(this);
             foreach (Player player in players)
             {
                 player.hasChecked = false;
@@ -564,7 +566,7 @@ namespace SurfacePoker
             }
             
             foreach(Winner w in result){
-                Logger.action(w.player, Action.playerAction.wins, w.value, board);
+                Logger.action(this, w.player, Action.playerAction.wins, w.value, board);
             }
             if (pot.sidePot != null)
             {
