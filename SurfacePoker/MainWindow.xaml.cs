@@ -203,6 +203,11 @@ namespace SurfacePoker
             log.Debug("setSurfaceName() - End");
         }
 
+        /// <summary>
+        /// Creates new player or updates name if player exists at this position
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void savePlayer(object sender, RoutedEventArgs e)
         {
             log.Debug("savePlayer(object: " + sender.ToString() + " RoutedEventArgs: " + e.ToString() + ") - Begin");
@@ -256,6 +261,10 @@ namespace SurfacePoker
 
         }
 
+        /// <summary>
+        /// Adds a Button in the middle of the screen with the given text as content
+        /// </summary>
+        /// <param name="text"></param>
         private void addStartButton(String text)
         {
             log.Debug("addStartButton(text: " + text.ToString() + ") - Begin");
@@ -270,6 +279,11 @@ namespace SurfacePoker
             log.Debug("addStartButton() - End");
         }
 
+        /// <summary>
+        /// Starts a new round or if game does not exist creates new game and start new round
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void startGame(object sender, RoutedEventArgs e)
         {
             log.Debug("startGame(object: " + sender.ToString() + " RoutedEventArgs: " + e.ToString() + ") - Begin");
@@ -491,7 +505,7 @@ namespace SurfacePoker
         }
 
         /// <summary>
-        /// Sets text for upper action button. eg: check, call, bet, raise
+        /// Sets text for action buttons. eg: check, call, bet, raise
         /// </summary>
         private void setActionButtonText()
         {
@@ -519,6 +533,7 @@ namespace SurfacePoker
                 ActionButton2_h.IsEnabled = false;
                 ActionButton2_v.IsEnabled = false;
                 oneChipCall = false;
+                //End One Chip Call
             } else {
 
                 if (!personalStackField_v.Text.Equals("Bet Area") && !personalStackField_h.Text.Equals("Bet Area"))
@@ -526,11 +541,14 @@ namespace SurfacePoker
                     oneChipCall = false;
                 }
                 
+                //Stack > call amount
                 if (personalStack > kvp.Value[1].amount)
                 {
-                    i = kvp.Value[1].amount + kvp.Value[2].amount;
+                    //set button to bet/raise + amount
+                    i = kvp.Value[2].amount;
                     action = kvp.Value[2].action.ToString() + " " + i;
 
+                    //if stack >= raise amount enable bet/raise
                     if (personalStack >= i)
                     {
                         action = kvp.Value[2].action.ToString() + " " + personalStack;
@@ -541,11 +559,15 @@ namespace SurfacePoker
                 }
                 else
                 {
+                    //action is check/call
                     action = kvp.Value[1].action.ToString();
+
+                    //what amount to call
                     if (kvp.Value[1].amount > 0)
                     {
                         action += " " + kvp.Value[1].amount.ToString();
                     }
+                    //enable if stack equals amount to call
                     if (personalStack == kvp.Value[1].amount)
                     {
                         ActionButton1_h.IsEnabled = true;
@@ -650,8 +672,6 @@ namespace SurfacePoker
                             updateBalance();
                             hideChips();
                             announceWinner(gl.whoIsWinner(gl.pot));
-                        
-
                             break;
                         default:
                             log.Debug("switch default in round: " + round.ToString()); break;
@@ -949,7 +969,7 @@ namespace SurfacePoker
             log.Debug("DragCanceled(object " + sender.ToString() + " SurfaceDragDropEventArgs " + e.ToString() + ") - Begin");
             Image data = e.Cursor.Data as Image;
             List<ScatterViewItem> svis = new List<ScatterViewItem>();
-            Console.WriteLine(data.Name);
+            //Console.WriteLine(data.Name);
             if (data.Name.Contains("card"))
             {
                 BitmapImage bimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Kartenrueckseite/kartenruecken_1.jpg"));
@@ -959,7 +979,7 @@ namespace SurfacePoker
                 //svi.Orientation = e.Cursor.GetOrientation(svi.Parent as ScatterView);
                 svi.Content = null;
                 svi.Content = image;
-                Console.WriteLine();
+                //Console.WriteLine();
                 image.Visibility = Visibility.Visible;
             }
 
@@ -1252,7 +1272,7 @@ namespace SurfacePoker
         }
 
         /// <summary>
-        /// change player stacks 
+        /// change player stacks, updates stacks from all existing players 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
