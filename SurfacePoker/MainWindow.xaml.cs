@@ -52,6 +52,9 @@ namespace SurfacePoker
         private int showCardDelay { get; set; }
 
         private int bb = 20;
+
+        private bool oneChipCall { get; set; }
+
         private void shutDown(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown(0);
@@ -77,7 +80,7 @@ namespace SurfacePoker
             //players.Add(player4);
             //players.Add(player5);
             //players.Add(player6);
-            DataContext = this;
+            //DataContext = this;
             log.Debug("MainWindow() - End");
         }
 
@@ -430,14 +433,14 @@ namespace SurfacePoker
         //<Thickness x:Key="p5">1040,760,400,40</Thickness>
         //<Thickness x:Key="p6">400,760,1040,40</Thickness>
             Thickness t;
-            buttonAction_h.IsEnabled = false;
-            buttonAction_v.IsEnabled = false;
+            ActionButton1_h.IsEnabled = false;
+            ActionButton1_v.IsEnabled = false;
             personalStackField_h.Text = "Bet Area";
             personalStackField_v.Text = "Bet Area";
             personalStack = 0;
             updateBalance();
             setActionButtonText();
-            
+            oneChipCall = true;
 
             switch (ikvp.Key.position)
             {
@@ -493,39 +496,65 @@ namespace SurfacePoker
         private void setActionButtonText()
         {
             log.Debug("setActionButtonText() - Begin");
+            ActionButton2_h.Content = "fold";
+            ActionButton2_v.Content = "fold";
+            ActionButton2_h.IsEnabled = true;
+            ActionButton2_v.IsEnabled = true;
             String action = "";
             int i = 0;
-            buttonAction_h.IsEnabled = false;
-            buttonAction_v.IsEnabled = false;
+            ActionButton1_h.IsEnabled = false;
+            ActionButton1_v.IsEnabled = false;
             
-            if (personalStack > kvp.Value[1].amount)
+            //One Chip Call
+            if (oneChipCall && kvp.Value[1].amount != 0 && ((personalStack == 100 && 100 > kvp.Value[1].amount && 100 < kvp.Value[2].amount) || (personalStack == 500 && 500 > kvp.Value[1].amount && 500 < kvp.Value[2].amount))) 
             {
-                i = kvp.Value[1].amount + kvp.Value[2].amount;
-                action = kvp.Value[2].action.ToString() + " " + i;
+                action = kvp.Value[1].action.ToString() + " " + kvp.Value[1].amount.ToString();
+                ActionButton1_h.IsEnabled = true;
+                ActionButton1_v.IsEnabled = true;
+                ActionButton1_h.Content = action;
+                ActionButton1_v.Content = action;
+                String action2 = kvp.Value[2].action.ToString() + " " + kvp.Value[2].amount.ToString();
+                ActionButton2_h.Content = action2;
+                ActionButton2_v.Content = action2;
+                ActionButton2_h.IsEnabled = false;
+                ActionButton2_v.IsEnabled = false;
+                oneChipCall = false;
+            } else {
 
-                if (personalStack >= i)
+                if (!personalStackField_v.Text.Equals("Bet Area") && !personalStackField_h.Text.Equals("Bet Area"))
                 {
-                    action = kvp.Value[2].action.ToString() + " " + personalStack;
-                    buttonAction_h.IsEnabled = true;
-                    buttonAction_v.IsEnabled = true;
+                    oneChipCall = false;
                 }
+                
+                if (personalStack > kvp.Value[1].amount)
+                {
+                    i = kvp.Value[1].amount + kvp.Value[2].amount;
+                    action = kvp.Value[2].action.ToString() + " " + i;
 
-            }
-            else
-            {
-                action = kvp.Value[1].action.ToString();
-                if (kvp.Value[1].amount > 0)
-                {
-                    action += " " + kvp.Value[1].amount.ToString();
+                    if (personalStack >= i)
+                    {
+                        action = kvp.Value[2].action.ToString() + " " + personalStack;
+                        ActionButton1_h.IsEnabled = true;
+                        ActionButton1_v.IsEnabled = true;
+                    }
+
                 }
-                if (personalStack == kvp.Value[1].amount)
+                else
                 {
-                    buttonAction_h.IsEnabled = true;
-                    buttonAction_v.IsEnabled = true;
+                    action = kvp.Value[1].action.ToString();
+                    if (kvp.Value[1].amount > 0)
+                    {
+                        action += " " + kvp.Value[1].amount.ToString();
+                    }
+                    if (personalStack == kvp.Value[1].amount)
+                    {
+                        ActionButton1_h.IsEnabled = true;
+                        ActionButton1_v.IsEnabled = true;
+                    }
                 }
             }
-            buttonAction_h.Content = action;
-            buttonAction_v.Content = action;
+            ActionButton1_h.Content = action;
+            ActionButton1_v.Content = action;
             log.Debug("setActionButtonText(action: " + action + ") - End");
         }
 
@@ -1152,6 +1181,7 @@ namespace SurfacePoker
         {
             log.Debug("resetPersonalStack(object " + sender.ToString() + " RoutedEventArgs " + e.ToString() + ") - Begin");
             personalStack = 0;
+            oneChipCall = true;
             checkCash(kvp.Key.position);
             setActionButtonText();
             log.Debug("resetPersonalStack() - End");
