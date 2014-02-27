@@ -319,6 +319,7 @@
     <Resource Include="Res\Kartenrueckseite\kartenruecken_1.jpg" />
     <Content Include="Res\Libs\log4net.dll" />
     <Content Include="Res\Libs\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll" />
+    <Resource Include="Res\Sonstige Images\PokerHandRanking.jpg" />
     <Content Include="Res\Sounds\chipsinderhand.wav" />
     <Content Include="Res\Sounds\chipsinderhand2.wav" />
     <Content Include="Res\Sounds\chips_fallen.wav" />

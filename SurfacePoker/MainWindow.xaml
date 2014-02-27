@@ -46,7 +46,7 @@
         <Image Name="backgroundImg"  Source="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur3.jpg"/>
 
         <!--Spieler Position 1-->
-        <Rectangle x:Name="Pos1" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p1}" Visibility="Collapsed">
+        <Rectangle x:Name="Pos1" MouseDown="showAddPlayer"  Opacity="0.5" Margin="{StaticResource p1}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -91,7 +91,7 @@
         </Custom:ScatterView>
 
         <!--Spieler Position 2-->
-        <Rectangle x:Name="Pos2" MouseDown="openAddPlayer" Opacity="0.5" Margin="{StaticResource p2}" Visibility="Collapsed">
+        <Rectangle x:Name="Pos2" MouseDown="showAddPlayer" Opacity="0.5" Margin="{StaticResource p2}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -128,7 +128,7 @@
         </Custom:ScatterView>
 
         <!--Spieler Position 3-->
-        <Rectangle x:Name="Pos3" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p3}" Visibility="Collapsed">
+        <Rectangle x:Name="Pos3" MouseDown="showAddPlayer"  Opacity="0.5" Margin="{StaticResource p3}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -165,7 +165,7 @@
         </Custom:ScatterView>
 
         <!--Spieler Position 4-->
-        <Rectangle x:Name="Pos4" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p4}" Visibility="Collapsed">
+        <Rectangle x:Name="Pos4" MouseDown="showAddPlayer"  Opacity="0.5" Margin="{StaticResource p4}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -210,7 +210,7 @@
         </Custom:ScatterView>
 
         <!--Spieler Position 5-->
-        <Rectangle x:Name="Pos5"  MouseDown="openAddPlayer" Opacity="0.5" Margin="{StaticResource p5}" Visibility="Collapsed">
+        <Rectangle x:Name="Pos5"  MouseDown="showAddPlayer" Opacity="0.5" Margin="{StaticResource p5}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -247,7 +247,7 @@
         </Custom:ScatterView>
 
         <!--Spieler Position 6-->
-        <Rectangle x:Name="Pos6" MouseDown="openAddPlayer"  Opacity="0.5" Margin="{StaticResource p6}" Visibility="Collapsed">
+        <Rectangle x:Name="Pos6" MouseDown="showAddPlayer"  Opacity="0.5" Margin="{StaticResource p6}" Visibility="Collapsed">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -356,7 +356,7 @@
         <Custom:ScatterView HorizontalAlignment="Left" VerticalAlignment="Top" Height="1042" Width="1904">
             <Custom:ScatterViewItem x:Name="addplayerscatteru" Background="#C32D2D2D" CanMove="False" CanRotate="False" CanScale="False" Orientation="0" Center="550,550" Visibility="Collapsed" Width="180">
                 <StackPanel Margin="8">
-                    <Button Content="X" HorizontalAlignment="Right" Width="25" Foreground="White" Click="closeAddPlayer"  TouchDown="closeAddPlayer" Margin="0">
+                    <Button Content="X" HorizontalAlignment="Right" Width="25" Foreground="White" Click="closeWindow"  TouchDown="closeWindow" Margin="0">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                                 <GradientStop Color="#FF181818" Offset="0"/>
@@ -481,8 +481,24 @@
 
         <Image Name="dealerButton" Source="Res/Chips/D_Button.png" Width="90" Height="90" Visibility="Collapsed" Margin="554,665,1276,325"/>
 
+        <Custom:ScatterView >
+            <Custom:ScatterViewItem Background="#C32D2D2D" Name="HandRanking" Visibility="Collapsed" Orientation="0" Center="400,400" Width="250" Height="390">
+                <StackPanel Margin="8">
+                    <Button Content="X" HorizontalAlignment="Right" Width="25" Foreground="White" Click="closeWindow"  TouchDown="closeWindow" Margin="0">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FF181818" Offset="0"/>
+                                <GradientStop Color="#FF525252" Offset="0.5"/>
+                                <GradientStop Color="#FF2F2F2F" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Image Source="Res/Sonstige Images/PokerHandRanking.jpg" />
+                </StackPanel>
+            </Custom:ScatterViewItem>
+        </Custom:ScatterView>
 
-        <Custom:ElementMenu Name="MainMenu" ActivationMode="AlwaysActive" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,10">
+        <Custom:ElementMenu Name="MainMenu" ActivationMode="AlwaysActive" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="120,10" MinWidth="85" Width="85">
             <Custom:ElementMenuItem Header="Game">
                 <Custom:ElementMenuItem Header="New Game" Click="createNewGame"/>
                 <Custom:ElementMenuItem Header="Shut down" Click="shutDown" />
@@ -491,6 +507,9 @@
                 <Custom:ElementMenuItem Header="Stack: 1000" Click="setStack"/>
                 <Custom:ElementMenuItem Header="Stack: 2000" Click="setStack"/>
                 <Custom:ElementMenuItem Header="Stack: 4000" Click="setStack"/>
+            </Custom:ElementMenuItem>
+            <Custom:ElementMenuItem Name="EMIHelp" Header="Help">
+                <Custom:ElementMenuItem Header="Show &#x0d;&#x0a;Hand &#x0d;&#x0a;Rankings" Click="showHandRanking" />
             </Custom:ElementMenuItem>
         </Custom:ElementMenu>
 

@@ -124,7 +124,7 @@ namespace SurfacePoker
             e.Handled = true;
         }
 
-        private void openAddPlayer(object sender, RoutedEventArgs e)
+        private void showAddPlayer(object sender, RoutedEventArgs e)
         {
             log.Debug("openAddPlayer(object: " + sender.ToString() + " RoutedEventArgs: " + e.ToString() + ") - Begin");
             if (canAddPlayer) {
@@ -148,18 +148,51 @@ namespace SurfacePoker
             log.Debug("openAddPlayer() - End");
             e.Handled = true;
         }
-        private void closeAddPlayer(object sender, RoutedEventArgs e)
+
+        /// <summary>
+        /// Set the Visibility for HandRanking Window to true
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void showHandRanking(object sender, RoutedEventArgs e)
         {
-            log.Debug("closeAddPlayer(object: " + sender.ToString() + " RoutedEventArgs: " + e.ToString() + ") - Begin");
-            Button s = (Button)sender;
-            StackPanel stackPanel = (StackPanel)s.Parent;
-            SurfaceTextBox text = (SurfaceTextBox)stackPanel.FindName("playerName");
-            text.Text = "";
-            addplayerscatteru.Visibility = Visibility.Collapsed;
-            log.Debug("closeAddPlayer() - End");
+            log.Debug("showHandRanking(object: " + sender.ToString() + " RoutedEventArgs: " + e.ToString() + ") - Begin");
+            HandRanking.Visibility = Visibility.Visible;            
+            log.Debug("showHandRanking() - End");
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Hides the sender Window, sender has to be a Button in StackPanel, ScatterViewItem
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void closeWindow(object sender, RoutedEventArgs e)
+        {
+            log.Debug("closeWindow(object: " + sender.ToString() + " RoutedEventArgs: " + e.ToString() + ") - Begin");
+            Button s = sender as Button;
+            StackPanel stackPanel = s.Parent as StackPanel;
+            ScatterViewItem SVI = stackPanel.Parent as ScatterViewItem;
+            log.Debug("closing " + SVI.Name);
+            if (SVI.Name == "addplayerscatteru")
+            {
+                //clean up
+                SurfaceTextBox text = (SurfaceTextBox)stackPanel.FindName("playerName");
+                text.Text = "";
+                Label l = this.FindName("addPlayerLabel") as Label;
+                l.Foreground = Brushes.White;
+                l.Content = "Add New Player";
+            }
+            SVI.Visibility = Visibility.Collapsed;
+            log.Debug("closeWindow() - End");
+            e.Handled = true;
+        }
+
+        /// <summary>
+        /// writes the player name on the screen at position (1-6)
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="name"></param>
         private void setSurfaceName(int pos, String name) {
             log.Debug("setSurfaceName(pos: " + pos.ToString() + " name: " + name.ToString() + ") - Begin");
             TextBlock tb = this.FindName("player" + pos + "name") as TextBlock;
