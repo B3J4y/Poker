@@ -503,11 +503,11 @@ namespace SurfacePoker
         /// determines the winning players and shows how much they won
         /// </summary>
         /// <returns></returns>
-        public List<Winner> whoIsWinner(Pot pot)
+        public List<Winner> whoIsWinner(Pot pot, List<Player> playersInGame)
         {
             log.Debug("whoIsWinner() - Begin");
             List<Winner> result = new List<Winner>();
-            List<Player> playersInGame = players.FindAll(x => x.isActive);
+            //List<Player> playersInGame = players.FindAll(x => x.isActive);
             playersInGame.AddRange(pot.player);
             List<KeyValuePair<Player, Hand>> playerHand = new List<KeyValuePair<Player, Hand>>();
             Console.WriteLine(boardToString());
@@ -573,7 +573,7 @@ namespace SurfacePoker
             }
             if (pot.sidePot != null)
             {
-                result.AddRange(whoIsWinner(pot.sidePot));
+                result.AddRange(whoIsWinner(pot.sidePot, playersInGame));
                 pot.sidePot = null;
             }
             pot.value = 0;
