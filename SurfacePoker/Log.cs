@@ -25,6 +25,7 @@ namespace Log
 
         public static void action(Game gl, Player player, SurfacePoker.Action.playerAction action, int amount, List<Card> board)
         {
+            log.Debug("action(Game gl, Player "+ player.name + ", SurfacePoker.Action.playerAction "+ action+ ", int " + amount + ", List<Card> board) - Begin");
             String str = "";
             foreach(Card c in board){
                 str += c.ToString();
@@ -37,23 +38,25 @@ namespace Log
             {
                 log.Info(player.name + ";" + player.stack + ";" + action.ToString() + ";" + amount + "; ;" + str + ";0");
             }
+            log.Debug("action() - End");
         }
 
         public static void calculateWinChance(Game gl)
         {
+            log.Debug("calculateWinChance(Game gl) - Begin");
             long totalHands = 10000000;
-            int count = gl.players.FindAll(x => x.cards != null).Count;
+            int count = gl.players.FindAll(x => x.cards.Count == 2).Count;
             string[] pockets = new string[count];
             string board = "";
             long[] win = new long[count];
             long[] tie = new long[count];
             long[] los = new long[count];
             int j = 0;
-            for(int i = 0; i < count; i++)
+            for(int i = 0; i < gl.players.Count; i++)
             {
-                if (gl.players[i].cards != null)
+                if (gl.players[i].cards.Count == 2)
                 {
-                    pockets[i] = gl.players[i + j].getCardsToString();
+                    pockets[i - j] = gl.players[i].getCardsToString();
                 }
                 else
                 {
@@ -67,18 +70,19 @@ namespace Log
             Hand.HandOdds(pockets, board, "", win, tie, los, ref totalHands);
             j = 0;
             Console.WriteLine(totalHands);
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < gl.players.Count; i++)
             {
-                if (gl.players[i].cards != null)
+                if (gl.players[i].cards.Count == 2)
                 {
-                    gl.players[i + j].winChance = win[i] * 100 / totalHands;
-                    log.Debug("Player" + gl.players[i + j] + " win/tie/loose " +  (win[i] * 100 / totalHands)+ "/" + (tie[i] * 100 / totalHands) + "/" + (los[i] * 100 / totalHands));
+                    gl.players[i].winChance = win[i - j] * 100 / totalHands;
+                    log.Debug("Player" + gl.players[i] + " win/tie/loose " +  (win[i - j] * 100 / totalHands)+ "/" + (tie[i - j] * 100 / totalHands) + "/" + (los[i - j] * 100 / totalHands));
                 }
                 else
                 {
                     j++;
                 }
             }
+            log.Debug("calculateWinChance() - End");
         }
 
         public void finishRound()

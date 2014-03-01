@@ -437,17 +437,20 @@ namespace SurfacePoker
 
                     break;
                 case Action.playerAction.call:
-                    pot.raisePot(activePlayer, activePlayer.action(amount));
+                    pot.raisePot(activePlayer, amount);
+                    activePlayer.action(amount);
                     break;
                 case Action.playerAction.bet:
                     pot.amountPerPlayer = amount + activePlayer.inPot;
-                    pot.raisePot(activePlayer,  activePlayer.action(amount));
+                    pot.raisePot(activePlayer, amount);
+                    activePlayer.action(amount);
                     pot.raiseSize = amount;
                     break;
                 case Action.playerAction.raise:
                     pot.raiseSize = amount - pot.amountPerPlayer + activePlayer.inPot;
                     pot.amountPerPlayer = amount + activePlayer.inPot;
-                    pot.raisePot(activePlayer,  activePlayer.action(amount));
+                    pot.raisePot(activePlayer,  amount);
+                    activePlayer.action(amount);
                     break;
             }
             Logger.action(this, activePlayer, pa, amount, this.board);

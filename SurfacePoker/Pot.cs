@@ -66,7 +66,7 @@ public class Pot
         public void raisePot(Player player,int value)
         {
             log.Debug("raisePot(Player" +player.name + ",int " + value + ") - Begin");
-            if ((player.inPot < amountPerPlayer) || (player.isAllin) || (player.stack == 0))
+            if ((player.inPot + value < amountPerPlayer) || (player.isAllin) || (player.stack == value))
             {
                 if (sidePot != null)
                 {
@@ -93,9 +93,12 @@ public class Pot
                 }
                 else
                 {
-                    this.value += player.inPot - this.sidePot.amountPerPlayer;
-                    this.potThisRound += player.inPot - this.sidePot.amountPerPlayer;
-                    sidePot.raisePot(player, value);
+                    this.value += value + player.inPot - this.sidePot.amountPerPlayer;
+                    this.potThisRound += value + player.inPot - this.sidePot.amountPerPlayer;
+                    if ((sidePot.amountPerPlayer > 0) && player.inPot < sidePot.amountPerPlayer)
+                    {
+                        sidePot.raisePot(player, value);
+                    }
                 }
             }
             log.Debug("raisePot() - End");
@@ -112,7 +115,7 @@ public class Pot
             List<Player> newPlayers = new List<Player>();
             newPlayers.Add(player);
             Pot p;
-            if (amountPerPlayer > potThisRound && amountPerPlayer == player.inPot)
+            if (amountPerPlayer > potThisRound && amountPerPlayer == value + player.inPot)
             {
                 p = new Pot(potThisRound + value, amountPerPlayer, potThisRound + value, newPlayers, sidePot);
                 potThisRound = 0;
@@ -150,7 +153,7 @@ public class Pot
             else
             {
 
-                if (this.sidePot.amountPerPlayer == player.inPot)
+                if (this.sidePot.amountPerPlayer == value + player.inPot)
                 {
                     this.sidePot.potThisRound += value;
                     this.sidePot.value += value;
