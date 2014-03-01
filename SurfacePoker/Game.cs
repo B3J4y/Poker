@@ -757,7 +757,7 @@ namespace SurfacePoker
                 catch (EndRoundException e)
                 {
 
-                    List<Winner> winners = gl.whoIsWinner(gl.pot);
+                    List<Winner> winners = gl.whoIsWinner(gl.pot,gl.players.FindAll(x => x.isActive));
                     //give the earnings to the winner
                     Console.WriteLine("---------------------------------------");
                     foreach (Winner kvp in winners)

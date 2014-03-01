@@ -90,7 +90,9 @@
     <Compile Include="Chip.cs" />
     <Compile Include="EndRoundException.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="HandAnalysis.cs" />
     <Compile Include="HandEvaluator.cs" />
+    <Compile Include="HandIterator.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

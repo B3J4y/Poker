@@ -643,7 +643,7 @@ namespace SurfacePoker
                 newRound();
                 updateBalance();
                 hideChips();
-                announceWinner(gl.whoIsWinner(gl.pot));
+                announceWinner(gl.whoIsWinner(gl.pot,gl.players.FindAll(x => x.isActive)));
             }
             catch (EndRoundException exp)
             {
@@ -671,7 +671,7 @@ namespace SurfacePoker
                             showCommunityCards(gl.board.Count);
                             updateBalance();
                             hideChips();
-                            announceWinner(gl.whoIsWinner(gl.pot));
+                            announceWinner(gl.whoIsWinner(gl.pot,gl.players.FindAll(x => x.isActive)));
                             break;
                         default:
                             log.Debug("switch default in round: " + round.ToString()); break;
@@ -706,7 +706,7 @@ namespace SurfacePoker
             catch (EndRoundException e){
                 if (round == 4)
                 {
-                    announceWinner(gl.whoIsWinner(gl.pot));
+                    announceWinner(gl.whoIsWinner(gl.pot,gl.players.FindAll(x => x.isActive)));
                     log.Debug("allAreAllin() Round: " + round.ToString() + " == 4 - End");
                     return ;
                 }
@@ -819,7 +819,7 @@ namespace SurfacePoker
             else
             {
                 log.Debug("getSidePots() - End");
-                return getSidePots(sidePot.sidePot, i++, "SidePot" + i + ": " + sidePot.value.ToString() + " ");
+                return getSidePots(sidePot.sidePot, i+1 ,s + "SidePot" + i + ": " + sidePot.value.ToString() + " ");
             }
         }
 
