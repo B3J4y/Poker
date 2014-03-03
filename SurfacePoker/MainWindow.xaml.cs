@@ -107,6 +107,8 @@ namespace SurfacePoker
             {
                 Grid.Children.Remove(btn);
             }
+            addplayerscatteru.Visibility = Visibility.Collapsed;
+            playerName.Text = "";
             hideUI();
             hideActionButton();
             round = 0;
@@ -189,6 +191,17 @@ namespace SurfacePoker
             SVI.Visibility = Visibility.Collapsed;
             log.Debug("closeWindow() - End");
             e.Handled = true;
+        }
+
+        /// <summary>
+        /// set var round to 0 and adds start button
+        /// </summary>
+        private void newRound()
+        {
+            log.Debug("newRound() - Begin");
+            round = 0;
+            addStartButton("Start New Round");
+            log.Debug("newRound() - End");
         }
 
         /// <summary>
@@ -381,35 +394,6 @@ namespace SurfacePoker
             }
             log.Debug("setBackground() - End");
         }
-        
-        //private void turnToFront(object sender, RoutedEventArgs e)
-        //{
-        //    Image s = (Image)sender;
-        //    ScatterViewItem svi = (ScatterViewItem)s.Parent;
-        //    //pos gets position from player - can be 1-6
-        //    int pos = (Int32)Convert.ToInt32(svi.Name[6].ToString());
-        //    //pcard gets which card from player - can be 1 or 2
-        //    int pcard = (Int32)Convert.ToInt32(svi.Name[11].ToString());
-
-        //    //Console.WriteLine(gl.players.Find(x => x.position == pos).cards[pcard - 1]);
-        //    //x => x.position == pos
-        //    //TODO: ein Find muss immer mit einem Exist abgesichert werde
-        //    if (gl.players.Exists(x => x.position == pos))
-        //    {
-        //        if (gl.players.Find(x => x.position == pos).cards.Count != 0)
-        //        {
-        //            BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Cards/" + gl.players.Find(x => x.position == pos).cards[pcard - 1] + ".png"));
-        //            Image image = sender as Image;
-        //            image.Source = bmpimage;
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine("Yay");
-        //        }
-        //    }
-
-        //    e.Handled = true;
-        //}
 
         /// <summary>
         /// show cards from player at pos
@@ -438,15 +422,6 @@ namespace SurfacePoker
             }
             log.Debug("turnCardsToFront() - End");
         }
-
-        //private void turnToBack(object sender, RoutedEventArgs e)
-        //{
-        //    BitmapImage bmpimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Kartenrueckseite/kartenruecken_1.jpg"));
-        //    Image image = (Image)sender;
-        //    image.Source = bmpimage;
-        //    e.Handled = true;           
-        //}
-
 
         /// <summary>
         /// Shows the two actionbuttons at players position 
@@ -659,7 +634,7 @@ namespace SurfacePoker
         /// <returns></returns>
         private async Task UInextPlayer()
         {
-            log.Debug("next Player() - Begin");
+            log.Debug("UInext Player() - Begin");
             await Task.Delay(5);            
             try
             {
@@ -671,14 +646,11 @@ namespace SurfacePoker
             {
                 log.Debug("catch NoPlayerInGameException exp: " + exp.ToString());
                 newRound();
-                //updateBalance();
-                //hideChips();
                 announceWinner(gl.whoIsWinner(gl.pot, gl.players.FindAll(x => x.isActive)));
             }
             catch (EndRoundException exp)
             {
                 log.Debug("catch EndRoundException exp: " + exp.ToString());
-                Console.WriteLine(exp.Message.ToString());
                 round++;
                 try
                 {
@@ -699,8 +671,6 @@ namespace SurfacePoker
                             break;
                         case 4:
                             showCommunityCards(gl.board.Count);
-                            //updateBalance();
-                            //hideChips();
                             announceWinner(gl.whoIsWinner(gl.pot, gl.players.FindAll(x => x.isActive)));
                             break;
                         default:
@@ -710,13 +680,10 @@ namespace SurfacePoker
                 catch (EndRoundException inexp)
                 {
                     log.Debug("catch EndRoundException inexp: " + inexp.ToString());
-                    //updateBalance();
-                    //hideChips();
-                    //hideActionButton();
                     allAreAllin();
                 }
             }
-            log.Debug("next Player() - End");
+            log.Debug("UInext Player() - End");
         }
 
         /// <summary>
@@ -746,17 +713,6 @@ namespace SurfacePoker
                 }
             }
             log.Debug("allAreAllin() Round: " + round.ToString() + " - End");
-        }
-
-        /// <summary>
-        /// set var round to 0 and adds start button
-        /// </summary>
-        private void newRound()
-        {
-            log.Debug("newRound() - Begin");
-            round = 0;
-            addStartButton("Start New Round");
-            log.Debug("newRound() - End");
         }
 
         /// <summary>
@@ -852,38 +808,9 @@ namespace SurfacePoker
             }
         }
 
-        //private void createChip()
-        //{
-        //    ScatterView sv = (ScatterView)this.FindName("Test");
-            
-        //    Image im = new Image();
-        //    BitmapImage bitImage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Chips/Pokerchip_final_10.png"));
-        //    im.Source = bitImage;
-        //    im.Width = 100;
-        //    im.Height = 100;
-        //    //im.MouseDown += new MouseButtonEventHandler(this.test);
-            
-        //    ScatterViewItem chip = new ScatterViewItem();
-        //    chip.Content = im;
-        //    chip.Center = new Point(500,100);
-        //    chip.Background = Brushes.Transparent;
-        //    chip.CanMove = true;
-        //    //chip.MouseDown += new MouseButtonEventHandler(this.test);
-        //    sv.Items.Add(chip);
-        //    //g.Children.Add()
-        //    //player1.setChip(new Chip(p1c10, 300, 750, 208, 10, new Uri("pack://siteoforigin:,,,/Chips/Pokerchip_final_10.png")));
-        //}
-
-        //private void test(object sender, RoutedEventArgs e)
-        //{
-        //    Console.WriteLine("Test");
-        //    e.Handled = true;
-        //}
-
-        
-
         //Drag and Drop
         /// <summary>
+        /// Creates Cursor and starts drag of image
         /// get help at msdn: Dragging and Dropping Items from ScatterView Controls to SurfaceListBox Controls
         /// </summary>
         /// <param name="sender"></param>
@@ -975,20 +902,9 @@ namespace SurfacePoker
             }
             log.Debug("DragSourcePreviewInputDeviceDown() check if handled - End");
         }
-        //private void DropTargetDragEnter(object sender, SurfaceDragDropEventArgs e)
-        //{
-        //    e.Cursor.Visual.Tag = "DragEnter";
-        //    Console.WriteLine("DropTargetDragEnter");
-        //    e.Handled = true;
-        //}
-        //private void DropTargetDragLeave(object sender, SurfaceDragDropEventArgs e)
-        //{
-        //    e.Cursor.Visual.Tag = null;
-        //    Console.WriteLine("DropTargetDragLeave");
-        //    e.Handled = true;
-        //}
 
         /// <summary>
+        /// If Drag get canceld and draged object is a card set card to origin position
         /// get help at msdn: Dragging and Dropping Items from ScatterView Controls to SurfaceListBox Controls
         /// </summary>
         /// <param name="sender"></param>
@@ -997,48 +913,20 @@ namespace SurfacePoker
         {
             log.Debug("DragCanceled(object " + sender.ToString() + " SurfaceDragDropEventArgs " + e.ToString() + ") - Begin");
             Image data = e.Cursor.Data as Image;
-            List<ScatterViewItem> svis = new List<ScatterViewItem>();
             //Console.WriteLine(data.Name);
             if (data.Name.Contains("card"))
             {
                 BitmapImage bimage = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Kartenrueckseite/kartenruecken_1.jpg"));
                 Image image = this.FindName(data.Name) as Image;
                 ScatterViewItem svi = this.FindName(data.Name.Substring(0, (data.Name.Length - 5))) as ScatterViewItem;
-                //svi.Center = e.Cursor.GetPosition(svi.Parent as ScatterView);
-                //svi.Orientation = e.Cursor.GetOrientation(svi.Parent as ScatterView);
                 svi.Content = null;
                 svi.Content = image;
-                //Console.WriteLine();
                 image.Visibility = Visibility.Visible;
             }
 
-            if (data != null)
-            {
-                //item.Visibility = Visibility.Visible;
-                //item.Orientation = e.Cursor.GetOrientation(this);
-                //item.Center = e.Cursor.GetPosition(this);
-                //Console.WriteLine("Drop Canceled");
-            }
             log.Debug("DragCanceled() - End");
             e.Handled = true;
         }
-        //private void DropTargetDrop(object sender, SurfaceDragDropEventArgs e)
-        //{
-
-        //    Image img = e.Cursor.Data as Image;
-        //    //Get Chip Value
-        //    char[] delimiterChars = { '_', '.'};
-        //    string text = img.Source.ToString();
-        //    string[] words = text.Split(delimiterChars);
-
-        //    //Update the personal stack
-        //    personalStack += (Int32)Convert.ToInt32(words[2]);
-        //    personalStackField_h.Text = personalStack.ToString();
-        //    personalStackField_v.Text = personalStack.ToString();
-        //    checkCash(kvp.Key.position);
-        //    setActionButtonText();
-        //    e.Handled = true;
-        //}
 
         /// <summary>
         /// collectes chip value in TargetArea
@@ -1079,13 +967,12 @@ namespace SurfacePoker
         }
 
         /// <summary>
-        /// checks how many dragable chips are shown at players pos
+        /// checks how many dragable chips are shown at players position
         /// </summary>
         /// <param name="pos"></param>
         private void checkCash(int pos)
         {
             log.Debug("checkCash(pos " + pos.ToString() + ") - Begin");
-            setSVIChipPos(kvp.Key.position);
             ImgChip10_h.Visibility = Visibility.Visible;
             ImgChip10_v.Visibility = Visibility.Visible;
             SVIChip10.Visibility = Visibility.Visible;
@@ -1135,6 +1022,7 @@ namespace SurfacePoker
                     }
                 }
             }
+            setSVIChipPos(pos);
             log.Debug("checkCash() - End");
         }
 
@@ -1376,32 +1264,6 @@ namespace SurfacePoker
             log.Debug("setSVIChipPos() - End");
         }
 
-        //private void DealCardTo(int i, double newX, double newY)
-        //{
-        //    Image target = this.FindName("player1card1image") as Image;            
-        //    target.Visibility = Visibility.Visible;
-        //    int top = 500;
-        //    int left = 500;
-        //    TranslateTransform trans = new TranslateTransform();
-        //    target.RenderTransform = trans;
-        //    DoubleAnimation anim1 = new DoubleAnimation(top, newY - top, TimeSpan.FromSeconds(1));
-        //    DoubleAnimation anim2 = new DoubleAnimation(left, newX - left, TimeSpan.FromSeconds(1));
-        //    trans.BeginAnimation(TranslateTransform.XProperty, anim1);
-        //    trans.BeginAnimation(TranslateTransform.YProperty, anim2);
-            
-        //}
-            //<Image Name="cc0" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="15.2,69.48"/>
-            //<Image Name="cc1" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Left" Margin="125.6,69.48"/>
-            //<Image Name="cc2" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" Margin="236,69.48,236,69.48"/>
-            //<Image Name="cc3" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="125.6,69.48"/>
-            //<Image Name="cc4" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" Width="80" Height="123.04" HorizontalAlignment="Right" Margin="15.2,69.48"/>
-
-            //Storyboard sb = new Storyboard();
-            //DoubleAnimation da = new DoubleAnimation(-100, 100, new Duration(new TimeSpan(0, 0, 1)));
-            //Storyboard.SetTargetProperty(da, new PropertyPath("(Canvas.Top)")); //Do not miss the '(' and ')'
-            //sb.Children.Add(da);
-  
-            //image.BeginStoryboard(sb);
     }
 
 }

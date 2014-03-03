@@ -470,7 +470,7 @@
                 Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
                 <Image Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="SVIChip500" Center="1375,820" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+            <Custom:ScatterViewItem Name="SVIChip500" Center="735,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown"
                 Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
