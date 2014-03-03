@@ -118,7 +118,7 @@ public class Pot
             Pot p;
             if (amountPerPlayer > potThisRound && amountPerPlayer == value + player.inPot)
             {
-                p = new Pot(potThisRound + value, amountPerPlayer, potThisRound + value, newPlayers, sidePot);
+                p = new Pot(potThisRound + value, amountPerPlayer + player.inPot, potThisRound + value, newPlayers, sidePot);
                 potThisRound = 0;
                 this.value = 0;
                 amountPerPlayer = 0;
@@ -127,8 +127,8 @@ public class Pot
             {
                 int times = 1 + (potThisRound / amountPerPlayer);
                 
-                int diff = (this.amountPerPlayer - value) * (times - 1);
-                p = new Pot(this.value - diff + value - player.inPot, value, this.value - diff + value - player.inPot, newPlayers, sidePot);
+                int diff = (this.amountPerPlayer - (value + player.inPot)) * (times - 1);
+                p = new Pot(this.value - diff + value, value + player.inPot, this.value - diff + value - player.inPot, newPlayers, sidePot);
                 potThisRound = diff;
                 this.value = diff;
                 amountPerPlayer -= p.amountPerPlayer;
@@ -171,11 +171,16 @@ public class Pot
                     {
                         List<Player> newPlayers = new List<Player>();
                         newPlayers.Add(player);
-                        this.sidePot.value += sidePot.amountPerPlayer;
-                        this.potThisRound += sidePot.amountPerPlayer;
-                        this.sidePot = new Pot(value-sidePot.amountPerPlayer, 
-                            value - sidePot.amountPerPlayer,
-                            value - sidePot.amountPerPlayer,
+                        int times = potThisRound / this.AmountPerPlayer;
+                        int diff = this.amountPerPlayer - (value + player.inPot);
+                        this.AmountPerPlayer -= diff;
+                        this.value -= times * diff;
+                        this.potThisRound -= times * diff;
+                        this.sidePot.value += sidePot.amountPerPlayer - player.inPot;
+                        this.potThisRound += sidePot.amountPerPlayer - player.inPot;
+                        this.sidePot = new Pot(value + player.inPot-sidePot.amountPerPlayer + times*diff, 
+                            value + player.inPot - sidePot.amountPerPlayer,
+                            value + player.inPot - sidePot.amountPerPlayer + times*diff,
                             newPlayers,
                             this.sidePot);
 
