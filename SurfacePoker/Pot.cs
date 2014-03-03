@@ -93,11 +93,12 @@ public class Pot
                 }
                 else
                 {
-                    this.value += value + player.inPot - this.sidePot.amountPerPlayer;
-                    this.potThisRound += value + player.inPot - this.sidePot.amountPerPlayer;
+                    int valuePerRound = value + player.inPot - this.sidePot.amountPerPlayer;
+                    this.value += valuePerRound;
+                    this.potThisRound += valuePerRound;
                     if ((sidePot.amountPerPlayer > 0) && player.inPot < sidePot.amountPerPlayer)
                     {
-                        sidePot.raisePot(player, value);
+                        sidePot.raisePot(player, value - valuePerRound);
                     }
                 }
             }
@@ -127,7 +128,7 @@ public class Pot
                 int times = 1 + (potThisRound / amountPerPlayer);
                 
                 int diff = (this.amountPerPlayer - value) * (times - 1);
-                p = new Pot(this.value - diff + value, value, this.value - diff + value, newPlayers, sidePot);
+                p = new Pot(this.value - diff + value - player.inPot, value, this.value - diff + value - player.inPot, newPlayers, sidePot);
                 potThisRound = diff;
                 this.value = diff;
                 amountPerPlayer -= p.amountPerPlayer;
@@ -162,7 +163,7 @@ public class Pot
                 }
                 else
                 {
-                    if (this.sidePot.amountPerPlayer > value)
+                    if (this.sidePot.amountPerPlayer > value + player.inPot)
                     {
                         this.sidePot.createSidePot(player, value);
                     }
