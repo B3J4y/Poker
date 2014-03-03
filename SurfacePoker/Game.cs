@@ -511,65 +511,73 @@ namespace SurfacePoker
             playersInGame.AddRange(pot.player);
             List<KeyValuePair<Player, Hand>> playerHand = new List<KeyValuePair<Player, Hand>>();
             Console.WriteLine(boardToString());
-            //determines Hand Value
-            foreach (Player player in playersInGame)
+            if (playersInGame.Count > 0)
             {
-                playerHand.Add(new KeyValuePair<Player, Hand>(player, new Hand(player.getCardsToString(), boardToString())));
-                Console.WriteLine(player.name + " " + player.getCardsToString() + " " + new Hand(player.getCardsToString(), boardToString()).HandValue + " " + new Hand(player.getCardsToString(), boardToString()).HandTypeValue);
-            }
-            playerHand.Sort((x, y ) => x.Value.HandValue.CompareTo(y.Value.HandValue));
-            //WinnerHands
-            result.Add(new Winner(playerHand[playerHand.Count - 1].Key, playerHand[playerHand.Count - 1].Value.HandTypeValue.ToString()));
-            for (int i = playerHand.Count - 2; i >= 0; i--)
-            {
-                if (playerHand[playerHand.Count - 1].Value.HandValue == playerHand[i].Value.HandValue)
-                {
-                    result.Add(new Winner(playerHand[i].Key, playerHand[i].Value.HandTypeValue.ToString()));
 
+                //determines Hand Value
+                foreach (Player player in playersInGame)
+                {
+                    playerHand.Add(new KeyValuePair<Player, Hand>(player, new Hand(player.getCardsToString(), boardToString())));
+                    Console.WriteLine(player.name + " " + player.getCardsToString() + " " + new Hand(player.getCardsToString(), boardToString()).HandValue + " " + new Hand(player.getCardsToString(), boardToString()).HandTypeValue);
+                }
+                playerHand.Sort((x, y ) => x.Value.HandValue.CompareTo(y.Value.HandValue));
+                //WinnerHands
+                result.Add(new Winner(playerHand[playerHand.Count - 1].Key, playerHand[playerHand.Count - 1].Value.HandTypeValue.ToString()));
+                for (int i = playerHand.Count - 2; i >= 0; i--)
+                {
+                    if (playerHand[playerHand.Count - 1].Value.HandValue == playerHand[i].Value.HandValue)
+                    {
+                        result.Add(new Winner(playerHand[i].Key, playerHand[i].Value.HandTypeValue.ToString()));
+
+                    }
+                    else
+                    {
+                        playerHand[i].Key.isActive = false;
+                    }
+                }
+                if (result.Count == 1)
+                {
+                    result[0].value = pot.value;
+                    result[0].player.stack += result[0].value;
+                    result[0].player.isAllin = false;
                 }
                 else
                 {
-                    playerHand[i].Key.isActive = false;
-                }
-            }
-            if (result.Count == 1)
-            {
-                result[0].value = pot.value;
-                result[0].player.stack += result[0].value;
-                result[0].player.isAllin = false;
-            }
-            else
-            {
-                int mod = (pot.value / result.Count) % bigBlind;
-                Player first = new Player(activePlayer);
-                try
-                {
-                    // nonActives = players.FindAll(x => (!x.isActive)).Count;
-                    first = whoIsNext(players.Count - nonActives - 1, false);
-                }
-                catch (NoPlayerInGameException e)
-                {
-                    first = activePlayer;
-                }
+                    int mod = (pot.value / result.Count) % bigBlind;
+                    Player first = new Player(activePlayer);
+                    try
+                    {
+                        // nonActives = players.FindAll(x => (!x.isActive)).Count;
+                        first = whoIsNext(players.Count - nonActives - 1, false);
+                    }
+                    catch (NoPlayerInGameException e)
+                    {
+                        first = activePlayer;
+                    }
 
-                while (mod > 0)
-                {
-                    Winner myPlayer = result.Find(x => x.player.name == first.name);
-                    myPlayer.value += smallBlind;
-                    pot.value -= smallBlind;
-                    mod = (pot.value / result.Count) % bigBlind;
-                }
+                    while (mod > 0)
+                    {
+                        Winner myPlayer = result.Find(x => x.player.name == first.name);
+                        myPlayer.value += smallBlind;
+                        pot.value -= smallBlind;
+                        mod = (pot.value / result.Count) % bigBlind;
+                    }
 
-                for (int j = 0; j < result.Count; j++)
-                {
-                    result[j].value += (pot.value / result.Count);
-                    result[j].player.stack += result[j].value;
-                    result[j].player.isAllin = false;
+                    for (int j = 0; j < result.Count; j++)
+                    {
+                        result[j].value += (pot.value / result.Count);
+                        result[j].player.stack += result[j].value;
+                        if (result[j].player.stack > 0)
+                        {
+
+                            result[j].player.isAllin = false;
+                        }
+                    }
                 }
-            }
             
-            foreach(Winner w in result){
-                Logger.action(this, w.player, Action.playerAction.wins, w.value, board);
+                foreach(Winner w in result){
+                    Logger.action(this, w.player, Action.playerAction.wins, w.value, board);
+                }
             }
             if (pot.sidePot != null)
             {
