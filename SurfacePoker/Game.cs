@@ -75,6 +75,8 @@ namespace SurfacePoker
             board = new List<Card>();
             pot.amountPerPlayer = bigBlind;
             nonActives = players.FindAll(x =>  (x.stack == 0)).Count;
+            int j = 0;
+            players.Sort((x, y) => x.ingamePosition.CompareTo(y.ingamePosition));
             foreach (Player player in players)
             {
                 if (player.stack > 0)
@@ -93,11 +95,12 @@ namespace SurfacePoker
                 {
                     if (player.isActive)
                     {
-                        player.ingamePosition--;
+                        player.ingamePosition-= (1 + j) ;
                     }
                     else
                     {
                         player.ingamePosition = 0;
+                        j++;
                     }
                 }
                 else
@@ -109,6 +112,7 @@ namespace SurfacePoker
                     else
                     {
                         player.ingamePosition = 0;
+                        j++;
                     }
                 }
 
