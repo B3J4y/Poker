@@ -649,7 +649,7 @@ namespace SurfacePoker
             hideActionButton();
             hideChips();
             updateBalance();
-            await nextPlayer();
+            await UInextPlayer();
             log.Debug("actionButtonClicked() - End");
         }
 
@@ -657,7 +657,7 @@ namespace SurfacePoker
         /// sets UI buttons to next player or announces winner if no next player exists, game ends 
         /// </summary>
         /// <returns></returns>
-        private async Task nextPlayer()
+        private async Task UInextPlayer()
         {
             log.Debug("next Player() - Begin");
             await Task.Delay(5);            
