@@ -182,7 +182,7 @@ namespace SurfacePoker
                 //clean up
                 SurfaceTextBox text = (SurfaceTextBox)stackPanel.FindName("playerName");
                 text.Text = "";
-                Label l = this.FindName("addPlayerLabel") as Label;
+                Label l = this.FindName("LabelAddPlayer") as Label;
                 l.Foreground = Brushes.White;
                 l.Content = "Add New Player";
             }
@@ -217,7 +217,7 @@ namespace SurfacePoker
                 SurfaceButton s = (SurfaceButton)sender;
                 StackPanel stackPanel = (StackPanel)s.Parent;
                 SurfaceTextBox tb = (SurfaceTextBox)stackPanel.FindName("playerName");
-                Label l = this.FindName("addPlayerLabel") as Label;
+                Label l = this.FindName("LabelAddPlayer") as Label;
                 int pos = Convert.ToInt32(playerPos.Text);
 
                 //check if player name is taken
@@ -271,7 +271,7 @@ namespace SurfacePoker
             btn.Name = "btnStart";
             btn.Content = text;
             btn.Margin = new Thickness(900, 700, 900, 320);
-            btn.Click += new RoutedEventHandler(startGame);         
+            btn.Click += new RoutedEventHandler(StartButtonClicked);         
             if (!Grid.Children.Contains(btn))
             {
                 Grid.Children.Add(btn);
@@ -280,17 +280,20 @@ namespace SurfacePoker
         }
 
         /// <summary>
-        /// Starts a new round or if game does not exist creates new game and start new round
+        /// Removes StartButton, disables adding new players/ changing stacks, starts new game/Round
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void startGame(object sender, RoutedEventArgs e)
+        private async void StartButtonClicked(object sender, RoutedEventArgs e)
         {
-            log.Debug("startGame(object: " + sender.ToString() + " RoutedEventArgs: " + e.ToString() + ") - Begin");
+            log.Debug("StartButtonClicked() - Begin");
             //Disable adding new players, changing stacks and hide position fields
             canAddPlayer = false;
+            addplayerscatteru.Visibility = Visibility.Collapsed;
+            playerName.Text = "";
             EMIchangeStack.IsEnabled = false;
             canChangeStack = false;
+
             Pos1.Visibility = Visibility.Collapsed;
             Pos2.Visibility = Visibility.Collapsed;
             Pos3.Visibility = Visibility.Collapsed;
@@ -303,9 +306,20 @@ namespace SurfacePoker
             //set mainPot to default
             mainPot.FontSize = 16;
             mainPot.Foreground = Brushes.Bisque;
-            
-            //Start new Game
-            Mitte.Visibility = Visibility.Visible;
+            mainPot.Text = "";
+            e.Handled = true;
+
+            await startGame();
+            log.Debug("StartButtonClicked() - End");
+        }
+
+        /// <summary>
+        /// Starts a new round or if game does not exist creates new game and start new round
+        /// </summary>
+        private async Task startGame()
+        {
+            log.Debug("startGame() - Begin");
+            await Task.Delay(5);
             if (gl == null)
             {
                 gl = new Game(players, bb, bb / 2);
@@ -315,10 +329,11 @@ namespace SurfacePoker
             setDealerButtonPos(p.position);
             //get first player
             kvp = gl.nextPlayer();
+            Mitte.Visibility = Visibility.Visible;
             showCards();
             showActionButton(kvp);
             log.Debug("startGame() - End");
-            e.Handled = true;
+            
         }
 
         /// <summary>
@@ -608,7 +623,7 @@ namespace SurfacePoker
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void actionButtonClicked(object sender, RoutedEventArgs e)
+        private async void actionButtonClicked(object sender, RoutedEventArgs e)
         {
             log.Debug("actionButtonClicked(object: " + sender.ToString() + " , RoutedEventsArgs: " + e.ToString() + ") - Begin");
             Button s = (Button)sender;
@@ -632,8 +647,23 @@ namespace SurfacePoker
                     break;
             }
             hideActionButton();
+            hideChips();
+            updateBalance();
+            await nextPlayer();
+            log.Debug("actionButtonClicked() - End");
+        }
+
+        /// <summary>
+        /// sets UI buttons to next player or announces winner if no next player exists, game ends 
+        /// </summary>
+        /// <returns></returns>
+        private async Task nextPlayer()
+        {
+            log.Debug("next Player() - Begin");
+            await Task.Delay(5);            
             try
             {
+                
                 kvp = gl.nextPlayer();
                 showActionButton(kvp);
             }
@@ -641,9 +671,9 @@ namespace SurfacePoker
             {
                 log.Debug("catch NoPlayerInGameException exp: " + exp.ToString());
                 newRound();
-                updateBalance();
-                hideChips();
-                announceWinner(gl.whoIsWinner(gl.pot,gl.players.FindAll(x => x.isActive)));
+                //updateBalance();
+                //hideChips();
+                announceWinner(gl.whoIsWinner(gl.pot, gl.players.FindAll(x => x.isActive)));
             }
             catch (EndRoundException exp)
             {
@@ -669,25 +699,24 @@ namespace SurfacePoker
                             break;
                         case 4:
                             showCommunityCards(gl.board.Count);
-                            updateBalance();
-                            hideChips();
-                            announceWinner(gl.whoIsWinner(gl.pot,gl.players.FindAll(x => x.isActive)));
+                            //updateBalance();
+                            //hideChips();
+                            announceWinner(gl.whoIsWinner(gl.pot, gl.players.FindAll(x => x.isActive)));
                             break;
                         default:
                             log.Debug("switch default in round: " + round.ToString()); break;
                     }
-                    log.Debug("actionButtonClicked(object: " + sender.ToString() + " , RoutedEventsArgs: " + e.ToString() + ") - Begin");
                 }
                 catch (EndRoundException inexp)
                 {
                     log.Debug("catch EndRoundException inexp: " + inexp.ToString());
-                    updateBalance();
-                    hideChips();
-                    hideActionButton();
+                    //updateBalance();
+                    //hideChips();
+                    //hideActionButton();
                     allAreAllin();
                 }
             }
-            log.Debug("actionButtonClicked() - End");
+            log.Debug("next Player() - End");
         }
 
         /// <summary>

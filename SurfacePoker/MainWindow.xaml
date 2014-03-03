@@ -365,9 +365,9 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
-                    <Label Name="addPlayerLabel" Content="Add New Player" Foreground="White"/>
+                    <Label Name="LabelAddPlayer" Content="Add New Player" Foreground="White"/>
                     <Label Content="Playername:" Foreground="White"/>
-                    <Custom:SurfaceTextBox Margin="0" TextWrapping="Wrap" Height="18" Name="playerName"/>
+                    <Custom:SurfaceTextBox Name="playerName" Margin="0" TextWrapping="Wrap" Height="18"/>
                     <TextBlock Name="playerPos" MaxHeight="0" MaxWidth="0" Text=""/>
                     <Custom:SurfaceButton Content="Save Player" Click="savePlayer" Margin="0" />
                 </StackPanel>
