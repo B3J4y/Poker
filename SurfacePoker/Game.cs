@@ -22,7 +22,7 @@ namespace SurfacePoker
         private Player nextActivePlayer;
         private Player dealer = new Player("dealer", 0, 0);
         private int nonActives;
-
+        public int blindLevel { get; set; }
         /// <summary>
         ///round = 0 => Preflop
         ///round = 1 => Flop
@@ -31,11 +31,13 @@ namespace SurfacePoker
         /// </summary>
         private int round;
         public List<Card> board { get; set; }
-	    public Game(List<Player> players, int bb, int sb)
+        private int[] blindStructur = new int[] { 20, 40, 60, 100, 160, 200, 300, 400, 500 };
+        public Game(List<Player> players, int bb, int sb)
 	    {
             log.Debug("Game() - Begin");
             log.Debug("New Game - Player: " + players.Count + " Stakes: " + sb + "/" + bb);
             Logger.newGame();
+            blindLevel = 0;
             foreach (Player p in players)
             {
                 log.Debug("Name: " + p.name + ", Position: " + p.position + ", Stack: " + p.stack);
@@ -70,6 +72,9 @@ namespace SurfacePoker
         {
             
             log.Debug("new Game() - Begin");
+            bigBlind = blindStructur[blindLevel];
+            smallBlind = blindStructur[blindLevel] / 2;
+            log.Debug("Blindlevel: " + smallBlind + "/" + bigBlind);
             deck = new Deck();
             round = 0;
             board = new List<Card>();
