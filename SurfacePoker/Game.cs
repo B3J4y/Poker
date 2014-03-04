@@ -77,64 +77,48 @@ namespace SurfacePoker
             nonActives = players.FindAll(x =>  (x.stack == 0)).Count;
             int j = 0;
             players.Sort((x, y) => x.ingamePosition.CompareTo(y.ingamePosition));
-            foreach (Player player in players)
+            bool firstplayer = true;
+            for (int i = 0; i < players.Count; i++)
             {
-                if (player.stack > 0)
+                players[i].inPot = 0;
+                if (players[i].stack > 0)
                 {
-                    player.isActive = true;
-                    player.isAllin = false;
-                }
-                else
-                {
-                    player.isActive = false;
-                    player.isAllin = false;
-                }
-                
-                player.inPot = 0;
-                if (player.ingamePosition > 1)
-                {
-                    if (player.isActive)
+                    players[i].isActive = true;
+                    players[i].isAllin = false;
+                    if (firstplayer)
                     {
-                        player.ingamePosition-= (1 + j) ;
+                        players[i].ingamePosition = players.Count - nonActives;
+                        firstplayer = false;
+                        Logger.action(this, players[i], Action.playerAction.bigblind, bigBlind, board);
+                        pot.raisePot(players[i], players[i].action(bigBlind));
                     }
                     else
                     {
-                        player.ingamePosition = 0;
-                        j++;
-                    }
-                }
-                else
-                {
-                    if (player.isActive)
-                    {
-                        player.ingamePosition = (players.Count - nonActives);
-                    }
-                    else
-                    {
-                        player.ingamePosition = 0;
-                        j++;
-                    }
-                }
+                        players[i].ingamePosition = i - j;
+                        if (players[i].ingamePosition == players.Count - nonActives - 1)
+                        {
+                            Logger.action(this, players[i], Action.playerAction.smallblind, smallBlind, board);
+                            pot.amountPerPlayer = smallBlind;
+                            pot.raisePot(players[i], players[i].action(smallBlind));
+                        }
 
-                if (player.ingamePosition == (players.Count - nonActives))
-                {
-                    Logger.action(this, player, Action.playerAction.bigblind, bigBlind, board);
-                    pot.raisePot(player, player.action(bigBlind));
+                    }
+                    players[i].cards = new List<Card>();
+                    players[i].setOneCard(deck.DealNext());
+                    players[i].setOneCard(deck.DealNext());
+                    
                 }
-                if (player.ingamePosition == players.Count - nonActives - 1)
+                else
                 {
-                    Logger.action(this, player, Action.playerAction.smallblind, smallBlind, board);
-                    pot.amountPerPlayer = smallBlind;
-                    pot.raisePot(player, player.action(smallBlind));
+                    players[i].isActive = false;
+                    players[i].isAllin = false;
+                    players[i].cards = new List<Card>();
+                    j++;
+                    players[i].ingamePosition = 0;
                 }
-                pot.amountPerPlayer = bigBlind;
-                pot.raiseSize = bigBlind;
-                player.cards = new List<Card>();
-                player.setOneCard(deck.DealNext());
-                player.setOneCard(deck.DealNext());
-                player.isAllin = false;
-                player.hasChecked = false;
             }
+            pot.amountPerPlayer = bigBlind;
+            pot.raiseSize = bigBlind;
 
             Logger.calculateWinChance(this);
 
@@ -590,6 +574,7 @@ namespace SurfacePoker
             }
             pot.value = 0;
             pot.potThisRound = 0;
+            pot.player = new List<Player>();
             log.Debug("whoIsWinner() - End");
             return result;
         }
