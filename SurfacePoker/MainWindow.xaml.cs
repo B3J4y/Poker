@@ -122,7 +122,7 @@ namespace SurfacePoker
             {
                 stack = 1000;
             }
-            mainPot.Text = "Touch Grey Area To Create A New Player!             Player Stacks: " + stack.ToString();
+            mainPot.Text = "Touch Grey Area To Create A New Player!             Player Stacks: " + stack.ToString() + "\n";
             players = new List<Player>();
             gl = null;
             log.Debug("createNewGame() - End");
@@ -201,6 +201,17 @@ namespace SurfacePoker
             log.Debug("newRound() - Begin");
             round = 0;
             addStartButton("Start New Round");
+            //Raise Blinds Button
+            int nxtlvl;
+            if(gl.blindLevel >= 8) {
+                nxtlvl = 0;
+            }
+            else
+            {
+                nxtlvl = gl.blindLevel + 1;
+            }
+            string s = "Set Big Blind: " + gl.blindStructur[gl.blindLevel] + " -> " + gl.blindStructur[nxtlvl];
+            addButton4(s);
             log.Debug("newRound() - End");
         }
 
@@ -283,7 +294,7 @@ namespace SurfacePoker
             log.Debug("addStartButton(text: " + text.ToString() + ") - Begin");
             btn.Name = "btnStart";
             btn.Content = text;
-            btn.Margin = new Thickness(900, 700, 900, 320);
+            btn.Margin = new Thickness(750, 700, 1000, 320);
             btn.Click += new RoutedEventHandler(StartButtonClicked);         
             if (!Grid.Children.Contains(btn))
             {
@@ -300,30 +311,68 @@ namespace SurfacePoker
         private async void StartButtonClicked(object sender, RoutedEventArgs e)
         {
             log.Debug("StartButtonClicked() - Begin");
-            //Disable adding new players, changing stacks and hide position fields
-            canAddPlayer = false;
-            addplayerscatteru.Visibility = Visibility.Collapsed;
-            playerName.Text = "";
-            EMIchangeStack.IsEnabled = false;
-            canChangeStack = false;
+            Button b = sender as Button;
+            if(b.Name == "Btn4") {
+                gl.blindLevel++;
+                int nxtlvl;
+                if (gl.blindLevel > 8)
+                {
+                    gl.blindLevel = 0;
+                }
+                if (gl.blindLevel >= 8)
+                {
+                    nxtlvl = 0;
+                }  else {
+                    nxtlvl = gl.blindLevel+1;
+                }
+                
+                    b.Content = "Set Big Blind: " + gl.blindStructur[gl.blindLevel] + " -> " + gl.blindStructur[nxtlvl];
+                
+                e.Handled = true;
+            }
+            else
+            {
 
-            Pos1.Visibility = Visibility.Collapsed;
-            Pos2.Visibility = Visibility.Collapsed;
-            Pos3.Visibility = Visibility.Collapsed;
-            Pos4.Visibility = Visibility.Collapsed;
-            Pos5.Visibility = Visibility.Collapsed;
-            Pos6.Visibility = Visibility.Collapsed;
-            hideUI();
-            //Remove 'start new game' button
-            Grid.Children.Remove(btn);
-            //set mainPot to default
-            mainPot.FontSize = 16;
-            mainPot.Foreground = Brushes.Bisque;
-            mainPot.Text = "";
-            e.Handled = true;
+                //Disable adding new players, changing stacks and hide position fields
+                canAddPlayer = false;
+                addplayerscatteru.Visibility = Visibility.Collapsed;
+                playerName.Text = "";
+                EMIchangeStack.IsEnabled = false;
+                canChangeStack = false;
+                Btn4.Visibility = Visibility.Collapsed;
 
-            await startGame();
+                Pos1.Visibility = Visibility.Collapsed;
+                Pos2.Visibility = Visibility.Collapsed;
+                Pos3.Visibility = Visibility.Collapsed;
+                Pos4.Visibility = Visibility.Collapsed;
+                Pos5.Visibility = Visibility.Collapsed;
+                Pos6.Visibility = Visibility.Collapsed;
+                hideUI();
+                //Remove 'start new game' button
+                Grid.Children.Remove(btn);
+                //set mainPot to default
+                mainPot.FontSize = 16;
+                mainPot.Foreground = Brushes.Bisque;
+                mainPot.Text = "";
+                e.Handled = true;
+
+                await startGame();
+            }
             log.Debug("StartButtonClicked() - End");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        private void addButton4(String text)
+        {
+            log.Debug("addButton4(text: " + text.ToString() + ") - Begin");
+            Button b = this.FindName("Btn4") as Button;
+            b.Content = text;            
+            b.Click += new RoutedEventHandler(StartButtonClicked);
+            b.Visibility = Visibility.Visible;
+            log.Debug("addButton4() - End");
         }
 
         /// <summary>
@@ -1202,7 +1251,7 @@ namespace SurfacePoker
                 ElementMenuItem emi = sender as ElementMenuItem;
                 string t = emi.Header.ToString();
                 stack = (Int32)Convert.ToInt32(emi.Header.ToString().Split(' ')[1]);
-                mainPot.Text = "Player Stacks: " + stack.ToString();
+                mainPot.Text = "Player Stacks: " + stack.ToString() + "\n";
                 if (players.Exists(x => x.stack != stack))
                 {
                     foreach (Player p in players) {

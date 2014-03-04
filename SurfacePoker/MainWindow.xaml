@@ -498,6 +498,17 @@
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
 
+        <Button Name="Btn4" Margin="1000, 700, 750, 320" Visibility="Collapsed">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FF2F2F2F" Offset="0"/>
+                    <GradientStop Color="#FF181818" Offset="0.5"/>
+                    <GradientStop Color="#FF181818" Offset="0.5"/>
+                    <GradientStop Color="#FF2F2F2F" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
         <Custom:ElementMenu Name="MainMenu" ActivationMode="AlwaysActive" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="120,10" MinWidth="85" Width="85">
             <Custom:ElementMenuItem Header="Game">
                 <Custom:ElementMenuItem Header="New Game" Click="createNewGame"/>
