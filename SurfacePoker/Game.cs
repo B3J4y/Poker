@@ -90,7 +90,15 @@ namespace SurfacePoker
                         players[i].ingamePosition = players.Count - nonActives;
                         firstplayer = false;
                         Logger.action(this, players[i], Action.playerAction.bigblind, bigBlind, board);
-                        pot.raisePot(players[i], players[i].action(bigBlind));
+                        if(players[i].stack >= bigBlind){
+                            pot.raisePot(players[i], bigBlind);
+                            players[i].action(bigBlind);
+                        }
+                        else
+                        {
+                            pot.raisePot(players[i], smallBlind);
+                            players[i].action(smallBlind);
+                        }
                     }
                     else
                     {
@@ -99,7 +107,8 @@ namespace SurfacePoker
                         {
                             Logger.action(this, players[i], Action.playerAction.smallblind, smallBlind, board);
                             pot.amountPerPlayer = smallBlind;
-                            pot.raisePot(players[i], players[i].action(smallBlind));
+                            pot.raisePot(players[i], smallBlind);
+                            players[i].action(smallBlind);
                         }
 
                     }
@@ -117,7 +126,17 @@ namespace SurfacePoker
                     players[i].ingamePosition = 0;
                 }
             }
-            pot.amountPerPlayer = bigBlind;
+            if (pot.sidePot != null)
+            {
+                if (pot.sidePot.amountPerPlayer < bigBlind)
+                {
+                    pot.amountPerPlayer = smallBlind;
+                }
+            }
+            else
+            {
+                pot.amountPerPlayer = bigBlind;
+            }
             pot.raiseSize = bigBlind;
 
             Logger.calculateWinChance(this);
