@@ -355,7 +355,8 @@ namespace SurfacePoker
         private void showCards()
         {
             log.Debug("showCards() - Begin");
-            foreach (Player iPlayer in gl.players.FindAll(x => x.isActive))
+            
+            foreach (Player iPlayer in gl.players.FindAll(x => x.isActive || x.isAllin))
             {
                 Rectangle r = this.FindName("Pos" + iPlayer.position) as Rectangle;
                 r.Visibility = Visibility.Visible;
