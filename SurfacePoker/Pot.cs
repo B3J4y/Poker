@@ -173,14 +173,15 @@ public class Pot
                         newPlayers.Add(player);
                         int times = potThisRound / this.AmountPerPlayer;
                         int diff = this.amountPerPlayer - (value + player.inPot);
-                        this.AmountPerPlayer -= diff;
-                        this.value -= times * diff;
+                        int valuediff = this.value - diff * times;
+                        this.AmountPerPlayer = diff;
+                        this.value = times * diff;
                         this.potThisRound -= times * diff;
                         this.sidePot.value += sidePot.amountPerPlayer - player.inPot;
                         this.potThisRound += sidePot.amountPerPlayer - player.inPot;
-                        this.sidePot = new Pot(value + player.inPot-sidePot.amountPerPlayer + times*diff, 
+                        this.sidePot = new Pot(value + player.inPot-sidePot.amountPerPlayer + valuediff, 
                             value + player.inPot - sidePot.amountPerPlayer,
-                            value + player.inPot - sidePot.amountPerPlayer + times*diff,
+                            value + player.inPot - sidePot.amountPerPlayer + valuediff,
                             newPlayers,
                             this.sidePot);
 

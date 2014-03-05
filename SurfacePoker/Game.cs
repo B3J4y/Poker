@@ -269,7 +269,7 @@ namespace SurfacePoker
             {
                 if (players.Exists(x => x.isAllin))
                 {
-                    if (activePlayer.inPot == pot.amountPerPlayer)
+                    if ((activePlayer.inPot == pot.amountPerPlayer) || (activePlayer.isAllin))
                     {
                         log.Debug("EndRoundException");
                         throw new EndRoundException("Finished Round");
@@ -473,7 +473,14 @@ namespace SurfacePoker
                     break;
                 case Action.playerAction.raise:
                     pot.raiseSize = amount - pot.amountPerPlayer + activePlayer.inPot;
-                    pot.amountPerPlayer = amount + activePlayer.inPot;
+                    if (pot.sidePot == null)
+                    {
+                        pot.amountPerPlayer = amount + activePlayer.inPot;
+                    }
+                    else
+                    {
+                        pot.amountPerPlayer = amount + activePlayer.inPot - pot.sidePot.amountPerPlayer;
+                    }
                     pot.raisePot(activePlayer,  amount);
                     activePlayer.action(amount);
                     break;
