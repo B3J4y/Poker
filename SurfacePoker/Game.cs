@@ -83,6 +83,11 @@ namespace SurfacePoker
             int j = 0;
             players.Sort((x, y) => x.ingamePosition.CompareTo(y.ingamePosition));
             bool firstplayer = true;
+            if (players.Count - nonActives == 1)
+            {
+                log.Debug("EndGameException");
+                throw new EndGameException("End of Game - Only one player left");
+            }
             for (int i = 0; i < players.Count; i++)
             {
                 players[i].inPot = 0;

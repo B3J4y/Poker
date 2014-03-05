@@ -88,6 +88,7 @@
     </ApplicationDefinition>
     <Compile Include="Action.cs" />
     <Compile Include="Chip.cs" />
+    <Compile Include="EndGameException.cs" />
     <Compile Include="EndRoundException.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="HandAnalysis.cs" />
