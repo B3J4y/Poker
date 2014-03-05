@@ -46,7 +46,7 @@
         <Image Name="backgroundImg"  Source="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur3.jpg"/>
 
         <!--Spieler Position 1-->
-        <Rectangle x:Name="Pos1" MouseDown="showAddPlayer"  Opacity="0.5" Margin="{StaticResource p1}" Visibility="Collapsed">
+        <Rectangle x:Name="Pos1" MouseDown="showAddPlayer"  Opacity="0.5" Margin="{StaticResource p1}" Visibility="Hidden">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -63,7 +63,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player1cards" Margin="{StaticResource p1}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+        <Custom:ScatterView Name="player1cards" Margin="{StaticResource p1}" Visibility="Hidden" RenderTransformOrigin="0.5,0.5" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
             <Custom:ScatterView.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -91,7 +91,7 @@
         </Custom:ScatterView>
 
         <!--Spieler Position 2-->
-        <Rectangle x:Name="Pos2" MouseDown="showAddPlayer" Opacity="0.5" Margin="{StaticResource p2}" Visibility="Collapsed">
+        <Rectangle x:Name="Pos2" MouseDown="showAddPlayer" Opacity="0.5" Margin="{StaticResource p2}" Visibility="Hidden">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -108,7 +108,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player2cards" Margin="{StaticResource p2}" Visibility="Collapsed" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+        <Custom:ScatterView Name="player2cards" Margin="{StaticResource p2}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
             <Custom:ScatterViewItem Name="player2card1" Width="80" Height="123.04" Center="200,100"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
@@ -128,7 +128,7 @@
         </Custom:ScatterView>
 
         <!--Spieler Position 3-->
-        <Rectangle x:Name="Pos3" MouseDown="showAddPlayer"  Opacity="0.5" Margin="{StaticResource p3}" Visibility="Collapsed">
+        <Rectangle x:Name="Pos3" MouseDown="showAddPlayer"  Opacity="0.5" Margin="{StaticResource p3}" Visibility="Hidden">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -145,7 +145,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player3cards" Margin="{StaticResource p3}" Visibility="Collapsed" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+        <Custom:ScatterView Name="player3cards" Margin="{StaticResource p3}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
             <Custom:ScatterViewItem Name="player3card1" Width="80" Height="123.04" Center="200,100"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
@@ -165,7 +165,7 @@
         </Custom:ScatterView>
 
         <!--Spieler Position 4-->
-        <Rectangle x:Name="Pos4" MouseDown="showAddPlayer"  Opacity="0.5" Margin="{StaticResource p4}" Visibility="Collapsed">
+        <Rectangle x:Name="Pos4" MouseDown="showAddPlayer"  Opacity="0.5" Margin="{StaticResource p4}" Visibility="Hidden">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -182,7 +182,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player4cards" Margin="{StaticResource p4}" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+        <Custom:ScatterView Name="player4cards" Margin="{StaticResource p4}" Visibility="Hidden" RenderTransformOrigin="0.5,0.5" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
             <Custom:ScatterView.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -210,7 +210,7 @@
         </Custom:ScatterView>
 
         <!--Spieler Position 5-->
-        <Rectangle x:Name="Pos5"  MouseDown="showAddPlayer" Opacity="0.5" Margin="{StaticResource p5}" Visibility="Collapsed">
+        <Rectangle x:Name="Pos5"  MouseDown="showAddPlayer" Opacity="0.5" Margin="{StaticResource p5}" Visibility="Hidden">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -227,7 +227,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player5cards" Margin="{StaticResource p5}" Visibility="Collapsed" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+        <Custom:ScatterView Name="player5cards" Margin="{StaticResource p5}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
             <Custom:ScatterViewItem Name="player5card1" Width="80" Height="123.04" Center="100,200"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
@@ -247,7 +247,7 @@
         </Custom:ScatterView>
 
         <!--Spieler Position 6-->
-        <Rectangle x:Name="Pos6" MouseDown="showAddPlayer"  Opacity="0.5" Margin="{StaticResource p6}" Visibility="Collapsed">
+        <Rectangle x:Name="Pos6" MouseDown="showAddPlayer"  Opacity="0.5" Margin="{StaticResource p6}" Visibility="Hidden">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -264,7 +264,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player6cards" Margin="{StaticResource p6}" Visibility="Collapsed" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+        <Custom:ScatterView Name="player6cards" Margin="{StaticResource p6}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
             <Custom:ScatterViewItem Name="player6card1" Width="80" Height="123.04" Center="100,200"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
@@ -333,7 +333,7 @@
         </TextBlock>
 
         <!--Tischmitte-->
-        <Rectangle x:Name="Mitte" Opacity="0.5" Margin="680,405,680,405" Visibility="Collapsed">
+        <Rectangle x:Name="Mitte" Opacity="0.5" Margin="680,405,680,405" Visibility="Hidden">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Res/Backgrounds/pokertesttextur2.jpg"/>
             </Rectangle.Fill>
@@ -354,7 +354,7 @@
 
         <!--Fenster Spieler anlegen-->
         <Custom:ScatterView HorizontalAlignment="Left" VerticalAlignment="Top" Height="1042" Width="1904">
-            <Custom:ScatterViewItem x:Name="addplayerscatteru" Background="#C32D2D2D" CanMove="False" CanRotate="False" CanScale="False" Orientation="0" Center="550,550" Visibility="Collapsed" Width="180">
+            <Custom:ScatterViewItem x:Name="addplayerscatteru" Background="#C32D2D2D" CanMove="False" CanRotate="False" CanScale="False" Orientation="0" Center="550,550" Visibility="Hidden" Width="180">
                 <StackPanel Margin="8">
                     <Button Content="X" HorizontalAlignment="Right" Width="25" Foreground="White" Click="closeWindow"  TouchDown="closeWindow" Margin="0">
                         <Button.Background>
@@ -375,7 +375,7 @@
         </Custom:ScatterView>
 
         <!--Actionbuttons for players 2,3,5,6 @orientation top and bottom horizontal-->
-        <Grid Name="Buttons_h" Margin="{StaticResource p5}" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+        <Grid Name="Buttons_h" Margin="{StaticResource p5}" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -414,7 +414,7 @@
         <!--END OF Actionbuttons for players 2,3,5,6 @orientation top and bottom horizontal-->
 
         <!--Actionbuttons for players 1 and 4 @orientation left and right vertical-->
-        <Grid Name="Buttons_v" Margin="{StaticResource p1}" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+        <Grid Name="Buttons_v" Margin="{StaticResource p1}" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -452,25 +452,25 @@
         <!--END OF Actionbuttons for players 1 and 4 @orientation left and right vertical-->
 
         <Custom:ScatterView Name="Chips" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
-            <Custom:ScatterViewItem Name="SVIChip10" Center="450,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+            <Custom:ScatterViewItem Name="SVIChip10" Center="450,810" Background="Transparent" CanRotate="False" Visibility="Hidden"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown"
                 Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
                 <Image Source="Res/Chips/Pokerchip_final_10.png" Width="90" Height="90"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="SVIChip20" Center="545,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+            <Custom:ScatterViewItem Name="SVIChip20" Center="545,810" Background="Transparent" CanRotate="False" Visibility="Hidden"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown"
                 Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
                 <Image Source="Res/Chips/Pokerchip_final_20.png" Width="90" Height="90"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="SVIChip100" Center="640,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+            <Custom:ScatterViewItem Name="SVIChip100" Center="640,810" Background="Transparent" CanRotate="False" Visibility="Hidden"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown"
                 Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
                 <Image Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="SVIChip500" Center="735,810" Background="Transparent" CanRotate="False" Visibility="Collapsed"
+            <Custom:ScatterViewItem Name="SVIChip500" Center="735,810" Background="Transparent" CanRotate="False" Visibility="Hidden"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown"
                 Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
@@ -479,10 +479,10 @@
         </Custom:ScatterView>
 
 
-        <Image Name="dealerButton" Source="Res/Chips/D_Button.png" Width="90" Height="90" Visibility="Collapsed" Margin="554,665,1276,325"/>
+        <Image Name="dealerButton" Source="Res/Chips/D_Button.png" Width="90" Height="90" Visibility="Hidden" Margin="554,665,1276,325"/>
 
         <Custom:ScatterView >
-            <Custom:ScatterViewItem Background="#C32D2D2D" Name="HandRanking" Visibility="Collapsed" Orientation="0" Center="400,400" Width="250" Height="390">
+            <Custom:ScatterViewItem Background="#C32D2D2D" Name="HandRanking" Visibility="Hidden" Orientation="0" Center="400,400" Width="250" Height="390">
                 <StackPanel Margin="8">
                     <Button Content="X" HorizontalAlignment="Right" Width="25" Foreground="White" Click="closeWindow"  TouchDown="closeWindow" Margin="0">
                         <Button.Background>
@@ -498,7 +498,7 @@
             </Custom:ScatterViewItem>
         </Custom:ScatterView>
 
-        <Button Name="Btn4" Margin="1000, 700, 750, 320" Visibility="Collapsed">
+        <Button Name="Btn4" Margin="1000, 700, 750, 320" Visibility="Hidden">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FF2F2F2F" Offset="0"/>

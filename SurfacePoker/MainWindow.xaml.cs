@@ -101,13 +101,13 @@ namespace SurfacePoker
                 tb = this.FindName("player" + i + "balance") as TextBlock;
                 tb.Text = "";
             }
-            Mitte.Visibility = Visibility.Collapsed;
+            Mitte.Visibility = Visibility.Hidden;
             //Hide Startbtn
             if (Grid.Children.Contains(btn))
             {
                 Grid.Children.Remove(btn);
             }
-            addplayerscatteru.Visibility = Visibility.Collapsed;
+            addplayerscatteru.Visibility = Visibility.Hidden;
             playerName.Text = "";
             hideUI();
             hideActionButton();
@@ -188,7 +188,7 @@ namespace SurfacePoker
                 l.Foreground = Brushes.White;
                 l.Content = "Add New Player";
             }
-            SVI.Visibility = Visibility.Collapsed;
+            SVI.Visibility = Visibility.Hidden;
             log.Debug("closeWindow() - End");
             e.Handled = true;
         }
@@ -271,7 +271,7 @@ namespace SurfacePoker
                     l.Foreground = Brushes.White;
                     l.Content = "Add New Player";
                     tb.Text = "";
-                    addplayerscatteru.Visibility = Visibility.Collapsed;
+                    addplayerscatteru.Visibility = Visibility.Hidden;
 
                     //add start btn if two or more players
                     if (players.Count >= 2)
@@ -335,18 +335,18 @@ namespace SurfacePoker
 
                 //Disable adding new players, changing stacks and hide position fields
                 canAddPlayer = false;
-                addplayerscatteru.Visibility = Visibility.Collapsed;
+                addplayerscatteru.Visibility = Visibility.Hidden;
                 playerName.Text = "";
                 EMIchangeStack.IsEnabled = false;
                 canChangeStack = false;
-                Btn4.Visibility = Visibility.Collapsed;
+                Btn4.Visibility = Visibility.Hidden;
 
-                Pos1.Visibility = Visibility.Collapsed;
-                Pos2.Visibility = Visibility.Collapsed;
-                Pos3.Visibility = Visibility.Collapsed;
-                Pos4.Visibility = Visibility.Collapsed;
-                Pos5.Visibility = Visibility.Collapsed;
-                Pos6.Visibility = Visibility.Collapsed;
+                Pos1.Visibility = Visibility.Hidden;
+                Pos2.Visibility = Visibility.Hidden;
+                Pos3.Visibility = Visibility.Hidden;
+                Pos4.Visibility = Visibility.Hidden;
+                Pos5.Visibility = Visibility.Hidden;
+                Pos6.Visibility = Visibility.Hidden;
                 hideUI();
                 //Remove 'start new game' button
                 Grid.Children.Remove(btn);
@@ -626,8 +626,8 @@ namespace SurfacePoker
         private void hideActionButton()
         {
             log.Debug("hideActionButton() - Begin");
-            Buttons_h.Visibility = Visibility.Collapsed;
-            Buttons_v.Visibility = Visibility.Collapsed;
+            Buttons_h.Visibility = Visibility.Hidden;
+            Buttons_v.Visibility = Visibility.Hidden;
             log.Debug("hideActionButton() - End");
         }
 
@@ -639,7 +639,7 @@ namespace SurfacePoker
         {
             log.Debug("foldCards(pos: " + pos.ToString() + ") - Begin");
             ScatterView sv = this.FindName("player" + pos + "cards") as ScatterView;
-            sv.Visibility = Visibility.Collapsed;
+            sv.Visibility = Visibility.Hidden;
             log.Debug("foldCards() - End");
         }
 
@@ -1049,24 +1049,24 @@ namespace SurfacePoker
 
             if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 500)
             {
-                ImgChip500_h.Visibility = Visibility.Collapsed;
-                ImgChip500_v.Visibility = Visibility.Collapsed;
-                SVIChip500.Visibility = Visibility.Collapsed;
+                ImgChip500_h.Visibility = Visibility.Hidden;
+                ImgChip500_v.Visibility = Visibility.Hidden;
+                SVIChip500.Visibility = Visibility.Hidden;
                 if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 100)
                 {
-                    ImgChip100_h.Visibility = Visibility.Collapsed;
-                    ImgChip100_v.Visibility = Visibility.Collapsed;
-                    SVIChip100.Visibility = Visibility.Collapsed;
+                    ImgChip100_h.Visibility = Visibility.Hidden;
+                    ImgChip100_v.Visibility = Visibility.Hidden;
+                    SVIChip100.Visibility = Visibility.Hidden;
                     if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 20)
                     {
-                        ImgChip20_h.Visibility = Visibility.Collapsed;
-                        ImgChip20_v.Visibility = Visibility.Collapsed;
-                        SVIChip20.Visibility = Visibility.Collapsed;
+                        ImgChip20_h.Visibility = Visibility.Hidden;
+                        ImgChip20_v.Visibility = Visibility.Hidden;
+                        SVIChip20.Visibility = Visibility.Hidden;
                         if ((gl.players.Find(x => x.position == pos).stack - personalStack) < 10)
                         {
-                            ImgChip10_h.Visibility = Visibility.Collapsed;
-                            ImgChip10_v.Visibility = Visibility.Collapsed;
-                            SVIChip10.Visibility = Visibility.Collapsed;
+                            ImgChip10_h.Visibility = Visibility.Hidden;
+                            ImgChip10_v.Visibility = Visibility.Hidden;
+                            SVIChip10.Visibility = Visibility.Hidden;
 
                         }
                     }
@@ -1081,18 +1081,18 @@ namespace SurfacePoker
         /// </summary>
         private void hideChips() {
             log.Debug("hideChips() - Begin");
-            ImgChip10_h.Visibility = Visibility.Collapsed;
-            ImgChip10_v.Visibility = Visibility.Collapsed;
-            SVIChip10.Visibility = Visibility.Collapsed;
-            ImgChip20_h.Visibility = Visibility.Collapsed;
-            ImgChip20_v.Visibility = Visibility.Collapsed;
-            SVIChip20.Visibility = Visibility.Collapsed;
-            ImgChip100_h.Visibility = Visibility.Collapsed;
-            ImgChip100_v.Visibility = Visibility.Collapsed;
-            SVIChip100.Visibility = Visibility.Collapsed;
-            ImgChip500_h.Visibility = Visibility.Collapsed;
-            ImgChip500_v.Visibility = Visibility.Collapsed;
-            SVIChip500.Visibility = Visibility.Collapsed;
+            ImgChip10_h.Visibility = Visibility.Hidden;
+            ImgChip10_v.Visibility = Visibility.Hidden;
+            SVIChip10.Visibility = Visibility.Hidden;
+            ImgChip20_h.Visibility = Visibility.Hidden;
+            ImgChip20_v.Visibility = Visibility.Hidden;
+            SVIChip20.Visibility = Visibility.Hidden;
+            ImgChip100_h.Visibility = Visibility.Hidden;
+            ImgChip100_v.Visibility = Visibility.Hidden;
+            SVIChip100.Visibility = Visibility.Hidden;
+            ImgChip500_h.Visibility = Visibility.Hidden;
+            ImgChip500_v.Visibility = Visibility.Hidden;
+            SVIChip500.Visibility = Visibility.Hidden;
             log.Debug("hideChips() - End");
         }
 
@@ -1102,13 +1102,13 @@ namespace SurfacePoker
         private void hideCards()
         {
             log.Debug("hideCards() - Begin");
-            player1cards.Visibility = Visibility.Collapsed;
-            player2cards.Visibility = Visibility.Collapsed;
-            player3cards.Visibility = Visibility.Collapsed;
-            player4cards.Visibility = Visibility.Collapsed;
-            player5cards.Visibility = Visibility.Collapsed;
-            player6cards.Visibility = Visibility.Collapsed;
-            communityCards.Visibility = Visibility.Collapsed;
+            player1cards.Visibility = Visibility.Hidden;
+            player2cards.Visibility = Visibility.Hidden;
+            player3cards.Visibility = Visibility.Hidden;
+            player4cards.Visibility = Visibility.Hidden;
+            player5cards.Visibility = Visibility.Hidden;
+            player6cards.Visibility = Visibility.Hidden;
+            communityCards.Visibility = Visibility.Hidden;
             BitmapImage f1image = new BitmapImage(new Uri("pack://siteoforigin:,,,/Res/Kartenrueckseite/kartenruecken_1.jpg"));
             cc0.Source = f1image;
             cc1.Source = f1image;
