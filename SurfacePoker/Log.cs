@@ -18,9 +18,19 @@ namespace Log
             players = new List<KeyValuePair<string, LogPlayer>>();
 	    }
 
-        public static void newGame()
+        public static void newGame(bool train)
         {
-            log.Info("Name;Stack;Action;Amount;Hand;Board;Win Probability");
+            if (train)
+            {
+                log.Info("Training;On;;;;;");
+                log.Info("Name;Stack;Action;Amount;Hand;Board;Win Probability");
+
+            }
+            else
+            {
+                log.Info("Training;Off;;;;;");
+                log.Info("Name;Stack;Action;Amount;Hand;Board;Win Probability");
+            }
         }
 
         public static void action(Game gl, Player player, SurfacePoker.Action.playerAction action, int amount, List<Card> board)

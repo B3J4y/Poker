@@ -31,12 +31,20 @@ namespace SurfacePoker
         /// </summary>
         private int round;
         public List<Card> board { get; set; }
+        private bool TrainMode;
+        public bool trainMode { get{
+                return TrainMode;
+            }
+            set{
+                Logger.newGame(value);
+                TrainMode = value;
+            } }
         public int[] blindStructur = new int[] { 20, 40, 60, 100, 160, 200, 300, 400, 500 };
         public Game(List<Player> players, int bb, int sb)
 	    {
             log.Debug("Game() - Begin");
             log.Debug("New Game - Player: " + players.Count + " Stakes: " + sb + "/" + bb);
-            Logger.newGame();
+            trainMode = true;
             blindLevel = 0;
             foreach (Player p in players)
             {
