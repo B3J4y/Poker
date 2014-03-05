@@ -133,9 +133,17 @@ namespace SurfacePoker
         {
             log.Debug("openAddPlayer(object: " + sender.ToString() + " RoutedEventArgs: " + e.ToString() + ") - Begin");
             if (canAddPlayer) {
+                
+                //clean up
+                SurfaceTextBox tb = this.FindName("playerName") as SurfaceTextBox;
+                Label l = this.FindName("LabelAddPlayer") as Label;
+                l.Foreground = Brushes.White;
+                l.Content = "Add New Player";
+                tb.Text = "";
+
+                //get Position
                 Rectangle r = (Rectangle)sender;
                 String name = r.Name;
-                //Console.Out.WriteLine("Spieler an" + name + "meldet sich an");
                 Point point = new Point();
 
                 switch (r.Name)
@@ -147,8 +155,10 @@ namespace SurfacePoker
                     case "Pos5": point.X = 1210; point.Y = 930; playerPos.Text = "5"; break;
                     case "Pos6": point.X = 470; point.Y = 930; playerPos.Text = "6"; break;
                 }
+
                 addplayerscatteru.Center = point;
                 addplayerscatteru.Visibility = Visibility.Visible;                
+                playerName.Focus();
             }
             log.Debug("openAddPlayer() - End");
             e.Handled = true;
@@ -228,6 +238,21 @@ namespace SurfacePoker
         }
 
         /// <summary>
+        /// save player on hit return 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            log.Debug("OnKeyDownHandler() - Begin");
+            if (e.Key == Key.Return)
+            {
+                savePlayer(sender,e);
+            }
+            log.Debug("OnKeyDownHandler() - End");
+        }
+
+        /// <summary>
         /// Creates new player or updates name if player exists at this position
         /// </summary>
         /// <param name="sender"></param>
@@ -238,9 +263,7 @@ namespace SurfacePoker
             
             if (canAddPlayer) { 
             
-                SurfaceButton s = (SurfaceButton)sender;
-                StackPanel stackPanel = (StackPanel)s.Parent;
-                SurfaceTextBox tb = (SurfaceTextBox)stackPanel.FindName("playerName");
+                SurfaceTextBox tb = this.FindName("playerName") as SurfaceTextBox;
                 Label l = this.FindName("LabelAddPlayer") as Label;
                 int pos = Convert.ToInt32(playerPos.Text);
 
@@ -253,31 +276,51 @@ namespace SurfacePoker
                 } 
                 else
                 {
-                    setSurfaceName(pos, tb.Text);
-
-                    //check if player allready exits at pos 
-                    if (!(players.Exists(x => x.position == pos)))
-                    {
-                        //add new player at pos
-                        players.Add(new Player(tb.Text, stack, pos));
+                    if(tb.Text == "") {
+                        //player name empty
+                        l.Foreground = Brushes.Red;
+                        l.Content = "Please Choose A Name";
+                        tb.Text = "";
                     }
                     else
                     {
-                        //updates Player name at pos
-                        players.Find(x => x.position == pos).name = tb.Text;
+                        if (tb.Text.Length > 20) {
+                            //max length at position 2 is 20char
+                            l.Foreground = Brushes.Red;
+                            l.Content = "Please Use A Short Name";
+                            tb.Text = "";
+                        }
+                        else
+                        {
+                            setSurfaceName(pos, tb.Text);
+
+                            //check if player allready exits at pos 
+                            if (!(players.Exists(x => x.position == pos)))
+                            {
+                                //add new player at pos
+                                players.Add(new Player(tb.Text, stack, pos));
+                            }
+                            else
+                            {
+                                //updates Player name at pos
+                                players.Find(x => x.position == pos).name = tb.Text;
+                            }
+
+                            //clean up
+                            l.Foreground = Brushes.White;
+                            l.Content = "Add New Player";
+                            tb.Text = "";
+                            addplayerscatteru.Visibility = Visibility.Hidden;
+
+                            //add start btn if two or more players
+                            if (players.Count >= 2)
+                            {
+                                addStartButton("Start Game");
+                            }
+
+                        }
                     }
 
-                    //clean up
-                    l.Foreground = Brushes.White;
-                    l.Content = "Add New Player";
-                    tb.Text = "";
-                    addplayerscatteru.Visibility = Visibility.Hidden;
-
-                    //add start btn if two or more players
-                    if (players.Count >= 2)
-                    {
-                        addStartButton("Start Game");
-                    }
                 }
             }
             log.Debug("savePlayer() - End");

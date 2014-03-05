@@ -367,7 +367,7 @@
                     </Button>
                     <Label Name="LabelAddPlayer" Content="Add New Player" Foreground="White"/>
                     <Label Content="Playername:" Foreground="White"/>
-                    <Custom:SurfaceTextBox Name="playerName" Margin="0" TextWrapping="Wrap" Height="18"/>
+                    <Custom:SurfaceTextBox Name="playerName" KeyDown="OnKeyDownHandler" Margin="0" TextWrapping="Wrap" Height="18"/>
                     <TextBlock Name="playerPos" MaxHeight="0" MaxWidth="0" Text=""/>
                     <Custom:SurfaceButton Content="Save Player" Click="savePlayer" Margin="0" />
                 </StackPanel>
