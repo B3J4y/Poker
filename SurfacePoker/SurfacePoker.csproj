@@ -103,6 +103,7 @@
       <DependentUpon>PlayerCard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pot.cs" />
+    <Compile Include="Replay.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="SidePot.cs" />
     <Compile Include="Winner.cs" />

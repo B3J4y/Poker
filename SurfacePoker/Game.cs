@@ -96,6 +96,7 @@ namespace SurfacePoker
                 log.Debug("EndGameException");
                 throw new EndGameException("End of Game - Only one player left");
             }
+            Logger.action(this, dealer, Action.playerAction.newgame, 0, board);
             for (int i = 0; i < players.Count; i++)
             {
                 players[i].inPot = 0;
@@ -624,11 +625,9 @@ namespace SurfacePoker
         }
     }
 
-    //TODO: allin
-    //TODO: side pot
     #region Testclasses
     [TestClass]
-    public class TestGame
+    public class TestRep
     {
         public int bb { get; set; }
         public int sb { get; set; }
@@ -636,7 +635,7 @@ namespace SurfacePoker
         public List<Player> players { get; set; }
         public Game gl { get; set; }
 
-        public TestGame()
+        public TestRep()
         {
             bb = 10;
             sb = 5;

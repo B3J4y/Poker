@@ -118,7 +118,7 @@ public class Pot
             Pot p;
             if (amountPerPlayer > potThisRound && amountPerPlayer == value + player.inPot)
             {
-                p = new Pot(potThisRound + value, value + player.inPot, potThisRound + value, newPlayers, sidePot);
+                p = new Pot(this.value + value, value + player.inPot, potThisRound + value, newPlayers, sidePot);
                 potThisRound = 0;
                 this.value = 0;
                 amountPerPlayer = 0;
