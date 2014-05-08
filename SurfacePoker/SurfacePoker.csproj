@@ -323,6 +323,7 @@
     <Content Include="Res\Libs\log4net.dll" />
     <Content Include="Res\Libs\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll" />
     <Resource Include="Res\Sonstige Images\PokerHandRanking.jpg" />
+    <Resource Include="Res\Sonstige Images\Winner.jpg" />
     <Content Include="Res\Sounds\chipsinderhand.wav" />
     <Content Include="Res\Sounds\chipsinderhand2.wav" />
     <Content Include="Res\Sounds\chips_fallen.wav" />

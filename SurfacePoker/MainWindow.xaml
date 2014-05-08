@@ -74,7 +74,7 @@
             </Custom:ScatterView.RenderTransform>
             <Custom:ScatterViewItem Name="player1card1" Width="80" Height="123.04"  Center="300,200"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
-                PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+ >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -82,7 +82,7 @@
             </Custom:ScatterViewItem>
             <Custom:ScatterViewItem Name="player1card2" Width="80" Height="123.04" Center="150,200"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
-                PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+ >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -111,7 +111,7 @@
         <Custom:ScatterView Name="player2cards" Margin="{StaticResource p2}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
             <Custom:ScatterViewItem Name="player2card1" Width="80" Height="123.04" Center="200,100"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
-                PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+ >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -119,7 +119,7 @@
             </Custom:ScatterViewItem>
             <Custom:ScatterViewItem Name="player2card2" Width="80" Height="123.04" Center="350,100"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
-                PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+ >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -148,7 +148,7 @@
         <Custom:ScatterView Name="player3cards" Margin="{StaticResource p3}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
             <Custom:ScatterViewItem Name="player3card1" Width="80" Height="123.04" Center="200,100"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
-                PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+ >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -156,7 +156,7 @@
             </Custom:ScatterViewItem>
             <Custom:ScatterViewItem Name="player3card2" Width="80" Height="123.04" Center="350,100"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
-                PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+ >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -193,7 +193,7 @@
             </Custom:ScatterView.RenderTransform>
             <Custom:ScatterViewItem Name="player4card1" Width="80" Height="123.04" Center="150,200"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
-                PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+ >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -201,7 +201,7 @@
             </Custom:ScatterViewItem>
             <Custom:ScatterViewItem Name="player4card2" Width="80" Height="123.04" Center="300,200"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
-                PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+ >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -230,7 +230,7 @@
         <Custom:ScatterView Name="player5cards" Margin="{StaticResource p5}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
             <Custom:ScatterViewItem Name="player5card1" Width="80" Height="123.04" Center="100,200"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
-                PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+ >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -238,7 +238,7 @@
             </Custom:ScatterViewItem>
             <Custom:ScatterViewItem Name="player5card2" Width="80" Height="123.04" Center="250,200"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
-                PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+ >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -267,7 +267,7 @@
         <Custom:ScatterView Name="player6cards" Margin="{StaticResource p6}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
             <Custom:ScatterViewItem Name="player6card1" Width="80" Height="123.04" Center="100,200"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
-                PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+ >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -280,7 +280,7 @@
             </Custom:ScatterViewItem>-->
             <Custom:ScatterViewItem Name="player6card2" Width="80" Height="123.04" Center="250,200"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
-                PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+ >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -521,12 +521,48 @@
             </Custom:ElementMenuItem>
             <Custom:ElementMenuItem Name="EMIHelp" Header="Help">
                 <Custom:ElementMenuItem Header="Show &#x0d;&#x0a;Hand &#x0d;&#x0a;Rankings" Click="showHandRanking" />
+                <Custom:ElementMenuItem Name="EMITrainMode" Header="Training &#x0d;&#x0a; Mode" Click="TrainingModeClicked" IsEnabled="False"/>
             </Custom:ElementMenuItem>
         </Custom:ElementMenu>
 
+        <Custom:ScatterView>
+            <Custom:ScatterViewItem Background="#C32D2D2D" Name="SVIWinner" Visibility="Hidden" Orientation="0" Center="400,400" Width="500" Height="430">
+                <StackPanel Margin="8">
+                    
+                    <Image Source="Res/Sonstige Images/Winner.jpg" />
+                    <TextBlock Name="TBWinner" Text=" (/°.°)/  ´*`  \(°~°\) " TextAlignment="Center" FontSize="36" FontFamily="Segoe UI Symbol" Foreground="Bisque"/>
+                </StackPanel>
+            </Custom:ScatterViewItem>
+        </Custom:ScatterView>
 
-
-
+        <Custom:ScatterView>
+            <Custom:ScatterViewItem x:Name="SVIConfirmTrainMode" Background="#C32D2D2D"  CanScale="False" Orientation="0" Center="550,550" Visibility="Hidden" Height="200" Width="250">
+                <StackPanel Margin="8">
+                    <Button Content="X" HorizontalAlignment="Right" Width="25" Foreground="White" Click="closeWindow"  TouchDown="closeWindow" Margin="0">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FF181818" Offset="0"/>
+                                <GradientStop Color="#FF525252" Offset="0.5"/>
+                                <GradientStop Color="#FF2F2F2F" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Label Content="Training Mode Is" Foreground="White"/>
+                    <Label/>
+                    <Label Name="LabelTrainingMode" Content="" Foreground="Fuchsia"/>
+                    <Label/>
+                    <Label Content="Change Training Mode?" Foreground="White"/>
+                    <Label Content="* Game Will Restart." Foreground="White"/>
+                    <Label/>
+                    <DockPanel>
+                    <Custom:SurfaceButton Content="OK" Click="toggleTrainingMode" DockPanel.Dock="Left" Width="80"/>
+                    <Custom:SurfaceButton Content="Cancel" Click="closeWindow" DockPanel.Dock="Right" Width="80"/>
+                    <Label DockPanel.Dock="Top"/>
+                        
+                    </DockPanel>
+                </StackPanel>
+            </Custom:ScatterViewItem>
+        </Custom:ScatterView>
 
 
 

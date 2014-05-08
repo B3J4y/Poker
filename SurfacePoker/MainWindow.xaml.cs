@@ -87,21 +87,9 @@ namespace SurfacePoker
         private void createNewGame(object sender, RoutedEventArgs e)
         {
             log.Debug("createNewGame(object: "+ sender.ToString() + " RoutedEventArgs: " +e.ToString() + ") - Begin");
-            TextBlock tb;
-            Rectangle r;
-            //set mainPot Font to default
-            mainPot.FontSize = 16;
-            mainPot.Foreground = Brushes.Bisque;
-            //Set all names and stacks to null
-            for (int i = 1; i <= 6; i++)
-            {
-                r = this.FindName("Pos" + i) as Rectangle;
-                r.Visibility = Visibility.Visible;
-                setSurfaceName(i, "");
-                tb = this.FindName("player" + i + "balance") as TextBlock;
-                tb.Text = "";
-            }
+            hideStacksPot();
             Mitte.Visibility = Visibility.Hidden;
+            SVIWinner.Visibility = Visibility.Hidden;
             //Hide Startbtn
             if (Grid.Children.Contains(btn))
             {
@@ -203,6 +191,24 @@ namespace SurfacePoker
             e.Handled = true;
         }
 
+        private void TrainingModeClicked(object sender, RoutedEventArgs e)
+        {
+            if (gl != null)
+            {
+                LabelTrainingMode.Content = gl.trainMode;
+                SVIConfirmTrainMode.Visibility = Visibility.Visible;
+            }
+            e.Handled = true;
+        }
+
+        private async void toggleTrainingMode(object sender, RoutedEventArgs e) 
+        {
+            bool mode = gl.trainMode;
+            gl = null;
+            startGame();
+            gl.trainMode = !mode;
+        }
+
         /// <summary>
         /// set var round to 0 and adds start button
         /// </summary>
@@ -244,12 +250,10 @@ namespace SurfacePoker
         /// <param name="e"></param>
         private void OnKeyDownHandler(object sender, KeyEventArgs e)
         {
-            log.Debug("OnKeyDownHandler() - Begin");
             if (e.Key == Key.Return)
             {
                 savePlayer(sender,e);
             }
-            log.Debug("OnKeyDownHandler() - End");
         }
 
         /// <summary>
@@ -429,14 +433,34 @@ namespace SurfacePoker
             {
                 gl = new Game(players, bb, bb / 2);
             }
-            //set dealer button to pos
-            Player p = gl.newGame();
-            setDealerButtonPos(p.position);
-            //get first player
-            kvp = gl.nextPlayer();
-            Mitte.Visibility = Visibility.Visible;
-            showCards();
-            showActionButton(kvp);
+            try
+            {
+                //set dealer button to pos
+                Player p = gl.newGame();
+                setDealerButtonPos(p.position);
+                //get first player
+                kvp = gl.nextPlayer();
+                Mitte.Visibility = Visibility.Visible;
+                showCards();
+                showActionButton(kvp);
+            }
+            catch (EndGameException exp)
+            {
+                log.Debug("catch NoPlayerInGameException exp: " + exp.ToString());
+                hideStacksPot();
+                Point p = new Point(400,400);
+                SVIWinner.Center = p;
+                TBWinner.Text = gl.players.Find(x => x.stack != 0).name;
+                switch (gl.players.Find(x => x.stack != 0).position)
+                {
+                    case 1: SVIWinner.Orientation = 90; break;
+                    case 2:
+                        case 3: SVIWinner.Orientation = 180; break;
+                    case 4: SVIWinner.Orientation = 270; break;
+                    default: SVIWinner.Orientation = 0; break;
+                }
+                SVIWinner.Visibility = Visibility.Visible;
+            }
             log.Debug("startGame() - End");
             
         }
@@ -1171,6 +1195,28 @@ namespace SurfacePoker
             player6card1image.Source = f1image;
             player6card2image.Source = f1image;
             log.Debug("hideCards() - End");
+        }
+
+        /// <summary>
+        /// Clean the UI from Stack and Pot Textes, Resets Font to default
+        /// </summary>
+        private void hideStacksPot()
+        {
+            TextBlock tb;
+            Rectangle r;
+            //set mainPot Font to default
+            mainPot.FontSize = 16;
+            mainPot.Foreground = Brushes.Bisque;
+            mainPot.Text = "";
+            //Set all names and stacks to null
+            for (int i = 1; i <= 6; i++)
+            {
+                r = this.FindName("Pos" + i) as Rectangle;
+                r.Visibility = Visibility.Visible;
+                setSurfaceName(i, "");
+                tb = this.FindName("player" + i + "balance") as TextBlock;
+                tb.Text = "";
+            }
         }
 
         /// <summary>
