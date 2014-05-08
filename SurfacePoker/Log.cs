@@ -23,14 +23,14 @@ namespace Log
             if (train)
             {
                 log.Info("Training;On;;;;;");
-                log.Info("Name;Stack;Action;Amount;Hand;Board;Win Probability");
+                
 
             }
             else
             {
                 log.Info("Training;Off;;;;;");
-                log.Info("Name;Stack;Action;Amount;Hand;Board;Win Probability");
             }
+            log.Info("Name;Stack;Action;Amount;Hand;Board;Pot;Win Probability");
         }
 
         public static void action(Game gl, Player player, SurfacePoker.Action.playerAction action, int amount, List<Card> board)
@@ -42,11 +42,11 @@ namespace Log
             }
             if (player.cards.Count != 0)
             {
-                log.Info(player.name+ ";" + player.stack + ";" + action.ToString() + ";" + amount + ";" + player.getCardsToString() + ";" + str + ";" + player.winChance);
+                log.Info(player.name+ ";" + player.stack + ";" + action.ToString() + ";" + amount + ";" + player.getCardsToString() + ";" + str + ";" + gl.pot.value + ";" + player.winChance);
             }
             else
             {
-                log.Info(player.name + ";" + player.stack + ";" + action.ToString() + ";" + amount + "; ;" + str + ";0");
+                log.Info(player.name + ";" + player.stack + ";" + action.ToString() + ";" + amount + "; ;" + str + ";"+ gl.pot.value + ";0");
             }
             log.Debug("action() - End");
         }
