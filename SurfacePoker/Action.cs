@@ -24,7 +24,7 @@ namespace SurfacePoker
         }
         public enum playerAction
         {
-            bet, raise, call, check, fold, nothing, wins, bigblind, smallblind, newgame
+            bet, raise, call, check, fold, nothing, wins, bigblind, smallblind, newgame, ingame
         }
         public int amount { get; set; }
         public playerAction action { get; set; }
