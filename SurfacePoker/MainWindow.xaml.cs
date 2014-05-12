@@ -216,10 +216,13 @@ namespace SurfacePoker
 
         private async void toggleTrainingMode(object sender, RoutedEventArgs e) 
         {
-            
+            closeWindow(sender, e);
             trainMode = !trainMode;
             gl = null;
-            startGame();
+            //
+            //
+            //
+            StartButtonClicked(sender,e);
             
         }
 
@@ -410,7 +413,10 @@ namespace SurfacePoker
                 Pos6.Visibility = Visibility.Hidden;
                 hideUI();
                 //Remove 'start new game' button
-                Grid.Children.Remove(btn);
+                if (Grid.Children.Contains(btn))
+                {
+                    Grid.Children.Remove(btn);
+                }
                 //set mainPot to default
                 mainPot.FontSize = 16;
                 mainPot.Foreground = Brushes.Bisque;
