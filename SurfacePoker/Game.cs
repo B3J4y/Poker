@@ -666,7 +666,7 @@ namespace SurfacePoker
                 Player player = new Player("Player" + i, 1000, i+1);
                 players.Add(player);
             }
-            gl = new Game(players, bb, sb);
+            gl = new Game(players, bb, sb, true);
         }
 
         [TestMethod]
