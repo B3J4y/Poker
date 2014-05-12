@@ -40,15 +40,15 @@ namespace SurfacePoker
                 TrainMode = value;
             } }
         public int[] blindStructur = new int[] { 20, 40, 60, 100, 160, 200, 300, 400, 500 };
-        public Game(List<Player> players, int bb, int sb)
+        public Game(List<Player> players, int bb, int sb, Boolean train)
 	    {
             log.Debug("Game() - Begin");
             log.Debug("New Game - Player: " + players.Count + " Stakes: " + sb + "/" + bb);
-            trainMode = true;
+            trainMode = train;
             blindLevel = 0;
             foreach (Player p in players)
             {
-                log.Debug("Name: " + p.name + ", Position: " + p.position + ", Stack: " + p.stack);
+                log.Info("Name: " + p.name + ", Position: " + p.position + ", Stack: " + p.stack);
             }
             this.players = players;
             this.smallBlind = sb;
@@ -97,13 +97,27 @@ namespace SurfacePoker
                 throw new EndGameException("End of Game - Only one player left");
             }
             Logger.action(this, dealer, Action.playerAction.newgame, 0, board);
+            for (int k = 0; k < players.Count; k++)
+            {
+                if (players[k].stack > 0)
+                {
+
+                    players[k].isActive = true;
+                    players[k].isAllin = false;
+                    Logger.action(this, players[k], Action.playerAction.ingame, 0, board);
+                }
+                else
+                {
+                    players[k].isActive = false;
+                    players[k].isAllin = false;
+                    
+                }
+            }
             for (int i = 0; i < players.Count; i++)
             {
                 players[i].inPot = 0;
                 if (players[i].stack > 0)
                 {
-                    players[i].isActive = true;
-                    players[i].isAllin = false;
                     if (firstplayer)
                     {
                         players[i].ingamePosition = players.Count - nonActives;
@@ -138,8 +152,6 @@ namespace SurfacePoker
                 }
                 else
                 {
-                    players[i].isActive = false;
-                    players[i].isAllin = false;
                     players[i].cards = new List<Card>();
                     j++;
                     players[i].ingamePosition = 0;
