@@ -551,8 +551,8 @@
                     <Label Content="* Game Will Restart." Foreground="White"/>
                     <Label/>
                     <DockPanel>
-                    <Custom:SurfaceButton Content="OK" Click="toggleTrainingMode" DockPanel.Dock="Left" Width="80"/>
-                    <Custom:SurfaceButton Content="Cancel" Click="closeWindow" DockPanel.Dock="Right" Width="80"/>
+                        <Custom:SurfaceButton Content="OK" Click="closeWindow" DockPanel.Dock="Left" Width="80"/>
+                        <Custom:SurfaceButton Content="Cancel" Click="closeWindow" DockPanel.Dock="Right" Width="80"/>
                     <Label DockPanel.Dock="Top"/>
                         
                     </DockPanel>

@@ -55,6 +55,8 @@ namespace SurfacePoker
 
         private bool oneChipCall { get; set; }
 
+        private bool trainMode { get; set; }
+
         private void shutDown(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown(0);
@@ -175,6 +177,11 @@ namespace SurfacePoker
             log.Debug("closeWindow(object: " + sender.ToString() + " RoutedEventArgs: " + e.ToString() + ") - Begin");
             Button s = sender as Button;
             StackPanel stackPanel = s.Parent as StackPanel;
+            if (stackPanel == null)
+            {
+                DockPanel dockPanel = s.Parent as DockPanel;
+                stackPanel = dockPanel.Parent as StackPanel;
+            }
             ScatterViewItem SVI = stackPanel.Parent as ScatterViewItem;
             log.Debug("closing " + SVI.Name);
             if (SVI.Name == "addplayerscatteru")
@@ -195,7 +202,13 @@ namespace SurfacePoker
         {
             if (gl != null)
             {
-                LabelTrainingMode.Content = gl.trainMode;
+                trainMode = gl.trainMode;
+                LabelTrainingMode.Content = trainMode;
+                SVIConfirmTrainMode.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                LabelTrainingMode.Content = trainMode;
                 SVIConfirmTrainMode.Visibility = Visibility.Visible;
             }
             e.Handled = true;
@@ -203,10 +216,11 @@ namespace SurfacePoker
 
         private async void toggleTrainingMode(object sender, RoutedEventArgs e) 
         {
-            bool mode = gl.trainMode;
+            
+            trainMode = !trainMode;
             gl = null;
             startGame();
-            gl.trainMode = !mode;
+            
         }
 
         /// <summary>
@@ -431,7 +445,7 @@ namespace SurfacePoker
             await Task.Delay(5);
             if (gl == null)
             {
-                gl = new Game(players, bb, bb / 2);
+                gl = new Game(players, bb, bb / 2, trainMode);
             }
             try
             {
