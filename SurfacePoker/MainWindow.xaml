@@ -63,7 +63,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player1cards" Margin="{StaticResource p1}" Visibility="Hidden" RenderTransformOrigin="0.5,0.5" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+        <Custom:ScatterView Name="player1cards" Margin="{StaticResource p1}" Visibility="Hidden" RenderTransformOrigin="0.5,0.5" Custom:SurfaceDragDrop.DragCanceled="DragCanceled" >
             <Custom:ScatterView.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -72,17 +72,13 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Custom:ScatterView.RenderTransform>
-            <Custom:ScatterViewItem Name="player1card1" Width="80" Height="123.04"  Center="300,200"
-                PreviewMouseDown="DragSourcePreviewInputDeviceDown"
- >
+            <Custom:ScatterViewItem Name="player1card1" Width="80" Height="123.04"  Center="300,200" PreviewMouseDown="DragSourcePreviewInputDeviceDown">
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
                 <Image Name="player1card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg"  />
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player1card2" Width="80" Height="123.04" Center="150,200"
-                PreviewMouseDown="DragSourcePreviewInputDeviceDown"
- >
+            <Custom:ScatterViewItem Name="player1card2" Width="80" Height="123.04" Center="150,200" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -482,7 +478,7 @@
         <Image Name="dealerButton" Source="Res/Chips/D_Button.png" Width="90" Height="90" Visibility="Hidden" Margin="554,665,1276,325"/>
 
         <Custom:ScatterView >
-            <Custom:ScatterViewItem Background="#C32D2D2D" Name="HandRanking" Visibility="Hidden" Orientation="0" Center="400,400" Width="250" Height="390">
+            <Custom:ScatterViewItem Background="#C32D2D2D" Name="HandRanking" Visibility="Hidden" Orientation="0" Center="400,400" Width="250" Height="390" Deceleration="900">
                 <StackPanel Margin="8">
                     <Button Content="X" HorizontalAlignment="Right" Width="25" Foreground="White" Click="closeWindow"  TouchDown="closeWindow" Margin="0">
                         <Button.Background>
@@ -521,7 +517,7 @@
             </Custom:ElementMenuItem>
             <Custom:ElementMenuItem Name="EMIHelp" Header="Help">
                 <Custom:ElementMenuItem Header="Show &#x0d;&#x0a;Hand &#x0d;&#x0a;Rankings" Click="showHandRanking" />
-                <Custom:ElementMenuItem Name="EMITrainMode" Header="Training &#x0d;&#x0a; Mode" Click="TrainingModeClicked" IsEnabled="False"/>
+                <Custom:ElementMenuItem Name="EMITrainMode" Header="Training &#x0d;&#x0a; Mode" Click="TrainingModeClicked"/>
             </Custom:ElementMenuItem>
         </Custom:ElementMenu>
 

@@ -955,7 +955,7 @@ namespace SurfacePoker
             }
 
             object data = draggedElement.Content;
-
+            
             // If the data has not been specified as draggable, 
             // or the ScatterViewItem cannot move, return.
             if (data == null)
@@ -1040,7 +1040,6 @@ namespace SurfacePoker
                 svi.Content = image;
                 image.Visibility = Visibility.Visible;
             }
-
             log.Debug("DragCanceled() - End");
             e.Handled = true;
         }
