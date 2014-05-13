@@ -532,7 +532,7 @@
         </Custom:ScatterView>
 
         <Custom:ScatterView>
-            <Custom:ScatterViewItem x:Name="SVIConfirmTrainMode" Background="#C32D2D2D"  CanScale="False" Orientation="0" Center="550,550" Visibility="Hidden" Height="200" Width="250">
+            <Custom:ScatterViewItem x:Name="SVIConfirmTrainMode" Background="#C32D2D2D"  CanScale="False" Orientation="0" Center="550,550" Visibility="Hidden" Height="210" Width="250">
                 <StackPanel Margin="8">
                     <Button Content="X" HorizontalAlignment="Right" Width="25" Foreground="White" Click="closeWindow"  TouchDown="closeWindow" Margin="0">
                         <Button.Background>
@@ -543,11 +543,12 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
-                    <Label Content="Training Mode Is" Foreground="White"/>
+                    <Label Content="Change Training Mode?" Foreground="White" FontSize="16" />
+                    <Border Width="250" Height="2" Background="Black"/>
                     <Label/>
+                    <Label Content="Currently Training is:" Foreground="White"/>
                     <Label Name="LabelTrainingMode" Content="" Foreground="Fuchsia"/>
                     <Label/>
-                    <Label Content="Change Training Mode?" Foreground="White"/>
                     <Label Content="* Game Will Restart." Foreground="White"/>
                     <Label/>
                     <DockPanel>

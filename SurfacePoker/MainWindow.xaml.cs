@@ -218,11 +218,18 @@ namespace SurfacePoker
         {
             closeWindow(sender, e);
             trainMode = !trainMode;
-            gl = null;
+            if (gl != null)
+            {
+                gl = null;
+                foreach (Player iPlayer in players)
+                {
+                    iPlayer.ingamePosition = -1;
+                    iPlayer.stack = stack;
+                }
+                StartButtonClicked(sender,e);
+            }
             //
             //
-            //
-            StartButtonClicked(sender,e);
             
         }
 
