@@ -218,11 +218,18 @@ namespace SurfacePoker
         {
             closeWindow(sender, e);
             trainMode = !trainMode;
-            gl = null;
+            if (gl != null)
+            {
+                gl = null;
+                foreach (Player iPlayer in players)
+                {
+                    iPlayer.ingamePosition = -1;
+                    iPlayer.stack = stack;
+                }
+                StartButtonClicked(sender,e);
+            }
             //
             //
-            //
-            StartButtonClicked(sender,e);
             
         }
 
@@ -412,6 +419,7 @@ namespace SurfacePoker
                 Pos5.Visibility = Visibility.Hidden;
                 Pos6.Visibility = Visibility.Hidden;
                 hideUI();
+                hideActionButton();
                 //Remove 'start new game' button
                 if (Grid.Children.Contains(btn))
                 {
