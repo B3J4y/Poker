@@ -198,8 +198,14 @@ namespace SurfacePoker
             e.Handled = true;
         }
 
+        /// <summary>
+        /// shows TrainingMode Window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TrainingModeClicked(object sender, RoutedEventArgs e)
         {
+            log.Debug("TrainingModeClicked - Begin");
             if (gl != null)
             {
                 trainMode = gl.trainMode;
@@ -211,11 +217,18 @@ namespace SurfacePoker
                 LabelTrainingMode.Content = trainMode;
                 SVIConfirmTrainMode.Visibility = Visibility.Visible;
             }
+            log.Debug("TrainingModeClicked - End");
             e.Handled = true;
         }
 
+        /// <summary>
+        /// switches TrainingMode on/off and restart game if game exist
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void toggleTrainingMode(object sender, RoutedEventArgs e) 
         {
+            log.Debug("toggleTrainingMode - Begin");
             closeWindow(sender, e);
             trainMode = !trainMode;
             if (gl != null)
@@ -228,9 +241,8 @@ namespace SurfacePoker
                 }
                 StartButtonClicked(sender,e);
             }
-            //
-            //
-            
+            log.Debug("toggleTrainingMode - End");
+            e.Handled = true;
         }
 
         /// <summary>

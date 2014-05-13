@@ -63,7 +63,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player1cards" Margin="{StaticResource p1}" Visibility="Hidden" RenderTransformOrigin="0.5,0.5" Custom:SurfaceDragDrop.DragCanceled="DragCanceled" >
+        <Custom:ScatterView Name="player1cards" Margin="{StaticResource p1}" Visibility="Hidden" RenderTransformOrigin="0.5,0.5" Custom:SurfaceDragDrop.DragCanceled="DragCanceled" AllowDrop="True" Custom:SurfaceDragDrop.DragLeave="DragCanceled" Custom:SurfaceDragDrop.Drop="DragCanceled">
             <Custom:ScatterView.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -72,9 +72,9 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Custom:ScatterView.RenderTransform>
-            <Custom:ScatterViewItem Name="player1card1" Width="80" Height="123.04" Orientation="0"  Center="300,200" PreviewMouseDown="DragSourcePreviewInputDeviceDown">
+            <Custom:ScatterViewItem Name="player1card1" Width="80" Height="123.04" Orientation="0"  Center="300,200" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
-                    <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
+                    <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg" />
                 </Custom:ScatterViewItem.Background>
                 <Image Name="player1card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg"  />
             </Custom:ScatterViewItem>
@@ -104,7 +104,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player2cards" Margin="{StaticResource p2}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+        <Custom:ScatterView Name="player2cards" Margin="{StaticResource p2}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled" AllowDrop="True" Custom:SurfaceDragDrop.DragLeave="DragCanceled" Custom:SurfaceDragDrop.Drop="DragCanceled">
             <Custom:ScatterViewItem Name="player2card1" Width="80" Height="123.04" Orientation="0" Center="200,100" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
@@ -137,7 +137,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player3cards" Margin="{StaticResource p3}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+        <Custom:ScatterView Name="player3cards" Margin="{StaticResource p3}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled" AllowDrop="True" Custom:SurfaceDragDrop.DragLeave="DragCanceled" Custom:SurfaceDragDrop.Drop="DragCanceled">
             <Custom:ScatterViewItem Name="player3card1" Width="80" Height="123.04" Orientation="0" Center="200,100" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
@@ -170,7 +170,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player4cards" Margin="{StaticResource p4}" Visibility="Hidden" RenderTransformOrigin="0.5,0.5" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+        <Custom:ScatterView Name="player4cards" Margin="{StaticResource p4}" Visibility="Hidden" RenderTransformOrigin="0.5,0.5" Custom:SurfaceDragDrop.DragCanceled="DragCanceled" AllowDrop="True" Custom:SurfaceDragDrop.DragLeave="DragCanceled" Custom:SurfaceDragDrop.Drop="DragCanceled">
             <Custom:ScatterView.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -211,7 +211,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player5cards" Margin="{StaticResource p5}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+        <Custom:ScatterView Name="player5cards" Margin="{StaticResource p5}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled" AllowDrop="True" Custom:SurfaceDragDrop.DragLeave="DragCanceled" Custom:SurfaceDragDrop.Drop="DragCanceled">
             <Custom:ScatterViewItem Name="player5card1" Width="80" Height="123.04" Orientation="0" Center="100,200" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
@@ -244,7 +244,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <!--Scatterview Karten-->
-        <Custom:ScatterView Name="player6cards" Margin="{StaticResource p6}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
+        <Custom:ScatterView Name="player6cards" Margin="{StaticResource p6}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled" AllowDrop="True" Custom:SurfaceDragDrop.DragLeave="DragCanceled" Custom:SurfaceDragDrop.Drop="DragCanceled">
             <Custom:ScatterViewItem Name="player6card1" Width="80" Height="123.04" Orientation="0" Center="100,200" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
