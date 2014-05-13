@@ -18,6 +18,15 @@ namespace Log
             players = new List<KeyValuePair<string, LogPlayer>>();
 	    }
 
+        public static void seatTable(List<Player> seats)
+        {
+            log.Info("Name;Seat");
+            foreach (Player p in seats)
+            {
+                log.Info(p.name + ";" + p.position);
+            }
+        }
+
         public static void newGame(bool train)
         {
             if (train)
