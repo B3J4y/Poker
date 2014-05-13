@@ -419,6 +419,7 @@ namespace SurfacePoker
                 Pos5.Visibility = Visibility.Hidden;
                 Pos6.Visibility = Visibility.Hidden;
                 hideUI();
+                hideActionButton();
                 //Remove 'start new game' button
                 if (Grid.Children.Contains(btn))
                 {
