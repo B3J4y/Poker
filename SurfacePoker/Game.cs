@@ -14,6 +14,7 @@ namespace SurfacePoker
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger
     (System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public List<Player> players { get; set; }
+        public Replay rep { get; set; }
         public int smallBlind { get; set; }
         public int bigBlind { get; set; }
         public Pot pot { get; set; }
@@ -48,7 +49,7 @@ namespace SurfacePoker
             blindLevel = 0;
             foreach (Player p in players)
             {
-                log.Info("Name: " + p.name + ", Position: " + p.position + ", Stack: " + p.stack);
+                log.Info("Name: " + p.name + "; Position: " + p.position + "; Stack: " + p.stack);
             }
             this.players = players;
             this.smallBlind = sb;
@@ -635,8 +636,24 @@ namespace SurfacePoker
             log.Debug("whoIsWinner() - End");
             return result;
         }
+
+        public List<String> getReplay(Replay.action act, String str)
+        {
+            List<String> result = new List<string>();
+            switch(act){
+                case Replay.action.game:
+                    rep = new Replay(str);
+                    result = rep.getGames();
+                    break;
+                case Replay.action.hand:
+                    result = rep.getHands(str);
+                    break;
+            }
+            return result;
+        }
     }
 
+    
     #region Testclasses
     [TestClass]
     public class TestRep
