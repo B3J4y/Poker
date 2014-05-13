@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SurfacePoker
 {
-    class Replay
+    public class Replay
     {
         public enum action
         {
