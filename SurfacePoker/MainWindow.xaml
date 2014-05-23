@@ -72,13 +72,13 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Custom:ScatterView.RenderTransform>
-            <Custom:ScatterViewItem Name="player1card1" Width="80" Height="123.04" Orientation="0"  Center="300,200" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player1card1" Width="80" Height="123.04" Orientation="0"  Center="300,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg" />
                 </Custom:ScatterViewItem.Background>
                 <Image Name="player1card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg"  />
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player1card2" Width="80" Height="123.04" Orientation="0" Center="150,200" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player1card2" Width="80" Height="123.04" Orientation="0" Center="190,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -105,13 +105,13 @@
         </TextBlock>
         <!--Scatterview Karten-->
         <Custom:ScatterView Name="player2cards" Margin="{StaticResource p2}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled" AllowDrop="True" Custom:SurfaceDragDrop.DragLeave="DragCanceled" Custom:SurfaceDragDrop.Drop="DragCanceled">
-            <Custom:ScatterViewItem Name="player2card1" Width="80" Height="123.04" Orientation="0" Center="200,100" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player2card1" Width="80" Height="123.04" Orientation="0" Center="290,100" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
                 <Image Name="player2card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg"  />
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player2card2" Width="80" Height="123.04" Orientation="0" Center="350,100" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player2card2" Width="80" Height="123.04" Orientation="0" Center="390,100" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -138,13 +138,13 @@
         </TextBlock>
         <!--Scatterview Karten-->
         <Custom:ScatterView Name="player3cards" Margin="{StaticResource p3}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled" AllowDrop="True" Custom:SurfaceDragDrop.DragLeave="DragCanceled" Custom:SurfaceDragDrop.Drop="DragCanceled">
-            <Custom:ScatterViewItem Name="player3card1" Width="80" Height="123.04" Orientation="0" Center="200,100" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player3card1" Width="80" Height="123.04" Orientation="0" Center="290,100" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
                 <Image Name="player3card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg"  />
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player3card2" Width="80" Height="123.04" Orientation="0" Center="350,100" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player3card2" Width="80" Height="123.04" Orientation="0" Center="390,100" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -179,13 +179,13 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Custom:ScatterView.RenderTransform>
-            <Custom:ScatterViewItem Name="player4card1" Width="80" Height="123.04" Orientation="0" Center="150,200" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player4card1" Width="80" Height="123.04" Orientation="0" Center="200,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
                 <Image Name="player4card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg"  />
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player4card2" Width="80" Height="123.04" Orientation="0" Center="300,200" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player4card2" Width="80" Height="123.04" Orientation="0" Center="300,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -212,13 +212,13 @@
         </TextBlock>
         <!--Scatterview Karten-->
         <Custom:ScatterView Name="player5cards" Margin="{StaticResource p5}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled" AllowDrop="True" Custom:SurfaceDragDrop.DragLeave="DragCanceled" Custom:SurfaceDragDrop.Drop="DragCanceled">
-            <Custom:ScatterViewItem Name="player5card1" Width="80" Height="123.04" Orientation="0" Center="100,200" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player5card1" Width="80" Height="123.04" Orientation="0" Center="100,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
                 <Image Name="player5card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg"  />
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player5card2" Width="80" Height="123.04" Orientation="0" Center="250,200" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player5card2" Width="80" Height="123.04" Orientation="0" Center="200,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -245,18 +245,14 @@
         </TextBlock>
         <!--Scatterview Karten-->
         <Custom:ScatterView Name="player6cards" Margin="{StaticResource p6}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled" AllowDrop="True" Custom:SurfaceDragDrop.DragLeave="DragCanceled" Custom:SurfaceDragDrop.Drop="DragCanceled">
-            <Custom:ScatterViewItem Name="player6card1" Width="80" Height="123.04" Orientation="0" Center="100,200" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player6card1" Width="80" Height="123.04" Orientation="0" Center="100,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
                 <Image Name="player6card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" />
             </Custom:ScatterViewItem>
-            <!--<Custom:ScatterViewItem Name="player6card1_f" Width="80" Height="123.04" Center="100,200">
-                <Image Name="player6card1image_f" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg">
-                    
-                </Image>
-            </Custom:ScatterViewItem>-->
-            <Custom:ScatterViewItem Name="player6card2" Width="80" Height="123.04" Orientation="0" Center="250,200" PreviewMouseDown="DragSourcePreviewInputDeviceDown" >
+            
+            <Custom:ScatterViewItem Name="player6card2" Width="80" Height="123.04" Orientation="0" Center="200,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -485,7 +481,7 @@
             </Button.Background>
         </Button>
 
-        <Custom:ElementMenu Name="MainMenu" ActivationMode="AlwaysActive" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="120,10" MinWidth="85" Width="85">
+        <Custom:ElementMenu Name="MainMenu" ActivationMode="AlwaysActive" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="200,10" MinWidth="85" Width="85">
             <Custom:ElementMenuItem Header="Game">
                 <Custom:ElementMenuItem Header="New Game" Click="createNewGame"/>
                 <Custom:ElementMenuItem Header="Shut down" Click="shutDown" />
@@ -495,9 +491,10 @@
                 <Custom:ElementMenuItem Header="Stack: 2000" Click="setStack"/>
                 <Custom:ElementMenuItem Header="Stack: 4000" Click="setStack"/>
             </Custom:ElementMenuItem>
-            <Custom:ElementMenuItem Name="EMIHelp" Header="Help">
+            <Custom:ElementMenuItem Name="EMIHelp" Header="Help" >
                 <Custom:ElementMenuItem Header="Show &#x0d;&#x0a;Hand &#x0d;&#x0a;Rankings" Click="showHandRanking" />
                 <Custom:ElementMenuItem Name="EMITrainMode" Header="Training &#x0d;&#x0a; Mode" Click="TrainingModeClicked"/>
+                <Custom:ElementMenuItem Name="SoundMode" Header="Toggle &#x0d;&#x0a;Sound" Click="SoundMode_Click"/>
             </Custom:ElementMenuItem>
         </Custom:ElementMenu>
 

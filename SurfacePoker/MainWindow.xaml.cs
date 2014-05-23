@@ -57,6 +57,8 @@ namespace SurfacePoker
 
         private bool trainMode { get; set; }
 
+        private bool sound { get; set; }
+
         private void shutDown(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown(0);
@@ -70,6 +72,7 @@ namespace SurfacePoker
             LinearGradientBrush gradientBrush = new  LinearGradientBrush( Color.FromRgb( 24, 24, 24),  Color.FromRgb(47, 47, 47), new Point(0.5, 0), new Point(0.5, 1));            
             Background = gradientBrush;
             btn.Background = Background;
+            sound = true;
             //Player player1 = new Player("Anton", 1000, 1);
             //Player player2 = new Player("Berta", 500, 2);
             //Player player3 = new Player("Cäsar", 1000, 3);
@@ -520,6 +523,12 @@ namespace SurfacePoker
                 sv.Visibility = Visibility.Visible;
                 setBackground(iPlayer.position,1);
                 setBackground(iPlayer.position,2);
+                if (sound)
+                {
+                    System.Media.SoundPlayer sp = new System.Media.SoundPlayer("Res/Sounds/karten_schnorren.wav");
+                    sp.Load();
+                    sp.Play();
+                }
             }
             log.Debug("showCards() - End");
         }
@@ -892,6 +901,14 @@ namespace SurfacePoker
                     mainPot.Text += w.player.name + " won " + w.value + "\n";
                 }
             }
+
+            if (sound)
+            {
+                System.Media.SoundPlayer sp = new System.Media.SoundPlayer("Res/Sounds/chips_schieben2.wav");
+                sp.Load();
+                sp.Play();                
+            }
+                
             newRound();
             log.Debug("announceWinner() - End");
         }
@@ -1310,6 +1327,12 @@ namespace SurfacePoker
         private void showCommunityCards(int i)
         {
             log.Debug("showCommunityCards(i " + i.ToString() + ") - Begin");
+            if (sound)
+            {
+                System.Media.SoundPlayer sp = new System.Media.SoundPlayer("Res/Sounds/karte_aufdecken.wav");
+                sp.Load();
+                sp.Play();
+            }
             BitmapImage bi;
             Image cc;
             for (int j = 0; j < i; j++)
@@ -1440,6 +1463,20 @@ namespace SurfacePoker
                     break;
             }
             log.Debug("setSVIChipPos() - End");
+        }
+
+        private void SoundMode_Click(object sender, RoutedEventArgs e)
+        {
+            log.Debug("SoundMode_Click() - Begin");
+            sound = !sound;
+            if (sound)
+            {
+                System.Media.SoundPlayer sp = new System.Media.SoundPlayer("Res/Sounds/einchip.wav");
+                sp.Load();
+                sp.Play();
+            }
+            log.Debug("SoundMode_Click() - End");
+            e.Handled = true;
         }
 
     }
