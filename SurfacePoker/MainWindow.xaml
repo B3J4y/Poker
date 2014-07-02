@@ -72,13 +72,13 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Custom:ScatterView.RenderTransform>
-            <Custom:ScatterViewItem Name="player1card1" Width="80" Height="123.04" Orientation="0"  Center="300,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player1card1" Width="80" Height="123.04" Orientation="0"  Center="300,300" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg" />
                 </Custom:ScatterViewItem.Background>
                 <Image Name="player1card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg"  />
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player1card2" Width="80" Height="123.04" Orientation="0" Center="190,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player1card2" Width="80" Height="123.04" Orientation="0" Center="190,300" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -105,13 +105,13 @@
         </TextBlock>
         <!--Scatterview Karten-->
         <Custom:ScatterView Name="player2cards" Margin="{StaticResource p2}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled" AllowDrop="True" Custom:SurfaceDragDrop.DragLeave="DragCanceled" Custom:SurfaceDragDrop.Drop="DragCanceled">
-            <Custom:ScatterViewItem Name="player2card1" Width="80" Height="123.04" Orientation="0" Center="290,100" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player2card1" Width="80" Height="123.04" Orientation="0" Center="290,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
                 <Image Name="player2card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg"  />
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player2card2" Width="80" Height="123.04" Orientation="0" Center="390,100" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player2card2" Width="80" Height="123.04" Orientation="0" Center="390,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -138,13 +138,13 @@
         </TextBlock>
         <!--Scatterview Karten-->
         <Custom:ScatterView Name="player3cards" Margin="{StaticResource p3}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled" AllowDrop="True" Custom:SurfaceDragDrop.DragLeave="DragCanceled" Custom:SurfaceDragDrop.Drop="DragCanceled">
-            <Custom:ScatterViewItem Name="player3card1" Width="80" Height="123.04" Orientation="0" Center="290,100" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player3card1" Width="80" Height="123.04" Orientation="0" Center="290,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
                 <Image Name="player3card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg"  />
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player3card2" Width="80" Height="123.04" Orientation="0" Center="390,100" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player3card2" Width="80" Height="123.04" Orientation="0" Center="390,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -179,13 +179,13 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Custom:ScatterView.RenderTransform>
-            <Custom:ScatterViewItem Name="player4card1" Width="80" Height="123.04" Orientation="0" Center="200,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player4card1" Width="80" Height="123.04" Orientation="0" Center="200,300" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
                 <Image Name="player4card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg"  />
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player4card2" Width="80" Height="123.04" Orientation="0" Center="300,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player4card2" Width="80" Height="123.04" Orientation="0" Center="300,300" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -212,13 +212,13 @@
         </TextBlock>
         <!--Scatterview Karten-->
         <Custom:ScatterView Name="player5cards" Margin="{StaticResource p5}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled" AllowDrop="True" Custom:SurfaceDragDrop.DragLeave="DragCanceled" Custom:SurfaceDragDrop.Drop="DragCanceled">
-            <Custom:ScatterViewItem Name="player5card1" Width="80" Height="123.04" Orientation="0" Center="100,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player5card1" Width="80" Height="123.04" Orientation="0" Center="100,80" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
                 <Image Name="player5card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg"  />
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="player5card2" Width="80" Height="123.04" Orientation="0" Center="200,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player5card2" Width="80" Height="123.04" Orientation="0" Center="200,80" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -245,14 +245,14 @@
         </TextBlock>
         <!--Scatterview Karten-->
         <Custom:ScatterView Name="player6cards" Margin="{StaticResource p6}" Visibility="Hidden" Custom:SurfaceDragDrop.DragCanceled="DragCanceled" AllowDrop="True" Custom:SurfaceDragDrop.DragLeave="DragCanceled" Custom:SurfaceDragDrop.Drop="DragCanceled">
-            <Custom:ScatterViewItem Name="player6card1" Width="80" Height="123.04" Orientation="0" Center="100,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player6card1" Width="80" Height="123.04" Orientation="0" Center="100,80" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
                 <Image Name="player6card1image" Source="/Res/Kartenrueckseite/kartenruecken_1.jpg" />
             </Custom:ScatterViewItem>
             
-            <Custom:ScatterViewItem Name="player6card2" Width="80" Height="123.04" Orientation="0" Center="200,200" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
+            <Custom:ScatterViewItem Name="player6card2" Width="80" Height="123.04" Orientation="0" Center="200,80" PreviewTouchDown="DragSourcePreviewInputDeviceDown" >
                 <Custom:ScatterViewItem.Background>
                     <ImageBrush ImageSource="/Res/Kartenrueckseite/kartenruecken_1.jpg"/>
                 </Custom:ScatterViewItem.Background>
@@ -347,32 +347,32 @@
         </Custom:ScatterView>
 
         <!--Actionbuttons for players 2,3,5,6 @orientation top and bottom horizontal-->
-        <Grid Name="Buttons_h" Margin="{StaticResource p5}" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
+        <Grid Name="Buttons_h" Margin="{StaticResource p3}" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="0"/>
+                    <RotateTransform Angle="180"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <Button Name="ActionButton1_h" Margin="390,20,20,220" Content="Action" TouchDown="actionButtonClicked" Click="actionButtonClicked" IsEnabled="False" />
-            <Button Name="ActionButton2_h" Margin="390,70,20,170" Content="fold"  TouchDown="actionButtonClicked" Click="actionButtonClicked"/>
+            <Button Name="ActionButton1_h" Margin="60,220,350,20" Content="Action" TouchDown="actionButtonClicked" Click="actionButtonClicked" IsEnabled="False" />
+            <Button Name="ActionButton2_h" Margin="160,220,250,20" Content="fold"  TouchDown="actionButtonClicked" Click="actionButtonClicked"/>
             <!--Chip Images-->
-            <Image Name="ImgChip10_h" Source="Res/Chips/Pokerchip_final_10.png" Width="90" Height="90" Margin="10,10,380,180"/>
-            <Image Name="ImgChip20_h" Source="Res/Chips/Pokerchip_final_20.png" Width="90" Height="90" Margin="100,10,290,180"/>
-            <Image Name="ImgChip100_h" Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90" Margin="190,10,200,180"/>
-            <Image Name="ImgChip500_h" Source="Res/Chips/Pokerchip_final_500.png" Width="90" Height="90" Margin="280,10,110,180"/>
+            <Image Name="ImgChip10_h" Source="Res/Chips/Pokerchip_final_10.png" Width="90" Height="90" Margin="285,95,110,95"/>
+            <Image Name="ImgChip20_h" Source="Res/Chips/Pokerchip_final_20.png" Width="90" Height="90" Margin="385,95,10,95"/>
+            <Image Name="ImgChip100_h" Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90" Margin="285,180,110,10"/>
+            <Image Name="ImgChip500_h" Source="Res/Chips/Pokerchip_final_500.png" Width="90" Height="90" Margin="385,180,10,10"/>
             <!--Bet Area-->
-            <TextBlock Name="personalStackField_h" Width="100" Height="100" Text="Bet Area" Background="{x:Null}" Foreground="Ivory" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="370,0,0,10" TextAlignment="Center"/>
+            <TextBlock Name="personalStackField_h" Width="150" Height="80" Text="Bet Area" Background="{x:Null}" Foreground="Ivory" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="305,10,0,0" TextAlignment="Center"/>
             <Rectangle
                 Name="DropTarget" 
                 TextBlock.TextAlignment="Center"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Bottom"
-                Margin="370,0,0,10"
-                Width="100"
-                Height="100"
+                VerticalAlignment="Top"
+                Margin="305,10,0,0"
+                Width="150"
+                Height="80"
                 AllowDrop="True"
                 Fill="#540F0000" 
                 TouchDown="resetPersonalStack"
@@ -386,32 +386,32 @@
         <!--END OF Actionbuttons for players 2,3,5,6 @orientation top and bottom horizontal-->
 
         <!--Actionbuttons for players 1 and 4 @orientation left and right vertical-->
-        <Grid Name="Buttons_v" Margin="{StaticResource p1}" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
+        <Grid Name="Buttons_v" Margin="{StaticResource p4}" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="90"/>
+                    <RotateTransform Angle="270"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <Button Name="ActionButton1_v" Margin="290,120,-80,310" Content="Action" TouchDown="actionButtonClicked" Click="actionButtonClicked" IsEnabled="False"/>
-            <Button Name="ActionButton2_v" Margin="290,180,-80,250" Content="fold" TouchDown="actionButtonClicked" Click="actionButtonClicked"/>
+            <Button Name="ActionButton1_v" Margin="-50,310,260,120" Content="Action" TouchDown="actionButtonClicked" Click="actionButtonClicked" IsEnabled="False"/>
+            <Button Name="ActionButton2_v" Margin="60,310,150,120" Content="fold" TouchDown="actionButtonClicked" Click="actionButtonClicked"/>
             <!--Chip Images-->
-            <Image Name="ImgChip10_v" Source="Res/Chips/Pokerchip_final_10.png" Width="90" Height="90" Margin="-90,110,280,280"/>
-            <Image Name="ImgChip20_v" Source="Res/Chips/Pokerchip_final_20.png" Width="90" Height="90" Margin="0,110,190,280" />
-            <Image Name="ImgChip100_v" Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90" Margin="90,110,100,280" />
-            <Image Name="ImgChip500_v" Source="Res/Chips/Pokerchip_final_500.png" Width="90" Height="90" Margin="180,110,10,280" />
+            <Image Name="ImgChip10_v" Source="Res/Chips/Pokerchip_final_10.png" Width="90" Height="90" Margin="190,195,0,195"/>
+            <Image Name="ImgChip20_v" Source="Res/Chips/Pokerchip_final_20.png" Width="90" Height="90" Margin="278,195,-88,195" />
+            <Image Name="ImgChip100_v" Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90" Margin="190,285,0,105" />
+            <Image Name="ImgChip500_v" Source="Res/Chips/Pokerchip_final_500.png" Width="90" Height="90" Margin="278,285,-88,105" />
             <!--Bet Area-->
-            <TextBlock Name="personalStackField_v" Width="100" Height="100" Text="Bet Area" Background="{x:Null}" Foreground="Ivory" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="272,0,-92,115" TextAlignment="Center"/>
+            <TextBlock Name="personalStackField_v" Width="150" Height="80" Text="Bet Area" Background="{x:Null}" Foreground="Ivory" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="207,110,-92,0" TextAlignment="Center"/>
             <Rectangle
                 Name="DropTarget_v" 
                 TextBlock.TextAlignment="Center"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Bottom"
-                Margin="272,0,-92,115"
-                Width="100"
-                Height="100"
+                VerticalAlignment="Top"
+                Margin="207,110,-92,0"
+                Width="150"
+                Height="80"
                 AllowDrop="True"
                 Fill="#540F0000"
                 TouchDown="resetPersonalStack"
@@ -424,25 +424,25 @@
         <!--END OF Actionbuttons for players 1 and 4 @orientation left and right vertical-->
 
         <Custom:ScatterView Name="Chips" Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
-            <Custom:ScatterViewItem Name="SVIChip10" Center="450,810" Background="Transparent" CanRotate="False" Visibility="Hidden"
+            <Custom:ScatterViewItem Name="SVIChip10" Center="1745,450" Background="Transparent" CanRotate="False" Visibility="Hidden"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown"
                 Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
                 <Image Source="Res/Chips/Pokerchip_final_10.png" Width="90" Height="90"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="SVIChip20" Center="545,810" Background="Transparent" CanRotate="False" Visibility="Hidden"
+            <Custom:ScatterViewItem Name="SVIChip20" Center="1745,365" Background="Transparent" CanRotate="False" Visibility="Hidden"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown"
                 Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
                 <Image Source="Res/Chips/Pokerchip_final_20.png" Width="90" Height="90"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="SVIChip100" Center="640,810" Background="Transparent" CanRotate="False" Visibility="Hidden"
+            <Custom:ScatterViewItem Name="SVIChip100" Center="1835,450" Background="Transparent" CanRotate="False" Visibility="Hidden"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown"
                 Custom:SurfaceDragDrop.DragCanceled="DragCanceled">
                 <Image Source="Res/Chips/Pokerchip_final_100.png" Width="90" Height="90"/>
             </Custom:ScatterViewItem>
-            <Custom:ScatterViewItem Name="SVIChip500" Center="735,810" Background="Transparent" CanRotate="False" Visibility="Hidden"
+            <Custom:ScatterViewItem Name="SVIChip500" Center="1835,365" Background="Transparent" CanRotate="False" Visibility="Hidden"
                 PreviewMouseDown="DragSourcePreviewInputDeviceDown"
                 PreviewTouchDown="DragSourcePreviewInputDeviceDown"
                 Custom:SurfaceDragDrop.DragCanceled="DragCanceled">

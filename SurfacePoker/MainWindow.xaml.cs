@@ -1418,41 +1418,42 @@ namespace SurfacePoker
             switch (pos)
             {
                 case 1:
-                    
-                    SVIChip10.Center = new Point(270, 360);
-                    SVIChip20.Center = new Point(270, 455);
-                    SVIChip100.Center = new Point(270, 545);
-                    SVIChip500.Center = new Point(270, 635);
+
+                    SVIChip10.Center = new Point(185, 640);
+                    SVIChip20.Center = new Point(185, 730);
+                    SVIChip100.Center = new Point(95, 640);
+                    SVIChip500.Center = new Point(95, 730);
                     break;
                 case 2:
-                    SVIChip10.Center = new Point(830, 270);
-                    SVIChip20.Center = new Point(740, 270);
-                    SVIChip100.Center = new Point(650, 270);
-                    SVIChip500.Center = new Point(560, 270);
+                    SVIChip10.Center = new Point(560, 185);
+                    SVIChip20.Center = new Point(460, 185);
+                    SVIChip100.Center = new Point(560, 105);
+                    SVIChip500.Center = new Point(460, 105);
                     break;
                 case 3:
-                    SVIChip10.Center = new Point(1470, 270);
-                    SVIChip20.Center = new Point(1380, 270);
-                    SVIChip100.Center = new Point(1290, 270);
-                    SVIChip500.Center = new Point(1200, 270);
+                    SVIChip10.Center = new Point(1200, 185);
+                    SVIChip20.Center = new Point(1100, 185);
+                    SVIChip100.Center = new Point(1200, 105);
+                    SVIChip500.Center = new Point(1100, 105);
                     break;
                 case 4:
-                    SVIChip10.Center = new Point(1660, 730);
-                    SVIChip20.Center = new Point(1660, 640);
-                    SVIChip100.Center = new Point(1660, 550);
-                    SVIChip500.Center = new Point(1660, 460);
+                    SVIChip10.Center = new Point(1745, 450);
+                    SVIChip20.Center = new Point(1745, 365);
+                    SVIChip100.Center = new Point(1835, 450);
+                    SVIChip500.Center = new Point(1835, 365);
                     break;
                 case 5:
-                    SVIChip10.Center = new Point(1105, 820);
-                    SVIChip20.Center = new Point(1190, 820);
-                    SVIChip100.Center = new Point(1280, 820);
-                    SVIChip500.Center = new Point(1375, 820);
+
+                    SVIChip10.Center = new Point(1375, 905);
+                    SVIChip20.Center = new Point(1475, 905);
+                    SVIChip100.Center = new Point(1375, 990);
+                    SVIChip500.Center = new Point(1475, 990);
                     break;
                 case 6:
-                    SVIChip10.Center = new Point(465, 820);
-                    SVIChip20.Center = new Point(555, 820);
-                    SVIChip100.Center = new Point(640, 820);
-                    SVIChip500.Center = new Point(735, 820);
+                    SVIChip10.Center = new Point(735, 905);
+                    SVIChip20.Center = new Point(835, 905);
+                    SVIChip100.Center = new Point(735, 990);
+                    SVIChip500.Center = new Point(835, 990);
                     break;
             }
             log.Debug("setSVIChipPos() - End");
