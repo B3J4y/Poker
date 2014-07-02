@@ -23,6 +23,7 @@ namespace SurfacePoker
         private Player nextActivePlayer;
         private Player dealer = new Player("dealer", 0, 0);
         private int nonActives;
+        private bool boolCancel;
         public int blindLevel { get; set; }
         /// <summary>
         ///round = 0 => Preflop
@@ -46,6 +47,7 @@ namespace SurfacePoker
             log.Debug("Game() - Begin");
             log.Debug("New Game - Player: " + players.Count + " Stakes: " + sb + "/" + bb);
             trainMode = train;
+            boolCancel = false;
             blindLevel = 0;
             foreach (Player p in players)
             {
@@ -91,7 +93,7 @@ namespace SurfacePoker
             nonActives = players.FindAll(x =>  (x.stack == 0)).Count;
             int j = 0;
             players.Sort((x, y) => x.ingamePosition.CompareTo(y.ingamePosition));
-            bool firstplayer = true;
+            bool firstplayer = !boolCancel;
             if (players.Count - nonActives == 1)
             {
                 log.Debug("EndGameException");
@@ -105,6 +107,7 @@ namespace SurfacePoker
 
                     players[k].isActive = true;
                     players[k].isAllin = false;
+                    players[k].hasChecked = false;
                     Logger.action(this, players[k], Action.playerAction.ingame, 0, board);
                 }
                 else
@@ -136,13 +139,34 @@ namespace SurfacePoker
                     }
                     else
                     {
-                        players[i].ingamePosition = i - j;
-                        if (players[i].ingamePosition == players.Count - nonActives - 1)
+                        if (!boolCancel)
                         {
-                            Logger.action(this, players[i], Action.playerAction.smallblind, smallBlind, board);
-                            pot.amountPerPlayer = smallBlind;
-                            pot.raisePot(players[i], smallBlind);
-                            players[i].action(smallBlind);
+                            players[i].ingamePosition = i - j;
+                            if (players[i].ingamePosition == players.Count - nonActives - 1)
+                            {
+                                Logger.action(this, players[i], Action.playerAction.smallblind, smallBlind, board);
+                                pot.amountPerPlayer = smallBlind;
+                                pot.raisePot(players[i], smallBlind);
+                                players[i].action(smallBlind);
+                            }
+                        }
+                        else
+                        {
+                            if (players[i].ingamePosition == players.Count - nonActives - 1)
+                            {
+                                Logger.action(this, players[i], Action.playerAction.smallblind, smallBlind, board);
+                                pot.amountPerPlayer = smallBlind;
+                                pot.raisePot(players[i], smallBlind);
+                                players[i].action(smallBlind);
+                            }
+                            if (players[i].ingamePosition == players.Count - nonActives)
+                            {
+                                Logger.action(this, players[i], Action.playerAction.bigblind, bigBlind, board);
+                                pot.amountPerPlayer = bigBlind;
+                                pot.raisePot(players[i], bigBlind);
+                                players[i].action(bigBlind);
+                                boolCancel = false;
+                            }
                         }
 
                     }
@@ -456,6 +480,17 @@ namespace SurfacePoker
             
         }
 
+        public void cancel()
+        {
+            log.Debug("cancel() - Begin");
+            foreach (Player p in players)
+            {
+                p.stack += p.inPot;
+            }
+            boolCancel = true;
+            log.Debug("cancel() - End");
+        }
+
         /// <summary>
         /// the active player folds, checks, calls, bets, raises with this function
         /// </summary>
@@ -463,7 +498,7 @@ namespace SurfacePoker
         /// <param name="amount">absolut amount(fold - 0; check - 0)</param>
         public void activeAction(Action.playerAction pa, int amount)
         {
-            log.Debug("activeAction(Action.playerAction "+ pa.ToString() +",int " + amount + ") - End");
+            log.Debug("activeAction(Action.playerAction "+ pa.ToString() +",int " + amount + ") - Begin");
             switch (pa)
             {
                 case Action.playerAction.fold:
@@ -647,6 +682,7 @@ namespace SurfacePoker
                     break;
                 case Replay.action.hand:
                     result = rep.getHands(str);
+                    
                     break;
             }
             return result;
