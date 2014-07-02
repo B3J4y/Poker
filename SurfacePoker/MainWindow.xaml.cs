@@ -94,6 +94,7 @@ namespace SurfacePoker
         {
             log.Debug("createNewGame(object: "+ sender.ToString() + " RoutedEventArgs: " +e.ToString() + ") - Begin");
             hideStacksPot();
+            Btn4.Visibility = Visibility.Hidden;
             Mitte.Visibility = Visibility.Hidden;
             SVIWinner.Visibility = Visibility.Hidden;
             //Hide Startbtn
@@ -462,6 +463,7 @@ namespace SurfacePoker
             Button b = this.FindName("Btn4") as Button;
             b.Content = text;            
             b.Click += new RoutedEventHandler(StartButtonClicked);
+            //b.TouchDown += new RoutedEventHandler(StartButtonClicked);
             b.Visibility = Visibility.Visible;
             log.Debug("addButton4() - End");
         }
@@ -768,19 +770,24 @@ namespace SurfacePoker
             {
                 case "fold":
                     gl.activeAction(Action.playerAction.fold, 0);
-                    foldCards(kvp.Key.position);                    
+                    foldCards(kvp.Key.position);
+                    playSound("karte_ablegen");
                     break;
                 case "check":
-                    gl.activeAction(Action.playerAction.check, 0);                    
+                    gl.activeAction(Action.playerAction.check, 0);
+                    playSound("knock2");
                     break;
                 case "call":
                     gl.activeAction(Action.playerAction.call, (Int32)Convert.ToInt32(s.Content.ToString().Split(' ')[1]));
+                    playSound("einsatz");
                     break;
                 case "bet":
                     gl.activeAction(Action.playerAction.bet, (Int32)Convert.ToInt32(s.Content.ToString().Split(' ')[1]));
+                    playSound("einsatz");
                     break;
                 case "raise":
                     gl.activeAction(Action.playerAction.raise, (Int32)Convert.ToInt32(s.Content.ToString().Split(' ')[1]));
+                    playSound("einsatz3");
                     break;
             }
             hideActionButton();
@@ -1453,10 +1460,10 @@ namespace SurfacePoker
 
         private void SoundMode_Click(object sender, RoutedEventArgs e)
         {
-            log.Debug("SoundMode_Click() - Begin");
+            log.Debug("SoundMode_Click() " + sound +" - Begin");
             sound = !sound;
             playSound("einsatz2");
-            log.Debug("SoundMode_Click() - End");
+            log.Debug("SoundMode_Click() - " + sound + "End");
             e.Handled = true;
         }
 
@@ -1465,8 +1472,10 @@ namespace SurfacePoker
             log.Debug("playsound("+ file +") - Begin");
             if (sound)
             {
-                string s = new Uri(@"../../Res/Sounds/" + file + ".wav", UriKind.Relative).ToString();
-                System.Media.SoundPlayer sp = new System.Media.SoundPlayer(s);               
+                
+                var path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\Res\\Sounds\\" + file + ".wav";
+                log.Debug(path.ToString());
+                System.Media.SoundPlayer sp = new System.Media.SoundPlayer(path);               
                 try
                 {
                     sp.Load();
@@ -1474,7 +1483,9 @@ namespace SurfacePoker
                 }
                 catch (System.IO.FileNotFoundException exp)
                 {
+
                     log.Debug("File not found ex" + exp.ToString());
+                    log.Debug(path.ToString());
                 }
             }
             log.Debug("playsound() - End");

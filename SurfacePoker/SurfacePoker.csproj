@@ -352,7 +352,9 @@
     <Content Include="Res\Sounds\karten_mischen2.wav" />
     <Content Include="Res\Sounds\karten_mischen3.wav" />
     <Content Include="Res\Sounds\karten_schnorren.wav" />
+    <Content Include="Res\Sounds\karte_ablegen.wav" />
     <Content Include="Res\Sounds\karte_aufdecken.wav" />
+    <Content Include="Res\Sounds\knock2.wav" />
     <Content Include="Res\Sounds\zweichips.wav" />
     <Resource Include="Res\Spielerdaten.xml">
       <SubType>Designer</SubType>
