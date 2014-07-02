@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Resources;
 using System.Windows.Threading;
 using Microsoft.Surface.Presentation.Controls;
 using Microsoft.Surface.Presentation;
@@ -523,12 +524,7 @@ namespace SurfacePoker
                 sv.Visibility = Visibility.Visible;
                 setBackground(iPlayer.position,1);
                 setBackground(iPlayer.position,2);
-                if (sound)
-                {
-                    System.Media.SoundPlayer sp = new System.Media.SoundPlayer("Res/Sounds/karten_schnorren.wav");
-                    sp.Load();
-                    sp.Play();
-                }
+                playSound("karten_schnorren");
             }
             log.Debug("showCards() - End");
         }
@@ -902,12 +898,7 @@ namespace SurfacePoker
                 }
             }
 
-            if (sound)
-            {
-                System.Media.SoundPlayer sp = new System.Media.SoundPlayer("Res/Sounds/chips_schieben2.wav");
-                sp.Load();
-                sp.Play();                
-            }
+            playSound("chips_schieben2");
                 
             newRound();
             log.Debug("announceWinner() - End");
@@ -1327,12 +1318,7 @@ namespace SurfacePoker
         private void showCommunityCards(int i)
         {
             log.Debug("showCommunityCards(i " + i.ToString() + ") - Begin");
-            if (sound)
-            {
-                System.Media.SoundPlayer sp = new System.Media.SoundPlayer("Res/Sounds/karte_aufdecken.wav");
-                sp.Load();
-                sp.Play();
-            }
+            playSound("karte_aufdecken");
             BitmapImage bi;
             Image cc;
             for (int j = 0; j < i; j++)
@@ -1469,14 +1455,29 @@ namespace SurfacePoker
         {
             log.Debug("SoundMode_Click() - Begin");
             sound = !sound;
-            if (sound)
-            {
-                System.Media.SoundPlayer sp = new System.Media.SoundPlayer("Res/Sounds/einchip.wav");
-                sp.Load();
-                sp.Play();
-            }
+            playSound("einsatz2");
             log.Debug("SoundMode_Click() - End");
             e.Handled = true;
+        }
+
+        private void playSound(string file)
+        {
+            log.Debug("playsound("+ file +") - Begin");
+            if (sound)
+            {
+                string s = new Uri(@"../../Res/Sounds/" + file + ".wav", UriKind.Relative).ToString();
+                System.Media.SoundPlayer sp = new System.Media.SoundPlayer(s);               
+                try
+                {
+                    sp.Load();
+                    sp.Play();
+                }
+                catch (System.IO.FileNotFoundException exp)
+                {
+                    log.Debug("File not found ex" + exp.ToString());
+                }
+            }
+            log.Debug("playsound() - End");
         }
 
     }
