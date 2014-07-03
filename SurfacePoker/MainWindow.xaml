@@ -483,7 +483,8 @@
 
         <Custom:ElementMenu Name="MainMenu" ActivationMode="AlwaysActive" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="200,10" MinWidth="85" Width="85">
             <Custom:ElementMenuItem Header="Game">
-                <Custom:ElementMenuItem Header="New Game" Click="createNewGame"/>
+                <Custom:ElementMenuItem Header="New Game" Click="newGameClicked"/>
+                <Custom:ElementMenuItem Header="Cancel &#x0d;&#x0a;Round" Click="cancelRoundClicked"/>
                 <Custom:ElementMenuItem Header="Shut down" Click="shutDown" />
             </Custom:ElementMenuItem>
             <Custom:ElementMenuItem Name="EMIchangeStack" Header="Stack" IsEnabled="False">
@@ -509,7 +510,7 @@
         </Custom:ScatterView>
 
         <Custom:ScatterView>
-            <Custom:ScatterViewItem x:Name="SVIConfirmTrainMode" Background="#C32D2D2D"  CanScale="False" Orientation="0" Center="550,550" Visibility="Hidden" Height="210" Width="250">
+            <Custom:ScatterViewItem x:Name="SVIConfirmWindow" Background="#C32D2D2D"  CanScale="False" Orientation="0" Center="550,550" Visibility="Hidden" Height="210" Width="250">
                 <StackPanel Margin="8">
                     <Button Content="X" HorizontalAlignment="Right" Width="25" Foreground="White" Click="closeWindow"  TouchDown="closeWindow" Margin="0">
                         <Button.Background>
@@ -520,16 +521,16 @@
                             </LinearGradientBrush>
                         </Button.Background>
                     </Button>
-                    <Label Content="Change Training Mode?" Foreground="White" FontSize="16" />
+                    <Label Name="SVICWHeader" Content="Change Training Mode?" Foreground="White" FontSize="16" />
                     <Border Width="250" Height="2" Background="Black"/>
                     <Label/>
-                    <Label Content="Currently Training is:" Foreground="White"/>
+                    <Label Name="SVICWL1" Content="Currently Training is:" Foreground="White"/>
                     <Label Name="LabelTrainingMode" Content="" Foreground="Fuchsia"/>
                     <Label/>
-                    <Label Content="* Game Will Restart." Foreground="White"/>
+                    <Label Name="SVICWL2" Content="* Game Will Restart." Foreground="White"/>
                     <Label/>
                     <DockPanel>
-                        <Custom:SurfaceButton Content="Yes" Click="toggleTrainingMode" DockPanel.Dock="Left" Width="80"/>
+                        <Custom:SurfaceButton Content="Yes" Click="confirmClicked" DockPanel.Dock="Left" Width="80"/>
                         <Custom:SurfaceButton Content="No" Click="closeWindow" DockPanel.Dock="Right" Width="80"/>
                     <Label DockPanel.Dock="Top"/>
                         

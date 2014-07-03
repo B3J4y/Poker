@@ -90,6 +90,61 @@ namespace SurfacePoker
             log.Debug("MainWindow() - End");
         }
 
+        private void newGameClicked(object sender, RoutedEventArgs e)
+        {
+            log.Debug("newGameClicked - Begin");
+            SVICWHeader.Content = "Start New Game?";
+            SVICWL1.Content = "Do you want to start a new game?";
+            LabelTrainingMode.Content = "";
+            SVICWL2.Content = "* Game Will Restart.";
+            
+            if (gl == null)
+            {
+                createNewGame(sender, e);
+            }
+            else
+            {
+                SVIConfirmWindow.Visibility = Visibility.Visible;
+            }
+            log.Debug("newGameClicked - End");
+        }
+
+        private void cancelRoundClicked(object sender, RoutedEventArgs e)
+        {
+            log.Debug("cancelRoundClicked - Begin");
+            SVICWHeader.Content = "Cancel Current Round?";
+            SVICWL1.Content = "Do you want to cancel the current round?";
+            LabelTrainingMode.Content = "";
+            SVICWL2.Content = "Players will get new cards and initial stack";
+
+            if (gl != null)
+            {
+                SVIConfirmWindow.Visibility = Visibility.Visible;
+            }
+            
+            log.Debug("cancelRoundClicked - End");
+        }
+
+        private void confirmClicked(object sender, RoutedEventArgs e)
+        {
+            if (SVICWHeader.Content == "Change Training Mode?")
+            {
+                SVIConfirmWindow.Visibility = Visibility.Hidden;
+                toggleTrainingMode(sender,e);
+            }
+            if (SVICWHeader.Content == "Start New Game?")
+            {
+                SVIConfirmWindow.Visibility = Visibility.Hidden;
+                createNewGame(sender,e);
+            }
+            if (SVICWHeader.Content == "Cancel Current Round?")
+            {
+                SVIConfirmWindow.Visibility = Visibility.Hidden;
+                gl.cancel();
+                newRound();
+            }
+        }
+
         private void createNewGame(object sender, RoutedEventArgs e)
         {
             log.Debug("createNewGame(object: "+ sender.ToString() + " RoutedEventArgs: " +e.ToString() + ") - Begin");
@@ -211,16 +266,19 @@ namespace SurfacePoker
         private void TrainingModeClicked(object sender, RoutedEventArgs e)
         {
             log.Debug("TrainingModeClicked - Begin");
+            SVICWHeader.Content = "Change Training Mode?";
+            SVICWL1.Content = "Currently Training is:";
+            SVICWL2.Content = "* Game Will Restart.";
             if (gl != null)
             {
-                trainMode = gl.trainMode;
-                LabelTrainingMode.Content = trainMode;
-                SVIConfirmTrainMode.Visibility = Visibility.Visible;
+                trainMode = gl.trainMode;                
+                LabelTrainingMode.Content = trainMode;                
+                SVIConfirmWindow.Visibility = Visibility.Visible;
             }
             else
             {
                 LabelTrainingMode.Content = trainMode;
-                SVIConfirmTrainMode.Visibility = Visibility.Visible;
+                SVIConfirmWindow.Visibility = Visibility.Visible;
             }
             log.Debug("TrainingModeClicked - End");
             e.Handled = true;
