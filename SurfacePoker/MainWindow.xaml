@@ -483,8 +483,8 @@
 
         <Custom:ElementMenu Name="MainMenu" ActivationMode="AlwaysActive" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="200,10" MinWidth="85" Width="85">
             <Custom:ElementMenuItem Header="Game">
+                <Custom:ElementMenuItem Name="EMIcancelRound" Header="Cancel &#x0d;&#x0a;Round" Click="cancelRoundClicked" IsEnabled="False"/>
                 <Custom:ElementMenuItem Header="New Game" Click="newGameClicked"/>
-                <Custom:ElementMenuItem Header="Cancel &#x0d;&#x0a;Round" Click="cancelRoundClicked"/>
                 <Custom:ElementMenuItem Header="Shut down" Click="shutDown" />
             </Custom:ElementMenuItem>
             <Custom:ElementMenuItem Name="EMIchangeStack" Header="Stack" IsEnabled="False">

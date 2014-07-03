@@ -127,22 +127,29 @@ namespace SurfacePoker
 
         private void confirmClicked(object sender, RoutedEventArgs e)
         {
+            log.Debug("confirmClicked - Begin");
             if (SVICWHeader.Content == "Change Training Mode?")
             {
+                log.Debug("confirmClicked - End");
                 SVIConfirmWindow.Visibility = Visibility.Hidden;
                 toggleTrainingMode(sender,e);
             }
             if (SVICWHeader.Content == "Start New Game?")
             {
+                log.Debug("confirmClicked - End");
                 SVIConfirmWindow.Visibility = Visibility.Hidden;
                 createNewGame(sender,e);
             }
             if (SVICWHeader.Content == "Cancel Current Round?")
             {
+                log.Debug("confirmClicked - End");
                 SVIConfirmWindow.Visibility = Visibility.Hidden;
                 gl.cancel();
+                hideActionButton();
+                hideUI();
                 newRound();
             }
+            log.Debug("confirmClicked - End");
         }
 
         private void createNewGame(object sender, RoutedEventArgs e)
@@ -175,6 +182,7 @@ namespace SurfacePoker
             mainPot.Text = "Touch Grey Area To Create A New Player!             Player Stacks: " + stack.ToString() + "\n";
             players = new List<Player>();
             gl = null;
+            EMIcancelRound.IsEnabled = false;
             log.Debug("createNewGame() - End");
             e.Handled = true;
         }
@@ -297,6 +305,7 @@ namespace SurfacePoker
             if (gl != null)
             {
                 gl = null;
+                EMIcancelRound.IsEnabled = false;
                 foreach (Player iPlayer in players)
                 {
                     iPlayer.ingamePosition = -1;
@@ -536,6 +545,7 @@ namespace SurfacePoker
             if (gl == null)
             {
                 gl = new Game(players, bb, bb / 2, trainMode);
+                EMIcancelRound.IsEnabled = true;
             }
             try
             {
