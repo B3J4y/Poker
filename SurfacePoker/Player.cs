@@ -25,6 +25,7 @@ namespace SurfacePoker
         public bool hasChecked { get; set; }
         public bool isAllin { get; set; }
         public long winChance { get; set; }
+        public int totalInPot { get; set; }
         public Player(String name, int stack, int position)
         {
             log.Debug("Player(String " + name + ", int"+ stack +", int" + position + ") - Begin");

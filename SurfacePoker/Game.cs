@@ -116,10 +116,12 @@ namespace SurfacePoker
                     players[k].isAllin = false;
                     
                 }
+                players[k].totalInPot = 0;
             }
             for (int i = 0; i < players.Count; i++)
             {
                 players[i].inPot = 0;
+                players[i].totalInPot = 0;
                 if (players[i].stack > 0)
                 {
                     if (firstplayer)
@@ -284,15 +286,17 @@ namespace SurfacePoker
             }
             else
             {
-                if (pot.raiseSize < activePlayer.stack)
+                Action call = actions.Find(x => x.action == Action.playerAction.call);
+                if ((pot.raiseSize + call.amount) < activePlayer.stack)
                 {
-                    actions.Add(new Action(Action.playerAction.raise, (pot.raiseSize)));
+                    actions.Add(new Action(Action.playerAction.raise, (pot.raiseSize) + call.amount));
                 }
                 else
                 {
                     actions.Add(new Action(Action.playerAction.raise, (activePlayer.stack)));
                 }
             }
+
             log.Debug("getActions() - End");
             return new KeyValuePair<Player, List<Action>>(activePlayer, actions);
         }
@@ -486,7 +490,13 @@ namespace SurfacePoker
             foreach (Player p in players)
             {
                 p.stack += p.inPot;
+                p.stack += p.totalInPot;
             }
+
+            pot.amountPerPlayer = 0;
+            pot.potThisRound = 0;
+            pot.endOfRound();
+            pot.value = 0;
             boolCancel = true;
             log.Debug("cancel() - End");
         }
@@ -503,6 +513,7 @@ namespace SurfacePoker
             {
                 case Action.playerAction.fold:
                     activePlayer.isActive = false;
+                    activePlayer.totalInPot += activePlayer.inPot;
                     activePlayer.inPot = 0;
                     activePlayer.cards = new List<Card>();
                     break;
@@ -567,6 +578,7 @@ namespace SurfacePoker
             foreach (Player player in players)
             {
                 player.hasChecked = false;
+                player.totalInPot += player.inPot;
                 player.inPot = 0;
             }
             pot.amountPerPlayer = 0;
