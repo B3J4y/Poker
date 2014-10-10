@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -60,33 +61,37 @@ namespace SurfacePoker
 
         private bool sound { get; set; }
 
+        static Mutex mutex = new Mutex(false, "SurfacePokerMutexOneInstanceOnly");
+
         private void shutDown(object sender, RoutedEventArgs e)
         {
+            log.Debug("shutDown()");
+            mutex.ReleaseMutex();
             Application.Current.Shutdown(0);
             e.Handled = true;
         }
 
         public MainWindow()
         {
+
             log.Debug("MainWindow() - Begin");
-            btn = new Button();
-            LinearGradientBrush gradientBrush = new  LinearGradientBrush( Color.FromRgb( 24, 24, 24),  Color.FromRgb(47, 47, 47), new Point(0.5, 0), new Point(0.5, 1));            
-            Background = gradientBrush;
-            btn.Background = Background;
-            sound = true;
-            //Player player1 = new Player("Anton", 1000, 1);
-            //Player player2 = new Player("Berta", 500, 2);
-            //Player player3 = new Player("Cäsar", 1000, 3);
-            //Player player4 = new Player("Dora", 1000, 4);
-            //Player player5 = new Player("Emil", 1000, 5);
-            //Player player6 = new Player("Friedrich", 1000, 6);
-            //players.Add(player1);
-            //players.Add(player2);
-            //players.Add(player3);
-            //players.Add(player4);
-            //players.Add(player5);
-            //players.Add(player6);
-            //DataContext = this;
+            if (!mutex.WaitOne(TimeSpan.Zero, false))
+            {
+                log.Debug("Another instance of the app is running.");
+                log.Debug("Shutting this instance down.");
+                Application.Current.Shutdown();
+            }
+            else
+            {
+                log.Debug("Running");
+                btn = new Button();
+                LinearGradientBrush gradientBrush = new LinearGradientBrush(Color.FromRgb(24, 24, 24), Color.FromRgb(47, 47, 47), new Point(0.5, 0), new Point(0.5, 1));
+                Background = gradientBrush;
+                btn.Background = Background;
+                sound = true;
+            }
+            
+                          
             log.Debug("MainWindow() - End");
         }
 
