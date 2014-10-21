@@ -878,7 +878,7 @@ namespace SurfacePoker
         private async Task UInextPlayer()
         {
             log.Debug("UInext Player() - Begin");
-            await Task.Delay(500);            
+            await Task.Delay(5);            
             try
             {
                 
