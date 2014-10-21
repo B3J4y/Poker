@@ -867,6 +867,7 @@ namespace SurfacePoker
             hideChips();
             updateBalance();
             await UInextPlayer();
+
             log.Debug("actionButtonClicked() - End");
         }
 
@@ -877,11 +878,12 @@ namespace SurfacePoker
         private async Task UInextPlayer()
         {
             log.Debug("UInext Player() - Begin");
-            await Task.Delay(5);            
+            await Task.Delay(500);            
             try
             {
                 
                 kvp = gl.nextPlayer();
+                Console.Out.WriteLine("lookatkvp");
                 showActionButton(kvp);
             }
             catch (NoPlayerInGameException exp)
